@@ -1,4 +1,4 @@
-// src/components/ResumeSection.tsx
+// src/components/sections/ResumeSection.tsx
 
 // resume section component
 export function ResumeSection() {

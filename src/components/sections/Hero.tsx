@@ -1,4 +1,4 @@
-// src/components/Hero.tsx
+// src/components/sections/Hero.tsx
 
 // import dependencies
 import { ThemeButton } from '~/components/buttons/ThemeButton';

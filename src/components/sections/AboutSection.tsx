@@ -1,20 +1,7 @@
-// src/components/AboutSection.tsx
+// src/components/sections/AboutSection.tsx
 
-import Image from 'next/image';
-
-// skill pill component
-interface SkillPillProps {
-  name: string;
-}
-
-// skill pill component
-function SkillPill({ name }: SkillPillProps) {
-  return (
-    <span className="bg-[var(--color-sidebar)] text-[var(--color-text)] px-3 py-1 rounded-full text-sm">
-      {name}
-    </span>
-  );
-}
+// imports
+import { SkillPill } from '../ui/SkillPill';
 
 // about section component
 export function AboutSection() {

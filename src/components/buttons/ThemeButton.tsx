@@ -1,4 +1,4 @@
-// src/components/ThemeButton.tsx
+// src/components/buttons/ThemeButton.tsx
 
 // use client
 'use client';
@@ -6,9 +6,12 @@
 // import dependencies
 import { ReactNode } from 'react';
 
+// define variant type
+type Variant = 'primary' | 'secondary' | 'outline';
+
 // props for button
 interface ButtonProps {
-  variant: 'primary' | 'secondary' | 'outline';
+  variant: Variant;
   children: ReactNode;
   href?: string;
   onClick?: () => void;

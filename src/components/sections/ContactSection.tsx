@@ -1,4 +1,4 @@
-// src/components/ContactSection.tsx
+// src/components/sections/ContactSection.tsx
 
 'use client';
 
@@ -17,6 +17,7 @@ export function ContactSection() {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
   
+  // handle input change
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormState(prev => ({
@@ -25,6 +26,7 @@ export function ContactSection() {
     }));
   };
   
+  // handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);

@@ -1,4 +1,4 @@
-// src/components/Footer.tsx
+// src/components/sections/Footer.tsx
 
 // footer component
 export function Footer() {

@@ -5,7 +5,7 @@
 
 // import components
 import { Sidebar } from '~/components/sidebar/Sidebar';
-import { SectionHeading } from '~/components/sections/SectionHeading';
+import { SectionHeading } from '~/components/ui/SectionHeading';
 import { ThemeButton } from '~/components/buttons/ThemeButton';
 import { AboutSection } from '~/components/sections/AboutSection';
 import { ResumeSection } from '~/components/sections/ResumeSection';
