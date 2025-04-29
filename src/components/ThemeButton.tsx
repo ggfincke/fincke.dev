@@ -1,5 +1,8 @@
 // src/components/ThemeButton.tsx
 
+// use client
+'use client';
+
 // import dependencies
 import { ReactNode } from 'react';
 

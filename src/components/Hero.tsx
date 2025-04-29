@@ -1,38 +1,26 @@
 // src/components/Hero.tsx
 
-// use client
-'use client';
-
 // import dependencies
 import { ThemeButton } from '~/components/ThemeButton';
 
 // hero component
 export function Hero() {
   return (
-    <section id="hero" className="w-full bg-[var(--color-background)] py-32 lg:py-40">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="lg:text-left max-w-3xl">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-[var(--color-text-light)]">
-            Garrett Fincke
+    <section className="bg-[var(--color-background)] py-20 lg:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center lg:text-left">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[var(--color-text-light)]">
+            <span className="block">Garrett Fincke</span>
+            <span className="block mt-3 text-[var(--color-primary)]">Software Engineer</span>
           </h1>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[var(--color-primary)] mt-2">
-            Software Engineer
-          </h2>
-          <p className="mt-6 text-xl text-[var(--color-text)]">
+          <p className="mt-6 text-xl leading-8 text-[var(--color-text)]">
             Full-stack application development
           </p>
-          <div className="mt-10 flex gap-4">
-            <ThemeButton 
-              variant="primary" 
-              onClick={() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'})}
-            >
+          <div className="mt-10 flex justify-center lg:justify-start gap-4">
+            <ThemeButton variant="primary" href="/contact">
               Get in Touch
             </ThemeButton>
-            <ThemeButton 
-              variant="outline" 
-              onClick={() => document.getElementById('resume')?.scrollIntoView({behavior: 'smooth'})}
-              className="bg-transparent"
-            >
+            <ThemeButton variant="outline" href="/resume">
               View Resume
             </ThemeButton>
           </div>
