@@ -4,14 +4,14 @@
 'use client';
 
 // import components
-import { Sidebar } from '~/components/Sidebar';
-import { SectionHeading } from '~/components/SectionHeading';
-import { ThemeButton } from '~/components/ThemeButton';
-import { AboutSection } from '~/components/AboutSection';
-import { ResumeSection } from '~/components/ResumeSection';
-import { ProjectsSection } from '~/components/ProjectsSection';
-import { ContactSection } from '~/components/ContactSection';
-import { Footer } from '~/components/Footer';
+import { Sidebar } from '~/components/sidebar/Sidebar';
+import { SectionHeading } from '~/components/sections/SectionHeading';
+import { ThemeButton } from '~/components/buttons/ThemeButton';
+import { AboutSection } from '~/components/sections/AboutSection';
+import { ResumeSection } from '~/components/sections/ResumeSection';
+import { ProjectsSection } from '~/components/sections/ProjectsSection';
+import { ContactSection } from '~/components/sections/ContactSection';
+import { Footer } from '~/components/sections/Footer';
 
 // home page
 export default function Home() {

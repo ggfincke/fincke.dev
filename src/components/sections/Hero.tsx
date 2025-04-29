@@ -1,7 +1,7 @@
 // src/components/Hero.tsx
 
 // import dependencies
-import { ThemeButton } from '~/components/ThemeButton';
+import { ThemeButton } from '~/components/buttons/ThemeButton';
 
 // hero component
 export function Hero() {

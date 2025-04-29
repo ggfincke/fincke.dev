@@ -3,7 +3,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ThemeButton } from './ThemeButton';
+import { ThemeButton } from '~/components/buttons/ThemeButton';
 
 // contact section component
 export function ContactSection() {

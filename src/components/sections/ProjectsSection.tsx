@@ -1,7 +1,7 @@
 // src/components/ProjectsSection.tsx
 
 import Image from 'next/image';
-import { ThemeButton } from './ThemeButton';
+import { ThemeButton } from '~/components/buttons/ThemeButton';
 
 // project card component
 interface ProjectCardProps {
