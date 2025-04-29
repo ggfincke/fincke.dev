@@ -6,58 +6,65 @@
 // import dependencies
 import { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 
-// navbar component
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // smooth scrolling
+  const scrollToSection = (sectionId: string) => {
+    setMobileMenuOpen(false);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <header className="sticky top-0 z-50 bg-[var(--color-background-alt)] border-b border-[var(--color-border)]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 w-full bg-[var(--color-background-alt)] border-b border-[var(--color-border)]">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          {/* logo */}
+          {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center">
+            <button onClick={() => scrollToSection('hero')} className="flex items-center">
               <Image
                 src="/fincke-logo.svg"
-                alt="Garrett Fincke"
-                width={150}
-                height={50}
-                className="h-14 w-auto"
+                alt="Fincke.dev Logo"
+                width={120}
+                height={32}
+                className="h-12 w-auto"
               />
-            </Link>
+            </button>
           </div>
           
-          {/* navigation (desktop) */}
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <Link 
-              href="/about" 
+            <button 
+              onClick={() => scrollToSection('about')}
               className="text-[var(--color-text)] hover:text-[var(--color-text-light)] transition-colors duration-200 font-medium"
             >
               About
-            </Link>
-            <Link 
-              href="/resume" 
+            </button>
+            <button 
+              onClick={() => scrollToSection('resume')} 
               className="text-[var(--color-text)] hover:text-[var(--color-text-light)] transition-colors duration-200 font-medium"
             >
               Resume
-            </Link>
-            <Link 
-              href="/projects" 
+            </button>
+            <button 
+              onClick={() => scrollToSection('projects')} 
               className="text-[var(--color-text)] hover:text-[var(--color-text-light)] transition-colors duration-200 font-medium"
             >
               Projects
-            </Link>
-            <Link 
-              href="/contact" 
+            </button>
+            <button 
+              onClick={() => scrollToSection('contact')} 
               className="text-[var(--color-text)] hover:text-[var(--color-text-light)] transition-colors duration-200 font-medium"
             >
               Contact
-            </Link>
+            </button>
           </nav>
           
-          {/* mobile menu button */}
+          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
               type="button"
@@ -79,42 +86,37 @@ export default function Navbar() {
         </div>
       </div>
       
-      {/* mobile menu */}
+      {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden">
+        <div className="md:hidden w-full">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[var(--color-background-alt)] border-b border-[var(--color-border)]">
-            <Link 
-              href="/about" 
-              className="block px-3 py-2 text-[var(--color-text)] hover:text-[var(--color-text-light)] font-medium"
-              onClick={() => setMobileMenuOpen(false)}
+            <button 
+              onClick={() => scrollToSection('about')}
+              className="block w-full text-left px-3 py-2 text-[var(--color-text)] hover:text-[var(--color-text-light)] font-medium"
             >
               About
-            </Link>
-            <Link 
-              href="/resume" 
-              className="block px-3 py-2 text-[var(--color-text)] hover:text-[var(--color-text-light)] font-medium"
-              onClick={() => setMobileMenuOpen(false)}
+            </button>
+            <button 
+              onClick={() => scrollToSection('resume')}
+              className="block w-full text-left px-3 py-2 text-[var(--color-text)] hover:text-[var(--color-text-light)] font-medium"
             >
               Resume
-            </Link>
-            <Link 
-              href="/projects" 
-              className="block px-3 py-2 text-[var(--color-text)] hover:text-[var(--color-text-light)] font-medium"
-              onClick={() => setMobileMenuOpen(false)}
+            </button>
+            <button 
+              onClick={() => scrollToSection('projects')}
+              className="block w-full text-left px-3 py-2 text-[var(--color-text)] hover:text-[var(--color-text-light)] font-medium"
             >
               Projects
-            </Link>
-            <Link 
-              href="/contact" 
-              className="block px-3 py-2 text-[var(--color-text)] hover:text-[var(--color-text-light)] font-medium"
-              onClick={() => setMobileMenuOpen(false)}
+            </button>
+            <button 
+              onClick={() => scrollToSection('contact')}
+              className="block w-full text-left px-3 py-2 text-[var(--color-text)] hover:text-[var(--color-text-light)] font-medium"
             >
               Contact
-            </Link>
+            </button>
           </div>
         </div>
       )}
     </header>
   );
 }
-

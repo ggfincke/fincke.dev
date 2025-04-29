@@ -1,5 +1,6 @@
 // src/components/ThemeButton.tsx
 
+// import dependencies
 import { ReactNode } from 'react';
 
 // props for button
@@ -28,10 +29,9 @@ export function ThemeButton({
     outline: "border border-[var(--color-border)] text-[var(--color-text-light)] hover:bg-[var(--color-sidebar)]"
   };
   
-  // combine styles
   const buttonStyle = `${baseStyles} ${variantStyles[variant]} ${className}`;
   
-  // render as anchor or button based on href prop
+  // render as anchor or button based on href/onClick props
   if (href) {
     return (
       <a href={href} className={buttonStyle}>
@@ -46,4 +46,3 @@ export function ThemeButton({
     </button>
   );
 }
-
