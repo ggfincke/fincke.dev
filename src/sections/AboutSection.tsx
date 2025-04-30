@@ -1,7 +1,7 @@
 // src/components/sections/AboutSection.tsx
 
 // imports
-import { SkillPill } from '../ui/SkillPill';
+import { SkillPill } from '~/components/ui/SkillPill';
 
 // about section component
 export function AboutSection() {

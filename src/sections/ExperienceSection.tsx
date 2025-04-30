@@ -1,7 +1,7 @@
 // src/components/sections/ExperienceSection.tsx
 
-import { TimelineContainer } from '../timeline/TimelineContainer';
-import { TimelineItem } from '../timeline/TimelineItem';
+import { TimelineContainer } from '~/components/timeline/TimelineContainer';
+import { TimelineItem } from '~/components/timeline/TimelineItem';
 
 export function ExperienceSection() {
   // work experience entries

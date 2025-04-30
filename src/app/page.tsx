@@ -7,11 +7,11 @@
 import { Sidebar } from '~/components/sidebar/Sidebar';
 import { SectionHeading } from '~/components/ui/SectionHeading';
 import { ThemeButton } from '~/components/buttons/ThemeButton';
-import { AboutSection } from '~/components/sections/AboutSection';
-import { ExperienceSection } from '~/components/sections/ExperienceSection';
-import { ProjectsSection } from '~/components/sections/ProjectsSection';
-import { ContactSection } from '~/components/sections/ContactSection';
-import { Footer } from '~/components/sections/Footer';
+import { AboutSection } from '~/sections/AboutSection';
+import { ExperienceSection } from '~/sections/ExperienceSection';
+import { ProjectsSection } from '~/sections/ProjectsSection';
+import { ContactSection } from '~/sections/ContactSection';
+import { Footer } from '~/sections/Footer';
 
 // home page
 export default function Home() {

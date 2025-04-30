@@ -5,9 +5,9 @@
 
 // imports
 import { useState, useEffect } from 'react';
-import { ProjectCard } from '../ui/ProjectCard';
-import { NavigationArrow } from '../ui/NavigationArrow';
-import { PaginationDots } from '../ui/PaginationDots';
+import { ProjectCard } from '~/components/ui/ProjectCard';
+import { NavigationArrow } from '~/components/ui/NavigationArrow';
+import { PaginationDots } from '~/components/ui/PaginationDots';
 
 // project data
 const projects = [
