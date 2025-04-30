@@ -43,7 +43,7 @@ html {
 /* container utilities */
 .container {
   width: 100%;
-  max-width: 1080px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -51,6 +51,8 @@ html {
 /* section transitions */
 section {
   transition: background-color 0.3s ease;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
 }
 
 /* smooth hover effects for buttons */
@@ -61,19 +63,11 @@ button, a {
 /* sidebar styles */
 aside {
   transition: background-color 0.3s ease;
-}
-
-/* alternating section background colors */
-section:nth-child(odd) {
-  background-color: var(--color-background);
-}
-
-section:nth-child(even) {
-  background-color: var(--color-background-alt);
+  z-index: 40;
 }
 
 /* for mobile devices - sidebar becomes top navigation */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .flex {
     flex-direction: column;
   }
@@ -82,12 +76,23 @@ section:nth-child(even) {
     position: relative;
     width: 100%;
     height: auto;
-    border-left: none;
+    border-right: none;
     border-bottom: 1px solid var(--color-border);
     padding: 1rem;
   }
   
   main {
-    padding-right: 0;
+    padding-left: 0;
+  }
+  
+  /* timeline adjustments for mobile */
+  section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }

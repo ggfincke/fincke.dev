@@ -1,3 +1,5 @@
+// src/components/buttons/NavigationButton.tsx
+
 // navigation button component
 interface NavButtonProps {
     sectionId: string;

@@ -1,4 +1,4 @@
-// src/components/Sidebar.tsx
+// src/components/sidebar/Sidebar.tsx
 
 // use client   
 'use client';
@@ -17,7 +17,7 @@ export function Sidebar() {
   // update active section based on scroll position
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'about', 'resume', 'projects', 'contact'];
+      const sections = ['hero', 'about', 'experience', 'projects', 'contact'];
       
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -44,27 +44,37 @@ export function Sidebar() {
   };
 
   return (
-    <aside className="fixed right-0 top-0 h-screen w-72 flex flex-col justify-center p-8 bg-[var(--color-background-alt)] border-l border-[var(--color-border)]">
-      <SidebarHeader 
-        logo={
-          <Image 
-            src="/fincke-logo.svg"
-            alt="Fincke Logo"
-            width={300}
-            height={100}
-            className="mb-8"
-          />
-        } 
-      />
-      <Navigation activeSection={activeSection} onSectionClick={scrollToSection} />
-      <div className="mt-auto mb-8 flex justify-center">
+    <aside className="fixed left-0 top-0 h-screen w-72 flex flex-col bg-[var(--color-background-alt)] border-r border-[var(--color-border)]">
+      {/* top section w/ logo */}
+      <div className="pt-12 px-6">
+        <SidebarHeader 
+          logo={
+            <Image 
+              src="/fincke-logo-alt.svg"
+              alt="Fincke Logo"
+              width={600}
+              height={200}
+              className="mb-4"
+            />
+          } 
+        />
+      </div>
+      
+      {/* spacer to push nav up */}
+      <div className="flex-1 flex flex-col justify-center w-full mt-[-180px]">
+        <Navigation activeSection={activeSection} onSectionClick={scrollToSection} />
+      </div>
+      
+      {/* bottom section w/ button
+      <div className="px-6 pb-8 mt-auto">
         <ThemeButton 
           variant="primary"
           onClick={() => scrollToSection('contact')}
+          className="w-full"
         >
           Get in Touch
         </ThemeButton>
-      </div>
+      </div> */}
     </aside>
   );
 }

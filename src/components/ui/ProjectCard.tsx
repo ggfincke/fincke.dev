@@ -7,6 +7,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ThemeButton } from '../buttons/ThemeButton';
+import { SkillPill } from './SkillPill';
 
 // project card component
 interface ProjectCardProps {
@@ -28,6 +29,7 @@ interface ProjectCardProps {
   }: ProjectCardProps) {
     return (
       <div className="border border-[var(--color-border)] rounded-lg overflow-hidden bg-[var(--color-background-alt)] hover:shadow-lg transition-all">
+        {/* image */}
         <div className="h-48 w-full relative bg-[var(--color-sidebar)]">
           {imageUrl && (
             <Image 
@@ -39,21 +41,19 @@ interface ProjectCardProps {
           )}
         </div>
         
+        
         <div className="p-6">
           <h3 className="text-xl font-bold text-[var(--color-text-light)] mb-2">{title}</h3>
           <p className="text-[var(--color-text)] mb-4">{description}</p>
           
+          {/* technologies */}
           <div className="flex flex-wrap gap-2 mb-4">
             {technologies.map((tech) => (
-              <span 
-                key={tech}
-                className="bg-[var(--color-sidebar)] text-[var(--color-text)] px-3 py-1 rounded-full text-xs"
-              >
-                {tech}
-              </span>
+              <SkillPill key={tech} name={tech} />
             ))}
           </div>
           
+          {/* buttons */}
           <div className="flex gap-3">
             {repoUrl && (
               <Link href={repoUrl} passHref>
@@ -66,6 +66,7 @@ interface ProjectCardProps {
               </Link>
             )}
             
+            {/* live demo */}
             {liveUrl && (
               <Link href={liveUrl} passHref>
                 <ThemeButton 

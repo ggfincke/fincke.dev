@@ -21,11 +21,16 @@ export function AboutSection() {
           I'm passionate about crafting clean, accessible, and performant code that solves real-world problems.
         </p>
         <p className="text-[var(--color-text)] mb-4">
-          My journey in software development began at Penn State, where I developed a strong foundation in computer science
-          principles. Since then, I've been expanding my skills through both professional work and personal projects.
+          My journey in software development began when I was introducted to Scratch in middle school.
+          I fell in love with it immediately and never stopped coding since! I continued to code in high school, 
+          eventually choosing to go to Penn State where I developed the majority of my skills in computer science and software engineering. 
+          Since then, I've been expanding my skills through both professional work and personal projects.
         </p>
         <p className="text-[var(--color-text)]">
-          When I'm not coding, IDK
+        Outside of coding, I find balance through various outlets, primarily swimming, running, and journaling. 
+        Physical fitness is a big part of my life, and I find it helps me stay focused and balanced. I find it very satisfying
+        to set big goals and work steadily toward them. Lately, I've been eyeing a full marathon and/or open water swim races.
+        Additionally, when I have the time, I like to produce music and play video games, and when I have the money, I love to travel!
         </p>
       </div>
       
@@ -67,23 +72,6 @@ export function AboutSection() {
                 <SkillPill key={index} name={skill} />
               ))}
             </div>
-          </div>
-        </div>
-      </div>
-      
-      <div>
-        <h3 className="text-2xl font-bold text-[var(--color-text-light)] mb-4">Education</h3>
-        <div className="flex items-start gap-4">
-          <div className="flex-grow">
-            <h4 className="text-xl font-semibold text-[var(--color-primary)]">
-              The Pennsylvania State University
-            </h4>
-            <p className="text-[var(--color-text-light)] mb-1">
-              Bachelor of Engineering in Computer Science
-            </p>
-            <p className="text-[var(--color-text)]">
-              Graduated December 2024 • GPA: 3.36/4.0
-            </p>
           </div>
         </div>
       </div>
