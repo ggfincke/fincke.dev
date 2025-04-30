@@ -1,4 +1,4 @@
-// skill pill component
+// skillpill component
 interface SkillPillProps {
     name: string;
   }
