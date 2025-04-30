@@ -37,7 +37,7 @@ export function ProjectCard({
         </div>
         
         {/* technologies */}
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 mb-4">
             {technologies.map((tech) => (
                 <SkillPill key={tech} name={tech} />
             ))}
