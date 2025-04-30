@@ -9,36 +9,71 @@ import { ProjectCard } from '../ui/ProjectCard';
 import { NavigationArrow } from '../ui/NavigationArrow';
 import { PaginationDots } from '../ui/PaginationDots';
 
-// project data (filler data for now)
+// project data
 const projects = [
   {
     title: "InStock",
-    description: "A price tracking system that monitors product pricing and availability across major e-commerce platforms using web scrapers. The system uses microservices architecture with Django, Redis for pub/sub messaging and Celery for task scheduling. Features include a fault-tolerant architecture with error recovery mechanisms, RESTful API endpoints for data retrieval, and Discord bot integration for real-time alerts.",
+    dateRange: "Dec 2024 - Present",
+    bulletPoints: [
+      "Designed a price tracking system for monitoring product pricing and availability",
+      "Engineered a microservices architecture in Django with Redis and Celery",
+      "Designed a fault-tolerant architecture with 99% system uptime",
+      "Built RESTful API endpoints for data retrieval and user management",
+      "Integrated Discord bot functionality for real-time alerts"
+    ],
     technologies: ["Python", "Django", "PostgreSQL", "React", "Selenium", "Redis", "Celery"],
     repoUrl: "https://github.com/ggfincke/instock"
   },
   {
     title: "Portfolio Website",
-    description: "This personal portfolio website built with Next.js, React, Typescript, and Tailwind CSS. Features a responsive design, dark mode, custom component system, and smooth transitions. The site showcases professional experience, projects, and skills with a clean, minimalist design.",
+    dateRange: "Mar 2025 - Apr 2025",
+    bulletPoints: [
+      "Built a personal portfolio website with Next.js, React, TypeScript",
+      "Implemented responsive design with Tailwind CSS",
+      "Created a custom component system for UI consistency",
+      "Designed with accessibility and performance in mind",
+      "Configured continuous deployment with Vercel"
+    ],
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     repoUrl: "https://github.com/ggfincke/fincke.dev",
     liveUrl: "https://fincke.dev"
   },
   {
     title: "Project Tracker",
-    description: "A collaborative task management tool for software development teams with real-time updates and progress visualization. Includes features for sprint planning, task assignment, time tracking, and customizable dashboards. Uses Socket.io for real-time collaboration and Chart.js for burndown charts and other progress metrics.",
+    dateRange: "Oct 2024 - Dec 2024",
+    bulletPoints: [
+      "Developed a collaborative task management tool for software teams",
+      "Implemented real-time updates with Socket.io",
+      "Created visualizations for sprint planning and progress tracking",
+      "Designed customizable dashboards for different team roles",
+      "Built time tracking functionality for accurate project estimates"
+    ],
     technologies: ["React", "Node.js", "Socket.io", "MongoDB", "Chart.js"],
     repoUrl: "https://github.com/ggfincke/project-tracker"
   },
   {
     title: "SwiftUI Weather App",
-    description: "A weather application built with SwiftUI featuring location-based forecasts, animated weather conditions, and customizable alerts. Integrates with WeatherKit API for accurate forecasts and uses Core Location for precise location services. Implements MapKit for interactive weather maps and custom SwiftUI animations for weather conditions.",
+    dateRange: "Sep 2024 - Oct 2024",
+    bulletPoints: [
+      "Built a weather application with SwiftUI and WeatherKit API",
+      "Implemented location-based forecasts with Core Location",
+      "Created custom animations for different weather conditions",
+      "Designed an interactive weather map with MapKit",
+      "Added customizable weather alerts and notifications"
+    ],
     technologies: ["Swift", "SwiftUI", "CoreLocation", "WeatherKit", "MapKit"],
     repoUrl: "https://github.com/ggfincke/swiftui-weather"
   },
   {
     title: "Data Visualization Dashboard",
-    description: "An interactive dashboard for visualizing complex datasets with customizable charts, filters, and export capabilities. Built with React and D3.js, it allows users to upload their own datasets, create visualizations, and share insights with team members. Includes support for multiple chart types and responsive design for all device sizes.",
+    dateRange: "Jan 2024 - Feb 2025",
+    bulletPoints: [
+      "Created an interactive dashboard for visualizing complex datasets",
+      "Built customizable charts and filters with D3.js and React",
+      "Implemented CSV parsing for user data uploads",
+      "Added export capabilities for charts and insights",
+      "Designed a responsive interface for all device sizes"
+    ],
     technologies: ["React", "D3.js", "Node.js", "Express", "CSV Parsing"],
     repoUrl: "https://github.com/ggfincke/data-viz-dashboard"
   }
@@ -81,7 +116,7 @@ export function ProjectsSection() {
   }, [isAnimating]);
   
   return (
-    <div className="max-w-3xl mx-auto relative px-8 sm:px-4">
+    <div className="max-w-4xl mx-auto relative px-8 sm:px-4">
       {/* project display */}
       <div className="relative mb-10">
         {/* left navigation arrow */}
@@ -99,7 +134,8 @@ export function ProjectsSection() {
         >
           <ProjectCard 
             title={projects[currentIndex].title}
-            description={projects[currentIndex].description}
+            dateRange={projects[currentIndex].dateRange}
+            bulletPoints={projects[currentIndex].bulletPoints}
             technologies={projects[currentIndex].technologies}
             repoUrl={projects[currentIndex].repoUrl}
             liveUrl={projects[currentIndex].liveUrl}

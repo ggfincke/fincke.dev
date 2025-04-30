@@ -36,7 +36,7 @@ export function TimelineItem({
       
       {/* right side - content */}
       <div className="pl-10 flex-1">
-        {/* title and company */}
+        {/* title & company */}
         <div className="flex items-center mb-3">
           <h4 className="text-xl font-semibold text-[var(--color-primary)]">
             {title}
