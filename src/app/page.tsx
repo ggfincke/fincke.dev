@@ -4,39 +4,20 @@
 'use client';
 
 // imports
-import { useRef } from 'react';
+// components
 import { Sidebar } from '~/components/sidebar/Sidebar';
 import { SectionHeading } from '~/components/ui/SectionHeading';
+// sections
 import { HeroSection } from '~/sections/HeroSection';
 import { AboutSection } from '~/sections/AboutSection';
 import { ExperienceSection } from '~/sections/ExperienceSection';
 import { ProjectsSection } from '~/sections/ProjectsSection';
 import { ContactSection } from '~/sections/ContactSection';
 import { Footer } from '~/sections/Footer';
+// hooks
 import { useScrollSidebar } from '~/hooks/useScrollSidebar';
-
-// animation styles
-const sidebarAnimation = {
-  visible: {
-    transform: 'translateX(0)',
-    transition: 'transform 0.5s ease-in-out'
-  },
-  hidden: {
-    transform: 'translateX(-100%)',
-    transition: 'transform 0.5s ease-in-out'
-  }
-};
-
-const contentAnimation = {
-  withSidebar: {
-    paddingLeft: '18rem',
-    transition: 'padding-left 0.5s ease-in-out'
-  },
-  fullWidth: {
-    paddingLeft: '0',
-    transition: 'padding-left 0.5s ease-in-out'
-  }
-};
+// styles
+import { sidebarAnimation, contentAnimation } from '~/styles/sidebarAnimations';
 
 // home page
 export default function Home() {
