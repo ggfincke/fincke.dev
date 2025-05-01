@@ -13,6 +13,7 @@ interface TimelineItemProps {
   technologies?: string[];
   companyUrl?: string;
   isLast?: boolean;
+  companyLogos?: React.ReactNode;
 }
 
 export function TimelineItem({ 
@@ -22,6 +23,7 @@ export function TimelineItem({
   children, 
   technologies = [], 
   companyUrl,
+  companyLogos,
   isLast = false 
 }: TimelineItemProps) {
   return (
@@ -36,22 +38,26 @@ export function TimelineItem({
       
       {/* right side - content */}
       <div className="pl-10 flex-1">
-        {/* title & company */}
-        <div className="flex items-center mb-3">
-          <h4 className="text-xl font-semibold text-[var(--color-primary)]">
-            {title}
-            {company && <span className="text-[var(--color-text-light)]">, {company}</span>}
-          </h4>
-          
-          {companyUrl && (
-            <a href={companyUrl} target="_blank" rel="noopener noreferrer" className="ml-2 text-[var(--color-text)] hover:text-[var(--color-text-light)]">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                <polyline points="15 3 21 3 21 9"></polyline>
-                <line x1="10" y1="14" x2="21" y2="3"></line>
-              </svg>
+        
+      {/* header row */}
+        <h4 className="flex items-center justify-between text-xl font-semibold text-[var(--color-primary)] mb-3">
+          {companyUrl ? (
+            <a href={companyUrl} target="_blank" rel="noreferrer">
+              {company}
             </a>
+          ) : (
+            company
           )}
+
+          {/* icons flush right */}
+          <span className="flex items-center gap-1">
+            {companyLogos}
+          </span>
+        </h4>
+        
+        {/* title */}
+        <div className="text-xl font-semibold text-[var(--color-text-light)] mb-3">
+          {title}
         </div>
         
         {/* description */}
