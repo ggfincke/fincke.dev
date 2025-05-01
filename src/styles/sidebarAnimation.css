@@ -1,0 +1,80 @@
+/* src/styles/sidebarAnimation.css */
+
+/* Sidebar animation styles */
+.sidebar-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 50;
+    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  
+  .sidebar-hidden {
+    transform: translateX(-100%);
+  }
+  
+  .sidebar-visible {
+    transform: translateX(0);
+  }
+  
+  /* Main content transition */
+  .main-content {
+    width: 100%;
+    transition: padding-left 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  
+  .main-content-with-sidebar {
+    padding-left: 18rem; /* 72px */
+  }
+  
+  .main-content-full {
+    padding-left: 0;
+  }
+  
+  /* For mobile: Overlay sidebar instead of pushing content */
+  @media (max-width: 1024px) {
+    .sidebar-container {
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .main-content-with-sidebar {
+      padding-left: 0;
+    }
+    
+    /* Mobile navigation padding adjustments */
+    .main-content {
+      padding-top: 4rem; /* Make space for mobile navigation */
+    }
+    
+    /* Hero section adjustments */
+    #hero {
+      padding-top: 0 !important; /* Remove extra padding for hero */
+    }
+    
+    /* Optional overlay background when sidebar is visible on mobile */
+    .sidebar-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 40;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    
+    .sidebar-overlay-visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+  
+  /* Medium and larger screens */
+  @media (min-width: 1025px) {
+    .main-content {
+      padding-top: 0; /* No need for top padding on desktop */
+    }
+  }

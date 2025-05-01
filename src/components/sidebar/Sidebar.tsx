@@ -10,12 +10,26 @@ import { ThemeButton } from '../buttons/ThemeButton';
 import { SidebarHeader } from './SidebarHeader';
 import { Navigation } from './Navigation';
 
-// main sidebar component
-export function Sidebar() {
-  const [activeSection, setActiveSection] = useState('hero');
+// interface for sidebar props
+interface SidebarProps {
+  // optional custom active section & scroll handler
+  // if not provided, the component will use its own internal logic
+  customActiveSection?: string;
+  onSectionClick?: (sectionId: string) => void;
+}
 
-  // update active section based on scroll position
+// main sidebar component
+export function Sidebar({ customActiveSection, onSectionClick }: SidebarProps) {
+  const [activeSection, setActiveSection] = useState(customActiveSection || 'hero');
+
+  // update active section based on scroll position (if no custom handler is provided)
   useEffect(() => {
+    // if customActiveSection is provided, use that instead of present logic
+    if (customActiveSection) {
+      setActiveSection(customActiveSection);
+      return;
+    }
+
     const handleScroll = () => {
       const sections = ['hero', 'about', 'experience', 'projects', 'contact'];
       
@@ -32,11 +46,20 @@ export function Sidebar() {
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // initial check
+    
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [customActiveSection]);
 
   // smooth scroll to section
   const scrollToSection = (sectionId: string) => {
+    // if custom click handler is provided, use that
+    if (onSectionClick) {
+      onSectionClick(sectionId);
+      return;
+    }
+
+    // default scroll behavior
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -44,7 +67,7 @@ export function Sidebar() {
   };
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-72 flex flex-col bg-[var(--color-background-alt)] border-r border-[var(--color-border)]">
+    <aside className="h-screen w-72 flex flex-col bg-[var(--color-background-alt)] border-r border-[var(--color-border)]">
       {/* top section w/ logo */}
       <div className="pt-12 px-6">
         <SidebarHeader 
@@ -64,17 +87,6 @@ export function Sidebar() {
       <div className="flex-1 flex flex-col justify-center w-full mt-[-180px]">
         <Navigation activeSection={activeSection} onSectionClick={scrollToSection} />
       </div>
-      
-      {/* bottom section w/ button
-      <div className="px-6 pb-8 mt-auto">
-        <ThemeButton 
-          variant="primary"
-          onClick={() => scrollToSection('contact')}
-          className="w-full"
-        >
-          Get in Touch
-        </ThemeButton>
-      </div> */}
     </aside>
   );
 }

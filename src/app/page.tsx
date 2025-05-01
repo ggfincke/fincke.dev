@@ -3,51 +3,65 @@
 // use client
 'use client';
 
-// import components
+// imports
+import { useRef } from 'react';
 import { Sidebar } from '~/components/sidebar/Sidebar';
 import { SectionHeading } from '~/components/ui/SectionHeading';
-import { ThemeButton } from '~/components/buttons/ThemeButton';
+import { HeroSection } from '~/sections/HeroSection';
 import { AboutSection } from '~/sections/AboutSection';
 import { ExperienceSection } from '~/sections/ExperienceSection';
 import { ProjectsSection } from '~/sections/ProjectsSection';
 import { ContactSection } from '~/sections/ContactSection';
 import { Footer } from '~/sections/Footer';
+import { useScrollSidebar } from '~/hooks/useScrollSidebar';
+
+// animation styles
+const sidebarAnimation = {
+  visible: {
+    transform: 'translateX(0)',
+    transition: 'transform 0.5s ease-in-out'
+  },
+  hidden: {
+    transform: 'translateX(-100%)',
+    transition: 'transform 0.5s ease-in-out'
+  }
+};
+
+const contentAnimation = {
+  withSidebar: {
+    paddingLeft: '18rem',
+    transition: 'padding-left 0.5s ease-in-out'
+  },
+  fullWidth: {
+    paddingLeft: '0',
+    transition: 'padding-left 0.5s ease-in-out'
+  }
+};
 
 // home page
 export default function Home() {
+  // Use the scroll sidebar hook
+  const { showSidebar, activeSection, scrollToSection } = useScrollSidebar();
+  const heroRef = useRef<HTMLElement>(null);
+
   return (
-    <div className="flex min-h-screen">
-      {/* sidebar (left side) */}
-      <Sidebar />
+    <div className="min-h-screen">
+      {/* Sidebar */}
+      <div 
+        className="fixed left-0 top-0 h-screen z-50"
+        style={showSidebar ? sidebarAnimation.visible : sidebarAnimation.hidden}
+      >
+        <Sidebar customActiveSection={activeSection} onSectionClick={scrollToSection} />
+      </div>
       
-      {/* main content area (right side) */}
-      <main className="w-full pl-72">
-        {/* hero section */}
-        <section id="hero" className="min-h-screen flex items-center bg-[var(--color-background)] py-24">
-          <div className="container mx-auto px-8">
-            <div className="max-w-2xl">
-              <h1 className="text-5xl sm:text-6xl font-bold text-[var(--color-text-light)]">
-                Garrett Fincke
-              </h1>
-              <h2 className="text-4xl sm:text-5xl font-bold text-[var(--color-primary)] mt-2">
-                Software Engineer
-              </h2>
-              <p className="mt-6 text-xl text-[var(--color-text)]">
-                Full-stack application development with a focus on clean, accessible interfaces.
-              </p>
-              <div className="mt-10 flex gap-4">
-                <ThemeButton variant="primary" onClick={() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'})}>
-                  Get in Touch
-                </ThemeButton>
-                <ThemeButton variant="outline" onClick={() => document.getElementById('experience')?.scrollIntoView({behavior: 'smooth'})}>
-                  View Experience
-                </ThemeButton>
-              </div>
-            </div>
-          </div>
+      {/* Main content */}
+      <main style={showSidebar ? contentAnimation.withSidebar : contentAnimation.fullWidth}>
+        {/* Hero section */}
+        <section id="hero">
+          <HeroSection scrollToSection={scrollToSection} />
         </section>
 
-        {/* about section */}
+        {/* About section */}
         <section id="about" className="py-24 bg-[var(--color-background)]">
           <div className="container mx-auto px-8">
             <SectionHeading 
@@ -60,7 +74,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* experience section */}
+        {/* Experience section */}
         <section id="experience" className="py-24 bg-[var(--color-background-alt)]">
           <div className="container mx-auto px-8">
             <SectionHeading 
@@ -73,7 +87,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* projects section */}
+        {/* Projects section */}
         <section id="projects" className="py-24 bg-[var(--color-background)]">
           <div className="container mx-auto px-8">
             <SectionHeading 
@@ -86,7 +100,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* contact section */}
+        {/* Contact section */}
         <section id="contact" className="py-24 bg-[var(--color-background-alt)]">
           <div className="container mx-auto px-8">
             <SectionHeading 
@@ -99,7 +113,7 @@ export default function Home() {
           </div>
         </section>
         
-        {/* footer */}
+        {/* Footer */}
         <Footer />
       </main>
     </div>

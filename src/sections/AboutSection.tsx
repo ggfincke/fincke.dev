@@ -3,7 +3,7 @@
 // imports
 import { SkillPill } from '~/components/ui/SkillPill';
 
-// about section component
+// about section
 export function AboutSection() {
   // skill categories
   const skillGroups = {
