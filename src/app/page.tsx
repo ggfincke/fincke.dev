@@ -40,9 +40,10 @@ const contentAnimation = {
 
 // home page
 export default function Home() {
-  // Use the scroll sidebar hook
-  const { showSidebar, activeSection, scrollToSection } = useScrollSidebar();
-  const heroRef = useRef<HTMLElement>(null);
+  // use scroll sidebar hook
+  const { showSidebar, activeSection, scrollToSection } = useScrollSidebar({
+    offset: 150 
+  });
 
   return (
     <div className="min-h-screen">
@@ -51,7 +52,10 @@ export default function Home() {
         className="fixed left-0 top-0 h-screen z-50"
         style={showSidebar ? sidebarAnimation.visible : sidebarAnimation.hidden}
       >
-        <Sidebar customActiveSection={activeSection} onSectionClick={scrollToSection} />
+        <Sidebar 
+          activeSection={activeSection} 
+          onSectionClick={scrollToSection} 
+        />
       </div>
       
       {/* Main content */}

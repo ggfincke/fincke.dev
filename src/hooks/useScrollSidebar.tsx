@@ -1,12 +1,14 @@
 // src/hooks/useScrollSidebar.tsx
 
 // imports
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 // interface for useScrollSidebar options
 interface UseScrollSidebarOptions {
-  // optional sections to track for active section
+  // sections to track for active section
   sections?: string[];
+  // offset from top to determine when a section is active
+  offset?: number;
 }
 
 // interface for useScrollSidebar result
@@ -18,45 +20,49 @@ interface UseScrollSidebarResult {
 
 // custom hook to manage sidebar visibility based on scroll position
 export function useScrollSidebar({
-  sections = ['hero', 'about', 'experience', 'projects', 'contact']
+  sections = ['hero', 'about', 'experience', 'projects', 'contact'],
+  offset = 100
 }: UseScrollSidebarOptions = {}): UseScrollSidebarResult {
   const [showSidebar, setShowSidebar] = useState(false);
   const [activeSection, setActiveSection] = useState(sections[0] || 'hero');
+  const [scrolling, setScrolling] = useState(false);
 
-  // handle hero section visibility to control sidebar
-  useEffect(() => {
-    const heroEl = document.getElementById('hero');
-    if (!heroEl) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setShowSidebar(!entry.isIntersecting);
-      },
-      { threshold: 0.3 }
-    );
-
-    observer.observe(heroEl);
-    return () => observer.disconnect();
-  }, []);
-
-  // handle scroll to determine active section
-  useEffect(() => {
-    const handleScroll = () => {
+  // throttled scroll handler to improve performance
+  const handleScroll = useCallback(() => {
+    if (scrolling) return;
+    
+    setScrolling(true);
+    
+    setTimeout(() => {
       // determine active section
       for (const section of sections) {
         const el = document.getElementById(section);
         if (!el) continue;
         
         const rect = el.getBoundingClientRect();
-        // consider a section active when its top is near the top of the viewport
-        if (rect.top <= 200 && rect.bottom >= 200) {
+        
+        // a section is active when its top is near the top of the viewport
+        // But also make sure we're actually in the section (not below it)
+        if (rect.top <= offset && rect.bottom >= offset) {
           setActiveSection(section);
+          
+          // set sidebar visibility based on whether we're past the hero section
+          if (section !== 'hero') {
+            setShowSidebar(true);
+          } else {
+            setShowSidebar(false);
+          }
+          
           break;
         }
       }
-    };
-    
-    // add scroll event listener w/ passive option for better performance
+      
+      setScrolling(false);
+    }, 100); // throttle to every 100ms
+  }, [scrolling, sections, offset]);
+  
+  // handle scroll to determine active section
+  useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     
     // initial check
@@ -64,10 +70,10 @@ export function useScrollSidebar({
     
     // clean up
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [sections]);
+  }, [handleScroll]);
 
   // function to scroll to section & control sidebar
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = useCallback((sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (!element) return;
     
@@ -78,7 +84,10 @@ export function useScrollSidebar({
     if (sectionId !== 'hero') {
       setShowSidebar(true);
     }
-  };
+    
+    // update active section
+    setActiveSection(sectionId);
+  }, []);
 
   return {
     showSidebar,
