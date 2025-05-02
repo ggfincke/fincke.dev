@@ -28,7 +28,7 @@ export function ProjectCard({
   contentComponent
 }: ProjectCardProps) {
   return (
-    <div className="border border-[var(--color-border)] rounded-lg overflow-hidden bg-[var(--color-background-alt)] hover:shadow-lg transition-all w-full h-auto flex flex-col">
+    <div className="border border-[var(--color-border)] rounded-lg overflow-hidden bg-[var(--color-background-alt)] hover:shadow-lg transition-all w-full h-[550px] flex flex-col">
       {/* top bar (title, date, links) */}
       <div className="p-6 pb-2 flex justify-between items-start">
         <div>
@@ -70,9 +70,9 @@ export function ProjectCard({
       </div>
       
       {/* content area (bullets, image/content) */}
-      <div className="p-6 pt-2 flex flex-col md:flex-row">
+      <div className="p-6 pt-2 flex flex-col md:flex-row flex-grow overflow-y-auto">
         {/* left side - bullet points */}
-        <div className="md:w-1/2 pr-4">
+        <div className="md:w-1/2 pr-4 overflow-y-auto">
           <ul className="list-disc pl-5 space-y-2">
             {bulletPoints.map((point, index) => (
               <li key={index} className="text-[var(--color-text)]">{point}</li>
