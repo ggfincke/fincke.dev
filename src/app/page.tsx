@@ -50,7 +50,7 @@ export default function Home() {
           <div className="container mx-auto px-8">
             <SectionHeading 
               title="About Me" 
-              subtitle="Let me introduce myself"
+              subtitle="Who I am & what I do"
             />
             <div className="mt-8">
               <AboutSection />
@@ -63,7 +63,7 @@ export default function Home() {
           <div className="container mx-auto px-8">
             <SectionHeading 
               title="Experience" 
-              subtitle="My professional journey"
+              subtitle="Where I've worked & what I've done"
             />
             <div className="mt-12">
               <ExperienceSection />
@@ -76,7 +76,7 @@ export default function Home() {
           <div className="container mx-auto px-8">
             <SectionHeading 
               title="Projects" 
-              subtitle="Some things I've built"
+              subtitle="What I've built & what I'm working on"
             />
             <div className="mt-12">
               <ProjectsSection />

@@ -49,7 +49,7 @@ export function ExperienceSection() {
     {
       id: 'psu',
       date: 'AUG — DEC 2024',
-      title: 'Learning Assistant',
+      title: 'CMPSC 475 Learning Assistant',
       company: 'Pennsylvania State University',
       companyUrl: 'https://www.psu.edu',
       technologies: ['Swift', 'SwiftUI', 'UIKit', 'iOS', 'iPadOS', 'macOS'],
@@ -57,7 +57,7 @@ export function ExperienceSection() {
       content: (
         <>
           <p className="mb-4">
-            Mentored students in iOS/mobile application development for CMPSC 475 (Applications Programming).
+            Mentored students in iOS/mobile application development for CMPSC 475: Applications Programming.
           </p>
           <p className="mb-4">
             Reviewed and debugged student code, enhancing their understanding of application programming concepts.
