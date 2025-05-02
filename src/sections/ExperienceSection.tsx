@@ -51,6 +51,7 @@ export function ExperienceSection() {
       date: 'AUG — DEC 2024',
       title: 'Learning Assistant',
       company: 'Pennsylvania State University',
+      companyUrl: 'https://www.psu.edu',
       technologies: ['Swift', 'SwiftUI', 'UIKit', 'iOS', 'iPadOS', 'macOS'],
       companyLogos: <PSULogo />,
       content: (

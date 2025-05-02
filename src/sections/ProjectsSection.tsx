@@ -15,10 +15,10 @@ const projects = [
     title: "InStock",
     dateRange: "Dec 2024 - Present",
     bulletPoints: [
-      "Designed a price tracking system for monitoring product pricing and availability",
-      "Engineered a microservices architecture in Django with Redis and Celery",
-      "Designed a fault-tolerant architecture with 99% system uptime",
-      "Built RESTful API endpoints for data retrieval and user management",
+      "Designed a price tracking system for monitoring product pricing and availability across various major retailers",
+      "Created a custom database schema using Django's ORM and PostgreSQL for efficient data storage and retrieval",
+      "Engineered a microservices architecture in Django with Redis and Celery for predictable and scalable performance",
+      "Built RESTful API endpoints for data retrieval and user management to a React frontend and mobile app",
       "Integrated Discord bot functionality for real-time alerts"
     ],
     technologies: ["Python", "Django", "PostgreSQL", "React", "Selenium", "Redis", "Celery"],
@@ -28,55 +28,59 @@ const projects = [
     title: "Portfolio Website",
     dateRange: "Mar 2025 - Apr 2025",
     bulletPoints: [
-      "Built a personal portfolio website with Next.js, React, TypeScript",
-      "Implemented responsive design with Tailwind CSS",
+      "Built a personal portfolio website with Next.js, React, TypeScript (you're looking at it!)",
+      "Implemented modern, responsive design with animations and transitions using Tailwind CSS",
       "Created a custom component system for UI consistency",
       "Designed with accessibility and performance in mind",
       "Configured continuous deployment with Vercel"
     ],
-    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Figma"],
     repoUrl: "https://github.com/ggfincke/fincke.dev",
     liveUrl: "https://fincke.dev"
   },
   {
-    title: "Project Tracker",
-    dateRange: "Oct 2024 - Dec 2024",
+    title: "SwimMate",
+    dateRange: "Feb 2024 - Jun 2024",
     bulletPoints: [
-      "Developed a collaborative task management tool for software teams",
-      "Implemented real-time updates with Socket.io",
-      "Created visualizations for sprint planning and progress tracking",
-      "Designed customizable dashboards for different team roles",
-      "Built time tracking functionality for accurate project estimates"
+      <>Final Project for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20475%3A%20Applications%20Programming" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 475: Applications Programming</a>, 
+      the class I would later go on to LA for</>,
+      "Developed a native iOS/watchOS app for swimmers to track, find, and save workouts, view history, and follow progress over time",
+      "Built custom components in SwiftUI for workout entry, lap timing, and charting performance trends",
+      "Implemented HealthKit to track swimming metrics",
+      "Connected iOS app to Apple Watch to track workout data and other metrics, as well as sending premade workouts to the watch for user to follow",
+      "Designed a clean and intuitive UI tailored for quick post-swim logging"
     ],
-    technologies: ["React", "Node.js", "Socket.io", "MongoDB", "Chart.js"],
-    repoUrl: "https://github.com/ggfincke/project-tracker"
+    technologies: ["Swift", "SwiftUI", "HealthKit", "WatchKit"],
+    repoUrl: "https://github.com/ggfincke/SwimMate"
   },
   {
-    title: "SwiftUI Weather App",
-    dateRange: "Sep 2024 - Oct 2024",
+    title: "TCGhub",
+    dateRange: "Sep 2024 - Dec 2024",
     bulletPoints: [
-      "Built a weather application with SwiftUI and WeatherKit API",
-      "Implemented location-based forecasts with Core Location",
-      "Created custom animations for different weather conditions",
-      "Designed an interactive weather map with MapKit",
-      "Added customizable weather alerts and notifications"
+      <>Final Project for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20431W%3A%20Database%20Management%20Systems" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 431W: Database Management Systems</a>, 
+      created with my friend Yash Tumuluri</>,
+      <>Developed a React-based trading card marketplace clone with live data integration (essentially a replica of <a href="https://www.tcgplayer.com" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">tcgplayer.com</a>)</>,
+      "Customized a complex database schema in BCNF and hand-wrote all SQL queries to the local SQLite database",
+      "Implemented filtering and search functionality for card sets and rarities",
+      "Used React Router for smooth client-side navigation across views",
+      "Styled with modern CSS to create a clean, responsive UI"
     ],
-    technologies: ["Swift", "SwiftUI", "CoreLocation", "WeatherKit", "MapKit"],
-    repoUrl: "https://github.com/ggfincke/swiftui-weather"
+    technologies: ["React", "JavaScript", "CSS", "Pokémon TCG API"],
+    repoUrl: "https://github.com/ggfincke/TCGhub"
   },
   {
-    title: "Data Visualization Dashboard",
-    dateRange: "Jan 2024 - Feb 2025",
+    title: "OPTIMUS",
+    dateRange: "Feb 2024 - Apr 2024",
     bulletPoints: [
-      "Created an interactive dashboard for visualizing complex datasets",
-      "Built customizable charts and filters with D3.js and React",
-      "Implemented CSV parsing for user data uploads",
-      "Added export capabilities for charts and insights",
-      "Designed a responsive interface for all device sizes"
+      <>Built a fine-tuned Discord chatbot using <a href="https://www.microsoft.com/en-us/research/project/godel/" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">Microsoft's GODEL-v1.1 model</a> for contextual conversation generation</>,
+      "Integrated HuggingFace Transformers to run local inference with a custom-trained seq2seq model",
+      "Created rich Discord interactions including emote reactions, user-specific triggers, and dynamic status updates",
+      "Designed 'Free Rein' and 'Puppeteer Mode' to control bot behavior based on real-time message context"
     ],
-    technologies: ["React", "D3.js", "Node.js", "Express", "CSV Parsing"],
-    repoUrl: "https://github.com/ggfincke/data-viz-dashboard"
+    technologies: ["Python", "Discord.py", "Transformers", "HuggingFace", "APScheduler"],
+    repoUrl: "https://github.com/ggfincke/OPTIMUS"
   }
+  
 ];
 
 // projects section component

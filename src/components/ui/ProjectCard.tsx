@@ -5,12 +5,13 @@
 
 // imports
 import { SkillPill } from './SkillPill';
+import { ReactNode } from 'react';
 
 // project card component
 interface ProjectCardProps {
   title: string;
   dateRange: string;
-  bulletPoints: string[];
+  bulletPoints: (string | ReactNode)[];
   technologies: string[];
   repoUrl?: string;
   liveUrl?: string;
