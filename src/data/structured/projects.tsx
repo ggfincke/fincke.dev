@@ -1,6 +1,7 @@
-// src/data/projects.tsx
+// src/data/structured/projects.tsx
 
 // imports
+import React from 'react';
 import { ReactNode } from 'react';
 
 // interface for project data type
@@ -47,7 +48,7 @@ export const projects: Project[] = [
     title: "SwimMate",
     dateRange: "Feb 2024 - Jun 2024",
     bulletPoints: [
-      <>Final Project for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20475%3A%20Applications%20Programming" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 475: Applications Programming</a> </>,
+      <React.Fragment key="swimmate-desc">Final Project for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20475%3A%20Applications%20Programming" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 475: Applications Programming</a> </React.Fragment>,
       "Developed a native iOS/watchOS app for swimmers to track, find, and save workouts, view history, and follow progress over time",
       "Built custom components in SwiftUI for workout entry, lap timing, and charting performance trends",
       "Implemented HealthKit to track swimming metrics",
@@ -61,9 +62,9 @@ export const projects: Project[] = [
     title: "TCGhub",
     dateRange: "Sep 2024 - Dec 2024",
     bulletPoints: [
-      <>Final Project for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20431W%3A%20Database%20Management%20Systems" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 431W: Database Management Systems</a>, 
-      created with my friend Yash Tumuluri</>,
-      <>Developed a React-based trading card marketplace clone with live data integration (essentially a replica of <a href="https://www.tcgplayer.com" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">tcgplayer.com</a>)</>,
+      <React.Fragment key="tcghub-desc">Final Project for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20431W%3A%20Database%20Management%20Systems" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 431W: Database Management Systems</a>, 
+      created with my friend Yash Tumuluri</React.Fragment>,
+      <React.Fragment key="tcgplayer-ref">Developed a React-based trading card marketplace clone with live data integration (essentially a replica of <a href="https://www.tcgplayer.com" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">tcgplayer.com</a>)</React.Fragment>,
       "Customized a complex database schema in BCNF and hand-wrote all SQL queries to the local SQLite database",
       "Implemented filtering and search functionality for card sets and rarities",
       "Used React Router for smooth client-side navigation across views",
@@ -76,12 +77,12 @@ export const projects: Project[] = [
     title: "OPTIMUS",
     dateRange: "Feb 2024 - Apr 2024",
     bulletPoints: [
-      <p>Built a fine-tuned Discord chatbot using <a href="https://www.microsoft.com/en-us/research/project/godel/" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">Microsoft's GODEL-v1.1 model</a> for contextual conversation generation</p>,
+      <p key="optimus-desc">Built a fine-tuned Discord chatbot using <a href="https://www.microsoft.com/en-us/research/project/godel/" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">Microsoft&apos;s GODEL-v1.1 model</a> for contextual conversation generation</p>,
       "Integrated HuggingFace Transformers to run local inference with a custom-trained seq2seq model",
       "Created rich Discord interactions including emote reactions, user-specific triggers, and dynamic status updates",
-      "Designed 'Free Rein' and 'Puppeteer Mode' to control bot behavior based on real-time message context"
+      "Designed &apos;Free Rein&apos; and &apos;Puppeteer Mode&apos; to control bot behavior based on real-time message context"
     ],
     technologies: ["Python", "Discord.py", "Transformers", "HuggingFace", "APScheduler"],
     repoUrl: "https://github.com/ggfincke/OPTIMUS"
   }
-]; 
+];

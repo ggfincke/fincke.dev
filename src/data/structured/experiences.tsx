@@ -1,4 +1,4 @@
-// src/data/experiences.tsx
+// src/data/structured/experiences.tsx
 
 // imports
 // react
