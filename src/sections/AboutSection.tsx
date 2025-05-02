@@ -10,7 +10,7 @@ export function AboutSection() {
     languages: ["JavaScript", "TypeScript", "Python", "Swift", "C", "SQL"],
     frontEnd: ["React", "Next.js", "HTML", "CSS", "Tailwind CSS", "SwiftUI"],
     backEnd: ["Node.js", "Django", "PostgreSQL", "Firebase", "REST APIs"],
-    tools: ["Git", "VS Code", "Xcode", "Jupyter", "Docker"]
+    tools: ["Git", "VS Code", "Xcode", "Jupyter", "Docker", "Figma"]
   };
   
   return (
