@@ -1,12 +1,15 @@
-import { ReactNode } from 'react';
+// src/data/experiences.tsx
 
-// Import logos
+// imports
+// react
+import { ReactNode } from 'react';
+// logos
 import GoogleLogo from '~/components/logos/GoogleLogo';
 import MetaLogo from '~/components/logos/MetaLogo';
 import OpenAILogo from '~/components/logos/OpenAILogo';
 import PSULogo from '~/components/logos/PSULogo';
 
-// Interface for experience data
+// experience data
 export interface Experience {
   id: string;
   date: string;
@@ -18,14 +21,14 @@ export interface Experience {
   content: ReactNode;
 }
 
-// Interface for education data
+// education data
 export interface Education {
   institution: string;
   degree: string;
   period: string;
 }
 
-// Experience data
+// experiences data
 export const experiences: Experience[] = [
   {
     id: 'outlier',
@@ -82,7 +85,7 @@ export const experiences: Experience[] = [
   }
 ];
 
-// Education data
+// education data
 export const education: Education = {
   institution: "Pennsylvania State University",
   degree: "Bachelor of Engineering in Computer Science",

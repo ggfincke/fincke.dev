@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 import { ProjectCard } from '~/components/ui/ProjectCard';
 import { NavigationArrow } from '~/components/ui/NavigationArrow';
 import { PaginationDots } from '~/components/ui/PaginationDots';
-import { projects } from '~/data/projects';
+import { projects } from '~/data/structured/projects';
 
 // projects section component
 export function ProjectsSection() {

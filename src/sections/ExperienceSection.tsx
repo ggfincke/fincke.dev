@@ -1,21 +1,18 @@
 // src/components/sections/ExperienceSection.tsx
 
 // imports
-
-// timeline
 import { TimelineContainer } from '~/components/timeline/TimelineContainer';
 import { TimelineItem } from '~/components/timeline/TimelineItem';
+import { experiences, education } from '~/data/structured/experiences';
+import { experienceContent } from '~/data/content/experience';
 
-// data
-import { experiences, education } from '~/data/experiences';
-
+// experience section
 export function ExperienceSection() {
   return (
     <div className="max-w-4xl">
       <div className="mb-8">
         <p className="text-[var(--color-text)] text-lg">
-          I've contributed to a range of projects from AI development to educational roles. My professional 
-          experience includes working with cutting-edge technologies and developing solutions that bring real value.
+          {experienceContent.intro}
         </p>
       </div>
       

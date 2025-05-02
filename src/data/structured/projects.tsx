@@ -1,6 +1,9 @@
+// src/data/projects.tsx
+
+// imports
 import { ReactNode } from 'react';
 
-// Interface for project data type
+// interface for project data type
 export interface Project {
   title: string;
   dateRange: string;
@@ -10,7 +13,7 @@ export interface Project {
   liveUrl?: string;
 }
 
-// Project data
+// project data
 export const projects: Project[] = [
   {
     title: "InStock",
@@ -73,7 +76,7 @@ export const projects: Project[] = [
     title: "OPTIMUS",
     dateRange: "Feb 2024 - Apr 2024",
     bulletPoints: [
-      <>Built a fine-tuned Discord chatbot using <a href="https://www.microsoft.com/en-us/research/project/godel/" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">Microsoft's GODEL-v1.1 model</a> for contextual conversation generation</>,
+      <p>Built a fine-tuned Discord chatbot using <a href="https://www.microsoft.com/en-us/research/project/godel/" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">Microsoft's GODEL-v1.1 model</a> for contextual conversation generation</p>,
       "Integrated HuggingFace Transformers to run local inference with a custom-trained seq2seq model",
       "Created rich Discord interactions including emote reactions, user-specific triggers, and dynamic status updates",
       "Designed 'Free Rein' and 'Puppeteer Mode' to control bot behavior based on real-time message context"
