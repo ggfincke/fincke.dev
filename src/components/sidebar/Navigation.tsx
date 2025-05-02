@@ -13,8 +13,7 @@ interface NavigationProps {
     const navItems = [
       { id: 'about', label: 'About' },
       { id: 'experience', label: 'Experience' },
-      { id: 'projects', label: 'Projects' },
-      { id: 'contact', label: 'Contact' }
+      { id: 'projects', label: 'Projects' }
     ];
   
     return (

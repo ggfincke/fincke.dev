@@ -12,7 +12,6 @@ import { HeroSection } from '~/sections/HeroSection';
 import { AboutSection } from '~/sections/AboutSection';
 import { ExperienceSection } from '~/sections/ExperienceSection';
 import { ProjectsSection } from '~/sections/ProjectsSection';
-import { ContactSection } from '~/sections/ContactSection';
 import { Footer } from '~/sections/Footer';
 // hooks
 import { useScrollSidebar } from '~/hooks/useScrollSidebar';
@@ -81,19 +80,6 @@ export default function Home() {
             />
             <div className="mt-12">
               <ProjectsSection />
-            </div>
-          </div>
-        </section>
-
-        {/* Contact section */}
-        <section id="contact" className="py-24 bg-[var(--color-background-alt)]">
-          <div className="container mx-auto px-8">
-            <SectionHeading 
-              title="Contact" 
-              subtitle="Get in touch with me"
-            />
-            <div className="mt-12">
-              <ContactSection />
             </div>
           </div>
         </section>
