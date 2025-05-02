@@ -85,8 +85,6 @@ export function useScrollSidebar({
       setShowSidebar(true);
     }
     
-    // update active section
-    setActiveSection(sectionId);
   }, []);
 
   return {
