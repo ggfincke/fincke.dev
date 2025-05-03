@@ -2,11 +2,12 @@
 
 // about content
 export const aboutContent = {
-    intro: `I'm a software engineer with experience in full-stack development, data engineering, and statistical modeling.
-            I'm passionate about crafting clean, accessible, and performant code that solves real-world problems.`,
+    intro:   `I am a full-stack engineer passionate about building intuitive, 
+              performant software. From web platforms and mobile apps to data pipelines and AI tools, 
+              I specialize in crafting end-to-end solutions that scale.`,
     
-    journey: `My journey in software development began when I was introducted to Scratch in middle school.
-              I fell in love with it immediately and never stopped coding since! I continued to code in high school, 
+    journey: `My journey in software development began when I was introduced to Scratch in middle school.
+              I fell in love with it immediately and haven't stopped coding since! I continued to code in high school, 
               eventually choosing to go to Penn State where I developed the majority of my skills in computer science and software engineering. 
               Since then, I've been expanding my skills through both professional work and personal projects.`,
     

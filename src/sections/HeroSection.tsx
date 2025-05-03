@@ -19,7 +19,7 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
           Software Engineer
         </h2>
         <p className="mt-6 text-xl text-[var(--color-text)]">
-          Full-stack application development with a focus on clean, accessible interfaces.
+          Full-stack application development with a focus on clean code and accessible interfaces.
         </p>
         <div className="mt-10 flex justify-center">
           <button 
