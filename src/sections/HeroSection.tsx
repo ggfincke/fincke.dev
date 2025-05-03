@@ -21,7 +21,7 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
         <p className="mt-6 text-xl text-[var(--color-text)]">
           Full-stack application development with a focus on clean, accessible interfaces.
         </p>
-        <div className="mt-10 flex justify-start">
+        <div className="mt-10 flex justify-center">
           <button 
             onClick={() => scrollToSection('about')}
             className="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors animate-bounce flex flex-col items-center"
