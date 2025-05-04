@@ -6,8 +6,8 @@
 // imports
 import { useState, useEffect } from 'react';
 import { ProjectCard } from '~/components/ui/ProjectCard';
-import { NavigationArrow } from '~/components/ui/NavigationArrow';
-import { PaginationDots } from '~/components/ui/PaginationDots';
+import { NavigationArrow } from '~/components/ui/cards/NavigationArrow';
+import { PaginationDots } from '~/components/ui/cards/PaginationDots';
 import { projects } from '~/data/structured/projects';
 
 // projects section component
@@ -66,6 +66,7 @@ export function ProjectsSection() {
           <ProjectCard 
             title={projects[currentIndex].title}
             dateRange={projects[currentIndex].dateRange}
+            status={projects[currentIndex].status}
             bulletPoints={projects[currentIndex].bulletPoints}
             technologies={projects[currentIndex].technologies}
             repoUrl={projects[currentIndex].repoUrl}
