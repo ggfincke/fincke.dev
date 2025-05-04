@@ -41,7 +41,7 @@ export default function Home() {
       {/* Main content */}
       <main style={showSidebar ? contentAnimation.withSidebar : contentAnimation.fullWidth}>
         {/* Hero section */}
-        <section id="hero" className="min-h-screen flex items-center bg-[var(--color-background)] py-24">
+        <section id="hero" className="min-h-screen flex items-center bg-[var(--color-background)] py-24 relative">
           <HeroSection scrollToSection={scrollToSection} />
         </section>
 
