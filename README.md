@@ -20,11 +20,12 @@ The website is deployed and accessible through the custom domain fincke.dev. Vis
 
 ## 🚀 Technologies Used
 
-- **Next.js 15.3.1** - React framework with server-side rendering
+- **Next.js 15.3.1** - React framework with server-side rendering and App Router
 - **React 19.0.0** - JavaScript library for building user interfaces
-- **TypeScript** - Typed JavaScript for better code quality
+- **TypeScript 5** - Typed JavaScript for better code quality
 - **Tailwind CSS 4.1.4** - Utility-first CSS framework
-- **ESLint** - Code quality tool
+- **ESLint 9** - Code quality tool
+- **Turbopack** - Used in development mode for faster builds
 
 ## 🛠️ Getting Started
 
@@ -53,7 +54,7 @@ The website is deployed and accessible through the custom domain fincke.dev. Vis
 
 ### Development
 
-Run the development server:
+Run the development server (with Turbopack enabled):
 ```bash
 npm run dev
 # or
@@ -106,18 +107,20 @@ Your site will be automatically built and deployed to a `.vercel.app` domain.
 
 ```
 fincke.dev/
-├── public/             # Static assets
+├── public/               # Static assets
 ├── src/
-│   ├── app/            # App router pages and layouts
-│   │   ├── layout.tsx  # Root layout
-│   │   ├── page.tsx    # Homepage
-│   │   └── globals.css # Global styles
-├── .eslintrc.js        # ESLint configuration
-├── next.config.js      # Next.js configuration
-├── package.json        # Project dependencies
-├── postcss.config.js   # PostCSS configuration
-├── tailwind.config.js  # Tailwind CSS configuration
-└── tsconfig.json       # TypeScript configuration
+│   ├── app/              # App router pages and layouts
+│   ├── components/       # Reusable UI components
+│   ├── sections/         # Page sections
+│   ├── data/             # Data files
+│   ├── hooks/            # Custom React hooks
+│   ├── styles/           # CSS and style utilities
+│   └── animations/       # Animation definitions
+├── eslint.config.mjs     # ESLint configuration
+├── next.config.ts        # Next.js configuration
+├── package.json          # Project dependencies
+├── postcss.config.mjs    # PostCSS configuration
+└── tsconfig.json         # TypeScript configuration
 ```
 
 ## 📄 License
