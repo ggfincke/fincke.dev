@@ -5,10 +5,15 @@
 // imports
 import { ReactNode } from 'react';
 
+
+// status type for projects
+export type ProjectStatus = 'in-development' | 'completed' | 'paused' | 'experimental' | 'planned';
+
 // interface for project data type
 export interface Project {
   title: string;
   dateRange: string;
+  status: ProjectStatus;
   bulletPoints: (string | ReactNode)[];
   technologies: string[];
   repoUrl?: string;
@@ -20,19 +25,20 @@ export const projects: Project[] = [
   {
     title: "InStock",
     dateRange: "Dec 2024 - Present",
+    status: "in-development",
     bulletPoints: [
-      "Designed a price tracking system for monitoring product pricing and availability across various major retailers",
-      "Created a custom database schema using Django's ORM and PostgreSQL for efficient data storage and retrieval",
+      "Designed a price tracking system for monitoring product pricing & availability across various major retailers",
+      "Created a custom database schema using Django's ORM & PostgreSQL for efficient data storage & retrieval",
       "Engineered a microservices architecture in Django with Redis and Celery for predictable and scalable performance",
-      "Built RESTful API endpoints for data retrieval and user management to a React frontend and mobile app",
-      "Integrated Discord bot functionality for real-time alerts"
+      "Built RESTful API endpoints for data retrieval & user management to a React frontend & Swift mobile app, and integrated Discord bot functionality via Discord.py"
     ],
-    technologies: ["Python", "Django", "PostgreSQL", "React", "Selenium", "Redis", "Celery"],
-    repoUrl: "https://github.com/ggfincke/instock"
+    technologies: ["Python", "Django", "PostgreSQL", "Selenium", "Redis", "Celery", "React", "Swift", "Discord.py"],
+    repoUrl: "https://github.com/ggfincke/instock",
   },
   {
     title: "Portfolio Website",
     dateRange: "Mar 2025 - Apr 2025",
+    status: "in-development",
     bulletPoints: [
       "Built a personal portfolio website (you're looking at it!) with Next.js, React, TypeScript",
       "Implemented modern, responsive design with animations and transitions using Tailwind CSS",
@@ -43,11 +49,12 @@ export const projects: Project[] = [
     ],
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Figma"],
     repoUrl: "https://github.com/ggfincke/fincke.dev",
-    liveUrl: "https://fincke.dev"
+    liveUrl: "https://fincke.dev",
   },
   {
     title: "SwimMate",
     dateRange: "Feb 2024 - Jun 2024",
+    status: "paused",
     bulletPoints: [
       <>Final Project for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20475%3A%20Applications%20Programming" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 475: Applications Programming</a> </>,
       "Developed a native iOS/watchOS app for swimmers to track, find, and save workouts, view history, and follow progress over time",
@@ -55,11 +62,12 @@ export const projects: Project[] = [
       "Connected iOS app to Apple Watch to track workout data and other metrics, as well as sending premade workouts to the watch for user to follow",
     ],
     technologies: ["Swift", "SwiftUI", "HealthKit", "WatchKit"],
-    repoUrl: "https://github.com/ggfincke/SwimMate"
+    repoUrl: "https://github.com/ggfincke/SwimMate",
   },
   {
     title: "TCGhub",
     dateRange: "Sep 2024 - Dec 2024",
+    status: "completed",
     bulletPoints: [
       <>Final Project for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20431W%3A%20Database%20Management%20Systems" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 431W: Database Management Systems</a>, 
       created with my friend Yash Tumuluri</>,
@@ -69,11 +77,12 @@ export const projects: Project[] = [
       "Styled with modern CSS to create a clean, responsive UI"
     ],
     technologies: ["React", "JavaScript", "CSS", "Pokémon TCG API"],
-    repoUrl: "https://github.com/ggfincke/TCGhub"
+    repoUrl: "https://github.com/ggfincke/TCGhub",
   },
   {
     title: "OPTIMUS",
     dateRange: "Feb 2024 - Apr 2024",
+    status: "completed",
     bulletPoints: [
       <p>Built a fine-tuned Discord chatbot using <a href="https://www.microsoft.com/en-us/research/project/godel/" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">Microsoft's GODEL-v1.1 model</a> for contextual conversation generation</p>,
       "Integrated HuggingFace Transformers to run local inference with a custom-trained seq2seq model",
@@ -81,6 +90,6 @@ export const projects: Project[] = [
       "Designed 'Free Rein' and 'Puppeteer Mode' to control bot behavior based on real-time message context"
     ],
     technologies: ["Python", "Discord.py", "Transformers", "HuggingFace", "APScheduler"],
-    repoUrl: "https://github.com/ggfincke/OPTIMUS"
+    repoUrl: "https://github.com/ggfincke/OPTIMUS",
   }
 ]; 

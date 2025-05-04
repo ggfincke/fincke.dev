@@ -6,6 +6,8 @@
 // imports
 import { SkillPill } from './SkillPill';
 import { ReactNode } from 'react';
+import { ProjectStatus } from '~/data/structured/projects';
+import { StatusBadge } from './cards/StatusBadge';
 
 // project card component
 interface ProjectCardProps {
@@ -16,8 +18,8 @@ interface ProjectCardProps {
   repoUrl?: string;
   liveUrl?: string;
   contentComponent?: React.ReactNode;
+  status: ProjectStatus;
 }
-
 export function ProjectCard({ 
   title, 
   dateRange,
@@ -25,15 +27,19 @@ export function ProjectCard({
   technologies, 
   repoUrl, 
   liveUrl,
-  contentComponent
+  contentComponent,
+  status
 }: ProjectCardProps) {
   return (
     <div className="border border-[var(--color-border)] rounded-lg overflow-hidden bg-[var(--color-background-alt)] hover:shadow-lg transition-all w-full h-[550px] flex flex-col">
-      {/* top bar (title, date, links) */}
+      {/* top bar (title, date, status, links) */}
       <div className="p-6 pb-2 flex justify-between items-start">
         <div>
           <h3 className="text-3xl font-bold text-[var(--color-text-light)]">{title}</h3>
           <p className="text-[var(--color-text)] text-sm italic mt-1">{dateRange}</p>
+          <div className="mt-2">
+            <StatusBadge status={status} />
+          </div>
         </div>
         
         <div className="flex space-x-3">
