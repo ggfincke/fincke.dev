@@ -7,7 +7,7 @@ import { ReactNode } from 'react';
 
 
 // status type for projects
-export type ProjectStatus = 'in-development' | 'completed' | 'paused' | 'experimental' | 'planned';
+export type ProjectStatus = 'in-development' | 'complete' | 'paused' | 'experimental' | 'planned';
 
 // interface for project data type
 export interface Project {
@@ -22,6 +22,19 @@ export interface Project {
 
 // project data
 export const projects: Project[] = [
+  {
+    title: "Beacon (working title)",
+    dateRange: "May 2025 - Present",
+    status: "planned",
+    bulletPoints: [
+      "Building a full-stack price & stock tracking platform for essential products across major online and retail stores",
+      "Developing a Django-based backend using PostgreSQL, Redis, and Celery to handle scraping, user data, and background job queues",
+      "Integrating a Next.js frontend and a Swift iOS app for cross-platform access",
+      "Exploring personalized recommendations via AI, with future integration of the Model Context Protocol (MCP)"
+    ],
+    technologies: ["Python", "Django", "PostgreSQL", "Redis", "Celery", "Selenium", "Next.js", "React", "Swift", "MCP"],
+    repoUrl: "https://github.com/ggfincke/beacon",
+  },
   {
     title: "InStock",
     dateRange: "Dec 2024 - Present",
@@ -38,7 +51,7 @@ export const projects: Project[] = [
   {
     title: "Portfolio Website",
     dateRange: "Mar 2025 - Apr 2025",
-    status: "in-development",
+    status: "complete",
     bulletPoints: [
       "Built a personal portfolio website (you're looking at it!) with Next.js, React, TypeScript",
       "Implemented modern, responsive design with animations and transitions using Tailwind CSS",
@@ -67,7 +80,7 @@ export const projects: Project[] = [
   {
     title: "TCGhub",
     dateRange: "Sep 2024 - Dec 2024",
-    status: "completed",
+    status: "complete",
     bulletPoints: [
       <>Final Project for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20431W%3A%20Database%20Management%20Systems" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 431W: Database Management Systems</a>, 
       created with my friend Yash Tumuluri</>,
@@ -82,7 +95,7 @@ export const projects: Project[] = [
   {
     title: "OPTIMUS",
     dateRange: "Feb 2024 - Apr 2024",
-    status: "completed",
+    status: "complete",
     bulletPoints: [
       <p>Built a fine-tuned Discord chatbot using <a href="https://www.microsoft.com/en-us/research/project/godel/" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">Microsoft's GODEL-v1.1 model</a> for contextual conversation generation</p>,
       "Integrated HuggingFace Transformers to run local inference with a custom-trained seq2seq model",

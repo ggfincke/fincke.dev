@@ -4,6 +4,7 @@
 interface SectionHeadingProps {
   title: string;
   subtitle?: string;
+  subsubtitle?: string;
   align?: 'left' | 'center' | 'right';
   className?: string;
 }
@@ -12,6 +13,7 @@ interface SectionHeadingProps {
 export function SectionHeading({
   title,
   subtitle,
+  subsubtitle,
   align = 'left',
   className = ''
 }: SectionHeadingProps) {
@@ -29,6 +31,11 @@ export function SectionHeading({
       {subtitle && (
         <p className="mt-4 text-xl text-[var(--color-text)]">
           {subtitle}
+        </p>
+      )}
+      {subsubtitle && (
+        <p className="mt-2 text-md text-[var(--color-text)]">
+          {subsubtitle}
         </p>
       )}
     </div>

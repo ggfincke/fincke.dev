@@ -9,7 +9,7 @@ const statusConfig = {
       color: '#82AAFF',
       bgColor: 'rgba(130, 170, 255, 0.15)'
     },
-    'completed': {
+    'complete': {
       icon: '✅',
       label: 'Complete',
       color: '#C3E88D',

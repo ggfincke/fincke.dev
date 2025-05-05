@@ -100,6 +100,7 @@ export default function Home() {
             <SectionHeading 
               title="Projects" 
               subtitle="What I've built & what I'm working on"
+              subsubtitle="Projects listed in no order; Private repositories available upon request."
             />
             <div className="mt-8 md:mt-12">
               <ProjectsSection />

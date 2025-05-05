@@ -19,19 +19,20 @@ export function ProjectsSection() {
   // state to detect screen size
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   
-  // Check for screen size on mount and resize
+  // check for screen size on mount and resize
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsSmallScreen(window.innerWidth < 768); // 768px is the 'md' breakpoint in Tailwind
+      // 768px is 'md' breakpoint in Tailwind
+      setIsSmallScreen(window.innerWidth < 768); 
     };
     
-    // Set initial value
+    // set initial value
     checkScreenSize();
     
-    // Add event listener
+    // add event listener
     window.addEventListener('resize', checkScreenSize);
     
-    // Clean up
+    // clean up
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
   
@@ -103,9 +104,9 @@ export function ProjectsSection() {
         </div>
       </div>
       
-      {/* Navigation controls - centered and with correct layout */}
+      {/* Navigation controls - centered / normal layout */}
       <div className="flex flex-col items-center space-y-4">
-        {/* Pagination dots always horizontal */}
+        {/* Pagination dots */}
         <PaginationDots 
           totalItems={projects.length}
           currentIndex={currentIndex}
@@ -113,7 +114,7 @@ export function ProjectsSection() {
           disabled={isAnimating}
         />
         
-        {/* Mobile-friendly navigation buttons - horizontal */}
+        {/* Mobile-friendly navigation buttons */}
         {isSmallScreen && (
           <div className="flex justify-center space-x-4 mt-4">
             <button
