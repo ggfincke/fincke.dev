@@ -20,6 +20,7 @@ interface ProjectCardProps {
   contentComponent?: React.ReactNode;
   status: ProjectStatus;
 }
+
 export function ProjectCard({ 
   title, 
   dateRange,
@@ -76,9 +77,9 @@ export function ProjectCard({
       </div>
       
       {/* content area (bullets, image/content) */}
-      <div className="p-6 pt-2 flex flex-col md:flex-row flex-grow overflow-y-auto">
+      <div className="p-6 pt-2 flex flex-col lg:flex-row flex-grow overflow-y-auto">
         {/* left side - bullet points */}
-        <div className="md:w-1/2 pr-4 overflow-y-auto">
+        <div className="w-full lg:w-1/2 lg:pr-4 overflow-y-auto">
           <ul className="list-disc pl-5 space-y-2">
             {bulletPoints.map((point, index) => (
               <li key={index} className="text-[var(--color-text)]">{point}</li>
@@ -86,8 +87,8 @@ export function ProjectCard({
           </ul>
         </div>
         
-        {/* right side - image or content */}
-        <div className="md:w-1/2 h-80 bg-gray-200 mt-4 md:mt-0 rounded">
+        {/* right side - image or content (visible only on lg screens and above) */}
+        <div className="hidden lg:block lg:w-1/2 h-80 bg-gray-200 mt-4 lg:mt-0 rounded">
           {contentComponent || (
             <div className="w-full h-full flex items-center justify-center text-gray-500">
               (image)

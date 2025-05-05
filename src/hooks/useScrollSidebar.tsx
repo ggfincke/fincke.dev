@@ -26,6 +26,23 @@ export function useScrollSidebar({
   const [showSidebar, setShowSidebar] = useState(false);
   const [activeSection, setActiveSection] = useState(sections[0] || 'hero');
   const [scrolling, setScrolling] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  // Check for small/medium screens on mount and resize
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsSmallScreen(window.innerWidth < 1024); // 1024px is the 'lg' breakpoint in Tailwind
+    };
+    
+    // Set initial value
+    checkScreenSize();
+    
+    // Add event listener
+    window.addEventListener('resize', checkScreenSize);
+    
+    // Clean up
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   // throttled scroll handler to improve performance
   const handleScroll = useCallback(() => {
@@ -47,9 +64,15 @@ export function useScrollSidebar({
           setActiveSection(section);
           
           // set sidebar visibility based on whether we're past the hero section
-          if (section !== 'hero') {
-            setShowSidebar(true);
+          // but only on large screens
+          if (!isSmallScreen) {
+            if (section !== 'hero') {
+              setShowSidebar(true);
+            } else {
+              setShowSidebar(false);
+            }
           } else {
+            // Always hide sidebar on small/medium screens
             setShowSidebar(false);
           }
           
@@ -59,7 +82,7 @@ export function useScrollSidebar({
       
       setScrolling(false);
     }, 100); // throttle to every 100ms
-  }, [scrolling, sections, offset]);
+  }, [scrolling, sections, offset, isSmallScreen]);
   
   // handle scroll to determine active section
   useEffect(() => {
@@ -80,12 +103,12 @@ export function useScrollSidebar({
     // smooth scroll to section
     element.scrollIntoView({ behavior: 'smooth' });
     
-    // force sidebar visibility based on section
-    if (sectionId !== 'hero') {
+    // force sidebar visibility based on section but only on large screens
+    if (!isSmallScreen && sectionId !== 'hero') {
       setShowSidebar(true);
     }
     
-  }, []);
+  }, [isSmallScreen]);
 
   return {
     showSidebar,

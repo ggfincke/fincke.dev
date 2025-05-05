@@ -51,8 +51,15 @@ html {
 /* section transitions */
 section {
   transition: background-color 0.3s ease;
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  section {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
 }
 
 /* smooth hover effects for buttons */
@@ -66,34 +73,37 @@ aside {
   z-index: 40;
 }
 
-/* for mobile devices - sidebar becomes top navigation */
-@media (max-width: 1024px) {
-  .flex {
-    flex-direction: column;
+/* responsive adjustments */
+@media (max-width: 1023px) {
+  /* hide sidebar completely */
+  .sidebar-container {
+    display: none;
   }
   
-  aside {
-    position: relative;
-    width: 100%;
-    height: auto;
-    border-right: none;
-    border-bottom: 1px solid var(--color-border);
-    padding: 1rem;
-  }
-  
-  main {
+  /* remove any padding meant for sidebar */
+  .main-content-with-sidebar {
     padding-left: 0;
   }
+}
+
+/* for smaller screens */
+@media (max-width: 767px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
   
-  /* timeline adjustments for mobile */
   section {
     padding-top: 3rem;
     padding-bottom: 3rem;
   }
   
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+  h1 {
+    font-size: 2.5rem !important;
+  }
+  
+  h2 {
+    font-size: 2rem !important;
   }
 }
 
@@ -133,3 +143,5 @@ aside {
   /* slightly more visible on hover */
   background-color: rgba(128, 203, 196, 0.5);
 }
+
+
