@@ -27,10 +27,11 @@ export const projects: Project[] = [
     dateRange: "May 2025 - Present",
     status: "planned",
     bulletPoints: [
-      "Building a full-stack price & stock tracking platform for essential products across major online and retail stores",
-      "Developing a Django-based backend using PostgreSQL, Redis, and Celery to handle scraping, user data, and background job queues",
-      "Integrating a Next.js frontend and a Swift iOS app for cross-platform access",
-      "Exploring personalized recommendations via AI, with future integration of the Model Context Protocol (MCP)"
+      "Building a full-stack price & stock tracking platform to help users find cheaper alternatives for essential products",
+      "Designed with a consumer focus—providing price histories, inflation visualizations, and recommendation systems based on product availability and affordability",
+      "Reuses and extends infrastructure originally built for InStock, including scraping pipelines and task queues",
+      "Built with a Django backend using PostgreSQL, Redis, and Celery for scalable job handling",
+      "Includes a cross-platform frontend (Next.js web, Swift iOS) and plans for integrating AI-powered personalization via Model Context Protocol (MCP)"
     ],
     technologies: ["Python", "Django", "PostgreSQL", "Redis", "Celery", "Selenium", "Next.js", "React", "Swift", "MCP"],
     repoUrl: "https://github.com/ggfincke/beacon",
@@ -40,7 +41,8 @@ export const projects: Project[] = [
     dateRange: "Dec 2024 - Present",
     status: "in-development",
     bulletPoints: [
-      "Designed a price tracking system for monitoring product pricing & availability across various major retailers",
+      "Designed a high-performance price & stock tracking system for monitoring product pricing & availability across various major retailers",
+      "Optimized for speed, frequency, and accuracy of detecting restocks and price changes on high-velocity products",
       "Created a custom database schema using Django's ORM & PostgreSQL for efficient data storage & retrieval",
       "Engineered a microservices architecture in Django with Redis and Celery for predictable and scalable performance",
       "Built RESTful API endpoints for data retrieval & user management to a React frontend & Swift mobile app, and integrated Discord bot functionality via Discord.py"
