@@ -18,7 +18,7 @@ export function PaginationDots({ totalItems, currentIndex, onDotClick, disabled 
         <button 
           key={index}
           onClick={() => onDotClick(index)}
-          className={`w-3 h-3 rounded-full transition-colors ${
+          className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors ${
             index === currentIndex 
               ? 'bg-[var(--color-primary)]' 
               : 'bg-[var(--color-border)] hover:bg-[var(--color-text)]'
@@ -30,4 +30,4 @@ export function PaginationDots({ totalItems, currentIndex, onDotClick, disabled 
       ))}
     </div>
   );
-} 
+}
