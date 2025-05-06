@@ -100,6 +100,7 @@ export function ProjectsSection() {
             technologies={projects[currentIndex].technologies}
             repoUrl={projects[currentIndex].repoUrl}
             liveUrl={projects[currentIndex].liveUrl}
+            collaborators={projects[currentIndex].collaborators}
           />
         </div>
       </div>

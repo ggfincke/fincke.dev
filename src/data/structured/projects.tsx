@@ -9,9 +9,16 @@ import { ReactNode } from 'react';
 // status type for projects
 export type ProjectStatus = 'in-development' | 'complete' | 'paused' | 'experimental' | 'planned';
 
+// interface for collaborators
+export interface Collaborator {
+  name: string;
+  url?: string;
+}
+
 // interface for project data type
 export interface Project {
   title: string;
+  collaborators?: string | string[] | Collaborator | Collaborator[];
   dateRange: string;
   status: ProjectStatus;
   bulletPoints: (string | ReactNode)[];
@@ -24,6 +31,10 @@ export interface Project {
 export const projects: Project[] = [
   {
     title: "Beacon (working title)",
+    collaborators: [
+      { name: "Avanish Grampurohit", url: "https://www.linkedin.com/in/avanishmg/" },
+      { name: "Ashley Amendola", url: "https://www.linkedin.com/in/ashley-amendola/" }
+    ],
     dateRange: "May 2025 - Present",
     status: "planned",
     bulletPoints: [
@@ -81,11 +92,13 @@ export const projects: Project[] = [
   },
   {
     title: "TCGhub",
+    collaborators: [
+      { name: "Yash Tumuluri" }
+    ],
     dateRange: "Sep 2024 - Dec 2024",
     status: "complete",
     bulletPoints: [
-      <>Final Project for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20431W%3A%20Database%20Management%20Systems" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 431W: Database Management Systems</a>, 
-      created with my friend Yash Tumuluri</>,
+      <>Final Project for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20431W%3A%20Database%20Management%20Systems" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 431W: Database Management Systems</a></>,
       <>Developed a React-based trading card marketplace clone with live data integration (essentially a replica of <a href="https://www.tcgplayer.com" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">tcgplayer.com</a>)</>,
       "Customized a complex database schema in BCNF and hand-wrote all SQL queries to the local SQLite database",
       "Implemented filtering and search functionality for card sets and rarities",
