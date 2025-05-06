@@ -6,8 +6,58 @@
 // imports
 import { SkillPill } from './SkillPill';
 import { ReactNode } from 'react';
-import { ProjectStatus } from '~/data/structured/projects';
+import { Collaborator, ProjectStatus } from '~/data/structured/projects';
 import { StatusBadge } from './cards/StatusBadge';
+
+
+// helper function to render collaborators w/ optional links
+const renderCollaborators = (collaborators: string | string[] | Collaborator | Collaborator[]) => {
+  // simple string
+  if (typeof collaborators === 'string') {
+    return collaborators;
+  }
+  
+  // array of strings
+  if (Array.isArray(collaborators) && typeof collaborators[0] === 'string') {
+    return (collaborators as string[]).join(', ');
+  }
+  
+  // Collaborator object
+  if (!Array.isArray(collaborators) && typeof collaborators === 'object') {
+    const collab = collaborators as Collaborator;
+    return collab.url ? (
+      <a 
+        href={collab.url} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="text-[var(--color-primary)] hover:underline"
+      >
+        {collab.name}
+      </a>
+    ) : collab.name;
+  }
+  
+  // array of Collaborator objects
+  if (Array.isArray(collaborators) && typeof collaborators[0] === 'object') {
+    return (collaborators as Collaborator[]).map((collab, index, arr) => (
+      <span key={collab.name}>
+        {collab.url ? (
+          <a 
+            href={collab.url} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-[var(--color-primary)] hover:underline"
+          >
+            {collab.name}
+          </a>
+        ) : collab.name}
+        {index < arr.length - 1 ? ', ' : ''}
+      </span>
+    ));
+  }
+  
+  return null;
+};
 
 // project card component
 interface ProjectCardProps {
@@ -19,6 +69,7 @@ interface ProjectCardProps {
   liveUrl?: string;
   contentComponent?: React.ReactNode;
   status: ProjectStatus;
+  collaborators?: string | string[] | Collaborator | Collaborator[];
 }
 
 export function ProjectCard({ 
@@ -29,7 +80,8 @@ export function ProjectCard({
   repoUrl, 
   liveUrl,
   contentComponent,
-  status
+  status,
+  collaborators
 }: ProjectCardProps) {
   return (
     <div className="border border-[var(--color-border)] rounded-lg overflow-hidden bg-[var(--color-background-alt)] hover:shadow-lg transition-all w-full h-[550px] flex flex-col">
@@ -37,7 +89,22 @@ export function ProjectCard({
       <div className="p-6 pb-2 flex justify-between items-start">
         <div>
           <h3 className="text-3xl font-bold text-[var(--color-text-light)]">{title}</h3>
-          <p className="text-[var(--color-text)] text-sm italic mt-1">{dateRange}</p>
+          <div className="flex flex-col md:flex-row md:items-center mt-1">
+            <p className="text-[var(--color-text)] text-sm flex flex-wrap items-center">
+              {/* Collaborators section */}
+              {collaborators && (
+                <>
+                  <span className="text-[var(--color-primary)]">Collaborators:&nbsp;</span>
+                  <span>{renderCollaborators(collaborators)}</span>
+                  {/* Divider only visible on larger screens, o/w stack on top*/}
+                  <span className="hidden md:inline mx-2 text-[var(--color-text)]">|</span>
+                </>
+              )}
+              
+              {/* Date range */}
+              <span className="md:ml-0 mt-1 md:mt-0 italic">{dateRange}</span>
+            </p>
+          </div>
           <div className="mt-2">
             <StatusBadge status={status} />
           </div>
@@ -77,9 +144,9 @@ export function ProjectCard({
       </div>
       
       {/* content area (bullets, image/content) */}
-      <div className="p-6 pt-2 flex flex-col lg:flex-row flex-grow overflow-y-auto">
+      <div className="p-6 pt-2 flex flex-col md:flex-row flex-grow overflow-y-auto">
         {/* left side - bullet points */}
-        <div className="w-full lg:w-1/2 lg:pr-4 overflow-y-auto">
+        <div className="md:w-1/2 pr-4 overflow-y-auto">
           <ul className="list-disc pl-5 space-y-2">
             {bulletPoints.map((point, index) => (
               <li key={index} className="text-[var(--color-text)]">{point}</li>
@@ -87,8 +154,8 @@ export function ProjectCard({
           </ul>
         </div>
         
-        {/* right side - image or content (visible only on lg screens and above) */}
-        <div className="hidden lg:block lg:w-1/2 h-80 bg-gray-200 mt-4 lg:mt-0 rounded">
+        {/* right side - image or content */}
+        <div className="md:w-1/2 h-80 bg-gray-200 mt-4 md:mt-0 rounded">
           {contentComponent || (
             <div className="w-full h-full flex items-center justify-center text-gray-500">
               (image)
