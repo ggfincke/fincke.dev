@@ -36,7 +36,7 @@ export const projects: Project[] = [
       { name: "Ashley Amendola", url: "https://www.linkedin.com/in/ashley-amendola/" }
     ],
     dateRange: "May 2025 - Present",
-    status: "planned",
+    status: "in-development",
     bulletPoints: [
       "Building a full-stack price & stock tracking platform to help users find cheaper alternatives for essential products",
       "Designed with a consumer focus—providing price histories, inflation visualizations, and recommendation systems based on product availability and affordability",
@@ -44,13 +44,13 @@ export const projects: Project[] = [
       "Built with a Django backend using PostgreSQL, Redis, and Celery for scalable job handling",
       "Includes a cross-platform frontend (Next.js web, Swift iOS) and plans for integrating AI-powered personalization via Model Context Protocol (MCP)"
     ],
-    technologies: ["Python", "Django", "PostgreSQL", "Redis", "Celery", "Selenium", "Next.js", "React", "Swift", "MCP"],
+    technologies: ["Python", "Django", "PostgreSQL", "Redis", "Celery", "Selenium", "Playwright", "Next.js", "React", "TypeScript", "Swift", "Docker"],
     repoUrl: "https://github.com/ggfincke/beacon",
   },
   {
     title: "InStock",
     dateRange: "Dec 2024 - Present",
-    status: "in-development",
+    status: "paused",
     bulletPoints: [
       "Designed a high-performance price & stock tracking system for monitoring product pricing & availability across various major retailers",
       "Optimized for speed, frequency, and accuracy of detecting restocks and price changes on high-velocity products",
