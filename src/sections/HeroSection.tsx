@@ -1,7 +1,9 @@
 // src/sections/HeroSection.tsx
 
 // imports
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import FloatingParticle from '../components/FloatingParticle';
+import useTypingAnimation from '../hooks/useTypingAnimation';
 
 // hero section
 interface HeroSectionProps {
@@ -9,21 +11,75 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ scrollToSection }: HeroSectionProps) {
+  const { displayText: nameText, isComplete: nameComplete } = useTypingAnimation('Garrett Fincke', 120);
+  const [particles, setParticles] = useState<Array<{left: number, top: number, delay: number, duration: number}>>([]);
+
+  useEffect(() => {
+    // generate particles on client side to avoid hydration mismatch
+    const particleData = Array.from({ length: 10 }, (_, i) => ({
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      delay: i * 3,
+      // 60-100 seconds (very slow)
+      duration: 60 + Math.random() * 40 
+    }));
+    setParticles(particleData);
+  }, []);
+
   return (
     <>
+      {/* Gradient overlays */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary)]/5 via-transparent to-[var(--color-background-alt)]/10 z-0" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-background)] via-transparent to-transparent z-0" />
+      
+      {/* Floating particles */}
+      <div className="absolute inset-0 overflow-hidden z-0">
+        {particles.map((particle, i) => (
+          <FloatingParticle 
+            key={i} 
+            delay={particle.delay}
+            left={particle.left}
+            top={particle.top}
+            duration={particle.duration}
+          />
+        ))}
+      </div>
+
       {/* Content container */}
       <div className="container mx-auto px-8 relative z-10">
         <div className="max-w-2xl">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[var(--color-text-light)]">
-            Garrett Fincke
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[var(--color-text-light)] min-h-[1.2em]">
+            {nameText}
+            <span className="animate-pulse">|</span>
           </h1>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--color-primary)] mt-2">
+          
+          <h2 
+            className={`text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--color-primary)] mt-2 transition-all duration-1000 ${
+              nameComplete 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-4'
+            }`}
+          >
             Software Engineer
           </h2>
-          <p className="mt-6 text-lg sm:text-xl text-[var(--color-text)]">
+          
+          <p 
+            className={`mt-6 text-lg sm:text-xl text-[var(--color-text)] transition-all duration-1000 delay-500 ${
+              nameComplete 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-4'
+            }`}
+          >
             Full-stack application development with a focus on clean code and accessible interfaces.
           </p>
-          <div className="mt-10 flex justify-center">
+          
+          <div 
+            className={`mt-10 flex justify-center transition-all duration-1000 delay-700 ${
+              nameComplete 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-4'
+            }`}
+          >
             <button 
               onClick={() => scrollToSection('about')}
               className="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors animate-bounce flex flex-col items-center"
