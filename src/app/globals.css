@@ -121,6 +121,37 @@ aside {
   animation: bounce 2s infinite;
 }
 
+/* floating particles animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 0.08;
+  }
+  25% {
+    transform: translateY(-3px) translateX(2px) rotate(90deg);
+    opacity: 0.12;
+  }
+  50% {
+    transform: translateY(-2px) translateX(3px) rotate(180deg);
+    opacity: 0.15;
+  }
+  75% {
+    transform: translateY(-1px) translateX(-2px) rotate(270deg);
+    opacity: 0.12;
+  }
+  100% {
+    transform: translateY(0px) translateX(0px) rotate(360deg);
+    opacity: 0.08;
+  }
+}
+
+.animate-float {
+  animation-name: float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
 /* scrollbar styling */
 ::-webkit-scrollbar {
   width: 6px;
