@@ -31,11 +31,11 @@ export interface Education {
 // experiences data
 export const experiences: Experience[] = [
   {
-    id: 'outlier',
+    id: 'scale',
     date: 'JUNE 2024 — PRESENT',
     title: 'AI Code Contractor',
-    company: 'Outlier.ai',
-    companyUrl: 'https://outlier.ai',
+    company: 'Scale AI',
+    companyUrl: 'https://scale.com/',
     technologies: ['Python', 'JavaScript', 'TypeScript', 'React', 'Swift'],
     companyLogos: (
       <>
@@ -49,11 +49,16 @@ export const experiences: Experience[] = [
         <p className="mb-4">
           Contributed to AI-based projects for leading technology companies including Google, Meta, & OpenAI
         </p>
-        
+
+        <p className="mb-4">
+          As one example of my work, I contributed to{' '}<a href="https://www.theverge.com/news/670773/google-labs-stitch-ui-coding-design-tool" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">Google's Stitch UI coding design tool</a>, 
+          helping improve AI-assisted interface development capabilities through code evaluation and quality testing.
+        </p>
+
         <p className="mb-4">
           Evaluated and quality-tested AI-generated code across numerous languages to enhance logical reasoning. 
         </p>
-        
+
         <p>
           Designed contextual frameworks and curated high-quality datasets focused on clean, optimal solutions.
           Created evaluation metrics that directly contributed to improving code generation capabilities of AI models.
