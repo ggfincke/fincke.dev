@@ -7,7 +7,7 @@ import { ReactNode } from 'react';
 
 
 // status type for projects
-export type ProjectStatus = 'in-development' | 'complete' | 'paused' | 'experimental' | 'planned';
+export type ProjectStatus = 'in-development' | 'complete' | 'paused' | 'experimental' | 'planned' | 'live';
 
 // interface for collaborators
 export interface Collaborator {
@@ -23,29 +23,30 @@ export interface Project {
   status: ProjectStatus;
   bulletPoints: (string | ReactNode)[];
   technologies: string[];
+  imagePath?: string; 
+  imageAlt?: string;
   repoUrl?: string;
   liveUrl?: string;
 }
 
+
 // project data
 export const projects: Project[] = [
   {
-    title: "Beacon (working title)",
-    collaborators: [
-      { name: "Avanish Grampurohit", url: "https://www.linkedin.com/in/avanishmg/" },
-      { name: "Ashley Amendola", url: "https://www.linkedin.com/in/ashley-amendola/" }
-    ],
+    title: "TrackBasket",
     dateRange: "May 2025 - Present",
-    status: "in-development",
+    status: "live",
     bulletPoints: [
-      "Building a full-stack price & stock tracking platform to help users find cheaper alternatives for essential products",
-      "Designed with a consumer focus—providing price histories, inflation visualizations, and recommendation systems based on product availability and affordability",
-      "Reuses and extends infrastructure originally built for InStock, including scraping pipelines and task queues",
-      "Built with a Django backend using PostgreSQL, Redis, and Celery for scalable job handling",
-      "Includes a cross-platform frontend (Next.js web, Swift iOS) and plans for integrating AI-powered personalization via Model Context Protocol (MCP)"
+      "Deployed a price tracking platform monitoring 30k+ products across 4 major retailers including Amazon, Target, Walmart, and more",
+      "Features a chat-to-basket feature using OpenAI API that converts natural language into structured baskets using data from Supabase",
+      "Implemented advanced web crawling system with CAPTCHA solving, anti-bot countermeasures, and data normalization",
+      "Created backend infrastructure including Edge Functions, PostgreSQL fuzzy search, UPC matching, real-time notifications, and more",
     ],
-    technologies: ["Python", "Django", "PostgreSQL", "Redis", "Celery", "Selenium", "Playwright", "Next.js", "React", "TypeScript", "Swift", "Docker"],
-    repoUrl: "https://github.com/ggfincke/beacon",
+    imagePath: "/projects/trackbasket.png",
+    imageAlt: "TrackBasket app screenshot",
+    technologies: ["Typescript", "Python", "Supabase", "Next.js", "React", "OpenAI", "PostgreSQL", "Docker", "Swift"],
+    repoUrl: "https://github.com/ggfincke/BoltHackathon",
+    liveUrl: "https://bolt-hackathon-five.vercel.app",
   },
   {
     title: "SwimMate",
@@ -57,13 +58,15 @@ export const projects: Project[] = [
       "Built custom components using HealthKit and SwiftUI for workout entry, lap timing, and charting performance trends",
       "Connected iOS app to Apple Watch to track workout data and other metrics, as well as sending premade workouts to the watch for user to follow",
     ],
+    imagePath: "/projects/swimmate.png",
+    imageAlt: "SwimMate app screenshot",
     technologies: ["Swift", "SwiftUI", "HealthKit", "WatchKit"],
     repoUrl: "https://github.com/ggfincke/SwimMate",
   },
   {
     title: "Portfolio Website",
     dateRange: "Mar 2025 - Apr 2025",
-    status: "complete",
+    status: "live",
     bulletPoints: [
       "Built a personal portfolio website (you're looking at it!) with Next.js, React, TypeScript",
       "Implemented modern, responsive design with animations and transitions using Tailwind CSS",
@@ -72,6 +75,8 @@ export const projects: Project[] = [
       "Configured continuous deployment with Vercel",
       "Learned Figma to design, prototype, and iterate on the website & logo (see top left of sidebar!)"
     ],
+    imagePath: "/projects/portfolio.png",
+    imageAlt: "Portfolio website screenshot",
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Figma"],
     repoUrl: "https://github.com/ggfincke/fincke.dev",
     liveUrl: "https://fincke.dev",

@@ -5,6 +5,7 @@
 
 // imports
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { ProjectCard } from '~/components/ui/ProjectCard';
 import { NavigationArrow } from '~/components/ui/cards/NavigationArrow';
 import { PaginationDots } from '~/components/ui/cards/PaginationDots';
@@ -101,6 +102,20 @@ export function ProjectsSection() {
             repoUrl={projects[currentIndex].repoUrl}
             liveUrl={projects[currentIndex].liveUrl}
             collaborators={projects[currentIndex].collaborators}
+            contentComponent={
+              projects[currentIndex].imagePath ? (
+                <div className="w-full h-full relative rounded-lg">
+                  <Image
+                    src={projects[currentIndex].imagePath!}
+                    alt={projects[currentIndex].imageAlt!}
+                    width={800}
+                    height={600}
+                    className="object-contain hover:scale-105 hover:z-50 transition-all duration-300 rounded-lg w-full h-full"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+              ) : undefined
+            }
           />
         </div>
       </div>
