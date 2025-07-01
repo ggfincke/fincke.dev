@@ -109,7 +109,9 @@ export const projects: Project[] = [
       "Implemented filtering and search functionality for card sets and rarities",
       "Styled with modern CSS to create a clean, responsive UI"
     ],
-    technologies: ["React", "JavaScript", "CSS", "Pokémon TCG API"],
+    imagePath: "/projects/tcghub.png",
+    imageAlt: "TCGhub app screenshot",
+    technologies: ["React", "JavaScript", "CSS", "Python", "SQLite", "SQL", "Node.js"],
     repoUrl: "https://github.com/ggfincke/TCGhub",
   },
   {
