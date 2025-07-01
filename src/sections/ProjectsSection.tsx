@@ -9,7 +9,7 @@ import Image from 'next/image';
 import { ProjectCard } from '~/components/ui/ProjectCard';
 import { NavigationArrow } from '~/components/ui/cards/NavigationArrow';
 import { PaginationDots } from '~/components/ui/cards/PaginationDots';
-import { projects } from '~/data/structured/projects';
+import { projects } from '~/data/structured/main_projects';
 
 // projects section component
 export function ProjectsSection() {
