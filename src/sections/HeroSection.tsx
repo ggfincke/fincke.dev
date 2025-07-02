@@ -2,6 +2,7 @@
 
 // imports
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import FloatingParticle from '../components/FloatingParticle';
 import useTypingAnimation from '../hooks/useTypingAnimation';
 
@@ -105,10 +106,13 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
             <div className="relative">
               {/* Profile picture container */}
               <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full bg-gradient-to-br from-[var(--color-primary)]/20 to-[var(--color-background-alt)]/30 border-4 border-[var(--color-primary)]/30 overflow-hidden shadow-2xl">
-                <img 
+                <Image 
                   src="/e1a0328be737ec1f073159545b2184d6.jpg" 
                   alt="Garrett Fincke" 
+                  width={256}
+                  height={256}
                   className="w-full h-full object-cover"
+                  priority
                 />
               </div>
               

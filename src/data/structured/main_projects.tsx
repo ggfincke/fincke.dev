@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-key, react/no-unescaped-entities */
-
 // src/data/projects.tsx
 
 // imports
