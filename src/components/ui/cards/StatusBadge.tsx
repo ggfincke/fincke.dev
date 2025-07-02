@@ -1,5 +1,5 @@
 // src/components/ui/DevelopmentBadge.tsx
-import { ProjectStatus } from '~/data/structured/projects';
+import { ProjectStatus } from '~/data/structured/main_projects';
 
 // status display configurations
 const statusConfig = {
@@ -32,6 +32,12 @@ const statusConfig = {
       label: 'Planned',
       color: '#FFCB6B',
       bgColor: 'rgba(255, 203, 107, 0.15)'
+    },
+    'live': {
+      icon: '🚀',
+      label: 'Live',
+      color: '#80CBC4',
+      bgColor: 'rgba(128, 203, 196, 0.15)'
     }
   };
 
