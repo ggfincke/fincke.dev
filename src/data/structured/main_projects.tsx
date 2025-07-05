@@ -63,7 +63,7 @@ export const projects: Project[] = [
   },
   {
     title: "Portfolio Website",
-    dateRange: "Mar 2025 - Apr 2025",
+    dateRange: "Mar 2025 - Present",
     status: "live",
     bulletPoints: [
       "Built a personal portfolio website (you're looking at it!) with Next.js, React, TypeScript",
