@@ -34,7 +34,7 @@ export function TimelineItem({
       </div>
       
       {/* the timeline point */}
-      <div className="absolute left-[7.5rem] top-2 w-3 h-3 rounded-full bg-[var(--color-primary)] z-10 transform -translate-x-17/40"></div>
+      <div className="absolute left-[7.5rem] top-3.5 w-3 h-3 rounded-full bg-[var(--color-primary)] z-10 transform -translate-x-17/40"></div>
       
       {/* right side - content */}
       <div className="pl-10 flex-1">

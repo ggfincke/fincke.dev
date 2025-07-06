@@ -7,6 +7,7 @@ import { experiences, education } from '~/data/structured/experiences';
 import { experienceContent } from '~/data/content/experience';
 import { useEffect, useState } from 'react';
 import { ReactNode } from 'react';
+import { SectionNavButton } from '~/components/ui/SectionNavButton';
 
 
 // MobileExperienceItem
@@ -127,7 +128,7 @@ export function ExperienceSection() {
             ))}
           </TimelineContainer>
           
-          <div className="mt-16 pl-[9.5rem]">
+          <div className="mt-16 pl">
             <h3 className="text-2xl font-bold text-[var(--color-text-light)] mb-4">Education</h3>
             <div className="flex-grow">
               <h4 className="text-xl font-semibold text-[var(--color-primary)]">
@@ -140,6 +141,13 @@ export function ExperienceSection() {
                 {education.period}
               </p>
             </div>
+          </div>
+          
+          {/* View Full Résumé Button */}
+          <div className="mt-12 pl">
+            <SectionNavButton href="/experience">
+              View Full Résumé
+            </SectionNavButton>
           </div>
         </>
       ) : (
@@ -175,6 +183,13 @@ export function ExperienceSection() {
                 {education.period}
               </p>
             </div>
+          </div>
+          
+          {/* View Full Résumé Button */}
+          <div className="mt-8 flex justify-center">
+            <SectionNavButton href="/experience">
+              View Full Résumé
+            </SectionNavButton>
           </div>
         </div>
       )}

@@ -3,8 +3,8 @@
 // imports
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import FloatingParticle from '../components/FloatingParticle';
-import useTypingAnimation from '../hooks/useTypingAnimation';
+import FloatingParticle from '~/components/FloatingParticle';
+import useTypingAnimation from '~/hooks/useTypingAnimation';
 
 // hero section
 interface HeroSectionProps {

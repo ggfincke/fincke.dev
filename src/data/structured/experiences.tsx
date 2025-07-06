@@ -32,7 +32,7 @@ export interface Education {
 export const experiences: Experience[] = [
   {
     id: 'scale',
-    date: 'JUNE 2024 — PRESENT',
+    date: 'MAY 2024 — PRESENT',
     title: 'AI Code Contractor',
     company: 'Scale AI',
     companyUrl: 'https://scale.com/',
@@ -59,10 +59,14 @@ export const experiences: Experience[] = [
           Evaluated and quality-tested AI-generated code across numerous languages to enhance logical reasoning. 
         </p>
 
-        <p>
+        <p className="mb-4">
           Designed contextual frameworks and curated high-quality datasets focused on clean, optimal solutions.
+        </p>
+
+        <p className="mb-4">
           Created evaluation metrics that directly contributed to improving code generation capabilities of AI models.
         </p>
+
       </>
     )
   },
