@@ -6,10 +6,11 @@
 // imports
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { ProjectCard } from '~/components/ui/ProjectCard';
 import { NavigationArrow } from '~/components/ui/cards/NavigationArrow';
 import { PaginationDots } from '~/components/ui/cards/PaginationDots';
 import { projects } from '~/data/structured/main_projects';
+import { ProjectCard } from '~/components/ui/ProjectCard';
+import { SectionNavButton } from '~/components/ui/SectionNavButton';
 
 // projects section component
 export function ProjectsSection() {
@@ -155,6 +156,13 @@ export function ProjectsSection() {
             </button>
           </div>
         )}
+      </div>
+      
+      {/* View All Projects Button */}
+      <div className="mt-12 flex justify-center">
+        <SectionNavButton href="/projects">
+          View All Projects
+        </SectionNavButton>
       </div>
     </div>
   );
