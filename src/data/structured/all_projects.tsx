@@ -23,6 +23,7 @@ export interface Project {
   status: ProjectStatus;
   bulletPoints: (string | ReactNode)[];
   technologies: string[];
+  madeFor?: string;
   imagePath?: string; 
   imageAlt?: string;
   repoUrl?: string;
@@ -42,6 +43,7 @@ export const projects: Project[] = [
       "Implemented advanced web crawling system with CAPTCHA solving, anti-bot countermeasures, and data normalization",
       "Created backend infrastructure including Edge Functions, PostgreSQL fuzzy search, UPC matching, real-time notifications, and more",
     ],
+    madeFor: "Bolt Hackathon",
     imagePath: "/projects/trackbasket.png",
     imageAlt: "TrackBasket app screenshot",
     technologies: ["Typescript", "Python", "Supabase", "Next.js", "React", "OpenAI", "PostgreSQL", "Docker", "Swift"],
@@ -58,6 +60,7 @@ export const projects: Project[] = [
       "Built custom components using HealthKit and SwiftUI for workout entry, lap timing, and charting performance trends",
       "Connected iOS app to Apple Watch to track workout data and other metrics, as well as sending premade workouts to the watch for user to follow",
     ],
+    madeFor: "Penn State",
     imagePath: "/projects/swimmate.png",
     imageAlt: "SwimMate app screenshot",
     technologies: ["Swift", "SwiftUI", "HealthKit", "WatchKit"],
@@ -75,6 +78,7 @@ export const projects: Project[] = [
       "Configured continuous deployment with Vercel",
       "Learned Figma to design, prototype, and iterate on the website & logo (see top left of sidebar!)"
     ],
+    madeFor: "Personal",
     imagePath: "/projects/portfolio.png",
     imageAlt: "Portfolio website screenshot",
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Figma"],
@@ -92,6 +96,7 @@ export const projects: Project[] = [
       "Engineered a microservices architecture in Django with Redis and Celery for predictable and scalable performance",
       "Built RESTful API endpoints for data retrieval & user management to a React frontend & Swift mobile app, and integrated Discord bot functionality via Discord.py"
     ],
+    madeFor: "Personal",
     technologies: ["Python", "Django", "PostgreSQL", "Selenium", "Redis", "Celery", "React", "Swift", "Discord.py"],
     repoUrl: "https://github.com/ggfincke/instock",
   },
@@ -109,6 +114,7 @@ export const projects: Project[] = [
       "Implemented filtering and search functionality for card sets and rarities",
       "Styled with modern CSS to create a clean, responsive UI"
     ],
+    madeFor: "Penn State",
     imagePath: "/projects/tcghub.png",
     imageAlt: "TCGhub app screenshot",
     technologies: ["React", "JavaScript", "CSS", "Python", "SQLite", "SQL", "Node.js"],
@@ -124,6 +130,7 @@ export const projects: Project[] = [
       "Created rich Discord interactions including emote reactions, user-specific triggers, and dynamic status updates",
       "Designed 'Free Rein' and 'Puppeteer Mode' to control bot behavior based on real-time message context"
     ],
+    madeFor: "Personal",
     technologies: ["Python", "Discord.py", "Transformers", "HuggingFace", "APScheduler"],
     repoUrl: "https://github.com/ggfincke/OPTIMUS",
   }

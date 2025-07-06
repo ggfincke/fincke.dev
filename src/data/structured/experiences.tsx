@@ -32,7 +32,7 @@ export interface Education {
 export const experiences: Experience[] = [
   {
     id: 'scale',
-    date: 'JUNE 2024 — PRESENT',
+    date: 'MAY 2024 — PRESENT',
     title: 'AI Code Contractor',
     company: 'Scale AI',
     companyUrl: 'https://scale.com/',
