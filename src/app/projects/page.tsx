@@ -4,7 +4,6 @@
 
 import Link from 'next/link';
 import { projects } from '~/data/structured/all_projects';
-import type { Project } from '~/data/structured/all_projects';
 
 export default function ProjectsPage() {
   return (
@@ -29,7 +28,7 @@ export default function ProjectsPage() {
             All Projects
           </h1>
           <p className="text-xl text-[var(--color-text)]">
-            A complete archive of things I've built
+            A complete archive of things I&apos;ve built
           </p>
         </div>
 
