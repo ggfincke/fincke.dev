@@ -8,10 +8,10 @@
 import { Sidebar } from '~/components/sidebar/Sidebar';
 import { SectionHeading } from '~/components/ui/SectionHeading';
 // sections
-import { HeroSection } from '~/sections/HeroSection';
-import { AboutSection } from '~/sections/AboutSection';
-import { ExperienceSection } from '~/sections/ExperienceSection';
-import { ProjectsSection } from '~/sections/ProjectsSection';
+import { HeroSection } from '~/sections/home/HeroSection';
+import { AboutSection } from '~/sections/home/AboutSection';
+import { ExperienceSection } from '~/sections/home/ExperienceSection';
+import { ProjectsSection } from '~/sections/home/ProjectsSection';
 import { Footer } from '~/sections/Footer';
 // hooks
 import { useScrollSidebar } from '~/hooks/useScrollSidebar';
