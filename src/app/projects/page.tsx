@@ -7,7 +7,7 @@ import { ProjectsTable } from '~/sections/projects/ProjectsTable';
 export default function ProjectsPage() {
   return (
     <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text)]">
-      <div className="max-w-6xl mx-auto px-8 py-16">
+      <div className="max-w-7xl mx-auto px-8 py-16">
         {/* Back navigation */}
         <div className="mb-4">
           <Link 

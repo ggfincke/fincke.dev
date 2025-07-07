@@ -116,7 +116,7 @@ export const projects: Project[] = [
     repoUrl: "https://github.com/ggfincke/betterbettor",
   },
   {
-    title: "CMPSC 473 Projects",
+    title: "Memory Management & Threading in C",
     collaborators: [
       { name: "Avanish Grampurohit" }
     ],
@@ -133,7 +133,7 @@ export const projects: Project[] = [
     repoUrl: "https://github.com/ggfincke/CMPSC473_projects",
   },
   {
-    title: "CMPSC 311 Projects",
+    title: "JBOD Storage System with Caching & Network Communication",
     dateRange: "Sep 2022 - Dec 2022",
     status: "complete",
     bulletPoints: [
@@ -148,7 +148,7 @@ export const projects: Project[] = [
     repoUrl: "https://github.com/ggfincke/CMPSC311_projects",
   },
   {
-    title: "STAT 319 Final Project",
+    title: "COVID-19 Case Surveillance Analysis",
     collaborators: [
       { name: "Edwin Clatus" },
       { name: "Sahit Karan Botta" }
@@ -201,7 +201,7 @@ export const projects: Project[] = [
     repoUrl: "https://github.com/ggfincke/OPTIMUS",
   },
   {
-    title: "CMPEN 331 Final Project",
+    title: "MIPS Processor",
     collaborators: [
       { name: "Avanish Grampurohit" }
     ],
