@@ -11,6 +11,60 @@ import { StatusCircle } from '~/components/ui/cards/StatusCircle';
 export function ProjectsTable() {
   const [expandedRows, setExpandedRows] = useState<Set<number>>(new Set());
 
+  // Sort projects in reverse chronological order (newest first)
+  const sortedProjects = [...projects].sort((a, b) => {
+    // Extract the most recent year from each project's dateRange
+    const getLatestYear = (dateRange: string): number => {
+      const years = dateRange.match(/\d{4}/g);
+      if (!years) return 0;
+      return Math.max(...years.map(year => parseInt(year, 10)));
+    };
+
+    // Get the latest month from the most recent year
+    const getLatestMonth = (dateRange: string): number => {
+      const latestYear = getLatestYear(dateRange);
+      const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+      
+      // Find all month mentions in the dateRange
+      const monthMatches = dateRange.toLowerCase().match(/\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\w*/g);
+      if (!monthMatches) return 0;
+      
+      // Find the latest month that appears with the latest year
+      const yearContext = dateRange.toLowerCase();
+      let latestMonth = 0;
+      
+      for (const monthMatch of monthMatches) {
+        const monthIndex = months.findIndex(m => monthMatch.startsWith(m));
+        if (monthIndex !== -1) {
+          // Check if this month appears near the latest year
+          const monthPos = yearContext.indexOf(monthMatch);
+          const yearPos = yearContext.indexOf(latestYear.toString());
+          
+          // If they're close or if this is the latest month we've seen
+          if (Math.abs(monthPos - yearPos) < 50 || monthIndex > latestMonth) {
+            latestMonth = monthIndex;
+          }
+        }
+      }
+      
+      return latestMonth;
+    };
+
+    const yearA = getLatestYear(a.dateRange);
+    const yearB = getLatestYear(b.dateRange);
+    
+    // First sort by year (descending)
+    if (yearA !== yearB) {
+      return yearB - yearA;
+    }
+    
+    // If years are equal, sort by month (descending)
+    const monthA = getLatestMonth(a.dateRange);
+    const monthB = getLatestMonth(b.dateRange);
+    
+    return monthB - monthA;
+  });
+
   const toggleRow = (index: number) => {
     const newExpandedRows = new Set(expandedRows);
     if (newExpandedRows.has(index)) {
@@ -76,7 +130,7 @@ export function ProjectsTable() {
             <th className="text-left py-4 pl-4 pr-4 w-[8%] text-sm font-medium text-[var(--color-text)] uppercase tracking-wider">
               Year
             </th>
-            <th className="text-left py-4 pl-4 pr-2 w-[15%] text-sm font-medium text-[var(--color-text)] uppercase tracking-wider">
+            <th className="text-left py-4 pl-4 pr-2 w-[20%] text-sm font-medium text-[var(--color-text)] uppercase tracking-wider">
               Project
             </th>
             <th className="text-center py-4 px-4 w-[10%] text-sm font-medium text-[var(--color-text)] uppercase tracking-wider">
@@ -94,7 +148,7 @@ export function ProjectsTable() {
           </tr>
         </thead>
         <tbody>
-          {projects.map((project, index) => {
+          {sortedProjects.map((project, index) => {
             const year = project.dateRange.match(/\d{4}/)?.[0] || 'TBD';
             const isExpanded = expandedRows.has(index);
             

@@ -68,7 +68,7 @@ export const projects: Project[] = [
   },
   {
     title: "Portfolio Website",
-    dateRange: "Mar 2025 - Apr 2025",
+    dateRange: "Mar 2025 - Present",
     status: "live",
     bulletPoints: [
       "Built a personal portfolio website (you're looking at it!) with Next.js, React, TypeScript",
@@ -99,6 +99,72 @@ export const projects: Project[] = [
     madeFor: "Personal",
     technologies: ["Python", "Django", "PostgreSQL", "Selenium", "Redis", "Celery", "React", "Swift", "Discord.py"],
     repoUrl: "https://github.com/ggfincke/instock",
+  },
+  {
+    title: "BetterBettor",
+    dateRange: "Mar 2024 - May 2024",
+    status: "complete",
+    bulletPoints: [
+      <>Final Project for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20263%3A%20Blockchain%20and%20Cryptocurrency" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 263: Blockchain and Modern Web Development</a></>,
+      "Built a decentralized sports betting platform using Ethereum smart contracts for transparent, trustless wagering",
+      "Developed modern React/Next.js frontend with Web3 integration for seamless blockchain interaction",
+      "Implemented comprehensive betting system with customizable odds, automated payouts, and user wallet integration via MetaMask",
+      "Created responsive design supporting multiple sports categories with real-time betting interface"
+    ],
+    madeFor: "Penn State",
+    technologies: ["Solidity", "React", "Next.js", "Web3.js", "MetaMask", "Ethereum"],
+    repoUrl: "https://github.com/ggfincke/betterbettor",
+  },
+  {
+    title: "CMPSC 473 Projects",
+    collaborators: [
+      { name: "Avanish Grampurohit" }
+    ],
+    dateRange: "Sep 2023 - Dec 2023",
+    status: "complete",
+    bulletPoints: [
+      <>Three comprehensive projects for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20473%3A%20Operating%20Systems" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 473: Operating Systems</a></>,
+      "Developed a memory management simulator implementing FIFO, LRU, and optimal page replacement algorithms with demand paging",
+      "Built a custom thread scheduler with cooperative and preemptive scheduling, round-robin and priority-based algorithms, and mutex synchronization",
+      "Extended a minimalist OS kernel with new system calls, process management features, and kernel-level debugging tools"
+    ],
+    madeFor: "Penn State",
+    technologies: ["C", "Systems Programming", "Operating Systems", "Memory Management", "Threading"],
+    repoUrl: "https://github.com/ggfincke/CMPSC473_projects",
+  },
+  {
+    title: "CMPSC 311 Projects",
+    dateRange: "Sep 2022 - Dec 2022",
+    status: "complete",
+    bulletPoints: [
+      <>Five comprehensive labs for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20311%3A%20Introduction%20to%20Systems%20Programming" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 311: Introduction to Systems Programming</a></>,
+      "Implemented a complete JBOD (Just a Bunch of Disks) storage system with block-level operations across multiple disks",
+      "Built high-performance caching layer using LFU (Least Frequently Used) replacement policy with dynamic cache management",
+      "Developed distributed storage system with TCP/IP client-server architecture and network communication protocols",
+      "Achieved 100% grade on all assignments with comprehensive testing and validation"
+    ],
+    madeFor: "Penn State",
+    technologies: ["C", "Systems Programming", "Networking", "Caching", "Storage Systems"],
+    repoUrl: "https://github.com/ggfincke/CMPSC311_projects",
+  },
+  {
+    title: "STAT 319 Final Project",
+    collaborators: [
+      { name: "Edwin Clatus" },
+      { name: "Sahit Karan Botta" }
+    ],
+    dateRange: "May 2024 - Aug 2024",
+    status: "complete",
+    bulletPoints: [
+      <>Comprehensive coursework for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/stat/#:~:text=STAT%20319%3A%20Applied%20Statistics" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">STAT 319: Applied Statistics</a></>,
+      "Completed end-to-end data science projects using Python ecosystem including pandas, NumPy, matplotlib, seaborn, and scikit-learn",
+      "Implemented machine learning models including linear regression, logistic regression, SVM, KNN, and decision trees",
+      "Collaborated on COVID-19 case surveillance analysis using large-scale public health data with comprehensive preprocessing and visualization",
+      "Mastered statistical analysis, model validation, hyperparameter tuning, and cross-validation techniques"
+    ],
+    madeFor: "Penn State",
+    technologies: ["Python", "pandas", "NumPy", "scikit-learn", "matplotlib", "seaborn", "Jupyter", "Machine Learning"],
+    repoUrl: "https://github.com/ggfincke/STAT319",
   },
   {
     title: "TCGhub",
@@ -133,5 +199,41 @@ export const projects: Project[] = [
     madeFor: "Personal",
     technologies: ["Python", "Discord.py", "Transformers", "HuggingFace", "APScheduler"],
     repoUrl: "https://github.com/ggfincke/OPTIMUS",
-  }
+  },
+  {
+    title: "CMPEN 331 Final Project",
+    collaborators: [
+      { name: "Avanish Grampurohit" }
+    ],
+    dateRange: "Mar 2023 - May 2023",
+    status: "complete",
+    bulletPoints: [
+      <>Final Project for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpen/#:~:text=CMPEN%20331%3A%20Computer%20Organization%20and%20Design" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPEN 331: Computer Organization and Design</a></>,
+      "Implemented a complete single-cycle MIPS processor in Verilog HDL with 32-bit architecture and Harvard memory organization",
+      "Built comprehensive instruction set support including arithmetic, logical, memory, branch, and jump instructions",
+      "Designed modular architecture with separate components for ALU, control unit, register file, and memory systems",
+      "Achieved 100% grade with thorough testing and validation of all processor components and instruction types"
+    ],
+    madeFor: "Penn State",
+    technologies: ["Verilog", "FPGA", "Xilinx Vivado", "Digital Design"],
+    repoUrl: "https://github.com/ggfincke/CMPEN331_final_project",
+  },
+  {
+    title: "USBAP",
+    collaborators: [
+      { name: "Yugal Kithany" },
+      { name: "Kyle Lynch" }
+    ],
+    dateRange: "May 2023 - Jun 2023",
+    status: "experimental",
+    bulletPoints: [
+      "Developed web scraping tools for extracting sports betting data from major platforms including DraftKings and FanDuel",
+      "Built automated data collection system using Python with BeautifulSoup for parsing complex HTML structures",
+      "Implemented data extraction for multiple betting markets including moneylines, spreads, and totals across various sports",
+      "Created foundation for sports betting analytics and arbitrage opportunity detection"
+    ],
+    madeFor: "Personal",
+    technologies: ["Python", "BeautifulSoup", "Web Scraping", "Data Analysis"],
+    repoUrl: "https://github.com/ggfincke/USBAP",
+  },
 ]; 
