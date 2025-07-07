@@ -26,10 +26,9 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  /* Always show vertical scrollbar to avoid layout shift when it appears/disappears */
+  overflow-y: scroll;
   overflow-x: hidden;
-}
-
-body {
   background: var(--color-background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, sans-serif;
