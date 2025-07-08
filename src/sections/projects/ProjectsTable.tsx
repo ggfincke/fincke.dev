@@ -120,7 +120,170 @@ export function ProjectsTable() {
 
   return (
     <div className="overflow-x-auto">
-      <table className="w-full table-fixed">
+      {/* Mobile layout - simplified view with only year and project name/contributors */}
+      <div className="block md:hidden">
+        <div className="space-y-4">
+          {sortedProjects.map((project, index) => {
+            const year = project.dateRange.match(/\d{4}/)?.[0] || 'TBD';
+            const isExpanded = expandedRows.includes(index);
+            
+            return (
+              <div key={`mobile-project-${index}`}>
+                <div 
+                  className="border border-[var(--color-border)] rounded-lg p-4 bg-[var(--color-background-alt)]/30 hover:bg-[var(--color-background-alt)]/50 transition-colors"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    {/* Year */}
+                    <div className="text-[var(--color-muted)] font-mono text-sm font-medium min-w-[3rem]">
+                      {year}
+                    </div>
+                    
+                    {/* Project info */}
+                    <div className="flex-1">
+                      <div className="font-semibold text-[var(--color-text-light)] text-lg mb-1">
+                        {project.title}
+                      </div>
+                      {project.collaborators && (
+                        <div className="text-sm text-[var(--color-text)]">
+                          {typeof project.collaborators === 'string' 
+                            ? `with ${project.collaborators}`
+                            : Array.isArray(project.collaborators)
+                              ? `with ${project.collaborators.map((c: string | Collaborator) => typeof c === 'string' ? c : c.name).join(', ')}`
+                              : `with ${typeof project.collaborators === 'object' ? (project.collaborators as Collaborator).name : project.collaborators}`
+                          }
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Expand/Collapse Button */}
+                    <button
+                      onClick={() => toggleRow(index)}
+                      className="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors p-1 rounded hover:bg-[var(--color-sidebar)] flex-shrink-0"
+                      aria-label={isExpanded ? 'Collapse project details' : 'Expand project details'}
+                    >
+                      <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        width="16" 
+                        height="16" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        strokeWidth="2" 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round"
+                        className={`transform transition-transform duration-200 ${isExpanded ? 'rotate-90' : ''}`}
+                      >
+                        <path d="M9 18l6-6-6-6"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Expanded content for mobile */}
+                {isExpanded && (
+                  <div className="mt-2 border border-[var(--color-border)] rounded-lg p-4 bg-[var(--color-background-alt)]/50">
+                    <div className="space-y-4">
+                      {/* Status Badge and Date */}
+                      <div className="flex items-center gap-4">
+                        <StatusBadge status={project.status} />
+                        <span className="text-[var(--color-muted)] text-sm italic">
+                          {project.dateRange}
+                        </span>
+                      </div>
+
+                      {/* Collaborators (if any) */}
+                      {project.collaborators && (
+                        <div>
+                          <h4 className="text-sm font-semibold text-[var(--color-primary)] mb-2">
+                            Collaborators
+                          </h4>
+                          <p className="text-[var(--color-text)]">
+                            {renderCollaborators(project.collaborators)}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Description */}
+                      <div>
+                        <h4 className="text-sm font-semibold text-[var(--color-primary)] mb-2">
+                          Description
+                        </h4>
+                        <ul className="list-disc pl-5 space-y-1">
+                          {project.bulletPoints.map((point, pointIndex) => (
+                            <li key={pointIndex} className="text-[var(--color-text)] text-sm">
+                              {point}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Technologies */}
+                      <div>
+                        <h4 className="text-sm font-semibold text-[var(--color-primary)] mb-2">
+                          Technologies
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {project.technologies.map((tech: string, techIndex: number) => (
+                            <span 
+                              key={techIndex}
+                              className="bg-[var(--color-sidebar)] text-[var(--color-text)] px-2 py-1 rounded-full text-xs whitespace-nowrap hover:bg-[var(--color-border)] transition-colors duration-200"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Links */}
+                      {(project.repoUrl || project.liveUrl) && (
+                        <div>
+                          <h4 className="text-sm font-semibold text-[var(--color-primary)] mb-2">
+                            Links
+                          </h4>
+                          <div className="flex flex-wrap gap-2">
+                            {project.repoUrl && (
+                              <a 
+                                href={project.repoUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-3 py-1 bg-[var(--color-sidebar)] text-[var(--color-text)] rounded-lg hover:bg-[var(--color-border)] hover:shadow-md transition-all duration-200 text-sm"
+                              >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                                </svg>
+                                Repository
+                              </a>
+                            )}
+                            
+                            {project.liveUrl && (
+                              <a 
+                                href={project.liveUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-3 py-1 bg-[var(--color-primary)] text-[var(--color-background)] rounded-lg hover:bg-opacity-90 hover:shadow-md transition-all duration-200 text-sm"
+                              >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                  <polyline points="15 3 21 3 21 9"></polyline>
+                                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                {getLiveLabel(project.liveUrl)}
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Desktop layout - full table */}
+      <table className="w-full table-fixed hidden md:table">
         <thead>
           <tr className="border-b border-[var(--color-border)]">
             <th className="text-left py-4 pl-6 pr-6 text-sm font-medium text-[var(--color-text)] uppercase tracking-wider w-8">
