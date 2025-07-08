@@ -66,6 +66,7 @@ export const projects: Project[] = [
       "Displays rich real-time metrics on Apple Watch including pace, heart rate, laps, SWOLF, and calories",
       "Supports both pool and open-water swims with GPS distance tracking",
       "Visualizes performance trends using interactive Swift Charts",
+      "Achieved a grade of 100% on this submission"
     ],
     madeFor: "Penn State",
     imagePath: "/projects/swimmate.png",
@@ -134,7 +135,8 @@ export const projects: Project[] = [
       <>Three comprehensive projects for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20473%3A%20Operating%20Systems" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 473: Operating Systems</a></>,
       "Developed a memory management simulator implementing FIFO, LRU, and optimal page replacement algorithms with demand paging",
       "Built a custom thread scheduler with cooperative and preemptive scheduling, round-robin and priority-based algorithms, and mutex synchronization",
-      "Extended a minimalist OS kernel with new system calls, process management features, and kernel-level debugging tools"
+      "Extended a minimalist OS kernel with new system calls, process management features, and kernel-level debugging tools",
+      "Achieved an average grade of 100% on all assignments with comprehensive testing and validation"
     ],
     madeFor: "Penn State",
     technologies: ["C", "Systems Programming", "Operating Systems", "Memory Management", "Threading"],
@@ -149,7 +151,7 @@ export const projects: Project[] = [
       "Implemented a complete JBOD (Just a Bunch of Disks) storage system with block-level operations across multiple disks",
       "Built high-performance caching layer using LFU (Least Frequently Used) replacement policy with dynamic cache management",
       "Developed distributed storage system with TCP/IP client-server architecture and network communication protocols",
-      "Achieved 100% grade on all assignments with comprehensive testing and validation"
+      "Achieved a grade of 100% on all assignments with comprehensive testing and validation"
     ],
     madeFor: "Penn State",
     technologies: ["C", "Systems Programming", "Storage Systems", "Networking", "Caching"],
@@ -167,8 +169,8 @@ export const projects: Project[] = [
       <>Comprehensive coursework for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/stat/#:~:text=STAT%20319%3A%20Applied%20Statistics" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">STAT 319: Applied Statistics</a></>,
       "Completed end-to-end data science projects using Python ecosystem including pandas, NumPy, matplotlib, seaborn, and scikit-learn",
       "Implemented machine learning models including linear regression, logistic regression, SVM, KNN, and decision trees",
-      "Collaborated on COVID-19 case surveillance analysis using large-scale public health data with comprehensive preprocessing and visualization",
-      "Mastered statistical analysis, model validation, hyperparameter tuning, and cross-validation techniques"
+      "Collaborated on COVID-19 case surveillance analysis for final projectusing large-scale public health data with comprehensive preprocessing and visualization, achieving a grade of 100%",
+      "Mastered statistical analysis, model validation, hyperparameter tuning, and cross-validation techniques",
     ],
     madeFor: "Penn State",
     technologies: ["Python", "Machine Learning", "pandas", "NumPy", "scikit-learn", "matplotlib", "seaborn", "Jupyter"],
@@ -186,7 +188,8 @@ export const projects: Project[] = [
       <>Developed a React-based trading card marketplace clone with live data integration (essentially a replica of <a href="https://www.tcgplayer.com" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">tcgplayer.com</a>)</>,
       "Customized a complex database schema in BCNF and hand-wrote all SQL queries to the local SQLite database",
       "Implemented filtering and search functionality for card sets and rarities",
-      "Styled with modern CSS to create a clean, responsive UI"
+      "Styled with modern CSS to create a clean, responsive UI",
+      "Achieved a grade over 100% on this project"
     ],
     madeFor: "Penn State",
     imagePath: "/projects/tcghub.png",
@@ -237,6 +240,7 @@ export const projects: Project[] = [
       "Performed hyperparameter tuning (k=3 for KNN; C=1, RBF kernel for SVM) using grid search cross-validation; evaluated models with precision, recall, and F1-score",
       "Executed unsupervised learning using K-Means (k=10) with PCA dimensionality reduction for visualization; examined elbow method and silhouette scores to assess cluster quality",
       "Discussed computational constraints (high-dimensional SVM training) and proposed convolutional neural networks (CNNs) as future work to approach state-of-the-art accuracy",
+      "Achieved a grade of 100% on this report and code"
     ],
     madeFor: "Penn State",
     imagePath: "/projects/452midterm.png",
@@ -262,7 +266,8 @@ export const projects: Project[] = [
       "DenseNet121 achieved the top test accuracy at 74 %, outperforming the baseline CNN (69 %), RFM (51.6 %), and ResNet50 (47 %)",
       "Engineered a ResNet-inspired CNN with residual blocks, data augmentation, dropout, and L2 regularization; documented optimization challenges and remedies",
       "Built a lightweight RFM pipeline (StandardScaler ➜ RBFSampler ➜ LogisticRegression) and logged training/validation loss at 10 checkpoints to compare computational efficiency",
-      "Generated confusion matrices, full metric suite (accuracy, precision, recall, F1, log-loss), and loss/accuracy curves; proposed future work (hybrid CNN-RFM ensemble, advanced ResNet scheduling, larger datasets)"
+      "Generated confusion matrices, full metric suite (accuracy, precision, recall, F1, log-loss), and loss/accuracy curves; proposed future work (hybrid CNN-RFM ensemble, advanced ResNet scheduling, larger datasets)",
+      "Achieved a grade of 100% on this report and code"
     ],
     madeFor: "Penn State",
     imagePath: "/projects/452final.png",
