@@ -6,36 +6,79 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1.4-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
 [![Website](https://img.shields.io/badge/Website-Live-success?style=flat-square&logo=vercel)](https://fincke.dev)
 
-A personal portfolio website built with Next.js, React 19, and Tailwind CSS, accessible at [fincke.dev](https://fincke.dev).
-
-## 📋 Overview
-
-This is a modern, responsive portfolio website showcasing professional experience, projects, and skills. The site features a clean, minimalist design with dark mode support and is publicly available at [fincke.dev](https://fincke.dev).
+A modern, responsive personal portfolio website for myself. Built with Next.js 15, React 19, and Tailwind CSS 4, featuring a clean minimalist design with responsive layout and smooth animations.
 
 ## 🌐 Live Site
 
-**Website URL:** [fincke.dev](https://fincke.dev)
+**Visit:** [fincke.dev](https://fincke.dev)
 
-The website is deployed and accessible through the custom domain fincke.dev. Visit this URL in any modern web browser to view the portfolio.
+## ✨ Features
 
-## 🚀 Technologies Used
+- **Responsive Design**: Fully responsive layout that works on all devices
+- **Modern UI**: Clean, minimalist design with smooth animations and transitions
+- **Collapsible Sidebar**: Fixed sidebar navigation on larger screens with smooth slide animations
+- **Multiple Sections**: 
+  - Hero section with animated introduction
+  - About section with personal information and skills
+  - Experience section with timeline of work history and education
+  - Projects section showcasing development work
+- **Interactive Elements**: Hover effects, smooth scrolling, and animated components
+- **Performance Optimized**: Built with Next.js 15 App Router and optimized for speed
+- **Analytics**: Integrated Vercel Analytics for insights
+- **Custom Fonts**: Using Geist Sans and Geist Mono for modern typography
 
-- **Next.js 15.3.1** - React framework with server-side rendering and App Router
-- **React 19.0.0** - JavaScript library for building user interfaces
-- **TypeScript 5** - Typed JavaScript for better code quality
-- **Tailwind CSS 4.1.4** - Utility-first CSS framework
-- **ESLint 9** - Code quality tool
-- **Turbopack** - Used in development mode for faster builds
+## 🚀 Tech Stack
 
-## 🛠️ Getting Started
+- **Framework**: Next.js 15.3.1 with App Router
+- **Frontend**: React 19.0.0 with TypeScript 5
+- **Styling**: Tailwind CSS 4.1.4
+- **Animations**: Custom CSS animations and transitions
+- **Fonts**: Geist Sans & Geist Mono via Google Fonts
+- **Analytics**: Vercel Analytics
+- **Development**: ESLint 9, Turbopack for fast development builds
+- **Deployment**: Vercel with custom domain
+
+## 📁 Project Structure
+
+```
+fincke.dev/
+├── public/                    # Static assets and images
+│   ├── projects/             # Project screenshots and assets
+│   ├── resume.pdf            # Resume document
+│   └── *.svg                 # Logo and icon files
+├── src/
+│   ├── app/                  # Next.js App Router
+│   │   ├── layout.tsx        # Root layout with metadata
+│   │   ├── page.tsx          # Homepage with all sections
+│   │   ├── experience/       # Dedicated experience page
+│   │   └── projects/         # Dedicated projects page
+│   ├── components/           # Reusable UI components
+│   │   ├── buttons/          # Interactive buttons
+│   │   ├── logos/            # Company/brand logos
+│   │   ├── sidebar/          # Navigation sidebar components
+│   │   ├── timeline/         # Experience timeline components
+│   │   └── ui/               # General UI components
+│   ├── data/                 # Content and data files
+│   │   ├── content/          # Content for different sections
+│   │   └── structured/       # Structured data (experiences, projects)
+│   ├── hooks/                # Custom React hooks
+│   ├── sections/             # Page sections
+│   └── styles/               # CSS and styling
+├── tailwind.config.js        # Tailwind CSS configuration
+├── next.config.ts            # Next.js configuration
+└── tsconfig.json             # TypeScript configuration
+```
+
+## 🛠️ Local Development
 
 ### Prerequisites
 
-- Node.js (version 18.17.0 or higher recommended)
+- Node.js 18.17.0 or higher
+- npm, yarn, pnpm, or bun
 
 ### Installation
 
-1. Clone this repository:
+1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/fincke.dev.git
    cd fincke.dev
@@ -44,85 +87,83 @@ The website is deployed and accessible through the custom domain fincke.dev. Vis
 2. Install dependencies:
    ```bash
    npm install
-   # or
-   yarn install
-   # or
-   pnpm install
-   # or
-   bun install
    ```
 
-### Development
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-Run the development server (with Turbopack enabled):
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+The development server uses Turbopack for fast rebuilds and hot reloading.
+
+### Available Scripts
+
+- `npm run dev` - Start development server with Turbopack
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+
+## 🚀 Deployment
+
+This project is deployed on Vercel with a custom domain. To deploy your own version:
+
+1. Push to GitHub/GitLab/Bitbucket
+2. Connect to [Vercel](https://vercel.com)
+3. Import your project
+4. Configure domain settings (optional)
+5. Deploy automatically on push
+
+## 📝 Content Management
+
+The portfolio content is managed through structured data files:
+
+- **Experiences**: `src/data/structured/experiences.tsx` - Work history and education
+- **Projects**: `src/data/structured/main_projects.tsx` and `all_projects.tsx`
+- **About**: `src/data/content/about.tsx` - Personal information and skills
+- **Contact**: `src/data/content/contact.tsx` - Contact information
+
+## 🎨 Customization
+
+To customize this portfolio for your own use:
+
+1. Update content in `src/data/` files
+2. Replace images in `public/` directory
+3. Modify styling in Tailwind classes
+4. Update metadata in `src/app/layout.tsx`
+5. Configure custom domain in Vercel (optional)
+
+## 🙏 Credit & Attribution
+
+If you use this portfolio as a template, fork it, or draw inspiration from it, please provide credit by:
+
+- ⭐ Starring this repository
+- 🔗 Linking back to [fincke.dev](https://fincke.dev) or this repository
+- 📝 Mentioning the original work in your README or about section
+
+**Example attribution:**
+```
+Portfolio design inspired by [Garrett Fincke's portfolio](https://fincke.dev)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `src/app/page.tsx`. The page auto-updates as you edit the file.
-
-### Building for Production
-
-```bash
-npm run build
-# or
-yarn build
-# or
-pnpm build
-# or
-bun build
-```
-
-## 🚢 Deployment on Vercel
-
-The easiest way to deploy this Next.js app is using the [Vercel Platform](https://vercel.com).
-
-### Deployment Steps
-
-1. Push your code to a GitHub, GitLab, or Bitbucket repository.
-2. Import your project to Vercel:
-   - Go to [Vercel Dashboard](https://vercel.com/dashboard)
-   - Click "Add New" > "Project"
-   - Select your repository
-   - Configure your project settings (or accept the defaults)
-   - Click "Deploy"
-
-Your site will be automatically built and deployed to a `.vercel.app` domain.
-
-### Custom Domain
-
-- The site is currently configured with the custom domain [fincke.dev](https://fincke.dev)
-- To manage domains, go to your project in the Vercel dashboard
-- Navigate to "Settings" > "Domains"
-
-## 📁 Project Structure
-
-```
-fincke.dev/
-├── public/               # Static assets
-├── src/
-│   ├── app/              # App router pages and layouts
-│   ├── components/       # Reusable UI components
-│   ├── sections/         # Page sections
-│   ├── data/             # Data files
-│   ├── hooks/            # Custom React hooks
-│   ├── styles/           # CSS and style utilities
-│   └── animations/       # Animation definitions
-├── eslint.config.mjs     # ESLint configuration
-├── next.config.ts        # Next.js configuration
-├── package.json          # Project dependencies
-├── postcss.config.mjs    # PostCSS configuration
-└── tsconfig.json         # TypeScript configuration
-```
+This helps support the open-source community and acknowledges the original work!
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🤝 Contributing
+
+While this is a personal portfolio, contributions for improvements, bug fixes, or additional features are welcome:
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## 📧 Contact
+
+For questions or suggestions, feel free to reach out through the contact info on [fincke.dev](https://fincke.dev) or open an issue in this repository.
+
+---
