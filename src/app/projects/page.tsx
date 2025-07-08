@@ -7,7 +7,7 @@ import { ProjectsTable } from '~/sections/projects/ProjectsTable';
 export default function ProjectsPage() {
   return (
     <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text)]">
-      <div className="max-w-6xl mx-auto px-8 py-16">
+      <div className="max-w-7xl mx-auto px-8 py-16">
         {/* Back navigation */}
         <div className="mb-4">
           <Link 
@@ -36,7 +36,7 @@ export default function ProjectsPage() {
         {/* Footer note */}
         <div className="mt-16 text-center">
           <p className="text-[var(--color-muted)] text-sm">
-            Private repositories can be shared upon request
+            Private repositories available upon request
           </p>
         </div>
       </div>
