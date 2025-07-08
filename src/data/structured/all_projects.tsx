@@ -42,6 +42,9 @@ export const projects: Project[] = [
       "Features a chat-to-basket feature using OpenAI API that converts natural language into structured baskets using data from Supabase",
       "Implemented advanced web crawling system with CAPTCHA solving, anti-bot countermeasures, and data normalization",
       "Created backend infrastructure including Edge Functions, PostgreSQL fuzzy search, UPC matching, real-time notifications, and more",
+      "Built AI-powered product matching with intelligent alternatives and comprehensive UPC lookup for cross-retailer price correlation",
+      "Engineered sophisticated notification system with granular preferences for price drops, availability changes, and product updates",
+      "Developed responsive basket management with collaborative sharing, real-time price history charts, and smart recommendations",
     ],
     madeFor: "Bolt Hackathon",
     imagePath: "/projects/trackbasket.png",
@@ -59,11 +62,15 @@ export const projects: Project[] = [
       "Developed a native iOS/watchOS app for swimmers to track, find, and save workouts, view history, and follow progress over time",
       "Built custom components using HealthKit and SwiftUI for workout entry, lap timing, and charting performance trends",
       "Connected iOS app to Apple Watch to track workout data and other metrics, as well as sending premade workouts to the watch for user to follow",
+      "Offers goal-based workouts for distance, time, or calories with real-time progress tracking",
+      "Displays rich real-time metrics on Apple Watch including pace, heart rate, laps, SWOLF, and calories",
+      "Supports both pool and open-water swims with GPS distance tracking",
+      "Visualizes performance trends using interactive Swift Charts",
     ],
     madeFor: "Penn State",
     imagePath: "/projects/swimmate.png",
     imageAlt: "SwimMate app screenshot",
-    technologies: ["Swift", "SwiftUI", "HealthKit", "WatchKit"],
+    technologies: ["Swift", "SwiftUI", "HealthKit", "WatchKit", "Swift Charts", "WatchConnectivity"],
     repoUrl: "https://github.com/ggfincke/SwimMate",
   },
   {
@@ -81,7 +88,7 @@ export const projects: Project[] = [
     madeFor: "Personal",
     imagePath: "/projects/portfolio.png",
     imageAlt: "Portfolio website screenshot",
-    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Figma"],
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "React", "Figma"],
     repoUrl: "https://github.com/ggfincke/fincke.dev",
     liveUrl: "https://fincke.dev",
   },
@@ -94,7 +101,8 @@ export const projects: Project[] = [
       "Optimized for speed, frequency, and accuracy of detecting restocks and price changes on high-velocity products",
       "Created a custom database schema using Django's ORM & PostgreSQL for efficient data storage & retrieval",
       "Engineered a microservices architecture in Django with Redis and Celery for predictable and scalable performance",
-      "Built RESTful API endpoints for data retrieval & user management to a React frontend & Swift mobile app, and integrated Discord bot functionality via Discord.py"
+      "Built RESTful API endpoints for data retrieval & user management to a React frontend & Swift mobile app, and integrated Discord bot functionality via Discord.py",
+      "This project laid the groundwork for what would eventually evolve into TrackBasket, expanding into a full-featured price-tracking platform",
     ],
     madeFor: "Personal",
     technologies: ["Python", "Django", "PostgreSQL", "Selenium", "Redis", "Celery", "React", "Swift", "Discord.py"],
@@ -112,7 +120,7 @@ export const projects: Project[] = [
       "Created responsive design supporting multiple sports categories with real-time betting interface"
     ],
     madeFor: "Penn State",
-    technologies: ["Solidity", "React", "Next.js", "Web3.js", "MetaMask", "Ethereum"],
+    technologies: ["Solidity", "Next.js", "Ethereum", "Web3.js", "MetaMask", "React"],
     repoUrl: "https://github.com/ggfincke/betterbettor",
   },
   {
@@ -144,14 +152,14 @@ export const projects: Project[] = [
       "Achieved 100% grade on all assignments with comprehensive testing and validation"
     ],
     madeFor: "Penn State",
-    technologies: ["C", "Systems Programming", "Networking", "Caching", "Storage Systems"],
+    technologies: ["C", "Systems Programming", "Storage Systems", "Networking", "Caching"],
     repoUrl: "https://github.com/ggfincke/CMPSC311_projects",
   },
   {
     title: "COVID-19 Case Surveillance Analysis",
     collaborators: [
       { name: "Edwin Clatus" },
-      { name: "Sahit Karan Botta" }
+      { name: "Sahit Botta" }
     ],
     dateRange: "May 2024 - Aug 2024",
     status: "complete",
@@ -163,7 +171,7 @@ export const projects: Project[] = [
       "Mastered statistical analysis, model validation, hyperparameter tuning, and cross-validation techniques"
     ],
     madeFor: "Penn State",
-    technologies: ["Python", "pandas", "NumPy", "scikit-learn", "matplotlib", "seaborn", "Jupyter", "Machine Learning"],
+    technologies: ["Python", "Machine Learning", "pandas", "NumPy", "scikit-learn", "matplotlib", "seaborn", "Jupyter"],
     repoUrl: "https://github.com/ggfincke/STAT319",
   },
   {
@@ -183,7 +191,7 @@ export const projects: Project[] = [
     madeFor: "Penn State",
     imagePath: "/projects/tcghub.png",
     imageAlt: "TCGhub app screenshot",
-    technologies: ["React", "JavaScript", "CSS", "Python", "SQLite", "SQL", "Node.js"],
+    technologies: ["React", "SQL", "Python", "SQLite", "Node.js"],
     repoUrl: "https://github.com/ggfincke/TCGhub",
   },
   {
@@ -197,7 +205,7 @@ export const projects: Project[] = [
       "Designed 'Free Rein' and 'Puppeteer Mode' to control bot behavior based on real-time message context"
     ],
     madeFor: "Personal",
-    technologies: ["Python", "Discord.py", "Transformers", "HuggingFace", "APScheduler"],
+    technologies: ["Python", "Transformers", "Discord.py", "HuggingFace", "APScheduler"],
     repoUrl: "https://github.com/ggfincke/OPTIMUS",
   },
   {
@@ -215,8 +223,53 @@ export const projects: Project[] = [
       "Achieved 100% grade with thorough testing and validation of all processor components and instruction types"
     ],
     madeFor: "Penn State",
-    technologies: ["Verilog", "FPGA", "Xilinx Vivado", "Digital Design"],
+    technologies: ["Verilog", "FPGA", "Digital Design", "Xilinx Vivado"],
     repoUrl: "https://github.com/ggfincke/CMPEN331_final_project",
+  },
+  {
+    title: "Traditional Machine Learning Methods Exploration for MNIST",
+    dateRange: "Sep 2024 - Oct 2024",
+    status: "complete",
+    bulletPoints: [
+      <>Midterm report for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/math/#:~:text=MATH%20452%3A%20Mathematical%20Foundations%20of%20Machine%20Learning" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">MATH 452: Mathematical Foundations of Machine Learning</a></>,
+      "Implemented and compared KNN (94.4% accuracy), Logistic Regression (91.1%), and SVM with RBF kernel (95.3%) for classifying handwritten digits on a 10k-image subset of the MNIST dataset",
+      "Applied rigorous preprocessing pipeline: random sampling, normalization to [0,1], flattening to 784-D vectors, and stratified 80/20 train–test split, followed by confusion matrix analysis",
+      "Performed hyperparameter tuning (k=3 for KNN; C=1, RBF kernel for SVM) using grid search cross-validation; evaluated models with precision, recall, and F1-score",
+      "Executed unsupervised learning using K-Means (k=10) with PCA dimensionality reduction for visualization; examined elbow method and silhouette scores to assess cluster quality",
+      "Discussed computational constraints (high-dimensional SVM training) and proposed convolutional neural networks (CNNs) as future work to approach state-of-the-art accuracy",
+    ],
+    madeFor: "Penn State",
+    imagePath: "/projects/452midterm.png",
+    imageAlt: "MATH 452 Midterm Report screenshot",
+    technologies: ["Python", "scikit-learn", "NumPy", "pandas", "matplotlib", "seaborn", "Machine Learning"],
+    repoUrl: "https://github.com/ggfincke/MATH452_projects",
+    liveUrl: "/projects/MATH_452_Midterm_Report.pdf",
+  },
+  {
+    title: "Deep Learning Architecture Comparison & Analysis for CIFAR-10",
+    collaborators: [
+      { name: "Jacob Goulet" },
+      { name: "Tyler Rossi" },
+      { name: "Diego Bueno" },
+      { name: "Javier Pozo Miranda" },
+      { name: "Duong Bao" }
+    ],
+    dateRange: "Nov 2024 – Dec 2024",
+    status: "complete",
+    bulletPoints: [
+      <>Final report for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/math/#:~:text=MATH%20452%3A%20Mathematical%20Foundations%20of%20Machine%20Learning" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">MATH 452: Mathematical Foundations of Machine Learning</a></>,
+      "Benchmarked four approaches on the CIFAR-10 dataset (60 k images): baseline CNN, ResNet50, DenseNet121, and a Random Feature Model (RFM) with 5 000 Random Fourier Features",
+      "DenseNet121 achieved the top test accuracy at 74 %, outperforming the baseline CNN (69 %), RFM (51.6 %), and ResNet50 (47 %)",
+      "Engineered a ResNet-inspired CNN with residual blocks, data augmentation, dropout, and L2 regularization; documented optimization challenges and remedies",
+      "Built a lightweight RFM pipeline (StandardScaler ➜ RBFSampler ➜ LogisticRegression) and logged training/validation loss at 10 checkpoints to compare computational efficiency",
+      "Generated confusion matrices, full metric suite (accuracy, precision, recall, F1, log-loss), and loss/accuracy curves; proposed future work (hybrid CNN-RFM ensemble, advanced ResNet scheduling, larger datasets)"
+    ],
+    madeFor: "Penn State",
+    imagePath: "/projects/452final.png",
+    imageAlt: "MATH 452 Final Report screenshot",
+    technologies: ["Python", "TensorFlow", "Keras", "NumPy", "pandas", "matplotlib", "seaborn", "scikit-learn", "Deep Learning", "CNN", "ResNet", "DenseNet", "Random Fourier Features"],
+    repoUrl: "https://github.com/ggfincke/MATH452_projects",
+    liveUrl: "/projects/MATH_452_-_Final_Report.pdf",
   },
   {
     title: "USBAP",
@@ -233,7 +286,7 @@ export const projects: Project[] = [
       "Created foundation for sports betting analytics and arbitrage opportunity detection"
     ],
     madeFor: "Personal",
-    technologies: ["Python", "BeautifulSoup", "Web Scraping", "Data Analysis"],
+    technologies: ["Python", "Web Scraping", "Data Analysis", "BeautifulSoup"],
     repoUrl: "https://github.com/ggfincke/USBAP",
   },
 ]; 

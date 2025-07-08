@@ -9,7 +9,7 @@ import { StatusBadge } from '~/components/ui/cards/StatusBadge';
 import { StatusCircle } from '~/components/ui/cards/StatusCircle';
 
 export function ProjectsTable() {
-  const [expandedRows, setExpandedRows] = useState<Set<number>>(new Set());
+  const [expandedRows, setExpandedRows] = useState<number[]>([]);
 
   // Sort projects in reverse chronological order (newest first)
   const sortedProjects = [...projects].sort((a, b) => {
@@ -66,13 +66,12 @@ export function ProjectsTable() {
   });
 
   const toggleRow = (index: number) => {
-    const newExpandedRows = new Set(expandedRows);
-    if (newExpandedRows.has(index)) {
-      newExpandedRows.delete(index);
-    } else {
-      newExpandedRows.add(index);
-    }
-    setExpandedRows(newExpandedRows);
+    setExpandedRows(prev => prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]);
+  };
+
+  // Helper to choose appropriate label for live links
+  const getLiveLabel = (url: string): string => {
+    return url.toLowerCase().endsWith('.pdf') ? 'View Report' : 'View Live Site';
   };
 
   const renderCollaborators = (collaborators: string | string[] | Collaborator | Collaborator[]) => {
@@ -150,7 +149,7 @@ export function ProjectsTable() {
         <tbody>
           {sortedProjects.map((project, index) => {
             const year = project.dateRange.match(/\d{4}/)?.[0] || 'TBD';
-            const isExpanded = expandedRows.has(index);
+            const isExpanded = expandedRows.includes(index);
             
             return [
               <tr 
@@ -255,7 +254,7 @@ export function ProjectsTable() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors"
-                        aria-label="Live Site"
+                        aria-label={getLiveLabel(project.liveUrl)}
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -299,7 +298,7 @@ export function ProjectsTable() {
                         )}
 
                         {/* Description and Image side by side */}
-                        <div className="flex flex-col lg:flex-row gap-8">
+                        <div className="flex flex-col lg:flex-row lg:items-center gap-8">
                           {/* Left side - Project Description */}
                           <div className="flex-1">
                             <h4 className="text-sm font-semibold text-[var(--color-primary)] mb-3">
@@ -381,7 +380,7 @@ export function ProjectsTable() {
                                     <polyline points="15 3 21 3 21 9"></polyline>
                                     <line x1="10" y1="14" x2="21" y2="3"></line>
                                   </svg>
-                                  View Live Site
+                                  {getLiveLabel(project.liveUrl)}
                                 </a>
                               )}
                             </div>

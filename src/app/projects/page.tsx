@@ -36,7 +36,7 @@ export default function ProjectsPage() {
         {/* Footer note */}
         <div className="mt-16 text-center">
           <p className="text-[var(--color-muted)] text-sm">
-            Private repositories can be shared upon request
+            Private repositories available upon request
           </p>
         </div>
       </div>
