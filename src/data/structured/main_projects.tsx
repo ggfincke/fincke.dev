@@ -27,9 +27,21 @@ export interface Project {
   liveUrl?: string;
 }
 
-
 // project data
 export const projects: Project[] = [
+{
+    title: "Loom",
+    dateRange: "Aug 2025 - Present",
+    status: "in-development",
+    bulletPoints: [
+      "AI résumé tailoring tool that turns a résumé + job description into ranked, targeted edit suggestions",
+      "Uses Python and OpenAI to analyze role requirements, surface relevant skills, and propose concise bullet rewrites",
+      "Parses .docx into structured sections, preserving original formatting and section order",
+      "Outputs machine-readable JSON so edits can be reviewed or applied in any editor/workflow",
+    ],
+    technologies: ["Python", "OpenAI", "docx parsing", "JSON", "CLI"],
+    repoUrl: "https://github.com/ggfincke/loom"
+  },
   {
     title: "TrackBasket",
     dateRange: "May 2025 - Present",
