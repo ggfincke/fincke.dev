@@ -40,6 +40,8 @@ export const projects: Project[] = [
       "Outputs machine-readable JSON so edits can be reviewed or applied in any editor/workflow",
     ],
     technologies: ["Python", "OpenAI", "docx parsing", "JSON", "CLI"],
+    imagePath: "/projects/loom.png",
+    imageAlt: "Loom app screenshot",
     repoUrl: "https://github.com/ggfincke/loom"
   },
   {
