@@ -34,10 +34,10 @@ export const projects: Project[] = [
     dateRange: "Aug 2025 - Present",
     status: "live",
     bulletPoints: [
-      "AI résumé tailoring CLI with OpenAI, Anthropic Claude, or local Ollama",
+      "AI résumé tailoring CLI with OpenAI, Anthropic Claude, or local Ollama, built with clean architecture and modular design",
       "Typer-based commands: tailor, sectionize, generate, apply — plus config & enhanced help",
       "Precise JSON edit ops on line-numbered text (replace_line, replace_range, insert_after, delete_range)",
-      "Preserves DOCX/LaTeX structure; review edits or apply them automatically"
+      "Preserves DOCX/LaTeX structure; review edits or apply them automatically with robust error handling"
     ],
     technologies: ["Python", "Typer", "OpenAI", "Anthropic Claude", "Ollama", "DOCX", "LaTeX", "JSON", "CLI"],
     imagePath: "/projects/loom.png",
