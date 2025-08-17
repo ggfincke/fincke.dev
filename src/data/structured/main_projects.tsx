@@ -29,17 +29,17 @@ export interface Project {
 
 // project data
 export const projects: Project[] = [
-{
+  {
     title: "Loom",
     dateRange: "Aug 2025 - Present",
-    status: "in-development",
+    status: "live",
     bulletPoints: [
-      "AI résumé tailoring tool that turns a résumé + job description into ranked, targeted edit suggestions",
-      "Uses Python and OpenAI to analyze role requirements, surface relevant skills, and propose concise bullet rewrites",
-      "Parses .docx into structured sections, preserving original formatting and section order",
-      "Outputs machine-readable JSON so edits can be reviewed or applied in any editor/workflow",
+      "AI résumé tailoring CLI with OpenAI, Anthropic Claude, or local Ollama, built with clean architecture and modular design",
+      "Typer-based commands: tailor, sectionize, generate, apply — plus config & enhanced help",
+      "Precise JSON edit ops on line-numbered text (replace_line, replace_range, insert_after, delete_range)",
+      "Preserves DOCX/LaTeX structure; review edits or apply them automatically with robust error handling"
     ],
-    technologies: ["Python", "OpenAI", "docx parsing", "JSON", "CLI"],
+    technologies: ["Python", "Typer", "OpenAI", "Anthropic Claude", "Ollama", "DOCX", "LaTeX", "JSON", "CLI"],
     imagePath: "/projects/loom.png",
     imageAlt: "Loom app screenshot",
     repoUrl: "https://github.com/ggfincke/loom"

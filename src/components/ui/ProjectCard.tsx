@@ -8,6 +8,7 @@ import { SkillPill } from './SkillPill';
 import { ReactNode } from 'react';
 import { Collaborator, ProjectStatus } from '~/data/structured/main_projects';
 import { StatusBadge } from './cards/StatusBadge';
+import { VersionBadge } from './cards/VersionBadge';
 
 
 // helper function to render collaborators w/ optional links
@@ -102,7 +103,10 @@ export function ProjectCard({
               )}
               
               {/* Date range */}
-              <span className="md:ml-0 mt-1 md:mt-0 italic">{dateRange}</span>
+              <span className="md:ml-0 mt-1 md:mt-0 italic">
+                {repoUrl && <VersionBadge repoUrl={repoUrl} />}
+                {dateRange}
+              </span>
             </p>
           </div>
           <div className="mt-2">

@@ -32,22 +32,23 @@ export interface Project {
 
 // project data
 export const projects: Project[] = [
-  {
-    title: "Loom",
-    dateRange: "Aug 2025 - Present",
-    status: "in-development",
-    madeFor: "Personal",
-    bulletPoints: [
-      "AI-assisted résumé tailoring that produces JD-specific edit recommendations and structured outputs",
-      "Python + OpenAI pipeline: extract résumé sections from .docx, analyze JD signals, and rank experience/skills by relevance",
-      "Lightweight scoring layer highlights gaps/overlaps, then drafts focused bullet rewrites and ordering tweaks",
-      "Keeps document structure intact (headings/sections) and emits deterministic JSON for downstream apply tools",
-      "Designed for repeatability across many roles: same source résumé, different JDs, consistent reviewable suggestions",
-    ],
-    technologies: ["Python", "OpenAI", "docx parsing", "Ranking/Scoring", "JSON", "CLI"],
-    imagePath: "/projects/loom.png",
-    imageAlt: "Loom app screenshot",
-    repoUrl: "https://github.com/ggfincke/loom"
+{
+  title: "Loom",
+  dateRange: "Aug 2025 – Present",
+  status: "live",
+  madeFor: "Personal",
+  bulletPoints: [
+    "CLI for AI-powered resume tailoring",
+    "Typer-based command suite — sectionize, generate, apply, and one-shot tailor",
+    "Multi-provider AI: OpenAI, Anthropic (Claude), or local Ollama",
+    "Structured JSON edit ops (replace_line, replace_range, insert_after, delete_range) on line-numbered text",
+    "Preserves original document formatting; supports DOCX and LaTeX",
+    "Configurable defaults with persistent settings (~/.loom/config.json) and enhanced CLI help/theme tooling"
+  ],
+  technologies: ["Python", "Typer", "OpenAI", "Anthropic Claude", "Ollama", "DOCX", "LaTeX", "JSON", "CLI"],
+  imagePath: "/projects/loom.png",
+  imageAlt: "Loom app screenshot",
+  repoUrl: "https://github.com/ggfincke/loom"
   },
   {
     title: "TrackBasket",

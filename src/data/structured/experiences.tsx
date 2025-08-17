@@ -33,7 +33,7 @@ export const experiences: Experience[] = [
   {
     id: 'scale',
     date: 'MAY 2024 — PRESENT',
-    title: 'AI Code Contractor',
+    title: 'Software Engineering Contractor',
     company: 'Scale AI',
     companyUrl: 'https://scale.com/',
     technologies: ['Python', 'JavaScript', 'TypeScript', 'React', 'Swift'],
@@ -56,15 +56,15 @@ export const experiences: Experience[] = [
         </p>
 
         <p className="mb-4">
-          Evaluated and quality-tested AI-generated code across numerous languages to enhance logical reasoning. 
+          Evaluated and quality-tested AI-generated code across numerous languages to enhance logical reasoning, with emphasis on code quality standards and maintainability. 
         </p>
 
         <p className="mb-4">
-          Designed contextual frameworks and curated high-quality datasets focused on clean, optimal solutions.
+          Designed contextual frameworks and curated high-quality datasets focused on clean, optimal solutions that follow software engineering best practices.
         </p>
 
         <p className="mb-4">
-          Created evaluation metrics that directly contributed to improving code generation capabilities of AI models.
+          Created evaluation metrics that directly contributed to improving code generation capabilities of AI models, prioritizing clean code principles and readable implementations.
         </p>
 
       </>
@@ -81,13 +81,13 @@ export const experiences: Experience[] = [
     content: (
       <>
         <p className="mb-4">
-          Mentored students in iOS/mobile application development for CMPSC 475: Applications Programming.
+          Mentored students in iOS/mobile application development for CMPSC 475: Applications Programming, emphasizing clean code practices and best programming principles.
         </p>
         <p className="mb-4">
-          Reviewed and debugged student code, enhancing their understanding of application programming concepts.
+          Reviewed and debugged student code, enhancing their understanding of application programming concepts while teaching code quality standards and maintainable design patterns.
         </p>
         <p className="mb-4">
-          Collaborated with faculty to tailor instruction based on student progress and technical challenges.
+          Collaborated with faculty to tailor instruction based on student progress and technical challenges, with focus on developing strong coding fundamentals.
         </p>
       </>
     )

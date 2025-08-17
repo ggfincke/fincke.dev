@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { projects, type Collaborator } from '~/data/structured/all_projects';
 import { StatusBadge } from '~/components/ui/cards/StatusBadge';
 import { StatusCircle } from '~/components/ui/cards/StatusCircle';
+import { VersionBadge } from '~/components/ui/cards/VersionBadge';
 
 export function ProjectsTable() {
   const [expandedRows, setExpandedRows] = useState<number[]>([]);
@@ -187,6 +188,12 @@ export function ProjectsTable() {
                       <div className="flex items-center gap-4">
                         <StatusBadge status={project.status} />
                         <span className="text-[var(--color-muted)] text-sm italic">
+                          {project.repoUrl && (
+                            <>
+                              <VersionBadge repoUrl={project.repoUrl} />
+                              {' • '}
+                            </>
+                          )}
                           {project.dateRange}
                         </span>
                       </div>
@@ -444,6 +451,12 @@ export function ProjectsTable() {
                         <div className="flex items-center gap-4">
                           <StatusBadge status={project.status} />
                           <span className="text-[var(--color-muted)] text-sm italic">
+                            {project.repoUrl && (
+                              <>
+                                <VersionBadge repoUrl={project.repoUrl} />
+                                {' • '}
+                              </>
+                            )}
                             {project.dateRange}
                           </span>
                         </div>
