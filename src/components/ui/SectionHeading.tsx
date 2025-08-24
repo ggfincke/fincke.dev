@@ -1,4 +1,4 @@
-// src/components/SectionHeading.tsx
+// src/components/ui/SectionHeading.tsx
 
 // props for section heading
 interface SectionHeadingProps {

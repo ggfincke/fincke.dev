@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-key, react/no-unescaped-entities */
 
-// src/data/projects.tsx
+// src/data/structured/projects.tsx
 
 import { ReactNode } from 'react';
 

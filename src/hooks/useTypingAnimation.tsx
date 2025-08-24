@@ -1,4 +1,4 @@
-// typing animation hook
+// src/hooks/useTypingAnimation.tsx
 import { useState, useEffect } from 'react';
 
 const useTypingAnimation = (text: string, speed: number = 100) => {

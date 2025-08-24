@@ -1,4 +1,4 @@
-// src/components/SocialIcons.tsx
+// src/components/ui/SocialIcons.tsx
 
 // social icons (email, phone, github, linkedin)
 interface SocialIconsProps {

@@ -1,4 +1,4 @@
-// src/components/sections/AboutSection.tsx
+// src/sections/home/AboutSection.tsx
 
 import { SkillPill } from '~/components/ui/SkillPill';
 import { aboutContent } from '~/data/content/about';

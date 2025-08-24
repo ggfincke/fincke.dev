@@ -1,3 +1,5 @@
+// src/components/ui/cards/StatusCircle.tsx
+
 import { ProjectStatus } from '~/data/structured/projects';
 
 // status display configurations (duplicated from StatusBadge to avoid circular deps)

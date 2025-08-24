@@ -1,3 +1,5 @@
+// src/components/ui/SectionNavButton.tsx
+
 import Link from 'next/link';
 
 interface SectionNavButtonProps {

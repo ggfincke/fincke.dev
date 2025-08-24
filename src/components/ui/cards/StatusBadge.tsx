@@ -1,4 +1,4 @@
-// src/components/ui/DevelopmentBadge.tsx
+// src/components/ui/cards/StatusBadge.tsx
 import { ProjectStatus } from '~/data/structured/projects';
 
 // status display configurations

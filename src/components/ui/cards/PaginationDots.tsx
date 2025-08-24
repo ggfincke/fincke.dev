@@ -1,4 +1,4 @@
-// src/components/ui/PaginationDots.tsx
+// src/components/ui/cards/PaginationDots.tsx
 
 import React from 'react';
 interface PaginationDotsProps {

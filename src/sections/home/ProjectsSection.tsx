@@ -1,4 +1,4 @@
-// src/components/sections/ProjectsSection.tsx
+// src/sections/home/ProjectsSection.tsx
 
 // use client 
 'use client';

@@ -1,4 +1,4 @@
-// src/components/sections/ExperienceSection.tsx
+// src/sections/home/ExperienceSection.tsx
 
 import { TimelineContainer } from '~/components/timeline/TimelineContainer';
 import { TimelineItem } from '~/components/timeline/TimelineItem';

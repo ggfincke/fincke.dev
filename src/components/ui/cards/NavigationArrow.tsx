@@ -1,4 +1,4 @@
-// src/components/ui/NavigationArrow.tsx
+// src/components/ui/cards/NavigationArrow.tsx
 
 import React from 'react';
 interface NavigationArrowProps {

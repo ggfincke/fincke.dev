@@ -1,4 +1,4 @@
-// src/sections/HeroSection.tsx
+// src/sections/home/HeroSection.tsx
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';

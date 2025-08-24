@@ -1,3 +1,5 @@
+// src/components/ui/cards/VersionBadge.tsx
+
 'use client';
 
 import { useState, useEffect } from 'react';
