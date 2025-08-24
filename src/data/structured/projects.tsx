@@ -2,33 +2,8 @@
 
 // src/data/structured/projects.tsx
 
-import { ReactNode } from 'react';
-
-
-// status type for projects
-export type ProjectStatus = 'in-development' | 'complete' | 'paused' | 'experimental' | 'planned' | 'live';
-
-// interface for collaborators
-export interface Collaborator {
-  name: string;
-  url?: string;
-}
-
-// interface for project data type
-export interface Project {
-  title: string;
-  collaborators?: string | string[] | Collaborator | Collaborator[];
-  dateRange: string;
-  status: ProjectStatus;
-  bulletPoints: (string | ReactNode)[];
-  technologies: string[];
-  madeFor?: string;
-  featured: boolean;
-  imagePath?: string; 
-  imageAlt?: string;
-  repoUrl?: string;
-  liveUrl?: string;
-}
+// import types from centralized location
+import type { Project } from '~/types';
 
 // project data
 export const projects: Project[] = [

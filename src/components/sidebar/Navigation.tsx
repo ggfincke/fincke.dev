@@ -1,10 +1,7 @@
 // src/components/sidebar/Navigation.tsx
 
 import { NavButton } from '~/components/buttons/NavigationButton';
-interface NavigationProps {
-    activeSection: string;
-    onSectionClick: (sectionId: string) => void;
-  }
+import type { NavigationProps } from '~/types';
   
   export function Navigation({ activeSection, onSectionClick }: NavigationProps) {
     const navItems = [

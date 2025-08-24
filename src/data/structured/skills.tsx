@@ -1,14 +1,7 @@
 // src/data/structured/skills.tsx
 
-// skill category type
-export type SkillCategory = 'languages' | 'frontend' | 'backend' | 'tools' | 'specialized' | 'ai-ml' | 'mobile' | 'database' | 'cloud';
-
-// skill interface
-export interface Skill {
-  name: string;
-  category: SkillCategory;
-  displayName?: string; // For cases where display differs from internal name
-}
+// import types from centralized location
+import type { Skill, SkillCategory } from '~/types';
 
 // all skills definition (comprehensive list matching resume)
 export const allSkills: Skill[] = [

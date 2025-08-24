@@ -4,7 +4,8 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { getAllProjects, type Collaborator } from '~/data/structured/projects';
+import { getAllProjects } from '~/data/structured/projects';
+import type { Collaborator } from '~/types';
 import { StatusBadge } from '~/components/ui/cards/StatusBadge';
 import { StatusCircle } from '~/components/ui/cards/StatusCircle';
 import { VersionBadge } from '~/components/ui/cards/VersionBadge';

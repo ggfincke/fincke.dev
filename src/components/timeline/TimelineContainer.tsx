@@ -1,11 +1,6 @@
 // src/components/timeline/TimelineContainer.tsx
 
-import { ReactNode } from 'react';
-
-interface TimelineContainerProps {
-  children: ReactNode;
-  className?: string;
-}
+import type { TimelineContainerProps } from '~/types';
 export function TimelineContainer({ children, className = '' }: TimelineContainerProps) {
   return (
     <div className={`relative ${className}`}>

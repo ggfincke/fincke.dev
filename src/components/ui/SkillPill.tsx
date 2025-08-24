@@ -1,13 +1,7 @@
 // src/components/ui/SkillPill.tsx
 
 // skillpill component with size variants
-export type SkillPillSize = 'xs' | 'sm' | 'md';
-
-interface SkillPillProps {
-  name: string;
-  size?: SkillPillSize;
-  className?: string;
-}
+import type { SkillPillProps } from '~/types';
 
 export function SkillPill({ name, size = 'sm', className = '' }: SkillPillProps) {
   const sizeClasses = {

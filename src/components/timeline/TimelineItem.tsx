@@ -1,17 +1,7 @@
 // src/components/timeline/TimelineItem.tsx
 
-import { ReactNode } from 'react';
 import { SkillPill } from '~/components/ui/SkillPill';
-interface TimelineItemProps {
-  date: string;
-  title: string;
-  company: string;
-  children: ReactNode;
-  technologies?: string[];
-  companyUrl?: string;
-  isLast?: boolean;
-  companyLogos?: React.ReactNode;
-}
+import type { TimelineItemProps } from '~/types';
 
 export function TimelineItem({ 
   date, 

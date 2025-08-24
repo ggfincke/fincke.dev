@@ -7,12 +7,7 @@ import Image from 'next/image';
 import { SidebarHeader } from '~/components/sidebar/SidebarHeader';
 import { Navigation } from '~/components/sidebar/Navigation';
 import { SocialIcons } from '~/components/ui/SocialIcons';
-interface SidebarProps {
-  // active section (from hook)
-  activeSection: string;
-  // scroll handler (from hook)
-  onSectionClick: (sectionId: string) => void;
-}
+import type { SidebarProps } from '~/types';
 export function Sidebar({ activeSection, onSectionClick }: SidebarProps) {
   return (
     <aside className="h-screen w-72 flex flex-col bg-[var(--color-background-alt)] border-r border-[var(--color-border)]">

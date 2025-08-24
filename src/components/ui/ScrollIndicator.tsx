@@ -3,9 +3,7 @@
 'use client';
 
 // interface for scroll indicator props
-interface ScrollIndicatorProps {
-  onClick?: () => void;
-}
+import type { ScrollIndicatorProps } from '~/types';
 
 // scroll indicator component
 export function ScrollIndicator({ onClick }: ScrollIndicatorProps) {

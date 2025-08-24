@@ -1,12 +1,6 @@
 // src/components/ui/FloatingParticle.tsx
 import React from 'react';
-
-interface FloatingParticleProps {
-  delay?: number;
-  left?: number;
-  top?: number;
-  duration?: number;
-}
+import type { FloatingParticleProps } from '~/types';
 
 const FloatingParticle = ({ delay = 0, left = 0, top = 0, duration = 24 }: FloatingParticleProps) => {
   return (

@@ -1,6 +1,6 @@
 // src/components/ui/cards/StatusCircle.tsx
 
-import { ProjectStatus } from '~/data/structured/projects';
+import type { StatusCircleProps, ProjectStatus } from '~/types';
 
 // status display configurations (duplicated from StatusBadge to avoid circular deps)
 const statusConfig: Record<ProjectStatus, { icon: string; label: string; color: string; bgColor: string }> = {
@@ -42,10 +42,6 @@ const statusConfig: Record<ProjectStatus, { icon: string; label: string; color: 
   }
 };
 
-interface StatusCircleProps {
-  status: ProjectStatus;
-  size?: number; // optional diameter in px
-}
 
 export function StatusCircle({ status, size = 32 }: StatusCircleProps) {
   const statusDisplay = statusConfig[status];

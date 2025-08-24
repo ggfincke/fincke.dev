@@ -4,9 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import FloatingParticle from '~/components/ui/FloatingParticle';
 import useTypingAnimation from '~/hooks/useTypingAnimation';
-interface HeroSectionProps {
-  scrollToSection: (sectionId: string) => void;
-}
+import type { HeroSectionProps } from '~/types';
 
 export function HeroSection({ scrollToSection }: HeroSectionProps) {
   const { displayText: nameText, isComplete: nameComplete } = useTypingAnimation('Garrett Fincke', 120);

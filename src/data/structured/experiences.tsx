@@ -1,30 +1,13 @@
 // src/data/structured/experiences.tsx
 
-import { ReactNode } from 'react';
 // logos
 import GoogleLogo from '~/components/logos/GoogleLogo';
 import MetaLogo from '~/components/logos/MetaLogo';
 import OpenAILogo from '~/components/logos/OpenAILogo';
 import PSULogo from '~/components/logos/PSULogo';
 
-// experience data
-export interface Experience {
-  id: string;
-  date: string;
-  title: string;
-  company: string;
-  companyUrl: string;
-  technologies: string[];
-  companyLogos: ReactNode;
-  content: ReactNode;
-}
-
-// education data
-export interface Education {
-  institution: string;
-  degree: string;
-  period: string;
-}
+// import types from centralized location
+import type { Experience, Education } from '~/types';
 
 // experiences data
 export const experiences: Experience[] = [

@@ -10,10 +10,9 @@ interface GitHubRelease {
   published_at: string;
 }
 
+import type { VersionBadgeProps } from '~/types';
+
 // version badge component
-interface VersionBadgeProps {
-  repoUrl: string;
-}
 
 export function VersionBadge({ repoUrl }: VersionBadgeProps) {
   const [version, setVersion] = useState<string | null>(null);

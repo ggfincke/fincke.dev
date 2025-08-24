@@ -6,22 +6,12 @@ import { TimelineItem } from '~/components/timeline/TimelineItem';
 import { experiences, education } from '~/data/structured/experiences';
 import { experienceContent } from '~/data/content/experience';
 import { useEffect, useState } from 'react';
-import { ReactNode } from 'react';
 import { SectionNavButton } from '~/components/ui/SectionNavButton';
 import { SkillPill } from '~/components/ui/SkillPill';
+import type { MobileExperienceItemProps } from '~/types';
 
 
 // MobileExperienceItem
-interface MobileExperienceItemProps {
-  date: string;
-  title: string;
-  company: string;
-  children: ReactNode;
-  technologies?: string[];
-  companyUrl?: string;
-  companyLogos?: ReactNode;
-  isLast?: boolean;
-}
 function MobileExperienceItem({ 
   date, 
   title, 

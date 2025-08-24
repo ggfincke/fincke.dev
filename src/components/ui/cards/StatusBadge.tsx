@@ -1,5 +1,5 @@
 // src/components/ui/cards/StatusBadge.tsx
-import { ProjectStatus } from '~/data/structured/projects';
+import type { StatusBadgeProps } from '~/types';
 
 // status display configurations
 const statusConfig = {
@@ -42,9 +42,6 @@ const statusConfig = {
   };
 
 // status badge component
-interface StatusBadgeProps {
-    status: ProjectStatus;
-  }
   
   export function StatusBadge({ status }: StatusBadgeProps) {
     const statusDisplay = statusConfig[status];
