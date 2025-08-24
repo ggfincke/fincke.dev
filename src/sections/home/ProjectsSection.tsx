@@ -1,6 +1,5 @@
 // src/sections/home/ProjectsSection.tsx
 
-// use client 
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -10,35 +9,14 @@ import { PaginationDots } from '~/components/ui/cards/PaginationDots';
 import { getFeaturedProjects } from '~/data/structured/projects';
 import { ProjectCard } from '~/components/ui/ProjectCard';
 import { SectionNavButton } from '~/components/ui/SectionNavButton';
+import { useBreakpoint } from '~/hooks/useBreakpoint';
 
-// projects section component
 export function ProjectsSection() {
-  // get featured projects
   const projects = getFeaturedProjects();
+  const { isMobile } = useBreakpoint();
   
-  // state to track current project index
   const [currentIndex, setCurrentIndex] = useState(0);
-  // state for animation
   const [isAnimating, setIsAnimating] = useState(false);
-  // state to detect screen size
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
-  
-  // check for screen size on mount and resize
-  useEffect(() => {
-    const checkScreenSize = () => {
-      // 768px is 'md' breakpoint in Tailwind
-      setIsSmallScreen(window.innerWidth < 768); 
-    };
-    
-    // set initial value
-    checkScreenSize();
-    
-    // add event listener
-    window.addEventListener('resize', checkScreenSize);
-    
-    // clean up
-    return () => window.removeEventListener('resize', checkScreenSize);
-  }, []);
   
   // navigation functions
   const navigateToProject = (index: number) => {
@@ -74,7 +52,7 @@ export function ProjectsSection() {
       {/* project display */}
       <div className="relative mb-6 md:mb-10">
         {/* Side navigation arrows - only on larger screens */}
-        {!isSmallScreen && (
+        {!isMobile && (
           <>
             <NavigationArrow 
               direction="left"
@@ -134,7 +112,7 @@ export function ProjectsSection() {
         />
         
         {/* Mobile-friendly navigation buttons */}
-        {isSmallScreen && (
+        {isMobile && (
           <div className="flex justify-center space-x-4 mt-4">
             <button
               onClick={goToPrevious}

@@ -13,7 +13,6 @@ import { SkillPill } from '~/components/ui/SkillPill';
 export function ProjectsTable() {
   const [expandedRows, setExpandedRows] = useState<number[]>([]);
   
-  // get all projects
   const projects = getAllProjects();
 
   // Sort projects in reverse chronological order (newest first)

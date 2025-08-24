@@ -14,39 +14,19 @@ import { ProjectsSection } from '~/sections/home/ProjectsSection';
 import { Footer } from '~/sections/Footer';
 // hooks
 import { useScrollSidebar } from '~/hooks/useScrollSidebar';
+import { useBreakpoint } from '~/hooks/useBreakpoint';
 // styles
 import { sidebarAnimation, contentAnimation } from '~/styles/sidebarAnimations';
-// react
-import { useEffect, useState } from 'react';
 export default function Home() {
-  // use scroll sidebar hook
   const { showSidebar, activeSection, scrollToSection } = useScrollSidebar({
     offset: 150 
   });
-
-  // state to track window width
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
-
-  // detect window size on client side
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsSmallScreen(window.innerWidth < 1024); // 1024px is the 'lg' breakpoint in Tailwind
-    };
-    
-    // Set initial value
-    checkScreenSize();
-    
-    // Add event listener
-    window.addEventListener('resize', checkScreenSize);
-    
-    // Clean up
-    return () => window.removeEventListener('resize', checkScreenSize);
-  }, []);
+  const { isDesktop } = useBreakpoint();
 
   return (
     <div className="min-h-screen">
-      {/* Sidebar - hidden on small and medium screens */}
-      {!isSmallScreen && (
+      {/* Sidebar - hidden on mobile and tablet screens */}
+      {isDesktop && (
         <div 
           className="fixed left-0 top-0 h-screen z-50 hidden lg:block"
           style={showSidebar ? sidebarAnimation.visible : sidebarAnimation.hidden}
@@ -59,7 +39,7 @@ export default function Home() {
       )}
       
       {/* Main content */}
-      <main style={isSmallScreen ? {} : (showSidebar ? contentAnimation.withSidebar : contentAnimation.fullWidth)}>
+      <main style={!isDesktop ? {} : (showSidebar ? contentAnimation.withSidebar : contentAnimation.fullWidth)}>
         {/* Hero section */}
         <section id="hero" className="min-h-screen flex items-center bg-[var(--color-background)] py-16 md:py-24 relative">
           <HeroSection scrollToSection={scrollToSection} />
@@ -106,7 +86,7 @@ export default function Home() {
         </section>
         
         {/* Footer */}
-        <Footer isSmallScreen={isSmallScreen} />
+        <Footer isSmallScreen={!isDesktop} />
       </main>
     </div>
   );
