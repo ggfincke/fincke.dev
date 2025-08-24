@@ -2,7 +2,7 @@
 
 import { SkillPill } from '~/components/ui/SkillPill';
 import { aboutContent } from '~/data/content/about';
-import { skillGroups } from '~/data/structured/skills';
+import { skillCategories } from '~/data/structured/skills';
 
 export function AboutSection() {
   
@@ -27,7 +27,7 @@ export function AboutSection() {
           <div>
             <h4 className="text-[var(--color-primary)] font-medium mb-3">Languages</h4>
             <div className="flex flex-wrap gap-2">
-              {skillGroups.languages.map((skill, index) => (
+              {skillCategories.languages.map((skill, index) => (
                 <SkillPill key={index} name={skill} />
               ))}
             </div>
@@ -36,7 +36,7 @@ export function AboutSection() {
           <div>
             <h4 className="text-[var(--color-primary)] font-medium mb-3">Front End</h4>
             <div className="flex flex-wrap gap-2">
-              {skillGroups.frontEnd.map((skill, index) => (
+              {skillCategories.frontEnd.map((skill, index) => (
                 <SkillPill key={index} name={skill} />
               ))}
             </div>
@@ -45,7 +45,7 @@ export function AboutSection() {
           <div>
             <h4 className="text-[var(--color-primary)] font-medium mb-3">Back End</h4>
             <div className="flex flex-wrap gap-2">
-              {skillGroups.backEnd.map((skill, index) => (
+              {skillCategories.backEnd.map((skill, index) => (
                 <SkillPill key={index} name={skill} />
               ))}
             </div>
@@ -54,7 +54,7 @@ export function AboutSection() {
           <div>
             <h4 className="text-[var(--color-primary)] font-medium mb-3">Tools & Platforms</h4>
             <div className="flex flex-wrap gap-2">
-              {skillGroups.tools.map((skill, index) => (
+              {skillCategories.tools.map((skill, index) => (
                 <SkillPill key={index} name={skill} />
               ))}
             </div>

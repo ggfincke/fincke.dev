@@ -3,8 +3,8 @@
 // import types from centralized location
 import type { Skill, SkillCategory } from '~/types';
 
-// all skills definition (comprehensive list matching resume)
-export const allSkills: Skill[] = [
+// skills definition (comprehensive list matching resume)
+export const skills: Skill[] = [
   // Languages
   { name: 'Python', category: 'languages' },
   { name: 'Swift', category: 'languages' },
@@ -120,8 +120,8 @@ export const allSkills: Skill[] = [
   { name: 'MVC/MVVM', category: 'specialized' },
 ];
 
-// skill groups for AboutSection display (matches resume exactly)
-export const skillGroups = {
+// skill categories for AboutSection display (matches resume exactly)
+export const skillCategories = {
   languages: ['JavaScript', 'TypeScript', 'Python', 'Swift', 'C', 'SQL'],
   
   frontEnd: ['React', 'Next.js', 'HTML', 'CSS', 'Tailwind CSS', 'SwiftUI'],
@@ -133,24 +133,24 @@ export const skillGroups = {
 
 // utility functions
 export const getSkillsByCategory = (category: SkillCategory): string[] => {
-  return allSkills
+  return skills
     .filter(skill => skill.category === category)
     .map(skill => skill.displayName || skill.name);
 };
 
 export const getSkillByName = (name: string): Skill | undefined => {
-  return allSkills.find(skill => 
+  return skills.find(skill => 
     skill.name === name || skill.displayName === name
   );
 };
 
 export const getAllSkillNames = (): string[] => {
-  return allSkills.map(skill => skill.displayName || skill.name);
+  return skills.map(skill => skill.displayName || skill.name);
 };
 
 // function to validate if a skill exists
 export const isValidSkill = (skillName: string): boolean => {
-  return allSkills.some(skill => 
+  return skills.some(skill => 
     skill.name === skillName || skill.displayName === skillName
   );
 };
