@@ -311,4 +311,23 @@ export const projects: Project[] = [
     technologies: ["Python", "Web Scraping", "Data Analysis", "BeautifulSoup"],
     repoUrl: "https://github.com/ggfincke/USBAP",
   },
+  {
+    title: "iOS Application Development Projects",
+    collaborators: [
+      { name: "Ashley Amendola" }
+    ],
+    dateRange: "Jan 2024 - Mar 2024",
+    status: "complete",
+    bulletPoints: [
+      <>Five comprehensive projects for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20475%3A%20Applications%20Programming" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 475: Applications Programming</a></>,
+      "Built LionSpell word puzzle game with custom polygon shapes, multi-language preferences, hints system, and New York Times-style UI design",
+      "Developed Pentominoes puzzle game implementing drag gestures, 3D rotation animations, JSON data parsing, and automated solve/reset functionality",
+      "Created Campus mapping applications using both SwiftUI Map and UIKit MKMapView with user location tracking, route planning, turn-by-turn directions, and annotation clustering",
+      "Designed Pokédex catalog app featuring card-based UI, type filtering, capture/release persistence, evolutionary chains, and comprehensive data management",
+      "Achieved grade of 98% average across all projects, demonstrating mastery of iOS development patterns, gesture handling, and advanced SwiftUI/UIKit integration"
+    ],
+    madeFor: "Penn State",
+    technologies: ["Swift", "SwiftUI", "UIKit", "MapKit", "Core Data", "JSON", "Custom Shapes", "Gesture Handling", "MVC/MVVM", "Xcode"],
+    // repoUrl: "https://github.com/ggfincke/CMPSC475_projects",
+  },
 ]; 
