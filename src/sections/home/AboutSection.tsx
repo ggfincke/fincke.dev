@@ -3,16 +3,10 @@
 // imports
 import { SkillPill } from '~/components/ui/SkillPill';
 import { aboutContent } from '~/data/content/about';
+import { skillGroups } from '~/data/structured/skills';
 
 // about section
 export function AboutSection() {
-  // skill categories
-  const skillGroups = {
-    languages: ["JavaScript", "TypeScript", "Python", "Swift", "C", "SQL"],
-    frontEnd: ["React", "Next.js", "HTML", "CSS", "Tailwind CSS", "SwiftUI"],
-    backEnd: ["Node.js", "Django", "PostgreSQL", "Firebase", "REST APIs"],
-    tools: ["Git", "VS Code", "Xcode", "Jupyter", "Docker", "Figma"]
-  };
   
   return (
     <div className="max-w-2xl">
