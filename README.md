@@ -6,13 +6,13 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1.4-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
 [![Website](https://img.shields.io/badge/Website-Live-success?style=flat-square&logo=vercel)](https://fincke.dev)
 
-A modern, responsive personal portfolio website for myself. Built with Next.js 15, React 19, and Tailwind CSS 4, featuring a clean minimalist design with responsive layout and smooth animations.
+A modern, responsive personal portfolio website built with Next.js 15, React 19, and Tailwind CSS 4. Features a clean minimalist design with responsive layout and smooth animations.
 
-## 🌐 Live Site
+## Live Site
 
 **Visit:** [fincke.dev](https://fincke.dev)
 
-## ✨ Features
+## Features
 
 - **Responsive Design**: Fully responsive layout that works on all devices
 - **Modern UI**: Clean, minimalist design with smooth animations and transitions
@@ -27,7 +27,7 @@ A modern, responsive personal portfolio website for myself. Built with Next.js 1
 - **Analytics**: Integrated Vercel Analytics for insights
 - **Custom Fonts**: Using Geist Sans and Geist Mono for modern typography
 
-## 🚀 Tech Stack
+## Tech Stack
 
 - **Framework**: Next.js 15.3.1 with App Router
 - **Frontend**: React 19.0.0 with TypeScript 5
@@ -38,7 +38,7 @@ A modern, responsive personal portfolio website for myself. Built with Next.js 1
 - **Development**: ESLint 9, Turbopack for fast development builds
 - **Deployment**: Vercel with custom domain
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 fincke.dev/
@@ -47,6 +47,7 @@ fincke.dev/
 │   ├── resume.pdf            # Resume document
 │   └── *.svg                 # Logo and icon files
 ├── src/
+│   ├── animations/           # Animation utilities and components
 │   ├── app/                  # Next.js App Router
 │   │   ├── layout.tsx        # Root layout with metadata
 │   │   ├── page.tsx          # Homepage with all sections
@@ -58,18 +59,25 @@ fincke.dev/
 │   │   ├── sidebar/          # Navigation sidebar components
 │   │   ├── timeline/         # Experience timeline components
 │   │   └── ui/               # General UI components
+│   │       └── cards/        # Card-based UI components
 │   ├── data/                 # Content and data files
 │   │   ├── content/          # Content for different sections
 │   │   └── structured/       # Structured data (experiences, projects)
 │   ├── hooks/                # Custom React hooks
-│   ├── sections/             # Page sections
-│   └── styles/               # CSS and styling
-├── tailwind.config.js        # Tailwind CSS configuration
+│   ├── sections/             # Page sections and layouts
+│   │   ├── home/            # Homepage section components
+│   │   └── projects/        # Project page components
+│   ├── styles/               # CSS and styling
+│   └── unused/               # Deprecated or unused components
+├── CLAUDE.md                 # Development instructions for Claude Code
+├── eslint.config.mjs         # ESLint configuration
 ├── next.config.ts            # Next.js configuration
+├── postcss.config.mjs        # PostCSS configuration
+├── tailwind.config.js        # Tailwind CSS configuration
 └── tsconfig.json             # TypeScript configuration
 ```
 
-## 🛠️ Local Development
+## Local Development
 
 ### Prerequisites
 
@@ -80,7 +88,7 @@ fincke.dev/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/fincke.dev.git
+   git clone <repository-url>
    cd fincke.dev
    ```
 
@@ -105,7 +113,7 @@ The development server uses Turbopack for fast rebuilds and hot reloading.
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
 
-## 🚀 Deployment
+## Deployment
 
 This project is deployed on Vercel with a custom domain. To deploy your own version:
 
@@ -115,7 +123,7 @@ This project is deployed on Vercel with a custom domain. To deploy your own vers
 4. Configure domain settings (optional)
 5. Deploy automatically on push
 
-## 📝 Content Management
+## Content Management
 
 The portfolio content is managed through structured data files:
 
@@ -124,7 +132,7 @@ The portfolio content is managed through structured data files:
 - **About**: `src/data/content/about.tsx` - Personal information and skills
 - **Contact**: `src/data/content/contact.tsx` - Contact information
 
-## 🎨 Customization
+## Customization
 
 To customize this portfolio for your own use:
 
@@ -134,26 +142,26 @@ To customize this portfolio for your own use:
 4. Update metadata in `src/app/layout.tsx`
 5. Configure custom domain in Vercel (optional)
 
-## 🙏 Credit & Attribution
+## Credit & Attribution
 
 If you use this portfolio as a template, fork it, or draw inspiration from it, please provide credit by:
 
-- ⭐ Starring this repository
-- 🔗 Linking back to [fincke.dev](https://fincke.dev) or this repository
-- 📝 Mentioning the original work in your README or about section
+- Starring this repository
+- Linking back to [fincke.dev](https://fincke.dev) or this repository
+- Mentioning the original work in your README or about section
 
 **Example attribution:**
 ```
 Portfolio design inspired by [Garrett Fincke's portfolio](https://fincke.dev)
 ```
 
-This helps support the open-source community and acknowledges the original work!
+This helps support the open-source community and acknowledges the original work.
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🤝 Contributing
+## Contributing
 
 While this is a personal portfolio, contributions for improvements, bug fixes, or additional features are welcome:
 
@@ -162,8 +170,6 @@ While this is a personal portfolio, contributions for improvements, bug fixes, o
 3. Make your changes
 4. Submit a pull request
 
-## 📧 Contact
+## Contact
 
-For questions or suggestions, feel free to reach out through the contact info on [fincke.dev](https://fincke.dev) or open an issue in this repository.
-
----
+For questions or suggestions, reach out through the contact info on [fincke.dev](https://fincke.dev) or open an issue in this repository.

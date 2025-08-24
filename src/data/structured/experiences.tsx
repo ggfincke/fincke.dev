@@ -32,11 +32,11 @@ export interface Education {
 export const experiences: Experience[] = [
   {
     id: 'scale',
-    date: 'MAY 2024 — PRESENT',
+    date: 'MAY 2024 — JUL 2025',
     title: 'Software Engineering Contractor',
     company: 'Scale AI',
     companyUrl: 'https://scale.com/',
-    technologies: ['Python', 'JavaScript', 'TypeScript', 'React', 'Swift'],
+    technologies: ['Python', 'TypeScript', 'JavaScript', 'Java', 'Swift', 'PostgreSQL'],
     companyLogos: (
       <>
         <GoogleLogo />
@@ -47,24 +47,32 @@ export const experiences: Experience[] = [
     content: (
       <>
         <p className="mb-4">
-          Contributed to AI-based projects for leading technology companies including Google, Meta, & OpenAI
+          Built internal tooling and harnesses to evaluate LLM-generated code for clients including Google, Meta, and OpenAI
         </p>
 
         <p className="mb-4">
-          As one example of my work, I contributed to{' '}<a href="https://www.theverge.com/news/670773/google-labs-stitch-ui-coding-design-tool" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">Google&apos;s Stitch UI coding design tool</a>, 
-          helping improve AI-assisted interface development capabilities.
+          Automated compilation, execution, linting, and test orchestration to measure pass@k and correctness
         </p>
 
         <p className="mb-4">
-          Evaluated and quality-tested AI-generated code across numerous languages to enhance logical reasoning, with emphasis on code quality standards and maintainability. 
+          Contributed to{' '}<a href="https://www.theverge.com/news/670773/google-labs-stitch-ui-coding-design-tool" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">Google&apos;s Stitch UI code-generation workflow</a>{' '}
+          by building prompt templates and evaluation harnesses that improved component fidelity and layout accuracy
         </p>
 
         <p className="mb-4">
-          Designed contextual frameworks and curated high-quality datasets focused on clean, optimal solutions that follow software engineering best practices.
+          Designed data pipelines for training/eval (schema/versioning, validation, deterministic sampling) that replaced manual review with scripted checks and reduced turnaround time
         </p>
 
         <p className="mb-4">
-          Created evaluation metrics that directly contributed to improving code generation capabilities of AI models, prioritizing clean code principles and readable implementations.
+          Instrumented metrics and built dashboards (syntax/style error rates, test failure modes); triaged failures with research/eng partners to accelerate model iteration cycles
+        </p>
+
+        <p className="mb-4">
+          Authored seed datasets and context frameworks emphasizing clean, idiomatic solutions and explicit performance trade-offs
+        </p>
+
+        <p className="mb-4">
+          Enforced schema normalization and deduplication at ingest via scripted checks for data quality assurance
         </p>
 
       </>
@@ -91,12 +99,40 @@ export const experiences: Experience[] = [
         </p>
       </>
     )
+  },
+  {
+    id: 'pink-ocean',
+    date: 'APR 2020 — PRESENT',
+    title: 'Owner / Operator',
+    company: 'Pink Ocean Collectibles',
+    companyUrl: 'https://www.ebay.com/usr/tterrag456',
+    technologies: ['Python', 'eBay APIs', 'TCGPlayer APIs'],
+    companyLogos: <></>,
+    content: (
+      <>
+        <p className="mb-4">
+          Built and operate multi-channel storefront for collectibles and refurbished electronics (eBay, TCGPlayer, Facebook Marketplace) with 2000+ sales since launch
+        </p>
+        <p className="mb-4">
+          Generated over $60k in lifetime profit through data-driven sourcing and dynamic pricing strategies across trading cards, comics, video games, retro consoles, and consumer electronics
+        </p>
+        <p className="mb-4">
+          Maintained exceptional customer relationships with 100% positive rating on eBay (105 feedback), TCGPlayer (700+ orders), and 5-star rating on Facebook Marketplace
+        </p>
+        <p className="mb-4">
+          Developed comprehensive automation suite including listing pipelines (Python + marketplace APIs), dynamic pricing tools based on market trends, and analytics dashboard for performance tracking
+        </p>
+        <p className="mb-4">
+          Repaired and modded consumer electronics (iPhones, Game Boys/GameCubes, PCs, and more) and sold restored units through storefront
+        </p>
+      </>
+    )
   }
 ];
 
 // education data
 export const education: Education = {
   institution: "Pennsylvania State University",
-  degree: "Bachelor of Engineering in Computer Science",
+  degree: "Bachelor of Science in Computer Science",
   period: "August 2021 - December 2024"
 }; 
