@@ -1,7 +1,7 @@
 // src/components/timeline/TimelineItem.tsx
 
 import { ReactNode } from 'react';
-import { SkillPill } from '../ui/SkillPill';
+import { SkillPill } from '~/components/ui/SkillPill';
 interface TimelineItemProps {
   date: string;
   title: string;

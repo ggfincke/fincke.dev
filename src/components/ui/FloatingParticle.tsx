@@ -1,4 +1,4 @@
-// src/components/FloatingParticle.tsx
+// src/components/ui/FloatingParticle.tsx
 import React from 'react';
 
 interface FloatingParticleProps {

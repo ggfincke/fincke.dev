@@ -3,11 +3,11 @@
 // use client
 'use client';
 
-import { SkillPill } from './SkillPill';
+import { SkillPill } from '~/components/ui/SkillPill';
 import { ReactNode } from 'react';
 import { Collaborator, ProjectStatus } from '~/data/structured/projects';
-import { StatusBadge } from './cards/StatusBadge';
-import { VersionBadge } from './cards/VersionBadge';
+import { StatusBadge } from '~/components/ui/cards/StatusBadge';
+import { VersionBadge } from '~/components/ui/cards/VersionBadge';
 
 
 // helper function to render collaborators w/ optional links

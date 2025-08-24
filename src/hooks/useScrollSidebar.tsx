@@ -1,7 +1,7 @@
 // src/hooks/useScrollSidebar.tsx
 
 import { useState, useEffect, useCallback } from 'react';
-import { useBreakpoint } from './useBreakpoint';
+import { useBreakpoint } from '~/hooks/useBreakpoint';
 
 // interface for useScrollSidebar options
 interface UseScrollSidebarOptions {

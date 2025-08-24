@@ -4,9 +4,9 @@
 'use client';
 
 import Image from 'next/image';
-import { SidebarHeader } from './SidebarHeader';
-import { Navigation } from './Navigation';
-import { SocialIcons } from '../ui/SocialIcons';
+import { SidebarHeader } from '~/components/sidebar/SidebarHeader';
+import { Navigation } from '~/components/sidebar/Navigation';
+import { SocialIcons } from '~/components/ui/SocialIcons';
 interface SidebarProps {
   // active section (from hook)
   activeSection: string;

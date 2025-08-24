@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import FloatingParticle from '../components/FloatingParticle';
-import useTypingAnimation from '../hooks/useTypingAnimation';
+import FloatingParticle from '~/components/ui/FloatingParticle';
+import useTypingAnimation from '~/hooks/useTypingAnimation';
 interface HeroSectionProps {
   scrollToSection: (sectionId: string) => void;
 }
