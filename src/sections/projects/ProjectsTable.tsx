@@ -4,13 +4,16 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { projects, type Collaborator } from '~/data/structured/all_projects';
+import { getAllProjects, type Collaborator } from '~/data/structured/projects';
 import { StatusBadge } from '~/components/ui/cards/StatusBadge';
 import { StatusCircle } from '~/components/ui/cards/StatusCircle';
 import { VersionBadge } from '~/components/ui/cards/VersionBadge';
 
 export function ProjectsTable() {
   const [expandedRows, setExpandedRows] = useState<number[]>([]);
+  
+  // get all projects
+  const projects = getAllProjects();
 
   // Sort projects in reverse chronological order (newest first)
   const sortedProjects = [...projects].sort((a, b) => {

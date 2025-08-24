@@ -8,12 +8,15 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { NavigationArrow } from '~/components/ui/cards/NavigationArrow';
 import { PaginationDots } from '~/components/ui/cards/PaginationDots';
-import { projects } from '~/data/structured/main_projects';
+import { getFeaturedProjects } from '~/data/structured/projects';
 import { ProjectCard } from '~/components/ui/ProjectCard';
 import { SectionNavButton } from '~/components/ui/SectionNavButton';
 
 // projects section component
 export function ProjectsSection() {
+  // get featured projects
+  const projects = getFeaturedProjects();
+  
   // state to track current project index
   const [currentIndex, setCurrentIndex] = useState(0);
   // state for animation
