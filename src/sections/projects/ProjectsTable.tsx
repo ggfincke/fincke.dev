@@ -8,6 +8,7 @@ import { getAllProjects, type Collaborator } from '~/data/structured/projects';
 import { StatusBadge } from '~/components/ui/cards/StatusBadge';
 import { StatusCircle } from '~/components/ui/cards/StatusCircle';
 import { VersionBadge } from '~/components/ui/cards/VersionBadge';
+import { SkillPill } from '~/components/ui/SkillPill';
 
 export function ProjectsTable() {
   const [expandedRows, setExpandedRows] = useState<number[]>([]);
@@ -234,12 +235,11 @@ export function ProjectsTable() {
                         </h4>
                         <div className="flex flex-wrap gap-2">
                           {project.technologies.map((tech: string, techIndex: number) => (
-                            <span 
+                            <SkillPill 
                               key={techIndex}
-                              className="bg-[var(--color-sidebar)] text-[var(--color-text)] px-2 py-1 rounded-full text-xs whitespace-nowrap hover:bg-[var(--color-border)] transition-colors duration-200"
-                            >
-                              {tech}
-                            </span>
+                              name={tech}
+                              size="xs"
+                            />
                           ))}
                         </div>
                       </div>
@@ -389,12 +389,11 @@ export function ProjectsTable() {
                 <td className="py-6 pl-4 pr-4">
                   <div className="flex flex-wrap gap-2 items-center max-w-xs">
                     {project.technologies.slice(0, 3).map((tech: string, techIndex: number) => (
-                      <span 
+                      <SkillPill 
                         key={techIndex}
-                        className="bg-[var(--color-sidebar)] text-[var(--color-text)] px-2 py-1 rounded-full text-xs whitespace-nowrap"
-                      >
-                        {tech}
-                      </span>
+                        name={tech}
+                        size="xs"
+                      />
                     ))}
                     {project.technologies.length > 3 && (
                       <span className="text-[var(--color-muted)] text-xs">
@@ -516,12 +515,11 @@ export function ProjectsTable() {
                           </h4>
                           <div className="flex flex-wrap gap-x-3 gap-y-2">
                             {project.technologies.map((tech: string, techIndex: number) => (
-                              <span 
+                              <SkillPill 
                                 key={techIndex}
-                                className="bg-[var(--color-sidebar)] text-[var(--color-text)] px-3 py-1 rounded-full text-sm whitespace-nowrap hover:bg-[var(--color-border)] transition-colors duration-200"
-                              >
-                                {tech}
-                              </span>
+                                name={tech}
+                                size="md"
+                              />
                             ))}
                           </div>
                         </div>

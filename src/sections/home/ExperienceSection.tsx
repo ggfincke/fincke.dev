@@ -7,6 +7,7 @@ import { experienceContent } from '~/data/content/experience';
 import { useEffect, useState } from 'react';
 import { ReactNode } from 'react';
 import { SectionNavButton } from '~/components/ui/SectionNavButton';
+import { SkillPill } from '~/components/ui/SkillPill';
 interface MobileExperienceItemProps {
   date: string;
   title: string;
@@ -65,9 +66,7 @@ function MobileExperienceItem({
       {technologies.length > 0 && (
         <div className="flex flex-wrap gap-2 mt-4">
           {technologies.map((tech, index) => (
-            <span key={index} className="bg-[var(--color-sidebar)] text-[var(--color-text)] px-2 py-1 md:px-3 md:py-1 rounded-full text-xs sm:text-sm">
-              {tech}
-            </span>
+            <SkillPill key={index} name={tech} size="sm" />
           ))}
         </div>
       )}
