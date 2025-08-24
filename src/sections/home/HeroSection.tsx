@@ -1,12 +1,9 @@
 // src/sections/HeroSection.tsx
 
-// imports
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import FloatingParticle from '~/components/FloatingParticle';
 import useTypingAnimation from '~/hooks/useTypingAnimation';
-
-// hero section
 interface HeroSectionProps {
   scrollToSection: (sectionId: string) => void;
 }

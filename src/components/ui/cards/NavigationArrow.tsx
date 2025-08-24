@@ -1,9 +1,6 @@
 // src/components/ui/NavigationArrow.tsx
 
-// imports
 import React from 'react';
-
-// navigation arrow component
 interface NavigationArrowProps {
   direction: 'left' | 'right';
   onClick: () => void;

@@ -1,9 +1,6 @@
 // src/components/ui/PaginationDots.tsx
 
-// imports
 import React from 'react';
-
-// pagination dots component
 interface PaginationDotsProps {
   totalItems: number;
   currentIndex: number;

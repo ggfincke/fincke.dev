@@ -1,6 +1,5 @@
 // src/hooks/useScrollSidebar.tsx
 
-// imports
 import { useState, useEffect, useCallback } from 'react';
 
 // interface for useScrollSidebar options

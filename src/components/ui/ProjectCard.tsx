@@ -3,7 +3,6 @@
 // use client
 'use client';
 
-// imports
 import { SkillPill } from './SkillPill';
 import { ReactNode } from 'react';
 import { Collaborator, ProjectStatus } from '~/data/structured/projects';

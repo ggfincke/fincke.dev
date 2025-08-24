@@ -3,7 +3,6 @@
 // use client
 'use client';
 
-// imports
 // components
 import { Sidebar } from '~/components/sidebar/Sidebar';
 import { SectionHeading } from '~/components/ui/SectionHeading';
@@ -19,8 +18,6 @@ import { useScrollSidebar } from '~/hooks/useScrollSidebar';
 import { sidebarAnimation, contentAnimation } from '~/styles/sidebarAnimations';
 // react
 import { useEffect, useState } from 'react';
-
-// home page
 export default function Home() {
   // use scroll sidebar hook
   const { showSidebar, activeSection, scrollToSection } = useScrollSidebar({

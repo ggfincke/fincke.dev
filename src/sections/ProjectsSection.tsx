@@ -3,7 +3,6 @@
 // use client 
 'use client';
 
-// imports
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { NavigationArrow } from '~/components/ui/cards/NavigationArrow';

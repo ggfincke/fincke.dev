@@ -1,5 +1,6 @@
 // src/components/sections/ExperienceSection.tsx
 
+// imports
 import { TimelineContainer } from '~/components/timeline/TimelineContainer';
 import { TimelineItem } from '~/components/timeline/TimelineItem';
 import { experiences, education } from '~/data/structured/experiences';
@@ -7,6 +8,9 @@ import { experienceContent } from '~/data/content/experience';
 import { useEffect, useState } from 'react';
 import { ReactNode } from 'react';
 import { SectionNavButton } from '~/components/ui/SectionNavButton';
+
+
+// MobileExperienceItem
 interface MobileExperienceItemProps {
   date: string;
   title: string;
@@ -75,6 +79,7 @@ function MobileExperienceItem({
   );
 }
 
+// experience section
 export function ExperienceSection() {
   // State to track screen size
   const [isLargeScreen, setIsLargeScreen] = useState(true);

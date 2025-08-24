@@ -3,13 +3,10 @@
 // use client   
 'use client';
 
-// imports
 import Image from 'next/image';
 import { SidebarHeader } from './SidebarHeader';
 import { Navigation } from './Navigation';
 import { SocialIcons } from '../ui/SocialIcons';
-
-// sidebar component
 interface SidebarProps {
   // active section (from hook)
   activeSection: string;

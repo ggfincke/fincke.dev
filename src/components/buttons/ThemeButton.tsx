@@ -3,7 +3,6 @@
 // use client
 'use client';
 
-// import dependencies
 import { ReactNode } from 'react';
 
 // define variant type

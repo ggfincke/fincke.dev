@@ -2,7 +2,6 @@
 
 // src/data/projects.tsx
 
-// imports
 import { ReactNode } from 'react';
 
 

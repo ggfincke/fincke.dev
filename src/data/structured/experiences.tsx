@@ -1,7 +1,5 @@
 // src/data/structured/experiences.tsx
 
-// imports
-// react
 import { ReactNode } from 'react';
 // logos
 import GoogleLogo from '~/components/logos/GoogleLogo';
