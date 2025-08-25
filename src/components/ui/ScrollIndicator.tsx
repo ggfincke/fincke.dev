@@ -4,6 +4,7 @@
 
 // interface for scroll indicator props
 import type { ScrollIndicatorProps } from '~/types';
+import '~/styles/animations.css';
 
 // scroll indicator component
 export function ScrollIndicator({ onClick }: ScrollIndicatorProps) {

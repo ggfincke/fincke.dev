@@ -47,17 +47,13 @@ const statusConfig = {
     const statusDisplay = statusConfig[status];
     
     return (
-      <span style={{ 
-        color: statusDisplay.color, 
-        backgroundColor: statusDisplay.bgColor,
-        padding: '0.25rem 0.75rem',
-        borderRadius: '9999px',
-        fontSize: '0.75rem',
-        fontWeight: '500',
-        display: 'inline-flex',
-        alignItems: 'center',
-        whiteSpace: 'nowrap'
-      }}>
+      <span 
+        className="inline-flex items-center whitespace-nowrap px-3 py-1 rounded-full text-xs font-medium"
+        style={{ 
+          color: statusDisplay.color, 
+          backgroundColor: statusDisplay.bgColor
+        }}
+      >
         {statusDisplay.icon} {statusDisplay.label}
       </span>
     );

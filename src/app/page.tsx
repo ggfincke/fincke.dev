@@ -16,7 +16,7 @@ import { Footer } from '~/sections/Footer';
 import { useScrollSidebar } from '~/hooks/useScrollSidebar';
 import { useBreakpoint } from '~/hooks/useBreakpoint';
 // styles
-import { sidebarAnimation, contentAnimation } from '~/styles/sidebarAnimations';
+import '~/styles/sidebarAnimation.css';
 export default function Home() {
   const { showSidebar, activeSection, scrollToSection } = useScrollSidebar({
     offset: 150 
@@ -28,8 +28,7 @@ export default function Home() {
       {/* Sidebar - hidden on mobile and tablet screens */}
       {isDesktop && (
         <div 
-          className="fixed left-0 top-0 h-screen z-50 hidden lg:block"
-          style={showSidebar ? sidebarAnimation.visible : sidebarAnimation.hidden}
+          className={`sidebar-container ${showSidebar ? 'sidebar-visible' : 'sidebar-hidden'} hidden lg:block`}
         >
           <Sidebar 
             activeSection={activeSection} 
@@ -39,7 +38,7 @@ export default function Home() {
       )}
       
       {/* Main content */}
-      <main style={!isDesktop ? {} : (showSidebar ? contentAnimation.withSidebar : contentAnimation.fullWidth)}>
+      <main className={`main-content ${!isDesktop ? '' : (showSidebar ? 'main-content-with-sidebar' : 'main-content-full')}`}>
         {/* Hero section */}
         <section id="hero" className="min-h-screen flex items-center bg-[var(--color-background)] py-16 md:py-24 relative">
           <HeroSection scrollToSection={scrollToSection} />

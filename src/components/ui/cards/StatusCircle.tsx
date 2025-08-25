@@ -45,22 +45,16 @@ const statusConfig: Record<ProjectStatus, { icon: string; label: string; color: 
 
 export function StatusCircle({ status, size = 32 }: StatusCircleProps) {
   const statusDisplay = statusConfig[status];
-  const dimension = `${size}px`;
 
   return (
     <span
+      className="inline-flex items-center justify-center rounded-full font-medium"
       style={{
-        width: dimension,
-        height: dimension,
-        lineHeight: dimension,
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: '50%',
+        width: `${size}px`,
+        height: `${size}px`,
         backgroundColor: statusDisplay.color,
         color: 'var(--color-background)',
-        fontSize: size * 0.5,
-        fontWeight: 500,
+        fontSize: `${size * 0.5}px`,
       }}
       aria-label={statusDisplay.label}
       title={statusDisplay.label}
