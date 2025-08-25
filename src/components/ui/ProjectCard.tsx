@@ -3,12 +3,10 @@
 // use client
 'use client';
 
-// imports
-import { SkillPill } from './SkillPill';
-import { ReactNode } from 'react';
-import { Collaborator, ProjectStatus } from '~/data/structured/main_projects';
-import { StatusBadge } from './cards/StatusBadge';
-import { VersionBadge } from './cards/VersionBadge';
+import { SkillPill } from '~/components/ui/SkillPill';
+import { StatusBadge } from '~/components/ui/cards/StatusBadge';
+import { VersionBadge } from '~/components/ui/cards/VersionBadge';
+import type { ProjectCardProps, Collaborator } from '~/types';
 
 
 // helper function to render collaborators w/ optional links
@@ -61,17 +59,6 @@ const renderCollaborators = (collaborators: string | string[] | Collaborator | C
 };
 
 // project card component
-interface ProjectCardProps {
-  title: string;
-  dateRange: string;
-  bulletPoints: (string | ReactNode)[];
-  technologies: string[];
-  repoUrl?: string;
-  liveUrl?: string;
-  contentComponent?: React.ReactNode;
-  status: ProjectStatus;
-  collaborators?: string | string[] | Collaborator | Collaborator[];
-}
 
 export function ProjectCard({ 
   title, 

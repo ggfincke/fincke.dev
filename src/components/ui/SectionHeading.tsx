@@ -1,13 +1,7 @@
-// src/components/SectionHeading.tsx
+// src/components/ui/SectionHeading.tsx
 
 // props for section heading
-interface SectionHeadingProps {
-  title: string;
-  subtitle?: string;
-  subsubtitle?: string;
-  align?: 'left' | 'center' | 'right';
-  className?: string;
-}
+import type { SectionHeadingProps } from '~/types';
 
 // section heading component
 export function SectionHeading({

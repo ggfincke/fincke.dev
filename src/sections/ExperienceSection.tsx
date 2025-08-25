@@ -1,4 +1,4 @@
-// src/components/sections/ExperienceSection.tsx
+// src/sections/ExperienceSection.tsx
 
 // imports
 import { TimelineContainer } from '~/components/timeline/TimelineContainer';
@@ -6,21 +6,12 @@ import { TimelineItem } from '~/components/timeline/TimelineItem';
 import { experiences, education } from '~/data/structured/experiences';
 import { experienceContent } from '~/data/content/experience';
 import { useEffect, useState } from 'react';
-import { ReactNode } from 'react';
 import { SectionNavButton } from '~/components/ui/SectionNavButton';
+import { SkillPill } from '~/components/ui/SkillPill';
+import type { MobileExperienceItemProps } from '~/types';
 
 
 // MobileExperienceItem
-interface MobileExperienceItemProps {
-  date: string;
-  title: string;
-  company: string;
-  children: ReactNode;
-  technologies?: string[];
-  companyUrl?: string;
-  companyLogos?: ReactNode;
-  isLast?: boolean;
-}
 function MobileExperienceItem({ 
   date, 
   title, 
@@ -69,9 +60,7 @@ function MobileExperienceItem({
       {technologies.length > 0 && (
         <div className="flex flex-wrap gap-2 mt-4">
           {technologies.map((tech, index) => (
-            <span key={index} className="bg-[var(--color-sidebar)] text-[var(--color-text)] px-2 py-1 md:px-3 md:py-1 rounded-full text-xs sm:text-sm">
-              {tech}
-            </span>
+            <SkillPill key={index} name={tech} size="sm" />
           ))}
         </div>
       )}

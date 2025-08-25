@@ -1,7 +1,7 @@
 // src/hooks/useScrollSidebar.tsx
 
-// imports
 import { useState, useEffect, useCallback } from 'react';
+import { useBreakpoint } from '~/hooks/useBreakpoint';
 
 // interface for useScrollSidebar options
 interface UseScrollSidebarOptions {
@@ -26,23 +26,7 @@ export function useScrollSidebar({
   const [showSidebar, setShowSidebar] = useState(false);
   const [activeSection, setActiveSection] = useState(sections[0] || 'hero');
   const [scrolling, setScrolling] = useState(false);
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
-
-  // Check for small/medium screens on mount and resize
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsSmallScreen(window.innerWidth < 1024); // 1024px is the 'lg' breakpoint in Tailwind
-    };
-    
-    // Set initial value
-    checkScreenSize();
-    
-    // Add event listener
-    window.addEventListener('resize', checkScreenSize);
-    
-    // Clean up
-    return () => window.removeEventListener('resize', checkScreenSize);
-  }, []);
+  const { isDesktop } = useBreakpoint();
 
   // throttled scroll handler to improve performance
   const handleScroll = useCallback(() => {
@@ -64,15 +48,15 @@ export function useScrollSidebar({
           setActiveSection(section);
           
           // set sidebar visibility based on whether we're past the hero section
-          // but only on large screens
-          if (!isSmallScreen) {
+          // but only on desktop screens
+          if (isDesktop) {
             if (section !== 'hero') {
               setShowSidebar(true);
             } else {
               setShowSidebar(false);
             }
           } else {
-            // Always hide sidebar on small/medium screens
+            // Always hide sidebar on mobile/tablet screens
             setShowSidebar(false);
           }
           
@@ -82,7 +66,7 @@ export function useScrollSidebar({
       
       setScrolling(false);
     }, 100); // throttle to every 100ms
-  }, [scrolling, sections, offset, isSmallScreen]);
+  }, [scrolling, sections, offset, isDesktop]);
   
   // handle scroll to determine active section
   useEffect(() => {
@@ -103,12 +87,12 @@ export function useScrollSidebar({
     // smooth scroll to section
     element.scrollIntoView({ behavior: 'smooth' });
     
-    // force sidebar visibility based on section but only on large screens
-    if (!isSmallScreen && sectionId !== 'hero') {
+    // force sidebar visibility based on section but only on desktop screens
+    if (isDesktop && sectionId !== 'hero') {
       setShowSidebar(true);
     }
     
-  }, [isSmallScreen]);
+  }, [isDesktop]);
 
   return {
     showSidebar,

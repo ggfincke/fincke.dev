@@ -3,20 +3,9 @@
 // use client
 'use client';
 
-// import dependencies
-import { ReactNode } from 'react';
+import type { ButtonProps } from '~/types';
 
 // define variant type
-type Variant = 'primary' | 'secondary' | 'outline';
-
-// props for button
-interface ButtonProps {
-  variant: Variant;
-  children: ReactNode;
-  href?: string;
-  onClick?: () => void;
-  className?: string;
-}
 
 // theme button component
 export function ThemeButton({ 

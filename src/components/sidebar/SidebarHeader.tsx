@@ -1,12 +1,6 @@
 // src/components/sidebar/SidebarHeader.tsx
 
-// imports
-import { ReactNode } from 'react';
-
-// sidebar header component
-interface SidebarHeaderProps {
-  logo: ReactNode;
-}
+import type { SidebarHeaderProps } from '~/types';
 
 export function SidebarHeader({ logo }: SidebarHeaderProps) {
   return (

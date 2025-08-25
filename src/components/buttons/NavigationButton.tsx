@@ -1,12 +1,7 @@
 // src/components/buttons/NavigationButton.tsx
 
 // navigation button component
-interface NavButtonProps {
-    sectionId: string;
-    label: string;
-    activeSection: string;
-    onClick: (sectionId: string) => void;
-  }
+import type { NavButtonProps } from '~/types';
   
   export function NavButton({ sectionId, label, activeSection, onClick }: NavButtonProps) {
     return (

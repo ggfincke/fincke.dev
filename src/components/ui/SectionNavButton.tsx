@@ -1,10 +1,7 @@
-import Link from 'next/link';
+// src/components/ui/SectionNavButton.tsx
 
-interface SectionNavButtonProps {
-  href: string;
-  children: React.ReactNode;
-  className?: string;
-}
+import Link from 'next/link';
+import type { SectionNavButtonProps } from '~/types';
 
 export function SectionNavButton({ href, children, className = '' }: SectionNavButtonProps) {
   return (

@@ -1,15 +1,7 @@
-// src/components/ui/PaginationDots.tsx
+// src/components/ui/cards/PaginationDots.tsx
 
-// imports
 import React from 'react';
-
-// pagination dots component
-interface PaginationDotsProps {
-  totalItems: number;
-  currentIndex: number;
-  onDotClick: (index: number) => void;
-  disabled?: boolean;
-}
+import type { PaginationDotsProps } from '~/types';
 
 export function PaginationDots({ totalItems, currentIndex, onDotClick, disabled }: PaginationDotsProps) {
   return (

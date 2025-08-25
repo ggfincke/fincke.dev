@@ -1,15 +1,11 @@
-// src/sections/HeroSection.tsx
+// src/sections/home/HeroSection.tsx
 
-// imports
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import FloatingParticle from '~/components/FloatingParticle';
+import FloatingParticle from '~/components/ui/FloatingParticle';
 import useTypingAnimation from '~/hooks/useTypingAnimation';
-
-// hero section
-interface HeroSectionProps {
-  scrollToSection: (sectionId: string) => void;
-}
+import type { HeroSectionProps } from '~/types';
+import '~/styles/animations.css';
 
 export function HeroSection({ scrollToSection }: HeroSectionProps) {
   const { displayText: nameText, isComplete: nameComplete } = useTypingAnimation('Garrett Fincke', 120);

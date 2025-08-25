@@ -1,9 +1,7 @@
-// src/components/SocialIcons.tsx
+// src/components/ui/SocialIcons.tsx
 
 // social icons (email, phone, github, linkedin)
-interface SocialIconsProps {
-  className?: string;
-}
+import type { SocialIconsProps } from '~/types';
 
 export function SocialIcons({ className = "" }: SocialIconsProps) {
   return (
