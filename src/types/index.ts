@@ -1,7 +1,7 @@
 // src/types/index.ts
 // Central export file for all type definitions
 
-// Data types
+// Content and data types
 export type {
   Experience,
   Education,
@@ -10,23 +10,40 @@ export type {
   Collaborator,
   Skill,
   SkillCategory,
-} from './data';
+} from './content.types';
 
-// Component prop types
+// Navigation-specific types
 export type {
-  // Button components
   NavButtonProps,
-  ButtonProps,
-  Variant,
-  
-  // Sidebar components
   SidebarHeaderProps,
   SidebarProps,
   NavigationProps,
+} from './navigation.types';
+
+// UI component types and utilities
+export type {
+  // Common utility types
+  Size,
+  Alignment,
+  Direction,
+  Theme,
+  Variant,
+  
+  // Common patterns
+  BaseComponent,
+  ClickableComponent,
+  LinkComponent,
+  AnimationProps,
+  EventHandler,
+  ChangeHandler,
+  
+  // Button components
+  ButtonProps,
   
   // Timeline components
   TimelineItemProps,
   TimelineContainerProps,
+  MobileExperienceItemProps,
   
   // UI components
   SocialIconsProps,
@@ -40,32 +57,15 @@ export type {
   
   // UI Card components
   StatusCircleProps,
+  StatusBadgeProps,
   VersionBadgeProps,
   NavigationArrowProps,
   PaginationDotsProps,
-  StatusBadgeProps,
   
   // Section components
   HeroSectionProps,
   FooterProps,
-  MobileExperienceItemProps,
-} from './components';
-
-// Shared utility types
-export type {
-  Size,
-  Alignment,
-  Direction,
-  Theme,
-  BaseComponent,
-  ClickableComponent,
-  LinkComponent,
-  AnimationProps,
-  Breakpoint,
-  ResponsiveValue,
-  EventHandler,
-  ChangeHandler,
-  AsyncState,
-  PaginationState,
-  FormField,
-} from './shared';
+  
+  // External API types
+  GitHubRelease,
+} from './ui.types';

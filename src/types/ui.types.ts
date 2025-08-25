@@ -1,39 +1,46 @@
-// src/types/components.ts
+// src/types/ui.types.ts
 
 import { ReactNode } from 'react';
-import { ProjectStatus, Collaborator } from './data';
+import { ProjectStatus, Collaborator } from './content.types';
 
-// Button component types
-export interface NavButtonProps {
-  sectionId: string;
-  label: string;
-  activeSection: string;
-  onClick: (sectionId: string) => void;
-}
-
+// Common utility types
+export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type Alignment = 'left' | 'center' | 'right';
+export type Direction = 'left' | 'right' | 'up' | 'down';
+export type Theme = 'light' | 'dark';
 export type Variant = 'primary' | 'secondary';
 
+// Common component patterns
+export interface BaseComponent {
+  className?: string;
+  children?: ReactNode;
+}
+
+export interface ClickableComponent {
+  onClick?: () => void;
+  disabled?: boolean;
+}
+
+export interface LinkComponent {
+  href?: string;
+  target?: '_blank' | '_self' | '_parent' | '_top';
+  rel?: string;
+}
+
+// Animation and transition types
+export interface AnimationProps {
+  delay?: number;
+  duration?: number;
+  easing?: string;
+}
+
+// Button component types
 export interface ButtonProps {
   variant: Variant;
   children: ReactNode;
   href?: string;
   onClick?: () => void;
   className?: string;
-}
-
-// Sidebar component types
-export interface SidebarHeaderProps {
-  logo: ReactNode;
-}
-
-export interface SidebarProps {
-  activeSection: string;
-  onSectionClick: (sectionId: string) => void;
-}
-
-export interface NavigationProps {
-  activeSection: string;
-  onSectionClick: (sectionId: string) => void;
 }
 
 // Timeline component types
@@ -53,6 +60,17 @@ export interface TimelineContainerProps {
   className?: string;
 }
 
+export interface MobileExperienceItemProps {
+  date: string;
+  title: string;
+  company: string;
+  children: ReactNode;
+  technologies?: string[];
+  companyUrl?: string;
+  companyLogos?: ReactNode;
+  isLast?: boolean;
+}
+
 // UI component types
 export interface SocialIconsProps {
   className?: string;
@@ -62,7 +80,7 @@ export type SkillPillSize = 'xs' | 'sm' | 'md';
 
 export interface SkillPillProps {
   name: string;
-  size?: SkillPillSize;
+  size?: SkillPillSize; // Specific to SkillPill component constraints
   className?: string;
 }
 
@@ -95,7 +113,7 @@ export interface SectionHeadingProps {
   title: string;
   subtitle?: string;
   subsubtitle?: string;
-  align?: 'left' | 'center' | 'right';
+  align?: Alignment;
   className?: string;
 }
 
@@ -109,12 +127,16 @@ export interface StatusCircleProps {
   size?: number; // optional diameter in px
 }
 
+export interface StatusBadgeProps {
+  status: ProjectStatus;
+}
+
 export interface VersionBadgeProps {
   repoUrl: string;
 }
 
 export interface NavigationArrowProps {
-  direction: 'left' | 'right';
+  direction: Direction;
   onClick: () => void;
   disabled?: boolean;
 }
@@ -126,8 +148,10 @@ export interface PaginationDotsProps {
   disabled?: boolean;
 }
 
-export interface StatusBadgeProps {
-  status: ProjectStatus;
+// External API types for components
+export interface GitHubRelease {
+  tag_name: string;
+  published_at: string;
 }
 
 // Section component types
@@ -139,13 +163,6 @@ export interface FooterProps {
   isSmallScreen?: boolean;
 }
 
-export interface MobileExperienceItemProps {
-  date: string;
-  title: string;
-  company: string;
-  children: ReactNode;
-  technologies?: string[];
-  companyUrl?: string;
-  companyLogos?: ReactNode;
-  isLast?: boolean;
-}
+// Event handlers
+export type EventHandler<T = void> = (event?: Event) => T;
+export type ChangeHandler<T> = (value: T) => void;

@@ -1,4 +1,4 @@
-// src/types/data.ts
+// src/types/content.types.ts
 
 import { ReactNode } from 'react';
 
