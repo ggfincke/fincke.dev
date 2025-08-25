@@ -1,6 +1,6 @@
 // src/sections/home/AboutSection.tsx
 
-import { SkillPill } from '~/components/ui/SkillPill';
+import { SkillPill } from '~/components/display/SkillPill';
 import { aboutContent } from '~/data/content/about';
 import { skillCategories } from '~/data/structured/skills';
 

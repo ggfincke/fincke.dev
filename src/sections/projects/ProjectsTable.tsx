@@ -6,10 +6,10 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { getAllProjects } from '~/data/structured/projects';
 import type { Collaborator } from '~/types';
-import { StatusBadge } from '~/components/ui/cards/StatusBadge';
-import { StatusCircle } from '~/components/ui/cards/StatusCircle';
-import { VersionBadge } from '~/components/ui/cards/VersionBadge';
-import { SkillPill } from '~/components/ui/SkillPill';
+import { StatusBadge } from '~/components/display/StatusBadge';
+import { StatusCircle } from '~/components/display/StatusCircle';
+import { VersionBadge } from '~/components/display/VersionBadge';
+import { SkillPill } from '~/components/display/SkillPill';
 
 export function ProjectsTable() {
   const [expandedRows, setExpandedRows] = useState<number[]>([]);

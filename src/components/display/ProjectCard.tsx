@@ -3,9 +3,9 @@
 // use client
 'use client';
 
-import { SkillPill } from '~/components/ui/SkillPill';
-import { StatusBadge } from '~/components/ui/cards/StatusBadge';
-import { VersionBadge } from '~/components/ui/cards/VersionBadge';
+import { SkillPill } from '~/components/display/SkillPill';
+import { StatusBadge } from '~/components/display/StatusBadge';
+import { VersionBadge } from '~/components/display/VersionBadge';
 import type { ProjectCardProps, Collaborator } from '~/types';
 
 

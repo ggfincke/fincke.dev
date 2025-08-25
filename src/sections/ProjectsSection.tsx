@@ -5,11 +5,11 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { NavigationArrow } from '~/components/ui/cards/NavigationArrow';
-import { PaginationDots } from '~/components/ui/cards/PaginationDots';
+import { NavigationArrow } from '~/components/navigation/NavigationArrow';
+import { PaginationDots } from '~/components/display/PaginationDots';
 import { getFeaturedProjects } from '~/data/structured/projects';
-import { ProjectCard } from '~/components/ui/ProjectCard';
-import { SectionNavButton } from '~/components/ui/SectionNavButton';
+import { ProjectCard } from '~/components/display/ProjectCard';
+import { SectionNavButton } from '~/components/navigation/SectionNavButton';
 
 // projects section component
 export function ProjectsSection() {

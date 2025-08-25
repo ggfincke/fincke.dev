@@ -1,7 +1,7 @@
 // src/sections/Footer.tsx
 
 // footer component
-import { SocialIcons } from "~/components/ui/SocialIcons";
+import { SocialIcons } from "~/components/interactive/SocialIcons";
 import type { FooterProps } from '~/types';
 
 

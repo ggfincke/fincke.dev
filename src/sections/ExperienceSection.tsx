@@ -1,13 +1,13 @@
 // src/sections/ExperienceSection.tsx
 
 // imports
-import { TimelineContainer } from '~/components/timeline/TimelineContainer';
-import { TimelineItem } from '~/components/timeline/TimelineItem';
+import { TimelineContainer } from '~/components/layout/TimelineContainer';
+import { TimelineItem } from '~/components/layout/TimelineItem';
 import { experiences, education } from '~/data/structured/experiences';
 import { experienceContent } from '~/data/content/experience';
 import { useEffect, useState } from 'react';
-import { SectionNavButton } from '~/components/ui/SectionNavButton';
-import { SkillPill } from '~/components/ui/SkillPill';
+import { SectionNavButton } from '~/components/navigation/SectionNavButton';
+import { SkillPill } from '~/components/display/SkillPill';
 import type { MobileExperienceItemProps } from '~/types';
 
 

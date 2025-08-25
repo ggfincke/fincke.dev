@@ -4,9 +4,9 @@
 'use client';
 
 import Image from 'next/image';
-import { SidebarHeader } from '~/components/sidebar/SidebarHeader';
-import { Navigation } from '~/components/sidebar/Navigation';
-import { SocialIcons } from '~/components/ui/SocialIcons';
+import { SidebarHeader } from '~/components/layout/SidebarHeader';
+import { Navigation } from '~/components/navigation/Navigation';
+import { SocialIcons } from '~/components/interactive/SocialIcons';
 import type { SidebarProps } from '~/types';
 export function Sidebar({ activeSection, onSectionClick }: SidebarProps) {
   return (

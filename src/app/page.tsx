@@ -4,8 +4,8 @@
 'use client';
 
 // components
-import { Sidebar } from '~/components/sidebar/Sidebar';
-import { SectionHeading } from '~/components/ui/SectionHeading';
+import { Sidebar } from '~/components/layout/Sidebar';
+import { SectionHeading } from '~/components/display/SectionHeading';
 // sections
 import { HeroSection } from '~/sections/home/HeroSection';
 import { AboutSection } from '~/sections/home/AboutSection';
