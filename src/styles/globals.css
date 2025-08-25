@@ -1,25 +1,5 @@
-/* src/app/globals.css */
+/* Global base styles - built on Tailwind CSS 4 */
 @import "tailwindcss";
-
-:root {
-  --color-primary: #80CBC4;
-  --color-background: #0F111A;
-  --color-background-alt: #090B10;
-  --color-text: #babed8;
-  --color-text-light: #EEFFFF;
-  --color-accent: #FFCC00;
-  --color-border: #3E445D;
-  --color-input-bg: #1A1C25;
-  --color-sidebar: #292D3E;
-  --color-muted: #464B5D;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--color-background);
-    --foreground: var(--color-text-light);
-  }
-}
 
 html, body {
   width: 100%;
@@ -174,4 +154,81 @@ aside {
   }
 }
 
+/* Sidebar animation styles - consolidated */
+.sidebar-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  z-index: 50;
+  transition: transform var(--duration-slow) var(--ease-bounce);
+}
 
+.sidebar-hidden {
+  transform: translateX(-100%);
+}
+
+.sidebar-visible {
+  transform: translateX(0);
+}
+
+/* Main content transition */
+.main-content {
+  width: 100%;
+  transition: padding-left var(--duration-slow) var(--ease-bounce);
+}
+
+.main-content-with-sidebar {
+  padding-left: var(--sidebar-width);
+}
+
+.main-content-full {
+  padding-left: 0;
+}
+
+/* For mobile: Overlay sidebar instead of pushing content */
+@media (max-width: 1024px) {
+  .sidebar-container {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .main-content-with-sidebar {
+    padding-left: 0;
+  }
+  
+  /* Mobile navigation padding adjustments */
+  .main-content {
+    padding-top: var(--section-padding-tablet);
+  }
+  
+  /* Hero section adjustments */
+  #hero {
+    padding-top: 0 !important;
+  }
+  
+  /* Optional overlay background when sidebar is visible on mobile */
+  .sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 40;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--duration-normal) ease;
+  }
+  
+  .sidebar-overlay-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* Medium and larger screens */
+@media (min-width: 1025px) {
+  .main-content {
+    padding-top: 0;
+  }
+}

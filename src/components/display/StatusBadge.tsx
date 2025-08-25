@@ -50,9 +50,11 @@ const statusConfig = {
       <span 
         className="inline-flex items-center whitespace-nowrap px-3 py-1 rounded-full text-xs font-medium"
         style={{ 
-          color: statusDisplay.color, 
-          backgroundColor: statusDisplay.bgColor
-        }}
+          '--status-color': statusDisplay.color,
+          '--status-bg-color': statusDisplay.bgColor,
+          color: 'var(--status-color)', 
+          backgroundColor: 'var(--status-bg-color)'
+        } as React.CSSProperties}
       >
         {statusDisplay.icon} {statusDisplay.label}
       </span>

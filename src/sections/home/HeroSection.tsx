@@ -5,7 +5,6 @@ import Image from 'next/image';
 import FloatingParticle from '~/components/display/FloatingParticle';
 import useTypingAnimation from '~/hooks/useTypingAnimation';
 import type { HeroSectionProps } from '~/types';
-import '~/styles/animations.css';
 
 export function HeroSection({ scrollToSection }: HeroSectionProps) {
   const { displayText: nameText, isComplete: nameComplete } = useTypingAnimation('Garrett Fincke', 120);
