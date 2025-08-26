@@ -1,34 +1,9 @@
 /* eslint-disable react/jsx-key, react/no-unescaped-entities */
 
-// src/data/projects.tsx
+// src/data/structured/all_projects.tsx
 
 // imports
-import { ReactNode } from 'react';
-
-
-// status type for projects
-export type ProjectStatus = 'in-development' | 'complete' | 'paused' | 'experimental' | 'planned' | 'live';
-
-// interface for collaborators
-export interface Collaborator {
-  name: string;
-  url?: string;
-}
-
-// interface for project data type
-export interface Project {
-  title: string;
-  collaborators?: string | string[] | Collaborator | Collaborator[];
-  dateRange: string;
-  status: ProjectStatus;
-  bulletPoints: (string | ReactNode)[];
-  technologies: string[];
-  madeFor?: string;
-  imagePath?: string; 
-  imageAlt?: string;
-  repoUrl?: string;
-  liveUrl?: string;
-}
+import type { Project } from '~/types/data';
 
 // project data
 export const projects: Project[] = [

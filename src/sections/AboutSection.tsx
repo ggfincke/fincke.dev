@@ -3,10 +3,11 @@
 // imports
 import { SkillPill } from '~/components/display/SkillPill';
 import { aboutContent } from '~/data/content/about';
-import { skillCategories } from '~/data/structured/skills';
+import { getSkillCategories } from '~/data/structured/skills';
 
 // about section
 export function AboutSection() {
+  const skillCategories = getSkillCategories();
   
   return (
     <div className="max-w-2xl">
