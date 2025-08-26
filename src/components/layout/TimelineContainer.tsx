@@ -1,7 +1,8 @@
 // src/components/timeline/TimelineContainer.tsx
 
 import type { TimelineContainerProps } from '~/types';
-export function TimelineContainer({ children, className = '' }: TimelineContainerProps) {
+export function TimelineContainer({ children, className = '' }: TimelineContainerProps) 
+{
   return (
     <div className={`relative ${className}`}>
       {/* timeline vertical line */}

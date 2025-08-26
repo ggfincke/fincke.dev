@@ -3,7 +3,8 @@
 // social icons (email, phone, github, linkedin)
 import type { SocialIconsProps } from '~/types';
 
-export function SocialIcons({ className = "" }: SocialIconsProps) {
+export function SocialIcons({ className = "" }: SocialIconsProps) 
+{
   return (
     <div className={`flex justify-center gap-6 ${className}`}>
       <a 

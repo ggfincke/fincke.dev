@@ -43,7 +43,8 @@ const statusConfig: Record<ProjectStatus, { icon: string; label: string; color: 
 };
 
 
-export function StatusCircle({ status, size = 32 }: StatusCircleProps) {
+export function StatusCircle({ status, size = 32 }: StatusCircleProps) 
+{
   const statusDisplay = statusConfig[status];
 
   return (

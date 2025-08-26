@@ -11,7 +11,8 @@ import { ProjectCard } from '~/components/display/ProjectCard';
 import { SectionNavButton } from '~/components/navigation/SectionNavButton';
 import { useBreakpoint } from '~/hooks/useBreakpoint';
 
-export function ProjectsSection() {
+export function ProjectsSection() 
+{
   const projects = getFeaturedProjects();
   const { isMobile } = useBreakpoint();
   

@@ -15,7 +15,8 @@ import { Footer } from '~/sections/Footer';
 // hooks
 import { useScrollSidebar } from '~/hooks/useScrollSidebar';
 import { useBreakpoint } from '~/hooks/useBreakpoint';
-export default function Home() {
+export default function Home() 
+{
   const { showSidebar, activeSection, scrollToSection } = useScrollSidebar({
     offset: 150 
   });

@@ -2,7 +2,8 @@
 
 import type { NavigationArrowProps } from '~/types';
 
-export function NavigationArrow({ direction, onClick, disabled }: NavigationArrowProps) {
+export function NavigationArrow({ direction, onClick, disabled }: NavigationArrowProps) 
+{
   // determine if left or right arrow
   const isLeft = direction === 'left';
   // determine arrow points

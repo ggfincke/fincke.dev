@@ -3,7 +3,8 @@
 import { NavButton } from '~/components/navigation/NavigationButton';
 import type { NavigationProps } from '~/types';
   
-  export function Navigation({ activeSection, onSectionClick }: NavigationProps) {
+  export function Navigation({ activeSection, onSectionClick }: NavigationProps) 
+{
     const navItems = [
       { id: 'about', label: 'About' },
       { id: 'experience', label: 'Experience' },

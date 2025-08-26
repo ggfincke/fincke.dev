@@ -8,7 +8,8 @@ import { SidebarHeader } from '~/components/layout/SidebarHeader';
 import { Navigation } from '~/components/navigation/Navigation';
 import { SocialIcons } from '~/components/interactive/SocialIcons';
 import type { SidebarProps } from '~/types';
-export function Sidebar({ activeSection, onSectionClick }: SidebarProps) {
+export function Sidebar({ activeSection, onSectionClick }: SidebarProps) 
+{
   return (
     <aside className="h-screen w-72 flex flex-col bg-[var(--color-background-alt)] border-r border-[var(--color-border)]">
       {/* Top Section (w/ logo) */}

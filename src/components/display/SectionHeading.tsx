@@ -10,7 +10,8 @@ export function SectionHeading({
   subsubtitle,
   align = 'left',
   className = ''
-}: SectionHeadingProps) {
+}: SectionHeadingProps) 
+{
   const alignmentClasses = {
     left: 'text-left',
     center: 'text-center',

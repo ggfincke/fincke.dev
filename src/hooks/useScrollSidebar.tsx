@@ -22,21 +22,25 @@ interface UseScrollSidebarResult {
 export function useScrollSidebar({
   sections = ['hero', 'about', 'experience', 'projects', 'contact'],
   offset = 100
-}: UseScrollSidebarOptions = {}): UseScrollSidebarResult {
+}: UseScrollSidebarOptions = {}): UseScrollSidebarResult 
+{
   const [showSidebar, setShowSidebar] = useState(false);
   const [activeSection, setActiveSection] = useState(sections[0] || 'hero');
   const [scrolling, setScrolling] = useState(false);
   const { isDesktop } = useBreakpoint();
 
   // throttled scroll handler to improve performance
-  const handleScroll = useCallback(() => {
+  const handleScroll = useCallback(() => 
+{
     if (scrolling) return;
     
     setScrolling(true);
     
-    setTimeout(() => {
+    setTimeout(() => 
+{
       // determine active section
-      for (const section of sections) {
+      for (const section of sections) 
+{
         const el = document.getElementById(section);
         if (!el) continue;
         
@@ -44,18 +48,25 @@ export function useScrollSidebar({
         
         // a section is active when its top is near the top of the viewport
         // But also make sure we're actually in the section (not below it)
-        if (rect.top <= offset && rect.bottom >= offset) {
+        if (rect.top <= offset && rect.bottom >= offset) 
+{
           setActiveSection(section);
           
           // set sidebar visibility based on whether we're past the hero section
           // but only on desktop screens
-          if (isDesktop) {
-            if (section !== 'hero') {
+          if (isDesktop) 
+{
+            if (section !== 'hero') 
+{
               setShowSidebar(true);
-            } else {
+            }
+ else 
+{
               setShowSidebar(false);
             }
-          } else {
+          }
+ else 
+{
             // Always hide sidebar on mobile/tablet screens
             setShowSidebar(false);
           }
@@ -69,7 +80,8 @@ export function useScrollSidebar({
   }, [scrolling, sections, offset, isDesktop]);
   
   // handle scroll to determine active section
-  useEffect(() => {
+  useEffect(() => 
+{
     window.addEventListener('scroll', handleScroll, { passive: true });
     
     // initial check
@@ -80,7 +92,8 @@ export function useScrollSidebar({
   }, [handleScroll]);
 
   // function to scroll to section & control sidebar
-  const scrollToSection = useCallback((sectionId: string) => {
+  const scrollToSection = useCallback((sectionId: string) => 
+{
     const element = document.getElementById(sectionId);
     if (!element) return;
     
@@ -88,7 +101,8 @@ export function useScrollSidebar({
     element.scrollIntoView({ behavior: 'smooth' });
     
     // force sidebar visibility based on section but only on desktop screens
-    if (isDesktop && sectionId !== 'hero') {
+    if (isDesktop && sectionId !== 'hero') 
+{
       setShowSidebar(true);
     }
     

@@ -6,7 +6,8 @@ import type { FooterProps } from '~/types';
 
 
 // footer section
-export function Footer({ isSmallScreen = false }: FooterProps) {
+export function Footer({ isSmallScreen = false }: FooterProps) 
+{
     const currentYear = new Date().getFullYear();
     
     return (

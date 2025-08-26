@@ -307,11 +307,13 @@ export const projects: Project[] = [
 ];
 
 // utility functions for filtering projects
-export const getFeaturedProjects = (): Project[] => {
+export const getFeaturedProjects = (): Project[] => 
+{
   // Use the main projects as the featured ones instead of a flag
   return mainProjects;
 };
 
-export const getAllProjects = (): Project[] => {
+export const getAllProjects = (): Project[] => 
+{
   return projects;
 };

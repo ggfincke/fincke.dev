@@ -121,7 +121,8 @@ export const skills: Skill[] = [
 ];
 
 // dynamically generate skill categories for AboutSection display
-export const getSkillCategories = () => {
+export const getSkillCategories = () => 
+{
   const languageSkills = getSkillsByCategory('languages').slice(0, 6); // Top 6 languages
   const frontendSkills = skills
     .filter(skill => ['React', 'Next.js', 'HTML', 'CSS', 'Tailwind CSS', 'SwiftUI'].includes(skill.name))
@@ -142,7 +143,8 @@ export const getSkillCategories = () => {
 };
 
 // utility functions
-export const getSkillsByCategory = (category: SkillCategory): string[] => {
+export const getSkillsByCategory = (category: SkillCategory): string[] => 
+{
   return skills
     .filter(skill => skill.category === category)
     .map(skill => skill.displayName || skill.name);

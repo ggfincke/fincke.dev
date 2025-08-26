@@ -10,19 +10,23 @@ import type { ProjectCardProps, Collaborator } from '~/types';
 
 
 // helper function to render collaborators w/ optional links
-const renderCollaborators = (collaborators: string | string[] | Collaborator | Collaborator[]) => {
+const renderCollaborators = (collaborators: string | string[] | Collaborator | Collaborator[]) => 
+{
   // simple string
-  if (typeof collaborators === 'string') {
+  if (typeof collaborators === 'string') 
+{
     return collaborators;
   }
   
   // array of strings
-  if (Array.isArray(collaborators) && typeof collaborators[0] === 'string') {
+  if (Array.isArray(collaborators) && typeof collaborators[0] === 'string') 
+{
     return (collaborators as string[]).join(', ');
   }
   
   // Collaborator object
-  if (!Array.isArray(collaborators) && typeof collaborators === 'object') {
+  if (!Array.isArray(collaborators) && typeof collaborators === 'object') 
+{
     const collab = collaborators as Collaborator;
     return collab.url ? (
       <a 
@@ -37,7 +41,8 @@ const renderCollaborators = (collaborators: string | string[] | Collaborator | C
   }
   
   // array of Collaborator objects
-  if (Array.isArray(collaborators) && typeof collaborators[0] === 'object') {
+  if (Array.isArray(collaborators) && typeof collaborators[0] === 'object') 
+{
     return (collaborators as Collaborator[]).map((collab, index, arr) => (
       <span key={collab.name}>
         {collab.url ? (
@@ -70,7 +75,8 @@ export function ProjectCard({
   contentComponent,
   status,
   collaborators
-}: ProjectCardProps) {
+}: ProjectCardProps) 
+{
   return (
     <div className="border border-[var(--color-border)] rounded-lg overflow-hidden bg-[var(--color-background-alt)] hover:shadow-lg transition-all w-full h-[550px] flex flex-col">
       {/* top bar (title, date, status, links) */}

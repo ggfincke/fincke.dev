@@ -17,16 +17,19 @@ export function ResponsiveWrapper({
   tablet, 
   desktop, 
   className = '' 
-}: ResponsiveWrapperProps) {
+}: ResponsiveWrapperProps) 
+{
   const { shouldShowMobileLayout, shouldShowTabletLayout } = useResponsiveSection();
 
   const wrapperClasses = className ? `${className}` : '';
 
-  if (shouldShowMobileLayout && mobile) {
+  if (shouldShowMobileLayout && mobile) 
+{
     return <div className={wrapperClasses}>{mobile}</div>;
   }
   
-  if (shouldShowTabletLayout && tablet) {
+  if (shouldShowTabletLayout && tablet) 
+{
     return <div className={wrapperClasses}>{tablet}</div>;
   }
   
@@ -45,7 +48,8 @@ export function TimelineResponsive({
   timelineContent, 
   stackedContent, 
   className = '' 
-}: TimelineResponsiveProps) {
+}: TimelineResponsiveProps) 
+{
   return (
     <ResponsiveWrapper
       mobile={stackedContent}
@@ -66,7 +70,8 @@ export function TableResponsive({
   tableContent, 
   cardContent, 
   className = '' 
-}: TableResponsiveProps) {
+}: TableResponsiveProps) 
+{
   return (
     <ResponsiveWrapper
       mobile={cardContent}

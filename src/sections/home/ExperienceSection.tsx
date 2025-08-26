@@ -17,7 +17,8 @@ function MobileExperienceItem({
   companyUrl,
   companyLogos,
   isLast = false 
-}: MobileExperienceItemProps) {
+}: MobileExperienceItemProps) 
+{
   return (
     <div className={`mb-12 ${isLast ? '' : 'border-b border-[var(--color-border)] pb-12'}`}>
       {/* Header with company and logos */}
@@ -64,7 +65,8 @@ function MobileExperienceItem({
   );
 }
 
-export function ExperienceSection() {
+export function ExperienceSection() 
+{
   const { shouldShowTimeline, shouldShowStackedView } = useTimelineResponsive();
 
   return (

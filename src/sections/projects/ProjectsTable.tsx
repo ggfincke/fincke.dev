@@ -12,23 +12,27 @@ import { StatusCircle } from '~/components/display/StatusCircle';
 import { VersionBadge } from '~/components/display/VersionBadge';
 import { SkillPill } from '~/components/display/SkillPill';
 
-export function ProjectsTable() {
+export function ProjectsTable() 
+{
   const { shouldShowTable, shouldShowCards } = useTableResponsive();
   const { toggleRow, isExpanded } = useExpandableRows<number>();
   
   const projects = getAllProjects();
 
   // Sort projects in reverse chronological order (newest first)
-  const sortedProjects = [...projects].sort((a, b) => {
+  const sortedProjects = [...projects].sort((a, b) => 
+{
     // Extract the most recent year from each project's dateRange
-    const getLatestYear = (dateRange: string): number => {
+    const getLatestYear = (dateRange: string): number => 
+{
       const years = dateRange.match(/\d{4}/g);
       if (!years) return 0;
       return Math.max(...years.map(year => parseInt(year, 10)));
     };
 
     // Get the latest month from the most recent year
-    const getLatestMonth = (dateRange: string): number => {
+    const getLatestMonth = (dateRange: string): number => 
+{
       const latestYear = getLatestYear(dateRange);
       const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
       
@@ -40,15 +44,18 @@ export function ProjectsTable() {
       const yearContext = dateRange.toLowerCase();
       let latestMonth = 0;
       
-      for (const monthMatch of monthMatches) {
+      for (const monthMatch of monthMatches) 
+{
         const monthIndex = months.findIndex(m => monthMatch.startsWith(m));
-        if (monthIndex !== -1) {
+        if (monthIndex !== -1) 
+{
           // Check if this month appears near the latest year
           const monthPos = yearContext.indexOf(monthMatch);
           const yearPos = yearContext.indexOf(latestYear.toString());
           
           // If they're close or if this is the latest month we've seen
-          if (Math.abs(monthPos - yearPos) < 50 || monthIndex > latestMonth) {
+          if (Math.abs(monthPos - yearPos) < 50 || monthIndex > latestMonth) 
+{
             latestMonth = monthIndex;
           }
         }
@@ -61,7 +68,8 @@ export function ProjectsTable() {
     const yearB = getLatestYear(b.dateRange);
     
     // First sort by year (descending)
-    if (yearA !== yearB) {
+    if (yearA !== yearB) 
+{
       return yearB - yearA;
     }
     
@@ -74,20 +82,25 @@ export function ProjectsTable() {
 
 
   // Helper to choose appropriate label for live links
-  const getLiveLabel = (url: string): string => {
+  const getLiveLabel = (url: string): string => 
+{
     return url.toLowerCase().endsWith('.pdf') ? 'View Report' : 'View Live Site';
   };
 
-  const renderCollaborators = (collaborators: string | string[] | Collaborator | Collaborator[]) => {
-    if (typeof collaborators === 'string') {
+  const renderCollaborators = (collaborators: string | string[] | Collaborator | Collaborator[]) => 
+{
+    if (typeof collaborators === 'string') 
+{
       return collaborators;
     }
     
-    if (Array.isArray(collaborators) && typeof collaborators[0] === 'string') {
+    if (Array.isArray(collaborators) && typeof collaborators[0] === 'string') 
+{
       return (collaborators as string[]).join(', ');
     }
     
-    if (!Array.isArray(collaborators) && typeof collaborators === 'object') {
+    if (!Array.isArray(collaborators) && typeof collaborators === 'object') 
+{
       const collab = collaborators as Collaborator;
       return collab.url ? (
         <a 
@@ -101,7 +114,8 @@ export function ProjectsTable() {
       ) : collab.name;
     }
     
-    if (Array.isArray(collaborators) && typeof collaborators[0] === 'object') {
+    if (Array.isArray(collaborators) && typeof collaborators[0] === 'object') 
+{
       return (collaborators as Collaborator[]).map((collab, index, arr) => (
         <span key={collab.name}>
           {collab.url ? (
@@ -128,7 +142,8 @@ export function ProjectsTable() {
       {shouldShowCards && (
         <div className="block md:hidden">
           <div className="space-y-4">
-            {sortedProjects.map((project, index) => {
+            {sortedProjects.map((project, index) => 
+{
               const year = project.dateRange.match(/\d{4}/)?.[0] || 'TBD';
               const isRowExpanded = isExpanded(index);
             
@@ -322,7 +337,8 @@ export function ProjectsTable() {
             </tr>
           </thead>
           <tbody>
-            {sortedProjects.map((project, index) => {
+            {sortedProjects.map((project, index) => 
+{
               const year = project.dateRange.match(/\d{4}/)?.[0] || 'TBD';
               const isRowExpanded = isExpanded(index);
             

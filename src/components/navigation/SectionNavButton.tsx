@@ -3,7 +3,8 @@
 import Link from 'next/link';
 import type { SectionNavButtonProps } from '~/types';
 
-export function SectionNavButton({ href, children, className = '' }: SectionNavButtonProps) {
+export function SectionNavButton({ href, children, className = '' }: SectionNavButtonProps) 
+{
   return (
     <Link href={href} className={`section-nav-button ${className}`}>
       {children}

@@ -32,7 +32,8 @@ export interface UseResponsiveSectionResult extends UseBreakpointResult {
 
 export function useResponsiveSection(
   config: ResponsiveSectionConfig = {}
-): UseResponsiveSectionResult {
+): UseResponsiveSectionResult 
+{
   const {
     mobileBreakpoint = 'md',
     tabletBreakpoint = 'lg', 
@@ -51,20 +52,23 @@ export function useResponsiveSection(
   const showMobileNavigation = shouldShowMobileLayout;
 
   // Layout utilities
-  const getLayoutType = useCallback((): 'mobile' | 'tablet' | 'desktop' => {
+  const getLayoutType = useCallback((): 'mobile' | 'tablet' | 'desktop' => 
+{
     if (shouldShowMobileLayout) return 'mobile';
     if (shouldShowTabletLayout) return 'tablet';
     return 'desktop';
   }, [shouldShowMobileLayout, shouldShowTabletLayout]);
 
   // Grid and spacing utilities
-  const getGridColumns = useCallback((): number => {
+  const getGridColumns = useCallback((): number => 
+{
     if (shouldShowMobileLayout) return 1;
     if (shouldShowTabletLayout) return 2;
     return 3;
   }, [shouldShowMobileLayout, shouldShowTabletLayout]);
 
-  const getSpacing = useCallback((): 'sm' | 'md' | 'lg' | 'xl' => {
+  const getSpacing = useCallback((): 'sm' | 'md' | 'lg' | 'xl' => 
+{
     if (shouldShowMobileLayout) return 'sm';
     if (shouldShowTabletLayout) return 'md';
     if (breakpointData.isLarge) return 'xl';
@@ -72,13 +76,15 @@ export function useResponsiveSection(
   }, [shouldShowMobileLayout, shouldShowTabletLayout, breakpointData.isLarge]);
 
   // Component sizing helpers
-  const getImageSize = useCallback((): { width: number; height: number } => {
+  const getImageSize = useCallback((): { width: number; height: number } => 
+{
     if (shouldShowMobileLayout) return { width: 300, height: 200 };
     if (shouldShowTabletLayout) return { width: 400, height: 300 };
     return { width: 600, height: 400 };
   }, [shouldShowMobileLayout, shouldShowTabletLayout]);
 
-  const getCardWidth = useCallback((): string => {
+  const getCardWidth = useCallback((): string => 
+{
     if (shouldShowMobileLayout) return 'w-full';
     if (shouldShowTabletLayout) return 'w-full max-w-2xl';
     return 'w-full max-w-4xl';
@@ -116,7 +122,8 @@ export function useResponsiveSection(
 }
 
 // Specialized hook for timeline components
-export function useTimelineResponsive() {
+export function useTimelineResponsive() 
+{
   const responsive = useResponsiveSection({
     mobileBreakpoint: 'lg', // Use timeline only on large screens
   });
@@ -130,7 +137,8 @@ export function useTimelineResponsive() {
 }
 
 // Specialized hook for table components  
-export function useTableResponsive() {
+export function useTableResponsive() 
+{
   const responsive = useResponsiveSection({
     mobileBreakpoint: 'md',
   });

@@ -43,7 +43,8 @@ const statusConfig = {
 
 // status badge component
   
-  export function StatusBadge({ status }: StatusBadgeProps) {
+  export function StatusBadge({ status }: StatusBadgeProps) 
+{
     const statusDisplay = statusConfig[status];
     
     return (

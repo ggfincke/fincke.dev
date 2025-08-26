@@ -12,7 +12,8 @@ export function TimelineItem({
   companyUrl,
   companyLogos,
   isLast = false 
-}: TimelineItemProps) {
+}: TimelineItemProps) 
+{
   return (
     <div className={`flex mb-20 relative ${isLast ? '' : ''}`}>
       {/* left side - date */}

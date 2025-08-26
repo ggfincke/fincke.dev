@@ -2,7 +2,8 @@
 
 import type { PaginationDotsProps } from '~/types';
 
-export function PaginationDots({ totalItems, currentIndex, onDotClick, disabled }: PaginationDotsProps) {
+export function PaginationDots({ totalItems, currentIndex, onDotClick, disabled }: PaginationDotsProps) 
+{
   return (
     <div className="flex justify-center space-x-3 mb-2">
       {Array.from({ length: totalItems }).map((_, index) => (

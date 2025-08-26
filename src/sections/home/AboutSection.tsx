@@ -4,7 +4,8 @@ import { SkillPill } from '~/components/display/SkillPill';
 import { aboutContent } from '~/data/content/about';
 import { getSkillCategories } from '~/data/structured/skills';
 
-export function AboutSection() {
+export function AboutSection() 
+{
   const skillCategories = getSkillCategories();
   
   return (

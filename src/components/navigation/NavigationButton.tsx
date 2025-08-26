@@ -3,7 +3,8 @@
 // navigation button component
 import type { NavButtonProps } from '~/types';
   
-  export function NavButton({ sectionId, label, activeSection, onClick }: NavButtonProps) {
+  export function NavButton({ sectionId, label, activeSection, onClick }: NavButtonProps) 
+{
     return (
       <button 
         onClick={() => onClick(sectionId)}

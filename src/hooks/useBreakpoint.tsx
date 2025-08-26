@@ -25,13 +25,17 @@ export interface UseBreakpointResult {
 }
 
 // Custom hook for responsive breakpoint detection
-export function useBreakpoint(): UseBreakpointResult {
+export function useBreakpoint(): UseBreakpointResult 
+{
   const [windowWidth, setWindowWidth] = useState<number>(0);
 
   // init window width
-  useEffect(() => {
-    const getWindowWidth = () => {
-      if (typeof window !== 'undefined') {
+  useEffect(() => 
+{
+    const getWindowWidth = () => 
+{
+      if (typeof window !== 'undefined') 
+{
         return window.innerWidth;
       }
       return 0;
@@ -40,28 +44,33 @@ export function useBreakpoint(): UseBreakpointResult {
     // Set initial width
     setWindowWidth(getWindowWidth());
 
-    const handleResize = () => {
+    const handleResize = () => 
+{
       setWindowWidth(getWindowWidth());
     };
 
     window.addEventListener('resize', handleResize);
 
-    return () => {
+    return () => 
+{
       window.removeEventListener('resize', handleResize);
     };
   }, []);
 
   // helper funcs
-  const isAbove = (breakpoint: Breakpoint): boolean => {
+  const isAbove = (breakpoint: Breakpoint): boolean => 
+{
     return windowWidth >= BREAKPOINTS[breakpoint];
   };
 
-  const isBelow = (breakpoint: Breakpoint): boolean => {
+  const isBelow = (breakpoint: Breakpoint): boolean => 
+{
     return windowWidth < BREAKPOINTS[breakpoint];
   };
 
   // Determine current breakpoint
-  const getCurrentBreakpoint = (): Breakpoint | null => {
+  const getCurrentBreakpoint = (): Breakpoint | null => 
+{
     if (windowWidth === 0) return null;
     
     if (windowWidth >= BREAKPOINTS['2xl']) return '2xl';

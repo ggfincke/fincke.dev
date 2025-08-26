@@ -6,11 +6,13 @@ import FloatingParticle from '~/components/display/FloatingParticle';
 import useTypingAnimation from '~/hooks/useTypingAnimation';
 import type { HeroSectionProps } from '~/types';
 
-export function HeroSection({ scrollToSection }: HeroSectionProps) {
+export function HeroSection({ scrollToSection }: HeroSectionProps) 
+{
   const { displayText: nameText, isComplete: nameComplete } = useTypingAnimation('Garrett Fincke', 120);
   const [particles, setParticles] = useState<Array<{left: number, top: number, delay: number, duration: number}>>([]);
 
-  useEffect(() => {
+  useEffect(() => 
+{
     // generate particles on client side to avoid hydration mismatch
     const particleData = Array.from({ length: 10 }, (_, i) => ({
       left: Math.random() * 100,

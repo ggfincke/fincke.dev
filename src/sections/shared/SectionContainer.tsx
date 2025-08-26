@@ -36,7 +36,8 @@ export function SectionContainer({
   spacing,
   center = true,
   as: Component = 'div',
-}: SectionContainerProps) {
+}: SectionContainerProps) 
+{
   const { getSpacing } = useResponsiveSection();
   
   // Use responsive spacing if not explicitly provided
