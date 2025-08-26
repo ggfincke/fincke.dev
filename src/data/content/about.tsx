@@ -1,6 +1,5 @@
 // src/data/content/about.tsx
-
-// about content
+// about section content data
 export const aboutContent = {
     intro:   `I am a full-stack engineer passionate about building intuitive, 
               performant software with a strong emphasis on clean code and maintainable architecture. From web platforms and mobile apps to data pipelines and AI tools, 

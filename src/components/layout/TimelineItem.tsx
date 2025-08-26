@@ -1,8 +1,10 @@
-// src/components/timeline/TimelineItem.tsx
+// src/components/layout/TimelineItem.tsx
+// timeline experience item w/ date, company, title & technologies
 
 import { SkillPill } from '~/components/display/SkillPill';
-import type { TimelineItemProps } from '~/types';
+import type { TimelineItemProps } from '~/types/layout';
 
+// timeline item component
 export function TimelineItem({ 
   date, 
   title, 
@@ -12,7 +14,8 @@ export function TimelineItem({
   companyUrl,
   companyLogos,
   isLast = false 
-}: TimelineItemProps) {
+}: TimelineItemProps) 
+{
   return (
     <div className={`flex mb-20 relative ${isLast ? '' : ''}`}>
       {/* left side - date */}

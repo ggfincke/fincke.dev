@@ -1,7 +1,9 @@
 // src/sections/shared/SectionContainer.tsx
+// reusable section container w/ responsive spacing & max-width
 
 import { ReactNode } from 'react';
-import { useResponsiveSection } from '~/hooks/useResponsiveSection';
+
+import { useBreakpoint } from '~/hooks/useBreakpoint';
 
 export interface SectionContainerProps {
   children: ReactNode;
@@ -29,6 +31,7 @@ const SPACING_CLASSES = {
   xl: 'px-8 sm:px-12 lg:px-16',
 } as const;
 
+// section container component
 export function SectionContainer({
   children,
   className = '',
@@ -36,8 +39,9 @@ export function SectionContainer({
   spacing,
   center = true,
   as: Component = 'div',
-}: SectionContainerProps) {
-  const { getSpacing } = useResponsiveSection();
+}: SectionContainerProps) 
+{
+  const { getSpacing } = useBreakpoint();
   
   // Use responsive spacing if not explicitly provided
   const effectiveSpacing = spacing || getSpacing();

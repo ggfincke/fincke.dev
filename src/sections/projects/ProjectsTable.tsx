@@ -2,53 +2,63 @@
 
 'use client';
 
-import { useTableResponsive } from '~/hooks/useResponsiveSection';
-import { useExpandableRows } from '~/hooks/useSectionNavigation';
 import Image from 'next/image';
-import { getAllProjects } from '~/data/structured/projects';
-import type { Collaborator } from '~/types';
+
+import { SkillPill } from '~/components/display/SkillPill';
 import { StatusBadge } from '~/components/display/StatusBadge';
 import { StatusCircle } from '~/components/display/StatusCircle';
 import { VersionBadge } from '~/components/display/VersionBadge';
-import { SkillPill } from '~/components/display/SkillPill';
+import { getImageSizes } from '~/constants/breakpoints';
+import { getAllProjects } from '~/data/structured/projects';
+import { useTableResponsive } from '~/hooks/useBreakpoint';
+import { useExpandableRows } from '~/hooks/useSectionNavigation';
+import type { Collaborator } from '~/types/projects';
 
-export function ProjectsTable() {
+// all projects table w/ expandable rows & responsive design
+export function ProjectsTable() 
+{
   const { shouldShowTable, shouldShowCards } = useTableResponsive();
   const { toggleRow, isExpanded } = useExpandableRows<number>();
   
   const projects = getAllProjects();
 
-  // Sort projects in reverse chronological order (newest first)
-  const sortedProjects = [...projects].sort((a, b) => {
-    // Extract the most recent year from each project's dateRange
-    const getLatestYear = (dateRange: string): number => {
+  // sort projects by date (descending) to show newest first
+  const sortedProjects = [...projects].sort((a, b) => 
+{
+    // extract most recent year from dateRange
+    const getLatestYear = (dateRange: string): number => 
+{
       const years = dateRange.match(/\d{4}/g);
       if (!years) return 0;
       return Math.max(...years.map(year => parseInt(year, 10)));
     };
 
-    // Get the latest month from the most recent year
-    const getLatestMonth = (dateRange: string): number => {
+    // get latest month from most recent year
+    const getLatestMonth = (dateRange: string): number => 
+{
       const latestYear = getLatestYear(dateRange);
       const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
       
-      // Find all month mentions in the dateRange
+      // find all month mentions in dateRange
       const monthMatches = dateRange.toLowerCase().match(/\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\w*/g);
       if (!monthMatches) return 0;
       
-      // Find the latest month that appears with the latest year
+      // find latest month that appears w/ latest year
       const yearContext = dateRange.toLowerCase();
       let latestMonth = 0;
       
-      for (const monthMatch of monthMatches) {
+      for (const monthMatch of monthMatches) 
+{
         const monthIndex = months.findIndex(m => monthMatch.startsWith(m));
-        if (monthIndex !== -1) {
-          // Check if this month appears near the latest year
+        if (monthIndex !== -1) 
+{
+          // check if month appears near latest year
           const monthPos = yearContext.indexOf(monthMatch);
           const yearPos = yearContext.indexOf(latestYear.toString());
           
-          // If they're close or if this is the latest month we've seen
-          if (Math.abs(monthPos - yearPos) < 50 || monthIndex > latestMonth) {
+          // if close or latest month seen
+          if (Math.abs(monthPos - yearPos) < 50 || monthIndex > latestMonth) 
+{
             latestMonth = monthIndex;
           }
         }
@@ -60,12 +70,13 @@ export function ProjectsTable() {
     const yearA = getLatestYear(a.dateRange);
     const yearB = getLatestYear(b.dateRange);
     
-    // First sort by year (descending)
-    if (yearA !== yearB) {
+    // first sort by year (descending)
+    if (yearA !== yearB) 
+{
       return yearB - yearA;
     }
     
-    // If years are equal, sort by month (descending)
+    // if years equal, sort by month (descending)
     const monthA = getLatestMonth(a.dateRange);
     const monthB = getLatestMonth(b.dateRange);
     
@@ -73,21 +84,27 @@ export function ProjectsTable() {
   });
 
 
-  // Helper to choose appropriate label for live links
-  const getLiveLabel = (url: string): string => {
+  // choose appropriate label for live links
+  const getLiveLabel = (url: string): string => 
+{
     return url.toLowerCase().endsWith('.pdf') ? 'View Report' : 'View Live Site';
   };
 
-  const renderCollaborators = (collaborators: string | string[] | Collaborator | Collaborator[]) => {
-    if (typeof collaborators === 'string') {
+  // render collaborators w/ optional links
+  const renderCollaborators = (collaborators: string | string[] | Collaborator | Collaborator[]) => 
+{
+    if (typeof collaborators === 'string') 
+{
       return collaborators;
     }
     
-    if (Array.isArray(collaborators) && typeof collaborators[0] === 'string') {
+    if (Array.isArray(collaborators) && typeof collaborators[0] === 'string') 
+{
       return (collaborators as string[]).join(', ');
     }
     
-    if (!Array.isArray(collaborators) && typeof collaborators === 'object') {
+    if (!Array.isArray(collaborators) && typeof collaborators === 'object') 
+{
       const collab = collaborators as Collaborator;
       return collab.url ? (
         <a 
@@ -101,7 +118,8 @@ export function ProjectsTable() {
       ) : collab.name;
     }
     
-    if (Array.isArray(collaborators) && typeof collaborators[0] === 'object') {
+    if (Array.isArray(collaborators) && typeof collaborators[0] === 'object') 
+{
       return (collaborators as Collaborator[]).map((collab, index, arr) => (
         <span key={collab.name}>
           {collab.url ? (
@@ -124,11 +142,12 @@ export function ProjectsTable() {
 
   return (
     <div className="overflow-x-auto">
-      {/* Mobile layout - simplified view with only year and project name/contributors */}
+      {/* mobile layout - simplified view w/ year & project name/contributors */}
       {shouldShowCards && (
         <div className="block md:hidden">
           <div className="space-y-4">
-            {sortedProjects.map((project, index) => {
+            {sortedProjects.map((project, index) => 
+{
               const year = project.dateRange.match(/\d{4}/)?.[0] || 'TBD';
               const isRowExpanded = isExpanded(index);
             
@@ -138,7 +157,7 @@ export function ProjectsTable() {
                   className="border border-[var(--color-border)] rounded-lg p-4 bg-[var(--color-background-alt)]/30 hover:bg-[var(--color-background-alt)]/50 transition-colors"
                 >
                   <div className="flex items-start justify-between gap-4">
-                    {/* Year */}
+                    {/* year */}
                     <div className="text-[var(--color-muted)] font-mono text-sm font-medium min-w-[3rem]">
                       {year}
                     </div>
@@ -160,7 +179,7 @@ export function ProjectsTable() {
                       )}
                     </div>
 
-                    {/* Expand/Collapse Button */}
+                    {/* expand/collapse button */}
                     <button
                       onClick={() => toggleRow(index)}
                       className="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors p-1 rounded hover:bg-[var(--color-sidebar)] flex-shrink-0"
@@ -184,7 +203,7 @@ export function ProjectsTable() {
                   </div>
                 </div>
 
-                {/* Expanded content for mobile */}
+                {/* expanded content for mobile */}
                 {isRowExpanded && (
                   <div className="mt-2 border border-[var(--color-border)] rounded-lg p-4 bg-[var(--color-background-alt)]/50">
                     <div className="space-y-4">
@@ -244,7 +263,7 @@ export function ProjectsTable() {
                         </div>
                       </div>
 
-                      {/* Links */}
+                      {/* links */}
                       {(project.repoUrl || project.liveUrl) && (
                         <div>
                           <h4 className="text-sm font-semibold text-[var(--color-primary)] mb-2">
@@ -293,7 +312,7 @@ export function ProjectsTable() {
         </div>
       )}
 
-      {/* Desktop layout - full table */}
+      {/* desktop layout - full table */}
       {shouldShowTable && (
         <table className="w-full table-fixed hidden md:table">
           <thead>
@@ -322,7 +341,8 @@ export function ProjectsTable() {
             </tr>
           </thead>
           <tbody>
-            {sortedProjects.map((project, index) => {
+            {sortedProjects.map((project, index) => 
+{
               const year = project.dateRange.match(/\d{4}/)?.[0] || 'TBD';
               const isRowExpanded = isExpanded(index);
             
@@ -331,7 +351,7 @@ export function ProjectsTable() {
                 key={`project-${index}`}
                 className="border-b border-[var(--color-border)] hover:bg-[var(--color-background-alt)] transition-colors"
               >
-                {/* Expand/Collapse Button */}
+                {/* expand/collapse button */}
                 <td className="py-6 pl-6 pr-2">
                   <button
                     onClick={() => toggleRow(index)}
@@ -355,12 +375,12 @@ export function ProjectsTable() {
                   </button>
                 </td>
 
-                {/* Year */}
+                {/* year */}
                 <td className="py-6 pl-4 pr-4 text-[var(--color-muted)] font-mono text-sm">
                   {year}
                 </td>
 
-                {/* Project name */}
+                {/* project name */}
                 <td className="py-6 pl-4 pr-2">
                   <div className="font-semibold text-[var(--color-text-light)] text-lg mb-1">
                     {project.title}
@@ -377,17 +397,17 @@ export function ProjectsTable() {
                   )}
                 </td>
 
-                {/* Status */}
+                {/* status */}
                 <td className="py-6 px-4 text-center">
                   <StatusCircle status={project.status} />
                 </td>
 
-                {/* Made for */}
+                {/* made for */}
                 <td className="py-6 pl-4 pr-4 text-[var(--color-text)]">
                   {project.madeFor}
                 </td>
 
-                {/* Built with */}
+                {/* built w/ technologies */}
                 <td className="py-6 pl-4 pr-4">
                   <div className="flex flex-wrap gap-2 items-center max-w-xs">
                     {project.technologies.slice(0, 3).map((tech: string, techIndex: number) => (
@@ -405,7 +425,7 @@ export function ProjectsTable() {
                   </div>
                 </td>
 
-                {/* Links */}
+                {/* links */}
                 <td className="py-6 pl-4 pr-4">
                   <div className="flex space-x-4">
                     {project.repoUrl && (
@@ -441,7 +461,7 @@ export function ProjectsTable() {
                 </td>
               </tr>,
 
-              // Expanded Row - only render if expanded
+              // expanded row - only render if expanded
               ...(isRowExpanded ? [
                 <tr key={`expanded-${index}`}>
                   <td colSpan={7} className="p-0">
@@ -503,7 +523,7 @@ export function ProjectsTable() {
                                   width={400}
                                   height={300}
                                   className="w-full h-full rounded-lg object-contain hover:scale-105 hover:z-50 transition-all duration-300"
-                                  sizes="(max-width: 1024px) 100vw, 33vw"
+                                  sizes={getImageSizes('100vw', '100vw', '33vw')}
                                 />
                               </div>
                             </div>
@@ -526,7 +546,7 @@ export function ProjectsTable() {
                           </div>
                         </div>
 
-                        {/* Links */}
+                        {/* links */}
                         {(project.repoUrl || project.liveUrl) && (
                           <div>
                             <h4 className="text-sm font-semibold text-[var(--color-primary)] mb-3">

@@ -1,7 +1,11 @@
-// src/components/timeline/TimelineContainer.tsx
+// src/components/layout/TimelineContainer.tsx
+// timeline container w/ vertical line & content positioning
 
-import type { TimelineContainerProps } from '~/types';
-export function TimelineContainer({ children, className = '' }: TimelineContainerProps) {
+import type { TimelineContainerProps } from '~/types/layout';
+
+// timeline container component
+export function TimelineContainer({ children, className = '' }: TimelineContainerProps) 
+{
   return (
     <div className={`relative ${className}`}>
       {/* timeline vertical line */}

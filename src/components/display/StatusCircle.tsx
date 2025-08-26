@@ -1,49 +1,53 @@
-// src/components/ui/cards/StatusCircle.tsx
+// src/components/display/StatusCircle.tsx
+// circular status indicator w/ icon & color-coded themes
 
-import type { StatusCircleProps, ProjectStatus } from '~/types';
+import type { ProjectStatus } from '~/types/projects';
+import type { StatusCircleProps } from '~/types/ui';
 
-// status display configurations (duplicated from StatusBadge to avoid circular deps)
-const statusConfig: Record<ProjectStatus, { icon: string; label: string; color: string; bgColor: string }> = {
+// status display configurations
+const statusConfig: Record<ProjectStatus, { icon: string; label: string; colorVar: string; bgColorVar: string }> = {
   'in-development': {
     icon: '🛠',
     label: 'In Development',
-    color: '#82AAFF',
-    bgColor: 'rgba(130, 170, 255, 0.15)'
+    colorVar: '--status-in-development',
+    bgColorVar: '--status-in-development-bg'
   },
   'complete': {
     icon: '✅',
     label: 'Complete',
-    color: '#C3E88D',
-    bgColor: 'rgba(195, 232, 141, 0.15)'
+    colorVar: '--status-complete',
+    bgColorVar: '--status-complete-bg'
   },
   'paused': {
     icon: '⏸',
     label: 'Paused',
-    color: '#F78C6C',
-    bgColor: 'rgba(247, 140, 108, 0.15)'
+    colorVar: '--status-paused',
+    bgColorVar: '--status-paused-bg'
   },
   'experimental': {
     icon: '🧪',
     label: 'Experimenting',
-    color: '#C792EA',
-    bgColor: 'rgba(199, 146, 234, 0.15)'
+    colorVar: '--status-experimental',
+    bgColorVar: '--status-experimental-bg'
   },
   'planned': {
     icon: '🕓',
     label: 'Planned',
-    color: '#FFCB6B',
-    bgColor: 'rgba(255, 203, 107, 0.15)'
+    colorVar: '--status-planned',
+    bgColorVar: '--status-planned-bg'
   },
   'live': {
     icon: '🚀',
     label: 'Live',
-    color: '#80CBC4',
-    bgColor: 'rgba(128, 203, 196, 0.15)'
+    colorVar: '--status-live',
+    bgColorVar: '--status-live-bg'
   }
 };
 
 
-export function StatusCircle({ status, size = 32 }: StatusCircleProps) {
+// status circle component
+export function StatusCircle({ status, size = 32 }: StatusCircleProps) 
+{
   const statusDisplay = statusConfig[status];
 
   return (
@@ -52,10 +56,9 @@ export function StatusCircle({ status, size = 32 }: StatusCircleProps) {
       style={{
         '--status-size': `${size}px`,
         '--status-font-size': `${size * 0.5}px`,
-        '--status-color': statusDisplay.color,
         width: 'var(--status-size)',
         height: 'var(--status-size)',
-        backgroundColor: 'var(--status-color)',
+        backgroundColor: `var(${statusDisplay.colorVar})`,
         fontSize: 'var(--status-font-size)',
       } as React.CSSProperties}
       aria-label={statusDisplay.label}

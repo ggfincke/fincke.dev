@@ -1,14 +1,18 @@
-// src/components/sidebar/Sidebar.tsx
+// src/components/layout/Sidebar.tsx
+// * fixed sidebar w/ logo, navigation & social links
 
-// use client   
 'use client';
 
 import Image from 'next/image';
+
+import { SocialIcons } from '~/components/interactive/SocialIcons';
 import { SidebarHeader } from '~/components/layout/SidebarHeader';
 import { Navigation } from '~/components/navigation/Navigation';
-import { SocialIcons } from '~/components/interactive/SocialIcons';
-import type { SidebarProps } from '~/types';
-export function Sidebar({ activeSection, onSectionClick }: SidebarProps) {
+import type { SidebarProps } from '~/types/navigation';
+
+// * main sidebar component
+export function Sidebar({ activeSection, onSectionClick }: SidebarProps) 
+{
   return (
     <aside className="h-screen w-72 flex flex-col bg-[var(--color-background-alt)] border-r border-[var(--color-border)]">
       {/* Top Section (w/ logo) */}

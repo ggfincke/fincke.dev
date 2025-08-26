@@ -1,16 +1,21 @@
 // src/sections/home/HeroSection.tsx
+// * hero section w/ typing animation, floating particles & profile image
 
-import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import FloatingParticle from '~/components/display/FloatingParticle';
-import useTypingAnimation from '~/hooks/useTypingAnimation';
-import type { HeroSectionProps } from '~/types';
+import React, { useState, useEffect } from 'react';
 
-export function HeroSection({ scrollToSection }: HeroSectionProps) {
+import FloatingParticle from '~/components/display/FloatingParticle';
+import { useTypingAnimation } from '~/hooks/useAnimation';
+import type { HeroSectionProps } from '~/types/layout';
+
+// * main hero section component
+export function HeroSection({ scrollToSection }: HeroSectionProps) 
+{
   const { displayText: nameText, isComplete: nameComplete } = useTypingAnimation('Garrett Fincke', 120);
   const [particles, setParticles] = useState<Array<{left: number, top: number, delay: number, duration: number}>>([]);
 
-  useEffect(() => {
+  useEffect(() => 
+{
     // generate particles on client side to avoid hydration mismatch
     const particleData = Array.from({ length: 10 }, (_, i) => ({
       left: Math.random() * 100,

@@ -1,8 +1,11 @@
-// src/components/ui/cards/PaginationDots.tsx
+// src/components/display/PaginationDots.tsx
+// clickable pagination dots w/ active state & navigation
 
-import type { PaginationDotsProps } from '~/types';
+import type { PaginationDotsProps } from '~/types/navigation';
 
-export function PaginationDots({ totalItems, currentIndex, onDotClick, disabled }: PaginationDotsProps) {
+// pagination dots component
+export function PaginationDots({ totalItems, currentIndex, onDotClick, disabled }: PaginationDotsProps) 
+{
   return (
     <div className="flex justify-center space-x-3 mb-2">
       {Array.from({ length: totalItems }).map((_, index) => (
