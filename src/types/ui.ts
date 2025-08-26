@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
-import { ProjectStatus, Collaborator } from './projects';
+
+import { ProjectStatus, Collaborator } from '~/types/projects';
 
 export type Variant = 'primary' | 'secondary';
 export type SkillPillSize = 'xs' | 'sm' | 'md';

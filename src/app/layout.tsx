@@ -1,11 +1,12 @@
 // src/app/layout.tsx
 
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "~/styles/design-tokens.css";
+
 import "~/styles/animations.css";
+import "~/styles/design-tokens.css";
 import "~/styles/globals.css";
-import { Analytics } from "@vercel/analytics/react"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

@@ -1,7 +1,8 @@
 // src/hooks/useBreakpoint.tsx
 
 import { useMemo, useCallback } from 'react';
-import { useSharedBreakpoint, type BreakpointState, type Breakpoint, BREAKPOINTS } from './useSharedBreakpoint';
+
+import { useSharedBreakpoint, type BreakpointState, type Breakpoint, BREAKPOINTS } from '~/hooks/useSharedBreakpoint';
 
 // Configuration for responsive utilities
 export interface ResponsiveConfig 

@@ -2,14 +2,15 @@
 
 'use client';
 
-import { useSectionNavigation } from '~/hooks/useSectionNavigation';
 import Image from 'next/image';
-import { NavArrow } from '~/components/navigation/NavArrow';
+
 import { PaginationDots } from '~/components/display/PaginationDots';
-import { getFeaturedProjects } from '~/data/structured/projects';
 import { ProjectCard } from '~/components/display/ProjectCard';
+import { NavArrow } from '~/components/navigation/NavArrow';
 import { SectionNavButton } from '~/components/navigation/SectionNavButton';
+import { getFeaturedProjects } from '~/data/structured/projects';
 import { useBreakpoint } from '~/hooks/useBreakpoint';
+import { useSectionNavigation } from '~/hooks/useSectionNavigation';
 
 export function ProjectsSection() 
 {

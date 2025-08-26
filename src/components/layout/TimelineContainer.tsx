@@ -1,6 +1,7 @@
 // src/components/timeline/TimelineContainer.tsx
 
 import type { TimelineContainerProps } from '~/types/layout';
+
 export function TimelineContainer({ children, className = '' }: TimelineContainerProps) 
 {
   return (

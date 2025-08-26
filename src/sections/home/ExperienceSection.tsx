@@ -1,13 +1,14 @@
 // src/sections/home/ExperienceSection.tsx
 
+import { SkillPill } from '~/components/display/SkillPill';
 import { TimelineContainer } from '~/components/layout/TimelineContainer';
 import { TimelineItem } from '~/components/layout/TimelineItem';
-import { experiences, education } from '~/data/structured/experiences';
-import { experienceContent } from '~/data/content/experience';
-import { useTimelineResponsive } from '~/hooks/useBreakpoint';
 import { SectionNavButton } from '~/components/navigation/SectionNavButton';
-import { SkillPill } from '~/components/display/SkillPill';
+import { experienceContent } from '~/data/content/experience';
+import { experiences, education } from '~/data/structured/experiences';
+import { useTimelineResponsive } from '~/hooks/useBreakpoint';
 import type { MobileExperienceItemProps } from '~/types/layout';
+
 function MobileExperienceItem({ 
   date, 
   title, 

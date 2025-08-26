@@ -3,7 +3,9 @@
 'use client';
 
 import Link from 'next/link';
+
 import { ProjectsTable } from '~/sections/projects/ProjectsTable';
+
 export default function ProjectsPage() 
 {
   return (

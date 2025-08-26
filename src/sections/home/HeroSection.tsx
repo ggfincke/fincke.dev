@@ -1,7 +1,8 @@
 // src/sections/home/HeroSection.tsx
 
-import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import React, { useState, useEffect } from 'react';
+
 import FloatingParticle from '~/components/display/FloatingParticle';
 import { useTypingAnimation } from '~/hooks/useAnimation';
 import type { HeroSectionProps } from '~/types/layout';

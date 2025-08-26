@@ -4,20 +4,24 @@
 'use client';
 
 // components
-import { Sidebar } from '~/components/layout/Sidebar';
+import { useState, useEffect } from 'react';
+
 import { SectionHeading } from '~/components/display/SectionHeading';
+import { Sidebar } from '~/components/layout/Sidebar';
 // sections
-import { HeroSection } from '~/sections/home/HeroSection';
+import { NAV_SECTIONS } from '~/config/navSections';
+import { useBreakpoint } from '~/hooks/useBreakpoint';
+import { useNav } from '~/hooks/useNav';
+import { Footer } from '~/sections/Footer';
 import { AboutSection } from '~/sections/home/AboutSection';
 import { ExperienceSection } from '~/sections/home/ExperienceSection';
+import { HeroSection } from '~/sections/home/HeroSection';
 import { ProjectsSection } from '~/sections/home/ProjectsSection';
-import { Footer } from '~/sections/Footer';
+
 // hooks
-import { useState, useEffect } from 'react';
-import { useNav } from '~/hooks/useNav';
-import { useBreakpoint } from '~/hooks/useBreakpoint';
+
 // config
-import { NAV_SECTIONS } from '~/config/navSections';
+
 export default function Home() 
 {
   const { showSidebar, activeSection, scrollToSection } = useNav({

@@ -1,7 +1,7 @@
 // src/components/ui/cards/StatusCircle.tsx
 
-import type { StatusCircleProps } from '~/types/ui';
 import type { ProjectStatus } from '~/types/projects';
+import type { StatusCircleProps } from '~/types/ui';
 
 // status display configurations
 const statusConfig: Record<ProjectStatus, { icon: string; label: string; colorVar: string; bgColorVar: string }> = {

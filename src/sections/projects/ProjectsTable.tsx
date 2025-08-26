@@ -2,15 +2,16 @@
 
 'use client';
 
-import { useTableResponsive } from '~/hooks/useBreakpoint';
-import { useExpandableRows } from '~/hooks/useSectionNavigation';
 import Image from 'next/image';
-import { getAllProjects } from '~/data/structured/projects';
-import type { Collaborator } from '~/types/projects';
+
+import { SkillPill } from '~/components/display/SkillPill';
 import { StatusBadge } from '~/components/display/StatusBadge';
 import { StatusCircle } from '~/components/display/StatusCircle';
 import { VersionBadge } from '~/components/display/VersionBadge';
-import { SkillPill } from '~/components/display/SkillPill';
+import { getAllProjects } from '~/data/structured/projects';
+import { useTableResponsive } from '~/hooks/useBreakpoint';
+import { useExpandableRows } from '~/hooks/useSectionNavigation';
+import type { Collaborator } from '~/types/projects';
 
 export function ProjectsTable() 
 {

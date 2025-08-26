@@ -1,6 +1,7 @@
 // src/sections/shared/SectionContainer.tsx
 
 import { ReactNode } from 'react';
+
 import { useBreakpoint } from '~/hooks/useBreakpoint';
 
 export interface SectionContainerProps {

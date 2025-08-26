@@ -1,6 +1,7 @@
 // src/components/navigation/SectionNavButton.tsx
 
 import Link from 'next/link';
+
 import type { SectionNavButtonProps } from '~/types/navigation';
 
 export function SectionNavButton({ href, children, className = '' }: SectionNavButtonProps) 

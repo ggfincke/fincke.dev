@@ -1,7 +1,8 @@
 // src/hooks/useSectionNavigation.ts
 
 import { useState, useCallback } from 'react';
-import { useTransitionAnimation } from './useAnimation';
+
+import { useTransitionAnimation } from '~/hooks/useAnimation';
 
 export interface SectionNavigationConfig {
   totalItems: number;

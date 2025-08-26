@@ -1,8 +1,9 @@
 // src/hooks/useNav.ts
 
 import { useState, useEffect, useCallback } from 'react';
-import { useBreakpoint } from '~/hooks/useBreakpoint';
+
 import { SECTION_IDS } from '~/config/navSections';
+import { useBreakpoint } from '~/hooks/useBreakpoint';
 
 export interface UseNavOptions {
   // Sections to track for active section detection (defaults to all sections from config)
