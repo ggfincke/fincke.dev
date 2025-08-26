@@ -1,19 +1,26 @@
-// src/components/ui/cards/VersionBadge.tsx
+// src/components/display/VersionBadge.tsx
+// github release version badge w/ API integration
 
 'use client';
 
 import { useState, useEffect } from 'react';
-import type { VersionBadgeProps, GitHubRelease } from '~/types';
 
-// version badge component
+import type { GitHubRelease } from '~/types/shared';
+import type { VersionBadgeProps } from '~/types/ui';
 
-export function VersionBadge({ repoUrl }: VersionBadgeProps) {
+// * version badge component w/ API fetching
+export function VersionBadge({ repoUrl }: VersionBadgeProps) 
+{
   const [version, setVersion] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchLatestVersion = async () => {
-      try {
+  useEffect(() => 
+{
+    // fetch latest release version from GitHub API
+    const fetchLatestVersion = async () => 
+{
+      try 
+{
         // Extract owner/repo from GitHub URL
         const match = repoUrl.match(/github\.com\/([^\/]+)\/([^\/]+)/);
         if (!match) return;
@@ -22,16 +29,23 @@ export function VersionBadge({ repoUrl }: VersionBadgeProps) {
         const apiUrl = `https://api.github.com/repos/${owner}/${repo}/releases/latest`;
         
         const response = await fetch(apiUrl);
-        if (response.ok) {
+        if (response.ok) 
+{
           const release: GitHubRelease = await response.json();
           setVersion(release.tag_name);
-        } else if (response.status === 404) {
+        }
+ else if (response.status === 404) 
+{
           // No releases found - this is expected for many projects
           setVersion(null);
         }
-      } catch (error) {
+      }
+ catch (error) 
+{
         console.log('Could not fetch version:', error);
-      } finally {
+      }
+ finally 
+{
         setLoading(false);
       }
     };
@@ -39,7 +53,8 @@ export function VersionBadge({ repoUrl }: VersionBadgeProps) {
     fetchLatestVersion();
   }, [repoUrl]);
 
-  if (loading || !version) {
+  if (loading || !version) 
+{
     return null;
   }
 

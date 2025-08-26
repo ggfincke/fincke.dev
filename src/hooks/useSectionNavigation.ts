@@ -1,7 +1,9 @@
 // src/hooks/useSectionNavigation.ts
+// * navigation hook w/ transition animations & expandable rows
 
 import { useState, useCallback } from 'react';
-import { useTransitionAnimation } from './useTransitionAnimation';
+
+import { useTransitionAnimation } from '~/hooks/useAnimation';
 
 export interface SectionNavigationConfig {
   totalItems: number;
@@ -21,12 +23,14 @@ export interface UseSectionNavigationResult {
   getTransitionClasses: (baseClasses?: string) => string;
 }
 
+// * section navigation w/ animation support
 export function useSectionNavigation({
   totalItems,
   initialIndex = 0,
   transitionDuration = 300,
   loop = true,
-}: SectionNavigationConfig): UseSectionNavigationResult {
+}: SectionNavigationConfig): UseSectionNavigationResult 
+{
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   
   const { 
@@ -38,18 +42,21 @@ export function useSectionNavigation({
   const canGoNext = loop || currentIndex < totalItems - 1;
   const canGoPrevious = loop || currentIndex > 0;
 
-  const goToIndex = useCallback((targetIndex: number) => {
-    if (isAnimating || targetIndex === currentIndex || targetIndex < 0 || targetIndex >= totalItems) {
+  const goToIndex = useCallback((targetIndex: number) => 
+{
+    if (isAnimating || targetIndex === currentIndex || targetIndex < 0 || targetIndex >= totalItems) 
+{
       return;
     }
     
-    const cleanup = startTransition();
+    const cleanup = startTransition?.();
     setCurrentIndex(targetIndex);
     
     return cleanup;
   }, [isAnimating, currentIndex, totalItems, startTransition]);
 
-  const goToNext = useCallback(() => {
+  const goToNext = useCallback(() => 
+{
     if (!canGoNext) return;
     
     const nextIndex = loop && currentIndex === totalItems - 1 
@@ -59,7 +66,8 @@ export function useSectionNavigation({
     goToIndex(nextIndex);
   }, [canGoNext, loop, currentIndex, totalItems, goToIndex]);
 
-  const goToPrevious = useCallback(() => {
+  const goToPrevious = useCallback(() => 
+{
     if (!canGoPrevious) return;
     
     const previousIndex = loop && currentIndex === 0 
@@ -77,16 +85,18 @@ export function useSectionNavigation({
     goToNext,
     goToPrevious,
     goToIndex,
-    getTransitionClasses,
+    getTransitionClasses: getTransitionClasses || ((baseClasses = '') => baseClasses),
   };
 }
 
 
-// Hook for expandable rows/sections
-export function useExpandableRows<T = number>() {
+// * expandable rows hook
+export function useExpandableRows<T = number>() 
+{
   const [expandedRows, setExpandedRows] = useState<T[]>([]);
 
-  const toggleRow = useCallback((id: T) => {
+  const toggleRow = useCallback((id: T) => 
+{
     setExpandedRows(prev => 
       prev.includes(id) 
         ? prev.filter(rowId => rowId !== id)
@@ -94,21 +104,25 @@ export function useExpandableRows<T = number>() {
     );
   }, []);
 
-  const isExpanded = useCallback((id: T) => {
+  const isExpanded = useCallback((id: T) => 
+{
     return expandedRows.includes(id);
   }, [expandedRows]);
 
-  const expandRow = useCallback((id: T) => {
+  const expandRow = useCallback((id: T) => 
+{
     setExpandedRows(prev => 
       prev.includes(id) ? prev : [...prev, id]
     );
   }, []);
 
-  const collapseRow = useCallback((id: T) => {
+  const collapseRow = useCallback((id: T) => 
+{
     setExpandedRows(prev => prev.filter(rowId => rowId !== id));
   }, []);
 
-  const collapseAll = useCallback(() => {
+  const collapseAll = useCallback(() => 
+{
     setExpandedRows([]);
   }, []);
 

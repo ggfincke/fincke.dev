@@ -1,18 +1,17 @@
 /* eslint-disable react/jsx-key, react/no-unescaped-entities */
 
 // src/data/structured/projects.tsx
+// comprehensive project portfolio data w/ detailed descriptions
+import type { Project } from '~/types/projects';
 
-// import types from centralized location
-import type { Project } from '~/types/data';
-import { projects as mainProjects } from './main_projects';
-
-// project data
+// project portfolio data
 export const projects: Project[] = [
   {
     title: "Loom",
     dateRange: "Aug 2025 – Present",
     status: "live",
     madeFor: "Personal",
+    featured: true,
     bulletPoints: [
       "AI résumé tailoring CLI with OpenAI, Anthropic Claude, or local Ollama, built with clean architecture and modular design",
       "Typer-based commands: tailor, sectionize, generate, apply — plus config & enhanced help",
@@ -29,6 +28,7 @@ export const projects: Project[] = [
     dateRange: "May 2025 - Present",
     status: "live",
     madeFor: "Bolt Hackathon",
+    featured: true,
     bulletPoints: [
       "Deployed a price tracking platform monitoring 30k+ products across 4 major retailers including Amazon, Target, Walmart, and more",
       "Features a chat-to-basket feature using OpenAI API that converts natural language into structured baskets using data from Supabase",
@@ -49,6 +49,7 @@ export const projects: Project[] = [
     dateRange: "Feb 2024 - Jun 2024, May 2025 - Present",
     status: "in-development",
     madeFor: "Penn State",
+    featured: true,
     bulletPoints: [
       <>Final Project for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20475%3A%20Applications%20Programming" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 475: Applications Programming</a> </>,
       "Developed a native iOS/watchOS app for swimmers to track, find, and save workouts, view history, and follow progress over time",
@@ -70,6 +71,7 @@ export const projects: Project[] = [
     dateRange: "Mar 2025 - Present",
     status: "live",
     madeFor: "Personal",
+    featured: true,
     bulletPoints: [
       "Built a personal portfolio website (you're looking at it!) with Next.js, React, TypeScript",
       "Implemented modern, responsive design with animations and transitions using Tailwind CSS",
@@ -175,6 +177,7 @@ export const projects: Project[] = [
     dateRange: "Sep 2024 - Dec 2024",
     status: "complete",
     madeFor: "Penn State",
+    featured: true,
     bulletPoints: [
       <>Final Project for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20431W%3A%20Database%20Management%20Systems" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 431W: Database Management Systems</a></>,
       <>Developed a React-based trading card marketplace clone with live data integration (essentially a replica of <a href="https://www.tcgplayer.com" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">tcgplayer.com</a>)</>,
@@ -306,12 +309,14 @@ export const projects: Project[] = [
   }
 ];
 
-// utility functions for filtering projects
-export const getFeaturedProjects = (): Project[] => {
-  // Use the main projects as the featured ones instead of a flag
-  return mainProjects;
+// get featured projects only
+export const getFeaturedProjects = (): Project[] => 
+{
+  return projects.filter(project => project.featured);
 };
 
-export const getAllProjects = (): Project[] => {
+// get all projects
+export const getAllProjects = (): Project[] => 
+{
   return projects;
 };

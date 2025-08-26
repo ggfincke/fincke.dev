@@ -1,9 +1,13 @@
-// src/components/ui/SectionNavButton.tsx
+// src/components/navigation/SectionNavButton.tsx
+// section navigation button w/ arrow icon
 
 import Link from 'next/link';
-import type { SectionNavButtonProps } from '~/types';
 
-export function SectionNavButton({ href, children, className = '' }: SectionNavButtonProps) {
+import type { SectionNavButtonProps } from '~/types/navigation';
+
+// section navigation button component
+export function SectionNavButton({ href, children, className = '' }: SectionNavButtonProps) 
+{
   return (
     <Link href={href} className={`section-nav-button ${className}`}>
       {children}

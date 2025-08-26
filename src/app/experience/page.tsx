@@ -1,8 +1,9 @@
 // src/app/experience/page.tsx
-
-// redirect to resume.pdf
+// experience page redirect to resume PDF
 import { redirect } from 'next/navigation';
 
-export default function ExperiencePage() {
+// redirect component to resume PDF
+export default function ExperiencePage() 
+{
   redirect('/resume.pdf');
 }

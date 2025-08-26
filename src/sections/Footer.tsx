@@ -1,12 +1,12 @@
 // src/sections/Footer.tsx
-
-// footer component
+// site footer w/ social icons & copyright info
 import { SocialIcons } from "~/components/interactive/SocialIcons";
-import type { FooterProps } from '~/types';
+import type { FooterProps } from '~/types/layout';
 
 
-// footer section
-export function Footer({ isSmallScreen = false }: FooterProps) {
+// footer section component
+export function Footer({ isSmallScreen = false }: FooterProps) 
+{
     const currentYear = new Date().getFullYear();
     
     return (

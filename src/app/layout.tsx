@@ -1,11 +1,13 @@
 // src/app/layout.tsx
+// * root layout w/ fonts, analytics & global styling
 
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "~/styles/design-tokens.css";
+
 import "~/styles/animations.css";
+import "~/styles/design-tokens.css";
 import "~/styles/globals.css";
-import { Analytics } from "@vercel/analytics/react"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,7 +28,8 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) 
+{
   return (
     <html lang="en">
       <body

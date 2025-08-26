@@ -1,12 +1,10 @@
 // src/data/structured/experiences.tsx
+// professional experience & education structured data
 
-// logos
 import { GoogleLogo, MetaLogo, OpenAILogo, PSULogo } from '~/components/logos';
+import type { Experience, Education } from '~/types/experience';
 
-// import types from centralized location
-import type { Experience, Education } from '~/types';
-
-// experiences data
+// work experience data w/ logos & detailed content
 export const experiences: Experience[] = [
   {
     id: 'scale',

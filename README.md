@@ -1,9 +1,9 @@
 # fincke.dev
 
-[![Next.js](https://img.shields.io/badge/Next.js-15.3.1-000000?style=flat-square&logo=next.js)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19.0.0-61DAFB?style=flat-square&logo=react)](https://react.dev/)
+[![Next.js](https://img.shields.io/badge/Next.js-15.5.0-000000?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.1.1-61DAFB?style=flat-square&logo=react)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1.4-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1.12-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
 [![Website](https://img.shields.io/badge/Website-Live-success?style=flat-square&logo=vercel)](https://fincke.dev)
 
 A modern, responsive personal portfolio website built with Next.js 15, React 19, and Tailwind CSS 4. Features a clean minimalist design with responsive layout and smooth animations.
@@ -14,24 +14,24 @@ A modern, responsive personal portfolio website built with Next.js 15, React 19,
 
 ## Features
 
-- **Responsive Design**: Fully responsive layout that works on all devices
-- **Modern UI**: Clean, minimalist design with smooth animations and transitions
-- **Collapsible Sidebar**: Fixed sidebar navigation on larger screens with smooth slide animations
+- **Responsive Design**: Fully responsive layout with custom breakpoint detection
+- **Modern UI**: Clean, minimalist design with sophisticated animations and transitions
+- **Fixed Sidebar Navigation**: Persistent sidebar with smooth scroll animations and section indicators
 - **Multiple Sections**: 
-  - Hero section with animated introduction
-  - About section with personal information and skills
-  - Experience section with timeline of work history and education
-  - Projects section showcasing development work
-- **Interactive Elements**: Hover effects, smooth scrolling, and animated components
-- **Performance Optimized**: Built with Next.js 15 App Router and optimized for speed
-- **Analytics**: Integrated Vercel Analytics for insights
-- **Custom Fonts**: Using Geist Sans and Geist Mono for modern typography
+  - Hero section with typewriter animation effects
+  - About section with skills showcase and personal information
+  - Experience section with interactive timeline and company logos
+  - Projects section with filterable cards and status badges
+- **Interactive Elements**: Hover effects, smooth scrolling, pagination dots, and animated components
+- **Performance Optimized**: Built with Next.js 15 App Router, React 19, and Turbopack for fast development
+- **Analytics**: Integrated Vercel Analytics for performance insights
+- **Custom Typography**: Geist Sans and Geist Mono fonts for modern, readable design
 
 ## Tech Stack
 
-- **Framework**: Next.js 15.3.1 with App Router
-- **Frontend**: React 19.0.0 with TypeScript 5
-- **Styling**: Tailwind CSS 4.1.4
+- **Framework**: Next.js 15.5.0 with App Router
+- **Frontend**: React 19.1.1 with TypeScript 5
+- **Styling**: Tailwind CSS 4.1.12
 - **Animations**: Custom CSS animations and transitions
 - **Fonts**: Geist Sans & Geist Mono via Google Fonts
 - **Analytics**: Vercel Analytics
@@ -47,28 +47,25 @@ fincke.dev/
 │   ├── resume.pdf            # Resume document
 │   └── *.svg                 # Logo and icon files
 ├── src/
-│   ├── animations/           # Animation utilities and components
 │   ├── app/                  # Next.js App Router
 │   │   ├── layout.tsx        # Root layout with metadata
 │   │   ├── page.tsx          # Homepage with all sections
 │   │   ├── experience/       # Dedicated experience page
 │   │   └── projects/         # Dedicated projects page
 │   ├── components/           # Reusable UI components
-│   │   ├── buttons/          # Interactive buttons
-│   │   ├── logos/            # Company/brand logos
-│   │   ├── sidebar/          # Navigation sidebar components
-│   │   ├── timeline/         # Experience timeline components
-│   │   └── ui/               # General UI components
-│   │       └── cards/        # Card-based UI components
+│   │   ├── display/          # Visual display components (cards, badges, pills)
+│   │   ├── interactive/      # Interactive elements (social icons)
+│   │   ├── layout/           # Layout components (sidebar, timeline)
+│   │   ├── logos/            # Company/brand logos (Google, Meta, OpenAI, PSU)
+│   │   └── navigation/       # Navigation components (buttons, arrows)
 │   ├── data/                 # Content and data files
-│   │   ├── content/          # Content for different sections
-│   │   └── structured/       # Structured data (experiences, projects)
-│   ├── hooks/                # Custom React hooks
+│   │   └── structured/       # Structured data (experiences, projects, skills)
+│   ├── hooks/                # Custom React hooks for animations & interactions
 │   ├── sections/             # Page sections and layouts
 │   │   ├── home/            # Homepage section components
-│   │   └── projects/        # Project page components
-│   ├── styles/               # CSS and styling
-│   └── unused/               # Deprecated or unused components
+│   │   ├── projects/        # Project page components
+│   │   └── shared/          # Shared responsive components
+│   └── styles/               # CSS and styling
 ├── CLAUDE.md                 # Development instructions for Claude Code
 ├── eslint.config.mjs         # ESLint configuration
 ├── next.config.ts            # Next.js configuration
@@ -128,9 +125,19 @@ This project is deployed on Vercel with a custom domain. To deploy your own vers
 The portfolio content is managed through structured data files:
 
 - **Experiences**: `src/data/structured/experiences.tsx` - Work history and education
-- **Projects**: `src/data/structured/main_projects.tsx` and `all_projects.tsx`
-- **About**: `src/data/content/about.tsx` - Personal information and skills
-- **Contact**: `src/data/content/contact.tsx` - Contact information
+- **Projects**: `src/data/structured/main_projects.tsx` and `projects.tsx` - Featured and all projects
+- **Skills**: `src/data/structured/skills.tsx` - Technical skills and competencies
+
+## Custom React Hooks
+
+The project includes several custom hooks for enhanced interactivity and responsiveness:
+
+- **`useBreakpoint`** - Responsive breakpoint detection for adaptive layouts
+- **`useResponsiveSection`** - Manages section visibility and responsive behavior
+- **`useScrollSidebar`** - Handles sidebar scroll animations and positioning
+- **`useSectionNavigation`** - Navigation between different portfolio sections
+- **`useTransitionAnimation`** - Smooth transition animations between states
+- **`useTypingAnimation`** - Typewriter-style text animation effects
 
 ## Customization
 

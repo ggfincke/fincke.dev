@@ -1,9 +1,10 @@
-// src/components/ui/SkillPill.tsx
+// src/components/display/SkillPill.tsx
+// skill badge w/ size variants & hover effects
+import type { SkillPillProps } from '~/types/ui';
 
-// skillpill component with size variants
-import type { SkillPillProps } from '~/types';
-
-export function SkillPill({ name, size = 'sm', className = '' }: SkillPillProps) {
+// skill pill component
+export function SkillPill({ name, size = 'sm', className = '' }: SkillPillProps) 
+{
   const sizeClasses = {
     xs: 'px-2 py-1 text-xs',
     sm: 'px-2 py-1 md:px-3 md:py-1 text-xs sm:text-sm',

@@ -1,8 +1,11 @@
-// src/components/ui/cards/NavigationArrow.tsx
+// src/components/navigation/NavArrow.tsx
+// directional arrow button for project navigation
 
-import type { NavigationArrowProps } from '~/types';
+import type { NavArrowProps } from '~/types/navigation';
 
-export function NavigationArrow({ direction, onClick, disabled }: NavigationArrowProps) {
+// navigation arrow component
+export function NavArrow({ direction, onClick, disabled }: NavArrowProps) 
+{
   // determine if left or right arrow
   const isLeft = direction === 'left';
   // determine arrow points

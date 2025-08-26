@@ -1,7 +1,6 @@
-// src/components/ui/SectionHeading.tsx
-
-// props for section heading
-import type { SectionHeadingProps } from '~/types';
+// src/components/display/SectionHeading.tsx
+// section heading w/ title, subtitle & alignment options
+import type { SectionHeadingProps } from '~/types/ui';
 
 // section heading component
 export function SectionHeading({
@@ -10,7 +9,8 @@ export function SectionHeading({
   subsubtitle,
   align = 'left',
   className = ''
-}: SectionHeadingProps) {
+}: SectionHeadingProps) 
+{
   const alignmentClasses = {
     left: 'text-left',
     center: 'text-center',

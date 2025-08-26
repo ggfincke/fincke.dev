@@ -1,18 +1,17 @@
-// src/components/sidebar/Navigation.tsx
+// src/components/navigation/Navigation.tsx
+// * main navigation component w/ section buttons
 
-import { NavButton } from '~/components/navigation/NavigationButton';
-import type { NavigationProps } from '~/types';
+import { NavButton } from '~/components/navigation/NavButton';
+import { NAV_ITEMS } from '~/config/navSections';
+import type { NavProps } from '~/types/navigation';
   
-  export function Navigation({ activeSection, onSectionClick }: NavigationProps) {
-    const navItems = [
-      { id: 'about', label: 'About' },
-      { id: 'experience', label: 'Experience' },
-      { id: 'projects', label: 'Projects' }
-    ];
+// * navigation menu component
+export function Navigation({ activeSection, onSectionClick }: NavProps) 
+{
   
     return (
       <nav className="flex flex-col space-y-2 my-8">
-        {navItems.map(item => (
+        {NAV_ITEMS.map(item => (
           <NavButton
             key={item.id}
             sectionId={item.id}

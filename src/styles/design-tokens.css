@@ -21,10 +21,17 @@
   --ease-bounce: cubic-bezier(0.19, 1, 0.22, 1);
   --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
   
-  /* Animation durations */
-  --duration-fast: 0.2s;
-  --duration-normal: 0.3s;
-  --duration-slow: 0.5s;
+  /* Animation durations - mapped to Tailwind duration classes */
+  --duration-fast: 0.2s;        /* duration-200 */
+  --duration-normal: 0.3s;      /* duration-300 */ 
+  --duration-slow: 0.5s;        /* duration-500 */
+  --duration-extra-slow: 1s;    /* duration-1000 */
+  
+  /* Duration constants for JavaScript (milliseconds) */
+  --duration-fast-ms: 200;
+  --duration-normal-ms: 300;
+  --duration-slow-ms: 500;
+  --duration-extra-slow-ms: 1000;
   
   /* Transitions */
   --transition-colors: color 0.3s ease, background-color 0.3s ease;
@@ -33,6 +40,13 @@
   --transition-sidebar: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
   --transition-content: padding-left 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 
+  /* Breakpoints - Tailwind CSS standard values */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  
   /* Layout dimensions */
   --sidebar-width: 18rem;
   --section-padding-mobile: 3rem;
@@ -43,6 +57,42 @@
   --scrollbar-width: 6px;
   --scrollbar-thumb-color: rgba(128, 203, 196, 0.3);
   --scrollbar-thumb-hover: rgba(128, 203, 196, 0.5);
+  
+  /* Status colors for badges and indicators */
+  --status-in-development: #82AAFF;
+  --status-in-development-bg: rgba(130, 170, 255, 0.15);
+  --status-complete: #C3E88D;
+  --status-complete-bg: rgba(195, 232, 141, 0.15);
+  --status-paused: #F78C6C;
+  --status-paused-bg: rgba(247, 140, 108, 0.15);
+  --status-experimental: #C792EA;
+  --status-experimental-bg: rgba(199, 146, 234, 0.15);
+  --status-planned: #FFCB6B;
+  --status-planned-bg: rgba(255, 203, 107, 0.15);
+  --status-live: #80CBC4;
+  --status-live-bg: rgba(128, 203, 196, 0.15);
+  
+  /* Utility transition classes */
+  --transition-hover: all 0.2s ease-in-out;
+  --transition-button: all 0.3s ease;
+  --transition-icon: transform 0.3s ease;
+}
+
+/* Tailwind duration class overrides using CSS variables */
+.duration-200 {
+  transition-duration: var(--duration-fast);
+}
+
+.duration-300 {
+  transition-duration: var(--duration-normal);
+}
+
+.duration-500 {
+  transition-duration: var(--duration-slow);
+}
+
+.duration-1000 {
+  transition-duration: var(--duration-extra-slow);
 }
 
 @media (prefers-color-scheme: dark) {

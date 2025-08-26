@@ -2,16 +2,20 @@
 
 'use client';
 
-import { useSectionNavigation } from '~/hooks/useSectionNavigation';
 import Image from 'next/image';
-import { NavigationArrow } from '~/components/navigation/NavigationArrow';
-import { PaginationDots } from '~/components/display/PaginationDots';
-import { getFeaturedProjects } from '~/data/structured/projects';
-import { ProjectCard } from '~/components/display/ProjectCard';
-import { SectionNavButton } from '~/components/navigation/SectionNavButton';
-import { useBreakpoint } from '~/hooks/useBreakpoint';
 
-export function ProjectsSection() {
+import { PaginationDots } from '~/components/display/PaginationDots';
+import { ProjectCard } from '~/components/display/ProjectCard';
+import { NavArrow } from '~/components/navigation/NavArrow';
+import { SectionNavButton } from '~/components/navigation/SectionNavButton';
+import { getImageSizes } from '~/constants/breakpoints';
+import { getFeaturedProjects } from '~/data/structured/projects';
+import { useBreakpoint } from '~/hooks/useBreakpoint';
+import { useSectionNavigation } from '~/hooks/useSectionNavigation';
+
+// featured projects section w/ navigation controls
+export function ProjectsSection() 
+{
   const projects = getFeaturedProjects();
   const { isMobile } = useBreakpoint();
   
@@ -34,13 +38,13 @@ export function ProjectsSection() {
         {/* Side navigation arrows - only on larger screens */}
         {!isMobile && (
           <>
-            <NavigationArrow 
+            <NavArrow 
               direction="left"
               onClick={goToPrevious}
               disabled={isAnimating}
             />
             
-            <NavigationArrow 
+            <NavArrow 
               direction="right"
               onClick={goToNext}
               disabled={isAnimating}
@@ -68,7 +72,7 @@ export function ProjectsSection() {
                     width={800}
                     height={600}
                     className="object-contain hover:scale-105 hover:z-50 transition-all duration-300 rounded-lg w-full h-full"
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes={getImageSizes('100vw', '50vw')}
                   />
                 </div>
               ) : undefined

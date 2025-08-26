@@ -1,9 +1,10 @@
-// src/components/ui/SocialIcons.tsx
+// src/components/interactive/SocialIcons.tsx
+// social contact links w/ icons for email, phone, GitHub & LinkedIn
+import type { SocialIconsProps } from '~/types/ui';
 
-// social icons (email, phone, github, linkedin)
-import type { SocialIconsProps } from '~/types';
-
-export function SocialIcons({ className = "" }: SocialIconsProps) {
+// social icons component
+export function SocialIcons({ className = "" }: SocialIconsProps) 
+{
   return (
     <div className={`flex justify-center gap-6 ${className}`}>
       <a 

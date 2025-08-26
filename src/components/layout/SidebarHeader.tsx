@@ -1,8 +1,11 @@
-// src/components/sidebar/SidebarHeader.tsx
+// src/components/layout/SidebarHeader.tsx
+// sidebar header w/ logo display
 
-import type { SidebarHeaderProps } from '~/types';
+import type { SidebarHeaderProps } from '~/types/navigation';
 
-export function SidebarHeader({ logo }: SidebarHeaderProps) {
+// sidebar header component
+export function SidebarHeader({ logo }: SidebarHeaderProps) 
+{
   return (
     <div className="mb-10 flex flex-col items-center">
       {logo}

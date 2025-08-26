@@ -1,6 +1,6 @@
 // src/components/logos/PSULogo.tsx
-
-// Penn State logo (just lion/shield)
+// Penn State university logo SVG component
+// Penn State logo component
 const PSULogo = () => (
   <svg width="40" height="40" viewBox="0 0 74 82" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" className="inline-block ml-2">
     <style>

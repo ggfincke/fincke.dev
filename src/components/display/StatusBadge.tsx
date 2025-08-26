@@ -1,59 +1,59 @@
-// src/components/ui/cards/StatusBadge.tsx
-import type { StatusBadgeProps } from '~/types';
+// src/components/display/StatusBadge.tsx
+// project status badge w/ icons & color-coded themes
+import type { StatusBadgeProps } from '~/types/ui';
 
 // status display configurations
 const statusConfig = {
     'in-development': {
       icon: '🛠',
       label: 'In Development',
-      color: '#82AAFF',
-      bgColor: 'rgba(130, 170, 255, 0.15)'
+      colorVar: '--status-in-development',
+      bgColorVar: '--status-in-development-bg'
     },
     'complete': {
       icon: '✅',
       label: 'Complete',
-      color: '#C3E88D',
-      bgColor: 'rgba(195, 232, 141, 0.15)'
+      colorVar: '--status-complete',
+      bgColorVar: '--status-complete-bg'
     },
     'paused': {
       icon: '⏸',
       label: 'Paused',
-      color: '#F78C6C',
-      bgColor: 'rgba(247, 140, 108, 0.15)'
+      colorVar: '--status-paused',
+      bgColorVar: '--status-paused-bg'
     },
     'experimental': {
       icon: '🧪',
       label: 'Experimenting',
-      color: '#C792EA',
-      bgColor: 'rgba(199, 146, 234, 0.15)'
+      colorVar: '--status-experimental',
+      bgColorVar: '--status-experimental-bg'
     },
     'planned': {
       icon: '🕓',
       label: 'Planned',
-      color: '#FFCB6B',
-      bgColor: 'rgba(255, 203, 107, 0.15)'
+      colorVar: '--status-planned',
+      bgColorVar: '--status-planned-bg'
     },
     'live': {
       icon: '🚀',
       label: 'Live',
-      color: '#80CBC4',
-      bgColor: 'rgba(128, 203, 196, 0.15)'
+      colorVar: '--status-live',
+      bgColorVar: '--status-live-bg'
     }
   };
 
 // status badge component
   
-  export function StatusBadge({ status }: StatusBadgeProps) {
+  export function StatusBadge({ status }: StatusBadgeProps) 
+{
     const statusDisplay = statusConfig[status];
     
     return (
       <span 
         className="inline-flex items-center whitespace-nowrap px-3 py-1 rounded-full text-xs font-medium"
         style={{ 
-          '--status-color': statusDisplay.color,
-          '--status-bg-color': statusDisplay.bgColor,
-          color: 'var(--status-color)', 
-          backgroundColor: 'var(--status-bg-color)'
+          color: `var(${statusDisplay.colorVar})`, 
+          backgroundColor: `var(${statusDisplay.bgColorVar})`
         } as React.CSSProperties}
       >
         {statusDisplay.icon} {statusDisplay.label}
