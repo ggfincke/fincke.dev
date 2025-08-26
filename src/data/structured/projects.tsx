@@ -89,7 +89,6 @@ export const projects: Project[] = [
     dateRange: "Dec 2024 - Present",
     status: "paused",
     madeFor: "Personal",
-    featured: false,
     bulletPoints: [
       "Designed a high-performance price & stock tracking system for monitoring product pricing & availability across various major retailers",
       "Optimized for speed, frequency, and accuracy of detecting restocks and price changes on high-velocity products",
@@ -106,7 +105,6 @@ export const projects: Project[] = [
     dateRange: "Mar 2024 - May 2024",
     status: "complete",
     madeFor: "Penn State",
-    featured: false,
     bulletPoints: [
       <>Final Project for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20263%3A%20Blockchain%20and%20Cryptocurrency" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 263: Blockchain and Modern Web Development</a></>,
       "Built a decentralized sports betting platform using Ethereum smart contracts for transparent, trustless wagering",
@@ -125,7 +123,6 @@ export const projects: Project[] = [
     dateRange: "Sep 2023 - Dec 2023",
     status: "complete",
     madeFor: "Penn State",
-    featured: false,
     bulletPoints: [
       <>Three comprehensive projects for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20473%3A%20Operating%20Systems" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 473: Operating Systems</a></>,
       "Developed a memory management simulator implementing FIFO, LRU, and optimal page replacement algorithms with demand paging",
@@ -141,7 +138,6 @@ export const projects: Project[] = [
     dateRange: "Sep 2022 - Dec 2022",
     status: "complete",
     madeFor: "Penn State",
-    featured: false,
     bulletPoints: [
       <>Five comprehensive labs for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20311%3A%20Introduction%20to%20Systems%20Programming" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 311: Introduction to Systems Programming</a></>,
       "Implemented a complete JBOD (Just a Bunch of Disks) storage system with block-level operations across multiple disks",
@@ -161,7 +157,6 @@ export const projects: Project[] = [
     dateRange: "May 2024 - Aug 2024",
     status: "complete",
     madeFor: "Penn State",
-    featured: false,
     bulletPoints: [
       <>Comprehensive coursework for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/stat/#:~:text=STAT%20319%3A%20Applied%20Statistics" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">STAT 319: Applied Statistics</a></>,
       "Completed end-to-end data science projects using Python ecosystem including pandas, NumPy, matplotlib, seaborn, and scikit-learn",
@@ -198,7 +193,6 @@ export const projects: Project[] = [
     dateRange: "Feb 2024 - Apr 2024",
     status: "complete",
     madeFor: "Personal",
-    featured: false,
     bulletPoints: [
       <p>Built a fine-tuned Discord chatbot using <a href="https://www.microsoft.com/en-us/research/project/godel/" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">Microsoft's GODEL-v1.1 model</a> for contextual conversation generation</p>,
       "Integrated HuggingFace Transformers to run local inference with a custom-trained seq2seq model",
@@ -216,7 +210,6 @@ export const projects: Project[] = [
     dateRange: "Mar 2023 - May 2023",
     status: "complete",
     madeFor: "Penn State",
-    featured: false,
     bulletPoints: [
       <>Final Project for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpen/#:~:text=CMPEN%20331%3A%20Computer%20Organization%20and%20Design" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPEN 331: Computer Organization and Design</a></>,
       "Implemented a complete single-cycle MIPS processor in Verilog HDL with 32-bit architecture and Harvard memory organization",
@@ -232,7 +225,6 @@ export const projects: Project[] = [
     dateRange: "Sep 2024 - Oct 2024",
     status: "complete",
     madeFor: "Penn State",
-    featured: false,
     bulletPoints: [
       <>Midterm report for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/math/#:~:text=MATH%20452%3A%20Mathematical%20Foundations%20of%20Machine%20Learning" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">MATH 452: Mathematical Foundations of Machine Learning</a></>,
       "Implemented and compared KNN (94.4% accuracy), Logistic Regression (91.1%), and SVM with RBF kernel (95.3%) for classifying handwritten digits on a 10k-image subset of the MNIST dataset",
@@ -260,7 +252,6 @@ export const projects: Project[] = [
     dateRange: "Nov 2024 – Dec 2024",
     status: "complete",
     madeFor: "Penn State",
-    featured: false,
     bulletPoints: [
       <>Final report for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/math/#:~:text=MATH%20452%3A%20Mathematical%20Foundations%20of%20Machine%20Learning" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">MATH 452: Mathematical Foundations of Machine Learning</a></>,
       "Benchmarked four approaches on the CIFAR-10 dataset (60k images): baseline CNN, ResNet50, DenseNet121, and a Random Feature Model (RFM) with 5,000 Random Fourier Features",
@@ -285,7 +276,6 @@ export const projects: Project[] = [
     dateRange: "May 2023 - Jun 2023",
     status: "experimental",
     madeFor: "Personal",
-    featured: false,
     bulletPoints: [
       "Developed web scraping tools for extracting sports betting data from major platforms including DraftKings and FanDuel",
       "Built automated data collection system using Python with BeautifulSoup for parsing complex HTML structures",
@@ -303,7 +293,6 @@ export const projects: Project[] = [
     dateRange: "Jan 2024 - Mar 2024",
     status: "complete",
     madeFor: "Penn State",
-    featured: false,
     bulletPoints: [
       <>Five comprehensive projects for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20475%3A%20Applications%20Programming" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 475: Applications Programming</a></>,
       "Built LionSpell word puzzle game with custom polygon shapes, multi-language preferences, hints system, and New York Times-style UI design",

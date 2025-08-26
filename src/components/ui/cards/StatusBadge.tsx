@@ -1,5 +1,5 @@
 // src/components/ui/DevelopmentBadge.tsx
-import { ProjectStatus } from '~/data/structured/main_projects';
+import { ProjectStatus } from '~/types/data';
 
 // status display configurations
 const statusConfig = {

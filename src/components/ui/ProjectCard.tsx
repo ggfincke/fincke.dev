@@ -6,7 +6,7 @@
 // imports
 import { SkillPill } from './SkillPill';
 import { ReactNode } from 'react';
-import { Collaborator, ProjectStatus } from '~/data/structured/main_projects';
+import { Collaborator, ProjectStatus } from '~/types/data';
 import { StatusBadge } from './cards/StatusBadge';
 import { VersionBadge } from './cards/VersionBadge';
 

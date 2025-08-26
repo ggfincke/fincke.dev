@@ -1,4 +1,4 @@
-import { ProjectStatus } from '~/data/structured/main_projects';
+import { ProjectStatus } from '~/types/data';
 
 // status display configurations (duplicated from StatusBadge to avoid circular deps)
 const statusConfig: Record<ProjectStatus, { icon: string; label: string; color: string; bgColor: string }> = {
