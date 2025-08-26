@@ -1,9 +1,51 @@
+// src/components/ui/cards/StatusBadge.tsx
 import type { StatusBadgeProps } from '~/types/ui';
-import { getStatusConfig } from '~/utils/status';
 
-export function StatusBadge({ status }: StatusBadgeProps) 
+// status display configurations
+const statusConfig = {
+    'in-development': {
+      icon: '🛠',
+      label: 'In Development',
+      colorVar: '--status-in-development',
+      bgColorVar: '--status-in-development-bg'
+    },
+    'complete': {
+      icon: '✅',
+      label: 'Complete',
+      colorVar: '--status-complete',
+      bgColorVar: '--status-complete-bg'
+    },
+    'paused': {
+      icon: '⏸',
+      label: 'Paused',
+      colorVar: '--status-paused',
+      bgColorVar: '--status-paused-bg'
+    },
+    'experimental': {
+      icon: '🧪',
+      label: 'Experimenting',
+      colorVar: '--status-experimental',
+      bgColorVar: '--status-experimental-bg'
+    },
+    'planned': {
+      icon: '🕓',
+      label: 'Planned',
+      colorVar: '--status-planned',
+      bgColorVar: '--status-planned-bg'
+    },
+    'live': {
+      icon: '🚀',
+      label: 'Live',
+      colorVar: '--status-live',
+      bgColorVar: '--status-live-bg'
+    }
+  };
+
+// status badge component
+  
+  export function StatusBadge({ status }: StatusBadgeProps) 
 {
-  const statusDisplay = getStatusConfig(status);
+    const statusDisplay = statusConfig[status];
     
     return (
       <span 

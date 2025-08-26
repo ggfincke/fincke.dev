@@ -94,7 +94,8 @@ export function useAnimation(config: AnimationConfig): AnimationResult
       
       return () => clearInterval(timer);
     }
-  }, [config]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [config.type, 'text' in config ? config.text : '', 'speed' in config ? config.speed : 0]);
 
   // Transition/Fade/Scale animation handler
   const startAnimation = useCallback(() => 
