@@ -1,7 +1,7 @@
 // src/hooks/useSectionNavigation.ts
 
 import { useState, useCallback } from 'react';
-import { useTransitionAnimation } from './useSectionAnimation';
+import { useTransitionAnimation } from './useTransitionAnimation';
 
 export interface SectionNavigationConfig {
   totalItems: number;
@@ -81,19 +81,6 @@ export function useSectionNavigation({
   };
 }
 
-// Specialized hook for pagination-style navigation (without looping)
-export function usePaginationNavigation({
-  totalItems,
-  initialIndex = 0,
-  transitionDuration = 300,
-}: Omit<SectionNavigationConfig, 'loop'>) {
-  return useSectionNavigation({
-    totalItems,
-    initialIndex,
-    transitionDuration,
-    loop: false,
-  });
-}
 
 // Hook for expandable rows/sections
 export function useExpandableRows<T = number>() {

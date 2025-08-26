@@ -1,6 +1,5 @@
 // src/components/ui/cards/NavigationArrow.tsx
 
-import React from 'react';
 import type { NavigationArrowProps } from '~/types';
 
 export function NavigationArrow({ direction, onClick, disabled }: NavigationArrowProps) {

@@ -148,19 +148,3 @@ export const getSkillsByCategory = (category: SkillCategory): string[] => {
     .map(skill => skill.displayName || skill.name);
 };
 
-export const getSkillByName = (name: string): Skill | undefined => {
-  return skills.find(skill => 
-    skill.name === name || skill.displayName === name
-  );
-};
-
-export const getAllSkillNames = (): string[] => {
-  return skills.map(skill => skill.displayName || skill.name);
-};
-
-// function to validate if a skill exists
-export const isValidSkill = (skillName: string): boolean => {
-  return skills.some(skill => 
-    skill.name === skillName || skill.displayName === skillName
-  );
-};

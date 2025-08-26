@@ -10,7 +10,7 @@ export type {
   Collaborator,
   Skill,
   SkillCategory,
-} from './content.types';
+} from './data';
 
 // Navigation-specific types
 export type {
@@ -18,26 +18,26 @@ export type {
   SidebarHeaderProps,
   SidebarProps,
   NavigationProps,
-} from './navigation.types';
+} from './components';
 
-// UI component types and utilities
+// Common utility types and patterns
 export type {
-  // Common utility types
   Size,
   Alignment,
   Direction,
   Theme,
-  Variant,
-  
-  // Common patterns
   BaseComponent,
   ClickableComponent,
   LinkComponent,
   AnimationProps,
-  EventHandler,
-  ChangeHandler,
-  
-  // Button components
+  Breakpoint,
+  ResponsiveValue,
+  GitHubRelease,
+} from './shared';
+
+// UI component types and utilities
+export type {
+  Variant,
   ButtonProps,
   
   // Timeline components
@@ -53,7 +53,6 @@ export type {
   ProjectCardProps,
   SectionNavButtonProps,
   SectionHeadingProps,
-  ScrollIndicatorProps,
   
   // UI Card components
   StatusCircleProps,
@@ -65,7 +64,4 @@ export type {
   // Section components
   HeroSectionProps,
   FooterProps,
-  
-  // External API types
-  GitHubRelease,
-} from './ui.types';
+} from './components';

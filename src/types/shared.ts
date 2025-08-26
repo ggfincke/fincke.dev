@@ -47,29 +47,11 @@ export interface ResponsiveValue<T> {
   '2xl'?: T;
 }
 
-// Common event handlers
-export type EventHandler<T = void> = (event?: Event) => T;
-export type ChangeHandler<T> = (value: T) => void;
 
-// Loading and error states
-export interface AsyncState<T> {
-  data?: T;
-  loading: boolean;
-  error?: string;
-}
-
-// Pagination types
-export interface PaginationState {
-  currentPage: number;
-  totalPages: number;
-  pageSize: number;
-  totalItems: number;
-}
-
-// Form field types
-export interface FormField<T = string> {
-  value: T;
-  error?: string;
-  touched?: boolean;
-  required?: boolean;
+// External API types
+export interface GitHubRelease {
+  tag_name: string;
+  name?: string;
+  published_at?: string;
+  html_url?: string;
 }

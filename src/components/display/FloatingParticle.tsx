@@ -1,5 +1,4 @@
 // src/components/ui/FloatingParticle.tsx
-import React from 'react';
 import type { FloatingParticleProps } from '~/types';
 
 const FloatingParticle = ({ delay = 0, left = 0, top = 0, duration = 24 }: FloatingParticleProps) => {
@@ -15,7 +14,7 @@ const FloatingParticle = ({ delay = 0, left = 0, top = 0, duration = 24 }: Float
         top: 'var(--particle-top)',
         animationDelay: 'var(--particle-delay)',
         animationDuration: 'var(--particle-duration)'
-      } as React.CSSProperties}
+      } as React.CSSProperties & { [key: string]: string | number }}
     />
   );
 };
