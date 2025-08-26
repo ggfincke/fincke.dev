@@ -18,8 +18,6 @@ export interface UseResponsiveSectionResult extends UseBreakpointResult {
   // Layout helpers
   getLayoutType: () => 'mobile' | 'tablet' | 'desktop';
   isCompactLayout: boolean;
-  showSidebarNavigation: boolean;
-  showMobileNavigation: boolean;
   
   // Grid and spacing utilities
   getGridColumns: () => number;
@@ -48,8 +46,6 @@ export function useResponsiveSection(
   const shouldShowDesktopLayout = breakpointData.isAbove(tabletBreakpoint);
 
   const isCompactLayout = shouldShowMobileLayout || shouldShowTabletLayout;
-  const showSidebarNavigation = shouldShowDesktopLayout;
-  const showMobileNavigation = shouldShowMobileLayout;
 
   // Layout utilities
   const getLayoutType = useCallback((): 'mobile' | 'tablet' | 'desktop' => 
@@ -97,8 +93,6 @@ export function useResponsiveSection(
     shouldShowDesktopLayout,
     getLayoutType,
     isCompactLayout,
-    showSidebarNavigation,
-    showMobileNavigation,
     getGridColumns,
     getSpacing,
     getImageSize,
@@ -109,8 +103,6 @@ export function useResponsiveSection(
     shouldShowTabletLayout,
     shouldShowDesktopLayout,
     isCompactLayout,
-    showSidebarNavigation,
-    showMobileNavigation,
     getLayoutType,
     getGridColumns,
     getSpacing,

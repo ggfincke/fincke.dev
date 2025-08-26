@@ -1,19 +1,15 @@
 // src/components/navigation/Navigation.tsx
 
 import { NavButton } from '~/components/navigation/NavButton';
+import { NAV_ITEMS } from '~/config/navSections';
 import type { NavProps } from '~/types/navigation';
   
   export function Navigation({ activeSection, onSectionClick }: NavProps) 
 {
-    const navItems = [
-      { id: 'about', label: 'About' },
-      { id: 'experience', label: 'Experience' },
-      { id: 'projects', label: 'Projects' }
-    ];
   
     return (
       <nav className="flex flex-col space-y-2 my-8">
-        {navItems.map(item => (
+        {NAV_ITEMS.map(item => (
           <NavButton
             key={item.id}
             sectionId={item.id}
