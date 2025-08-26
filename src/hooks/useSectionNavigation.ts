@@ -1,7 +1,7 @@
 // src/hooks/useSectionNavigation.ts
 
 import { useState, useCallback } from 'react';
-import { useTransitionAnimation } from './useTransitionAnimation';
+import { useTransitionAnimation } from './useAnimation';
 
 export interface SectionNavigationConfig {
   totalItems: number;
@@ -46,7 +46,7 @@ export function useSectionNavigation({
       return;
     }
     
-    const cleanup = startTransition();
+    const cleanup = startTransition?.();
     setCurrentIndex(targetIndex);
     
     return cleanup;
@@ -82,7 +82,7 @@ export function useSectionNavigation({
     goToNext,
     goToPrevious,
     goToIndex,
-    getTransitionClasses,
+    getTransitionClasses: getTransitionClasses || ((baseClasses = '') => baseClasses),
   };
 }
 

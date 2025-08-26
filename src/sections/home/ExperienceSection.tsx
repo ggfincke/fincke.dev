@@ -4,7 +4,7 @@ import { TimelineContainer } from '~/components/layout/TimelineContainer';
 import { TimelineItem } from '~/components/layout/TimelineItem';
 import { experiences, education } from '~/data/structured/experiences';
 import { experienceContent } from '~/data/content/experience';
-import { useTimelineResponsive } from '~/hooks/useResponsiveSection';
+import { useTimelineResponsive } from '~/hooks/useBreakpoint';
 import { SectionNavButton } from '~/components/navigation/SectionNavButton';
 import { SkillPill } from '~/components/display/SkillPill';
 import type { MobileExperienceItemProps } from '~/types/layout';

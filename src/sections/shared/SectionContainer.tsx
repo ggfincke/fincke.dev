@@ -1,7 +1,7 @@
 // src/sections/shared/SectionContainer.tsx
 
 import { ReactNode } from 'react';
-import { useResponsiveSection } from '~/hooks/useResponsiveSection';
+import { useBreakpoint } from '~/hooks/useBreakpoint';
 
 export interface SectionContainerProps {
   children: ReactNode;
@@ -38,7 +38,7 @@ export function SectionContainer({
   as: Component = 'div',
 }: SectionContainerProps) 
 {
-  const { getSpacing } = useResponsiveSection();
+  const { getSpacing } = useBreakpoint();
   
   // Use responsive spacing if not explicitly provided
   const effectiveSpacing = spacing || getSpacing();

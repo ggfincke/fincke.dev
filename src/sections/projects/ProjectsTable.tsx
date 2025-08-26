@@ -2,7 +2,7 @@
 
 'use client';
 
-import { useTableResponsive } from '~/hooks/useResponsiveSection';
+import { useTableResponsive } from '~/hooks/useBreakpoint';
 import { useExpandableRows } from '~/hooks/useSectionNavigation';
 import Image from 'next/image';
 import { getAllProjects } from '~/data/structured/projects';

@@ -13,8 +13,9 @@ import { ExperienceSection } from '~/sections/home/ExperienceSection';
 import { ProjectsSection } from '~/sections/home/ProjectsSection';
 import { Footer } from '~/sections/Footer';
 // hooks
+import { useState, useEffect } from 'react';
 import { useNav } from '~/hooks/useNav';
-import { useResponsiveNav } from '~/hooks/useResponsiveNav';
+import { useBreakpoint } from '~/hooks/useBreakpoint';
 // config
 import { NAV_SECTIONS } from '~/config/navSections';
 export default function Home() 
@@ -22,24 +23,29 @@ export default function Home()
   const { showSidebar, activeSection, scrollToSection } = useNav({
     offset: 150 
   });
-  const { isDesktop } = useResponsiveNav();
+  const { isDesktop } = useBreakpoint();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => 
+  {
+    setIsMounted(true);
+  }, []);
 
   return (
     <div className="min-h-screen">
-      {/* Sidebar - hidden on mobile and tablet screens */}
-      {isDesktop && (
-        <div 
-          className={`sidebar-container ${showSidebar ? 'sidebar-visible' : 'sidebar-hidden'} hidden lg:block`}
-        >
-          <Sidebar 
-            activeSection={activeSection} 
-            onSectionClick={scrollToSection} 
-          />
-        </div>
-      )}
+      {/* Sidebar - always render but let CSS handle visibility to avoid hydration mismatch */}
+      <div 
+        className={`sidebar-container ${showSidebar ? 'sidebar-visible' : 'sidebar-hidden'} hidden lg:block`}
+        style={{ display: (isMounted && isDesktop) ? undefined : 'none' }}
+      >
+        <Sidebar 
+          activeSection={activeSection} 
+          onSectionClick={scrollToSection} 
+        />
+      </div>
       
       {/* Main content */}
-      <main className={`main-content ${!isDesktop ? '' : (showSidebar ? 'main-content-with-sidebar' : 'main-content-full')}`}>
+      <main className={`main-content ${(!isMounted || !isDesktop) ? '' : (showSidebar ? 'main-content-with-sidebar' : 'main-content-full')}`}>
         {/* Hero section */}
         <section id={NAV_SECTIONS.hero.id} className="min-h-screen flex items-center bg-[var(--color-background)] py-16 md:py-24 relative">
           <HeroSection scrollToSection={scrollToSection} />
