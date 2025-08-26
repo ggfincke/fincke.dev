@@ -2,6 +2,8 @@
 
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import "~/styles/design-tokens.css";
+import "~/styles/animations.css";
 import "~/styles/globals.css";
 import { Analytics } from "@vercel/analytics/react"
 

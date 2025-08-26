@@ -1,12 +1,12 @@
 // src/sections/home/ExperienceSection.tsx
 
-import { TimelineContainer } from '~/components/timeline/TimelineContainer';
-import { TimelineItem } from '~/components/timeline/TimelineItem';
+import { TimelineContainer } from '~/components/layout/TimelineContainer';
+import { TimelineItem } from '~/components/layout/TimelineItem';
 import { experiences, education } from '~/data/structured/experiences';
 import { experienceContent } from '~/data/content/experience';
-import { useEffect, useState } from 'react';
-import { SectionNavButton } from '~/components/ui/SectionNavButton';
-import { SkillPill } from '~/components/ui/SkillPill';
+import { useTimelineResponsive } from '~/hooks/useResponsiveSection';
+import { SectionNavButton } from '~/components/navigation/SectionNavButton';
+import { SkillPill } from '~/components/display/SkillPill';
 import type { MobileExperienceItemProps } from '~/types';
 function MobileExperienceItem({ 
   date, 
@@ -65,24 +65,7 @@ function MobileExperienceItem({
 }
 
 export function ExperienceSection() {
-  // State to track screen size
-  const [isLargeScreen, setIsLargeScreen] = useState(true);
-  
-  // Check screen size on mount and resize
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsLargeScreen(window.innerWidth >= 1024); // 1024px is the 'lg' breakpoint in Tailwind
-    };
-    
-    // Set initial value
-    checkScreenSize();
-    
-    // Add event listener
-    window.addEventListener('resize', checkScreenSize);
-    
-    // Clean up
-    return () => window.removeEventListener('resize', checkScreenSize);
-  }, []);
+  const { shouldShowTimeline, shouldShowStackedView } = useTimelineResponsive();
 
   return (
     <div className="max-w-4xl">
@@ -93,7 +76,7 @@ export function ExperienceSection() {
       </div>
       
       {/* Desktop View - Timeline for large screens only */}
-      {isLargeScreen ? (
+      {shouldShowTimeline ? (
         <>
           <TimelineContainer className="mt-16">
             {experiences.map((exp, index) => (
@@ -134,7 +117,7 @@ export function ExperienceSection() {
             </SectionNavButton>
           </div>
         </>
-      ) : (
+      ) : shouldShowStackedView ? (
         // Mobile/Medium View - Stacked Cards
         <div className="mt-8">
           <div className="space-y-8">
@@ -176,7 +159,7 @@ export function ExperienceSection() {
             </SectionNavButton>
           </div>
         </div>
-      )}
+      ) : null}
     </div>
   );
 }

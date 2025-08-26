@@ -1,10 +1,7 @@
 // src/data/structured/experiences.tsx
 
 // logos
-import GoogleLogo from '~/components/logos/GoogleLogo';
-import MetaLogo from '~/components/logos/MetaLogo';
-import OpenAILogo from '~/components/logos/OpenAILogo';
-import PSULogo from '~/components/logos/PSULogo';
+import { GoogleLogo, MetaLogo, OpenAILogo, PSULogo } from '~/components/logos';
 
 // import types from centralized location
 import type { Experience, Education } from '~/types';

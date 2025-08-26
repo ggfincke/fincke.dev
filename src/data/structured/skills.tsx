@@ -120,15 +120,25 @@ export const skills: Skill[] = [
   { name: 'MVC/MVVM', category: 'specialized' },
 ];
 
-// skill categories for AboutSection display (matches resume exactly)
-export const skillCategories = {
-  languages: ['JavaScript', 'TypeScript', 'Python', 'Swift', 'C', 'SQL'],
+// dynamically generate skill categories for AboutSection display
+export const getSkillCategories = () => {
+  const languageSkills = getSkillsByCategory('languages').slice(0, 6); // Top 6 languages
+  const frontendSkills = skills
+    .filter(skill => ['React', 'Next.js', 'HTML', 'CSS', 'Tailwind CSS', 'SwiftUI'].includes(skill.name))
+    .map(skill => skill.displayName || skill.name);
+  const backendSkills = skills
+    .filter(skill => ['Node.js', 'Django', 'PostgreSQL', 'Firebase', 'REST APIs'].includes(skill.name))
+    .map(skill => skill.displayName || skill.name);
+  const toolSkills = skills
+    .filter(skill => ['Git', 'VS Code', 'Xcode', 'Jupyter', 'Docker', 'Figma'].includes(skill.name))
+    .map(skill => skill.displayName || skill.name);
   
-  frontEnd: ['React', 'Next.js', 'HTML', 'CSS', 'Tailwind CSS', 'SwiftUI'],
-  
-  backEnd: ['Node.js', 'Django', 'PostgreSQL', 'Firebase', 'REST APIs'],
-  
-  tools: ['Git', 'VS Code', 'Xcode', 'Jupyter', 'Docker', 'Figma']
+  return {
+    languages: languageSkills,
+    frontEnd: frontendSkills,
+    backEnd: backendSkills,
+    tools: toolSkills
+  };
 };
 
 // utility functions
@@ -138,19 +148,3 @@ export const getSkillsByCategory = (category: SkillCategory): string[] => {
     .map(skill => skill.displayName || skill.name);
 };
 
-export const getSkillByName = (name: string): Skill | undefined => {
-  return skills.find(skill => 
-    skill.name === name || skill.displayName === name
-  );
-};
-
-export const getAllSkillNames = (): string[] => {
-  return skills.map(skill => skill.displayName || skill.name);
-};
-
-// function to validate if a skill exists
-export const isValidSkill = (skillName: string): boolean => {
-  return skills.some(skill => 
-    skill.name === skillName || skill.displayName === skillName
-  );
-};

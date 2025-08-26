@@ -99,10 +99,6 @@ export interface SectionHeadingProps {
   className?: string;
 }
 
-export interface ScrollIndicatorProps {
-  onClick?: () => void;
-}
-
 // UI Cards component types
 export interface StatusCircleProps {
   status: ProjectStatus;

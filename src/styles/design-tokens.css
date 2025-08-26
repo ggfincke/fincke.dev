@@ -1,0 +1,53 @@
+/* Design Tokens - All CSS custom properties */
+
+:root {
+  /* Colors */
+  --color-primary: #80CBC4;
+  --color-background: #0F111A;
+  --color-background-alt: #090B10;
+  --color-text: #babed8;
+  --color-text-light: #EEFFFF;
+  --color-accent: #FFCC00;
+  --color-border: #3E445D;
+  --color-input-bg: #1A1C25;
+  --color-sidebar: #292D3E;
+  --color-muted: #464B5D;
+
+  /* Theme mappings for Next.js */
+  --background: var(--color-background);
+  --foreground: var(--color-text-light);
+
+  /* Animation timing functions */
+  --ease-bounce: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+  
+  /* Animation durations */
+  --duration-fast: 0.2s;
+  --duration-normal: 0.3s;
+  --duration-slow: 0.5s;
+  
+  /* Transitions */
+  --transition-colors: color 0.3s ease, background-color 0.3s ease;
+  --transition-transform: transform 0.3s ease;
+  --transition-all-fast: all 0.2s ease-in-out;
+  --transition-sidebar: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-content: padding-left 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+
+  /* Layout dimensions */
+  --sidebar-width: 18rem;
+  --section-padding-mobile: 3rem;
+  --section-padding-tablet: 4rem;
+  --section-padding-desktop: 6rem;
+  
+  /* Scrollbar styling */
+  --scrollbar-width: 6px;
+  --scrollbar-thumb-color: rgba(128, 203, 196, 0.3);
+  --scrollbar-thumb-hover: rgba(128, 203, 196, 0.5);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--color-background);
+    --foreground: var(--color-text-light);
+  }
+}

@@ -3,14 +3,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-
-// interface for GitHub release data
-interface GitHubRelease {
-  tag_name: string;
-  published_at: string;
-}
-
-import type { VersionBadgeProps } from '~/types';
+import type { VersionBadgeProps, GitHubRelease } from '~/types';
 
 // version badge component
 

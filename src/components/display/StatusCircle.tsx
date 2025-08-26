@@ -48,14 +48,16 @@ export function StatusCircle({ status, size = 32 }: StatusCircleProps) {
 
   return (
     <span
-      className="inline-flex items-center justify-center rounded-full font-medium"
+      className="inline-flex items-center justify-center rounded-full font-medium text-[var(--color-background)]"
       style={{
-        width: `${size}px`,
-        height: `${size}px`,
-        backgroundColor: statusDisplay.color,
-        color: 'var(--color-background)',
-        fontSize: `${size * 0.5}px`,
-      }}
+        '--status-size': `${size}px`,
+        '--status-font-size': `${size * 0.5}px`,
+        '--status-color': statusDisplay.color,
+        width: 'var(--status-size)',
+        height: 'var(--status-size)',
+        backgroundColor: 'var(--status-color)',
+        fontSize: 'var(--status-font-size)',
+      } as React.CSSProperties}
       aria-label={statusDisplay.label}
       title={statusDisplay.label}
     >

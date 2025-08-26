@@ -1,7 +1,7 @@
 // src/types/index.ts
 // Central export file for all type definitions
 
-// Data types
+// Content and data types
 export type {
   Experience,
   Education,
@@ -12,46 +12,15 @@ export type {
   SkillCategory,
 } from './data';
 
-// Component prop types
+// Navigation-specific types
 export type {
-  // Button components
   NavButtonProps,
-  ButtonProps,
-  Variant,
-  
-  // Sidebar components
   SidebarHeaderProps,
   SidebarProps,
   NavigationProps,
-  
-  // Timeline components
-  TimelineItemProps,
-  TimelineContainerProps,
-  
-  // UI components
-  SocialIconsProps,
-  SkillPillProps,
-  SkillPillSize,
-  FloatingParticleProps,
-  ProjectCardProps,
-  SectionNavButtonProps,
-  SectionHeadingProps,
-  ScrollIndicatorProps,
-  
-  // UI Card components
-  StatusCircleProps,
-  VersionBadgeProps,
-  NavigationArrowProps,
-  PaginationDotsProps,
-  StatusBadgeProps,
-  
-  // Section components
-  HeroSectionProps,
-  FooterProps,
-  MobileExperienceItemProps,
 } from './components';
 
-// Shared utility types
+// Common utility types and patterns
 export type {
   Size,
   Alignment,
@@ -63,9 +32,36 @@ export type {
   AnimationProps,
   Breakpoint,
   ResponsiveValue,
-  EventHandler,
-  ChangeHandler,
-  AsyncState,
-  PaginationState,
-  FormField,
+  GitHubRelease,
 } from './shared';
+
+// UI component types and utilities
+export type {
+  Variant,
+  ButtonProps,
+  
+  // Timeline components
+  TimelineItemProps,
+  TimelineContainerProps,
+  MobileExperienceItemProps,
+  
+  // UI components
+  SocialIconsProps,
+  SkillPillProps,
+  SkillPillSize,
+  FloatingParticleProps,
+  ProjectCardProps,
+  SectionNavButtonProps,
+  SectionHeadingProps,
+  
+  // UI Card components
+  StatusCircleProps,
+  StatusBadgeProps,
+  VersionBadgeProps,
+  NavigationArrowProps,
+  PaginationDotsProps,
+  
+  // Section components
+  HeroSectionProps,
+  FooterProps,
+} from './components';

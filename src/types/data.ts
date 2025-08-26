@@ -30,13 +30,12 @@ export interface Collaborator {
 
 export interface Project {
   title: string;
-  collaborators?: string | string[] | Collaborator | Collaborator[];
+  collaborators?: Collaborator[];
   dateRange: string;
   status: ProjectStatus;
   bulletPoints: (string | ReactNode)[];
   technologies: string[];
   madeFor?: string;
-  featured: boolean;
   imagePath?: string; 
   imageAlt?: string;
   repoUrl?: string;
