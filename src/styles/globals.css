@@ -29,26 +29,47 @@ html {
 
 /* section transitions */
 section {
-  transition: background-color 0.3s ease;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  transition: var(--transition-colors);
+  padding-top: var(--section-padding-tablet);
+  padding-bottom: var(--section-padding-tablet);
 }
 
 @media (min-width: 768px) {
   section {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+    padding-top: var(--section-padding-desktop);
+    padding-bottom: var(--section-padding-desktop);
   }
+}
+
+/* Utility classes for common transitions */
+.transition-colors {
+  transition: var(--transition-colors);
+}
+
+.transition-transform {
+  transition: var(--transition-transform);
+}
+
+.transition-hover {
+  transition: var(--transition-hover);
+}
+
+.transition-button {
+  transition: var(--transition-button);
+}
+
+.transition-icon {
+  transition: var(--transition-icon);
 }
 
 /* smooth hover effects for buttons */
 button, a {
-  transition: all 0.2s ease-in-out;
+  transition: var(--transition-hover);
 }
 
 /* sidebar styles */
 aside {
-  transition: background-color 0.3s ease;
+  transition: var(--transition-colors);
   z-index: 40;
 }
 
@@ -73,8 +94,8 @@ aside {
   }
   
   section {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-top: var(--section-padding-mobile);
+    padding-bottom: var(--section-padding-mobile);
   }
   
   h1 {
@@ -89,8 +110,8 @@ aside {
 
 /* scrollbar styling */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: var(--scrollbar-width);
+  height: var(--scrollbar-width);
   background-color: transparent;
 }
 
@@ -99,15 +120,13 @@ aside {
 }
 
 ::-webkit-scrollbar-thumb {
-  /* semi-transparent primary color */
-  background-color: rgba(128, 203, 196, 0.3);
+  background-color: var(--scrollbar-thumb-color);
   border-radius: 3px;
-  transition: background-color 0.3s ease;
+  transition: var(--transition-colors);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  /* slightly more visible on hover */
-  background-color: rgba(128, 203, 196, 0.5);
+  background-color: var(--scrollbar-thumb-hover);
 }
 
 /* Section navigation buttons */
@@ -122,7 +141,7 @@ aside {
   text-decoration: none;
   font-weight: 500;
   font-size: 1.1rem;
-  transition: all 0.3s ease;
+  transition: var(--transition-button);
   cursor: pointer;
   position: relative;
 }
@@ -137,7 +156,7 @@ aside {
 }
 
 .section-nav-icon {
-  transition: transform 0.3s ease;
+  transition: var(--transition-icon);
   width: 1.25rem;
   height: 1.25rem;
   flex-shrink: 0;
@@ -154,7 +173,7 @@ aside {
   }
 }
 
-/* Sidebar animation styles - consolidated */
+/* Sidebar animation styles */
 .sidebar-container {
   position: fixed;
   left: 0;
@@ -217,7 +236,7 @@ aside {
     z-index: 40;
     opacity: 0;
     pointer-events: none;
-    transition: opacity var(--duration-normal) ease;
+    transition: var(--transition-colors);
   }
   
   .sidebar-overlay-visible {
