@@ -34,7 +34,7 @@ export interface ProjectCardProps {
   liveUrl?: string;
   contentComponent?: ReactNode;
   status: ProjectStatus;
-  collaborators?: string | string[] | Collaborator | Collaborator[];
+  collaborators?: Collaborator[];
 }
 
 export interface SectionHeadingProps {

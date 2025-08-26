@@ -6,11 +6,11 @@ import { useTableResponsive } from '~/hooks/useBreakpoint';
 import { useExpandableRows } from '~/hooks/useSectionNavigation';
 import Image from 'next/image';
 import { getAllProjects } from '~/data/structured/projects';
-import type { Collaborator } from '~/types/projects';
 import { StatusBadge } from '~/components/display/StatusBadge';
 import { StatusCircle } from '~/components/display/StatusCircle';
 import { VersionBadge } from '~/components/display/VersionBadge';
 import { SkillPill } from '~/components/display/SkillPill';
+import { renderCollaborators, getCollaboratorNames } from '~/utils/collaborators';
 
 export function ProjectsTable() 
 {
@@ -87,54 +87,6 @@ export function ProjectsTable()
     return url.toLowerCase().endsWith('.pdf') ? 'View Report' : 'View Live Site';
   };
 
-  const renderCollaborators = (collaborators: string | string[] | Collaborator | Collaborator[]) => 
-{
-    if (typeof collaborators === 'string') 
-{
-      return collaborators;
-    }
-    
-    if (Array.isArray(collaborators) && typeof collaborators[0] === 'string') 
-{
-      return (collaborators as string[]).join(', ');
-    }
-    
-    if (!Array.isArray(collaborators) && typeof collaborators === 'object') 
-{
-      const collab = collaborators as Collaborator;
-      return collab.url ? (
-        <a 
-          href={collab.url} 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="text-[var(--color-primary)] hover:underline"
-        >
-          {collab.name}
-        </a>
-      ) : collab.name;
-    }
-    
-    if (Array.isArray(collaborators) && typeof collaborators[0] === 'object') 
-{
-      return (collaborators as Collaborator[]).map((collab, index, arr) => (
-        <span key={collab.name}>
-          {collab.url ? (
-            <a 
-              href={collab.url} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-[var(--color-primary)] hover:underline"
-            >
-              {collab.name}
-            </a>
-          ) : collab.name}
-          {index < arr.length - 1 ? ', ' : ''}
-        </span>
-      ));
-    }
-    
-    return null;
-  };
 
   return (
     <div className="overflow-x-auto">
@@ -165,12 +117,7 @@ export function ProjectsTable()
                       </div>
                       {project.collaborators && (
                         <div className="text-sm text-[var(--color-text)]">
-                          {typeof project.collaborators === 'string' 
-                            ? `with ${project.collaborators}`
-                            : Array.isArray(project.collaborators)
-                              ? `with ${project.collaborators.map((c: string | Collaborator) => typeof c === 'string' ? c : c.name).join(', ')}`
-                              : `with ${typeof project.collaborators === 'object' ? (project.collaborators as Collaborator).name : project.collaborators}`
-                          }
+                          with {getCollaboratorNames(project.collaborators)}
                         </div>
                       )}
                     </div>
@@ -383,12 +330,7 @@ export function ProjectsTable()
                   </div>
                   {project.collaborators && (
                     <div className="text-sm text-[var(--color-text)]">
-                      {typeof project.collaborators === 'string' 
-                        ? `with ${project.collaborators}`
-                        : Array.isArray(project.collaborators)
-                          ? `with ${project.collaborators.map((c: string | Collaborator) => typeof c === 'string' ? c : c.name).join(', ')}`
-                          : `with ${typeof project.collaborators === 'object' ? (project.collaborators as Collaborator).name : project.collaborators}`
-                      }
+                      with {getCollaboratorNames(project.collaborators)}
                     </div>
                   )}
                 </td>
