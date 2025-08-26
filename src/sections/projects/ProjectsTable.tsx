@@ -2,7 +2,8 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useTableResponsive } from '~/hooks/useResponsiveSection';
+import { useExpandableRows } from '~/hooks/useSectionNavigation';
 import Image from 'next/image';
 import { getAllProjects } from '~/data/structured/projects';
 import type { Collaborator } from '~/types';
@@ -12,7 +13,8 @@ import { VersionBadge } from '~/components/display/VersionBadge';
 import { SkillPill } from '~/components/display/SkillPill';
 
 export function ProjectsTable() {
-  const [expandedRows, setExpandedRows] = useState<number[]>([]);
+  const { shouldShowTable, shouldShowCards } = useTableResponsive();
+  const { toggleRow, isExpanded } = useExpandableRows<number>();
   
   const projects = getAllProjects();
 
@@ -70,9 +72,6 @@ export function ProjectsTable() {
     return monthB - monthA;
   });
 
-  const toggleRow = (index: number) => {
-    setExpandedRows(prev => prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]);
-  };
 
   // Helper to choose appropriate label for live links
   const getLiveLabel = (url: string): string => {
@@ -126,11 +125,12 @@ export function ProjectsTable() {
   return (
     <div className="overflow-x-auto">
       {/* Mobile layout - simplified view with only year and project name/contributors */}
-      <div className="block md:hidden">
-        <div className="space-y-4">
-          {sortedProjects.map((project, index) => {
-            const year = project.dateRange.match(/\d{4}/)?.[0] || 'TBD';
-            const isExpanded = expandedRows.includes(index);
+      {shouldShowCards && (
+        <div className="block md:hidden">
+          <div className="space-y-4">
+            {sortedProjects.map((project, index) => {
+              const year = project.dateRange.match(/\d{4}/)?.[0] || 'TBD';
+              const isRowExpanded = isExpanded(index);
             
             return (
               <div key={`mobile-project-${index}`}>
@@ -164,7 +164,7 @@ export function ProjectsTable() {
                     <button
                       onClick={() => toggleRow(index)}
                       className="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors p-1 rounded hover:bg-[var(--color-sidebar)] flex-shrink-0"
-                      aria-label={isExpanded ? 'Collapse project details' : 'Expand project details'}
+                      aria-label={isRowExpanded ? 'Collapse project details' : 'Expand project details'}
                     >
                       <svg 
                         xmlns="http://www.w3.org/2000/svg" 
@@ -176,7 +176,7 @@ export function ProjectsTable() {
                         strokeWidth="2" 
                         strokeLinecap="round" 
                         strokeLinejoin="round"
-                        className={`transform transition-transform duration-200 ${isExpanded ? 'rotate-90' : ''}`}
+                        className={`transform transition-transform duration-200 ${isRowExpanded ? 'rotate-90' : ''}`}
                       >
                         <path d="M9 18l6-6-6-6"/>
                       </svg>
@@ -185,7 +185,7 @@ export function ProjectsTable() {
                 </div>
 
                 {/* Expanded content for mobile */}
-                {isExpanded && (
+                {isRowExpanded && (
                   <div className="mt-2 border border-[var(--color-border)] rounded-lg p-4 bg-[var(--color-background-alt)]/50">
                     <div className="space-y-4">
                       {/* Status Badge and Date */}
@@ -288,41 +288,43 @@ export function ProjectsTable() {
                 )}
               </div>
             );
-          })}
+            })}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Desktop layout - full table */}
-      <table className="w-full table-fixed hidden md:table">
-        <thead>
-          <tr className="border-b border-[var(--color-border)]">
-            <th className="text-left py-4 pl-6 pr-6 text-sm font-medium text-[var(--color-text)] uppercase tracking-wider w-8">
-              {/* Empty header for expand button */}
-            </th>
-            <th className="text-left py-4 pl-4 pr-4 w-[8%] text-sm font-medium text-[var(--color-text)] uppercase tracking-wider">
-              Year
-            </th>
-            <th className="text-left py-4 pl-4 pr-2 w-[20%] text-sm font-medium text-[var(--color-text)] uppercase tracking-wider">
-              Project
-            </th>
-            <th className="text-center py-4 px-4 w-[10%] text-sm font-medium text-[var(--color-text)] uppercase tracking-wider">
-              Status
-            </th>
-            <th className="text-left py-4 pl-4 pr-4 w-[15%] text-sm font-medium text-[var(--color-text)] uppercase tracking-wider">
-              Made for
-            </th>
-            <th className="text-left py-4 pl-4 pr-4 text-sm font-medium text-[var(--color-text)] uppercase tracking-wider">
-              Built with
-            </th>
-            <th className="text-left py-4 pl-4 pr-4 w-[10%] text-sm font-medium text-[var(--color-text)] uppercase tracking-wider">
-              Link
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {sortedProjects.map((project, index) => {
-            const year = project.dateRange.match(/\d{4}/)?.[0] || 'TBD';
-            const isExpanded = expandedRows.includes(index);
+      {shouldShowTable && (
+        <table className="w-full table-fixed hidden md:table">
+          <thead>
+            <tr className="border-b border-[var(--color-border)]">
+              <th className="text-left py-4 pl-6 pr-6 text-sm font-medium text-[var(--color-text)] uppercase tracking-wider w-8">
+                {/* Empty header for expand button */}
+              </th>
+              <th className="text-left py-4 pl-4 pr-4 w-[8%] text-sm font-medium text-[var(--color-text)] uppercase tracking-wider">
+                Year
+              </th>
+              <th className="text-left py-4 pl-4 pr-2 w-[20%] text-sm font-medium text-[var(--color-text)] uppercase tracking-wider">
+                Project
+              </th>
+              <th className="text-center py-4 px-4 w-[10%] text-sm font-medium text-[var(--color-text)] uppercase tracking-wider">
+                Status
+              </th>
+              <th className="text-left py-4 pl-4 pr-4 w-[15%] text-sm font-medium text-[var(--color-text)] uppercase tracking-wider">
+                Made for
+              </th>
+              <th className="text-left py-4 pl-4 pr-4 text-sm font-medium text-[var(--color-text)] uppercase tracking-wider">
+                Built with
+              </th>
+              <th className="text-left py-4 pl-4 pr-4 w-[10%] text-sm font-medium text-[var(--color-text)] uppercase tracking-wider">
+                Link
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {sortedProjects.map((project, index) => {
+              const year = project.dateRange.match(/\d{4}/)?.[0] || 'TBD';
+              const isRowExpanded = isExpanded(index);
             
             return [
               <tr 
@@ -334,7 +336,7 @@ export function ProjectsTable() {
                   <button
                     onClick={() => toggleRow(index)}
                     className="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors p-1 rounded hover:bg-[var(--color-sidebar)]"
-                    aria-label={isExpanded ? 'Collapse project details' : 'Expand project details'}
+                    aria-label={isRowExpanded ? 'Collapse project details' : 'Expand project details'}
                   >
                     <svg 
                       xmlns="http://www.w3.org/2000/svg" 
@@ -346,7 +348,7 @@ export function ProjectsTable() {
                       strokeWidth="2" 
                       strokeLinecap="round" 
                       strokeLinejoin="round"
-                      className={`transform transition-transform duration-200 ${isExpanded ? 'rotate-90' : ''}`}
+                      className={`transform transition-transform duration-200 ${isRowExpanded ? 'rotate-90' : ''}`}
                     >
                       <path d="M9 18l6-6-6-6"/>
                     </svg>
@@ -440,12 +442,12 @@ export function ProjectsTable() {
               </tr>,
 
               // Expanded Row - only render if expanded
-              ...(isExpanded ? [
+              ...(isRowExpanded ? [
                 <tr key={`expanded-${index}`}>
                   <td colSpan={7} className="p-0">
                     <div 
                       className={`px-6 pb-8 bg-[var(--color-background-alt)]/50 border-b border-[var(--color-border)] transition-all duration-300 ${
-                        isExpanded ? 'opacity-100' : 'opacity-0'
+                        isRowExpanded ? 'opacity-100' : 'opacity-0'
                       }`}
                     >
                       <div className="space-y-6 pt-6">
@@ -569,9 +571,10 @@ export function ProjectsTable() {
                 </tr>
               ] : [])
             ];
-          }).flat()}
-        </tbody>
-      </table>
+            }).flat()}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 }

@@ -2,7 +2,7 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useSectionNavigation } from '~/hooks/useSectionNavigation';
 import Image from 'next/image';
 import { NavigationArrow } from '~/components/navigation/NavigationArrow';
 import { PaginationDots } from '~/components/display/PaginationDots';
@@ -15,37 +15,17 @@ export function ProjectsSection() {
   const projects = getFeaturedProjects();
   const { isMobile } = useBreakpoint();
   
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  
-  // navigation functions
-  const navigateToProject = (index: number) => {
-    if (isAnimating || index === currentIndex) return;
-    
-    setIsAnimating(true);
-    setCurrentIndex(index);
-  };
-  
-  const goToPrevious = () => {
-    const newIndex = currentIndex === 0 ? projects.length - 1 : currentIndex - 1;
-    navigateToProject(newIndex);
-  };
-  
-  const goToNext = () => {
-    const newIndex = currentIndex === projects.length - 1 ? 0 : currentIndex + 1;
-    navigateToProject(newIndex);
-  };
-  
-  // reset animation state after transition completes
-  useEffect(() => {
-    if (isAnimating) {
-      const timer = setTimeout(() => {
-        setIsAnimating(false);
-      }, 300); // match this to the CSS transition duration
-      
-      return () => clearTimeout(timer);
-    }
-  }, [isAnimating]);
+  const {
+    currentIndex,
+    isAnimating,
+    goToNext,
+    goToPrevious,
+    goToIndex: navigateToProject,
+    getTransitionClasses,
+  } = useSectionNavigation({
+    totalItems: projects.length,
+    transitionDuration: 300,
+  });
   
   return (
     <div className="max-w-4xl mx-auto relative px-4 sm:px-8">
@@ -69,11 +49,7 @@ export function ProjectsSection() {
         )}
         
         {/* current project card w/ animation */}
-        <div 
-          className={`transition-all duration-300 ease-in-out ${
-            isAnimating ? 'opacity-0 transform scale-95' : 'opacity-100 transform scale-100'
-          }`}
-        >
+        <div className={getTransitionClasses()}>
           <ProjectCard 
             title={projects[currentIndex].title}
             dateRange={projects[currentIndex].dateRange}
