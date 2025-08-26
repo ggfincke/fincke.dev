@@ -1,8 +1,8 @@
-// src/components/ui/cards/NavigationArrow.tsx
+// src/components/navigation/NavArrow.tsx
 
-import type { NavigationArrowProps } from '~/types/navigation';
+import type { NavArrowProps } from '~/types/navigation';
 
-export function NavigationArrow({ direction, onClick, disabled }: NavigationArrowProps) 
+export function NavArrow({ direction, onClick, disabled }: NavArrowProps) 
 {
   // determine if left or right arrow
   const isLeft = direction === 'left';

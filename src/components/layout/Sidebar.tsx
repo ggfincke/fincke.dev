@@ -1,4 +1,4 @@
-// src/components/sidebar/Sidebar.tsx
+// src/components/layout/Sidebar.tsx
 
 // use client   
 'use client';

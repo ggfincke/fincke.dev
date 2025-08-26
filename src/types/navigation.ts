@@ -16,7 +16,7 @@ export interface SidebarProps {
   onSectionClick: (sectionId: string) => void;
 }
 
-export interface NavigationProps {
+export interface NavProps {
   activeSection: string;
   onSectionClick: (sectionId: string) => void;
 }
@@ -27,7 +27,7 @@ export interface SectionNavButtonProps {
   className?: string;
 }
 
-export interface NavigationArrowProps {
+export interface NavArrowProps {
   direction: 'left' | 'right';
   onClick: () => void;
   disabled?: boolean;

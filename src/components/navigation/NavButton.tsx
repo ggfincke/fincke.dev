@@ -1,4 +1,4 @@
-// src/components/buttons/NavigationButton.tsx
+// src/components/navigation/NavButton.tsx
 
 // navigation button component
 import type { NavButtonProps } from '~/types/navigation';

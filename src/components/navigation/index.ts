@@ -1,4 +1,4 @@
-export { NavigationArrow } from './NavigationArrow';
-export { NavButton } from './NavigationButton';
+export { NavArrow } from './NavArrow';
+export { NavButton } from './NavButton';
 export { SectionNavButton } from './SectionNavButton';
 export { Navigation } from './Navigation';

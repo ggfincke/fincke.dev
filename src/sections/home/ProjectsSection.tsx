@@ -4,7 +4,7 @@
 
 import { useSectionNavigation } from '~/hooks/useSectionNavigation';
 import Image from 'next/image';
-import { NavigationArrow } from '~/components/navigation/NavigationArrow';
+import { NavArrow } from '~/components/navigation/NavArrow';
 import { PaginationDots } from '~/components/display/PaginationDots';
 import { getFeaturedProjects } from '~/data/structured/projects';
 import { ProjectCard } from '~/components/display/ProjectCard';
@@ -35,13 +35,13 @@ export function ProjectsSection()
         {/* Side navigation arrows - only on larger screens */}
         {!isMobile && (
           <>
-            <NavigationArrow 
+            <NavArrow 
               direction="left"
               onClick={goToPrevious}
               disabled={isAnimating}
             />
             
-            <NavigationArrow 
+            <NavArrow 
               direction="right"
               onClick={goToNext}
               disabled={isAnimating}
