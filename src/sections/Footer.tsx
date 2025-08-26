@@ -2,7 +2,7 @@
 
 // footer component
 import { SocialIcons } from "~/components/interactive/SocialIcons";
-import type { FooterProps } from '~/types';
+import type { FooterProps } from '~/types/layout';
 
 
 // footer section

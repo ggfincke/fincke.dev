@@ -1,7 +1,7 @@
 // src/components/timeline/TimelineItem.tsx
 
 import { SkillPill } from '~/components/display/SkillPill';
-import type { TimelineItemProps } from '~/types';
+import type { TimelineItemProps } from '~/types/layout';
 
 export function TimelineItem({ 
   date, 

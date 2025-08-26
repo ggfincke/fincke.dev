@@ -4,7 +4,7 @@
 import { GoogleLogo, MetaLogo, OpenAILogo, PSULogo } from '~/components/logos';
 
 // import types from centralized location
-import type { Experience, Education } from '~/types';
+import type { Experience, Education } from '~/types/experience';
 
 // experiences data
 export const experiences: Experience[] = [

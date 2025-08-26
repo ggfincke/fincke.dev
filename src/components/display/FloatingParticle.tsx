@@ -1,5 +1,5 @@
 // src/components/ui/FloatingParticle.tsx
-import type { FloatingParticleProps } from '~/types';
+import type { FloatingParticleProps } from '~/types/ui';
 
 const FloatingParticle = ({ delay = 0, left = 0, top = 0, duration = 24 }: FloatingParticleProps) => 
 {

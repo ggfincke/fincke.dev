@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { SidebarHeader } from '~/components/layout/SidebarHeader';
 import { Navigation } from '~/components/navigation/Navigation';
 import { SocialIcons } from '~/components/interactive/SocialIcons';
-import type { SidebarProps } from '~/types';
+import type { SidebarProps } from '~/types/navigation';
 export function Sidebar({ activeSection, onSectionClick }: SidebarProps) 
 {
   return (

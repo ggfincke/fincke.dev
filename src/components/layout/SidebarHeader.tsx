@@ -1,6 +1,6 @@
 // src/components/sidebar/SidebarHeader.tsx
 
-import type { SidebarHeaderProps } from '~/types';
+import type { SidebarHeaderProps } from '~/types/navigation';
 
 export function SidebarHeader({ logo }: SidebarHeaderProps) 
 {

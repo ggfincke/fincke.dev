@@ -1,7 +1,7 @@
 // src/components/buttons/NavigationButton.tsx
 
 // navigation button component
-import type { NavButtonProps } from '~/types';
+import type { NavButtonProps } from '~/types/navigation';
   
   export function NavButton({ sectionId, label, activeSection, onClick }: NavButtonProps) 
 {

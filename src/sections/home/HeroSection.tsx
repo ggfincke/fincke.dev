@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import FloatingParticle from '~/components/display/FloatingParticle';
 import useTypingAnimation from '~/hooks/useTypingAnimation';
-import type { HeroSectionProps } from '~/types';
+import type { HeroSectionProps } from '~/types/layout';
 
 export function HeroSection({ scrollToSection }: HeroSectionProps) 
 {

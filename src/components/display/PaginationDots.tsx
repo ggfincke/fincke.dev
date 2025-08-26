@@ -1,6 +1,6 @@
 // src/components/ui/cards/PaginationDots.tsx
 
-import type { PaginationDotsProps } from '~/types';
+import type { PaginationDotsProps } from '~/types/navigation';
 
 export function PaginationDots({ totalItems, currentIndex, onDotClick, disabled }: PaginationDotsProps) 
 {

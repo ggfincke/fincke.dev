@@ -1,7 +1,7 @@
 // src/data/structured/skills.tsx
 
 // import types from centralized location
-import type { Skill, SkillCategory } from '~/types';
+import type { Skill, SkillCategory } from '~/types/experience';
 
 // skills definition (comprehensive list matching resume)
 export const skills: Skill[] = [

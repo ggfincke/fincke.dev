@@ -1,7 +1,7 @@
 // src/components/ui/SectionHeading.tsx
 
 // props for section heading
-import type { SectionHeadingProps } from '~/types';
+import type { SectionHeadingProps } from '~/types/ui';
 
 // section heading component
 export function SectionHeading({

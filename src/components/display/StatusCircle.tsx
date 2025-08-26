@@ -1,6 +1,7 @@
 // src/components/ui/cards/StatusCircle.tsx
 
-import type { StatusCircleProps, ProjectStatus } from '~/types';
+import type { StatusCircleProps } from '~/types/ui';
+import type { ProjectStatus } from '~/types/projects';
 
 // status display configurations (duplicated from StatusBadge to avoid circular deps)
 const statusConfig: Record<ProjectStatus, { icon: string; label: string; color: string; bgColor: string }> = {

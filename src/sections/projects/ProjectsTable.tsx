@@ -6,7 +6,7 @@ import { useTableResponsive } from '~/hooks/useResponsiveSection';
 import { useExpandableRows } from '~/hooks/useSectionNavigation';
 import Image from 'next/image';
 import { getAllProjects } from '~/data/structured/projects';
-import type { Collaborator } from '~/types';
+import type { Collaborator } from '~/types/projects';
 import { StatusBadge } from '~/components/display/StatusBadge';
 import { StatusCircle } from '~/components/display/StatusCircle';
 import { VersionBadge } from '~/components/display/VersionBadge';

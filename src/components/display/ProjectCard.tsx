@@ -6,7 +6,8 @@
 import { SkillPill } from '~/components/display/SkillPill';
 import { StatusBadge } from '~/components/display/StatusBadge';
 import { VersionBadge } from '~/components/display/VersionBadge';
-import type { ProjectCardProps, Collaborator } from '~/types';
+import type { ProjectCardProps } from '~/types/ui';
+import type { Collaborator } from '~/types/projects';
 
 
 // helper function to render collaborators w/ optional links

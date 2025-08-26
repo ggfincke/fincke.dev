@@ -1,5 +1,5 @@
 // src/components/ui/cards/StatusBadge.tsx
-import type { StatusBadgeProps } from '~/types';
+import type { StatusBadgeProps } from '~/types/ui';
 
 // status display configurations
 const statusConfig = {

@@ -3,7 +3,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import type { VersionBadgeProps, GitHubRelease } from '~/types';
+import type { VersionBadgeProps } from '~/types/ui';
+import type { GitHubRelease } from '~/types/shared';
 
 // version badge component
 

@@ -7,7 +7,7 @@ import { experienceContent } from '~/data/content/experience';
 import { useTimelineResponsive } from '~/hooks/useResponsiveSection';
 import { SectionNavButton } from '~/components/navigation/SectionNavButton';
 import { SkillPill } from '~/components/display/SkillPill';
-import type { MobileExperienceItemProps } from '~/types';
+import type { MobileExperienceItemProps } from '~/types/layout';
 function MobileExperienceItem({ 
   date, 
   title, 

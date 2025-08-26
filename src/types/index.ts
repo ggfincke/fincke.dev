@@ -1,26 +1,16 @@
-// src/types/index.ts
-// Central export file for all type definitions
+// Main barrel export for most commonly used types
+// For specific domain types, import directly from their respective files
 
-// Content and data types
+// Core data types (most commonly used)
 export type {
-  Experience,
-  Education,
   Project,
   ProjectStatus,
   Collaborator,
-  Skill,
-  SkillCategory,
-} from './data';
+} from './projects';
 
-// Navigation-specific types
-export type {
-  NavButtonProps,
-  SidebarHeaderProps,
-  SidebarProps,
-  NavigationProps,
-} from './components';
+export type { Experience, Education, Skill, SkillCategory } from './experience';
 
-// Common utility types and patterns
+// Common utility types
 export type {
   Size,
   Alignment,
@@ -35,33 +25,9 @@ export type {
   GitHubRelease,
 } from './shared';
 
-// UI component types and utilities
-export type {
-  Variant,
-  ButtonProps,
-  
-  // Timeline components
-  TimelineItemProps,
-  TimelineContainerProps,
-  MobileExperienceItemProps,
-  
-  // UI components
-  SocialIconsProps,
-  SkillPillProps,
-  SkillPillSize,
-  FloatingParticleProps,
-  ProjectCardProps,
-  SectionNavButtonProps,
-  SectionHeadingProps,
-  
-  // UI Card components
-  StatusCircleProps,
-  StatusBadgeProps,
-  VersionBadgeProps,
-  NavigationArrowProps,
-  PaginationDotsProps,
-  
-  // Section components
-  HeroSectionProps,
-  FooterProps,
-} from './components';
+// Re-export domain-specific modules for convenience
+export * as ProjectTypes from './projects';
+export * as ExperienceTypes from './experience';
+export * as NavigationTypes from './navigation';
+export * as UITypes from './ui';
+export * as LayoutTypes from './layout';
