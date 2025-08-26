@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 
+import { DEFAULT_DURATION } from '../constants/durations';
+
 export type AnimationType = 'transition' | 'typing' | 'fade' | 'scale';
 
 export interface TransitionConfig 
@@ -49,6 +51,7 @@ export interface AnimationResult
   getAnimationClasses?: (baseClasses?: string) => string;
 }
 
+// * animation hook w/ configurable types & transitions
 export function useAnimation(config: AnimationConfig): AnimationResult 
 {
   const [isAnimating, setIsAnimating] = useState(false);
@@ -56,7 +59,7 @@ export function useAnimation(config: AnimationConfig): AnimationResult
   const [isComplete, setIsComplete] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
-  // Cleanup on unmount
+  // cleanup on unmount
   useEffect(() => 
   {
     return () => 
@@ -68,7 +71,7 @@ export function useAnimation(config: AnimationConfig): AnimationResult
     };
   }, []);
 
-  // Typing animation effect
+  // typing animation effect
   useEffect(() => 
   {
     if (config.type === 'typing') 
@@ -97,12 +100,12 @@ export function useAnimation(config: AnimationConfig): AnimationResult
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [config.type, 'text' in config ? config.text : '', 'speed' in config ? config.speed : 0]);
 
-  // Transition/Fade/Scale animation handler
+  // transition animation handler
   const startAnimation = useCallback(() => 
   {
     if (isAnimating) return false;
     
-    const duration = 'duration' in config ? config.duration || 300 : 300;
+    const duration = 'duration' in config ? config.duration || DEFAULT_DURATION : DEFAULT_DURATION;
     
     setIsAnimating(true);
     
@@ -121,10 +124,10 @@ export function useAnimation(config: AnimationConfig): AnimationResult
     };
   }, [isAnimating, config]);
 
-  // Get CSS classes based on animation type
+  // get CSS classes based on animation type
   const getAnimationClasses = useCallback((baseClasses: string = '') => 
   {
-    const duration = 'duration' in config ? config.duration || 300 : 300;
+    const duration = 'duration' in config ? config.duration || DEFAULT_DURATION : DEFAULT_DURATION;
     
     switch (config.type) 
     {
@@ -148,7 +151,7 @@ export function useAnimation(config: AnimationConfig): AnimationResult
     }
   }, [config, isAnimating]);
 
-  // Return appropriate properties based on animation type
+  // return appropriate properties based on animation type
   const result: AnimationResult = {
     isAnimating: config.type === 'typing' ? !isComplete : isAnimating,
   };
@@ -169,12 +172,13 @@ export function useAnimation(config: AnimationConfig): AnimationResult
   return result;
 }
 
-// Convenience hooks for specific animation types
-export function useTransitionAnimation(duration: number = 300) 
+// transition animation hook
+export function useTransitionAnimation(duration: number = DEFAULT_DURATION) 
 {
   return useAnimation({ type: 'transition', duration });
 }
 
+// typing animation hook
 export function useTypingAnimation(text: string, speed: number = 100) 
 {
   const result = useAnimation({ type: 'typing', text, speed });
@@ -184,12 +188,14 @@ export function useTypingAnimation(text: string, speed: number = 100)
   };
 }
 
-export function useFadeAnimation(duration: number = 300) 
+// fade animation hook
+export function useFadeAnimation(duration: number = DEFAULT_DURATION) 
 {
   return useAnimation({ type: 'fade', duration });
 }
 
-export function useScaleAnimation(duration: number = 300) 
+// scale animation hook
+export function useScaleAnimation(duration: number = DEFAULT_DURATION) 
 {
   return useAnimation({ type: 'scale', duration });
 }

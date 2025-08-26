@@ -2,14 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 
-// Tailwind CSS breakpoints
-export const BREAKPOINTS = {
-  sm: 640,
-  md: 768,
-  lg: 1024,
-  xl: 1280,
-  '2xl': 1536,
-} as const;
+import { BREAKPOINTS } from '../constants/breakpoints';
 
 export type Breakpoint = keyof typeof BREAKPOINTS;
 
@@ -24,6 +17,7 @@ export interface BreakpointState {
   isBelow: (breakpoint: Breakpoint) => boolean;
 }
 
+// singleton manager for shared breakpoint state
 class BreakpointManager 
 {
   private listeners = new Set<(state: BreakpointState) => void>();
@@ -31,11 +25,13 @@ class BreakpointManager
   private resizeHandler?: () => void;
   private isInitialized = false;
 
+  // lazy initialization to avoid SSR issues
   constructor() 
   {
-    // Don't initialize immediately - wait for first access
+    // don't initialize immediately - wait for first access
   }
 
+  // ensure manager is initialized before use
   private ensureInitialized() 
   {
     if (!this.isInitialized) 
@@ -46,24 +42,29 @@ class BreakpointManager
     }
   }
 
+  // create initial breakpoint state
   private createInitialState(): BreakpointState 
   {
     const windowWidth = typeof window !== 'undefined' ? window.innerWidth : 0;
     return this.createState(windowWidth);
   }
 
+  // create breakpoint state from window width
   private createState(windowWidth: number): BreakpointState 
   {
+    // check if window is above breakpoint
     const isAbove = (breakpoint: Breakpoint): boolean => 
     {
       return windowWidth >= BREAKPOINTS[breakpoint];
     };
 
+    // check if window is below breakpoint
     const isBelow = (breakpoint: Breakpoint): boolean => 
     {
       return windowWidth < BREAKPOINTS[breakpoint];
     };
 
+    // determine current breakpoint from window width
     const getCurrentBreakpoint = (): Breakpoint | null => 
     {
       if (windowWidth === 0) return null;
@@ -87,17 +88,19 @@ class BreakpointManager
     };
   }
 
+  // setup window resize listener
   private setupResizeListener() 
   {
     if (typeof window === 'undefined') return;
 
+    // debounced resize handler
     this.resizeHandler = () => 
     {
       if (!this.state) return;
       
       const newState = this.createState(window.innerWidth);
       
-      // Only update if state actually changed
+      // only update if state actually changed
       if (this.hasStateChanged(this.state, newState)) 
       {
         this.state = newState;
@@ -108,6 +111,7 @@ class BreakpointManager
     window.addEventListener('resize', this.resizeHandler, { passive: true });
   }
 
+  // check if breakpoint state has changed
   private hasStateChanged(oldState: BreakpointState, newState: BreakpointState): boolean 
   {
     return (
@@ -116,6 +120,7 @@ class BreakpointManager
     );
   }
 
+  // notify all subscribers of state change
   private notifyListeners() 
   {
     if (this.state) 
@@ -124,6 +129,7 @@ class BreakpointManager
     }
   }
 
+  // subscribe to breakpoint changes
   subscribe(listener: (state: BreakpointState) => void) 
   {
     this.ensureInitialized();
@@ -133,7 +139,7 @@ class BreakpointManager
     {
       this.listeners.delete(listener);
       
-      // Clean up if no listeners
+      // clean up if no listeners
       if (this.listeners.size === 0 && this.resizeHandler) 
       {
         window?.removeEventListener('resize', this.resizeHandler);
@@ -144,6 +150,7 @@ class BreakpointManager
     };
   }
 
+  // get current breakpoint state
   getState(): BreakpointState 
   {
     this.ensureInitialized();
@@ -151,19 +158,19 @@ class BreakpointManager
   }
 }
 
-// Singleton instance
+// singleton instance
 const breakpointManager = new BreakpointManager();
 
-// Shared hook that uses the singleton with hydration safety
+// * shared breakpoint hook w/ hydration safety
 export function useSharedBreakpoint(): BreakpointState 
 {
-  // Initialize with server-safe defaults to prevent hydration mismatch
+  // initialize w/ server-safe defaults to prevent hydration mismatch
   const [state, setState] = useState<BreakpointState>(() => 
   {
-    // Server-safe initial state
+    // server-safe initial state
     const serverSafeState: BreakpointState = {
       windowWidth: 0,
-      isMobile: true,  // Assume mobile by default to match server
+      isMobile: true,  // assume mobile by default to match server
       isTablet: false,
       isDesktop: false,
       isLarge: false,
@@ -178,10 +185,10 @@ export function useSharedBreakpoint(): BreakpointState
 
   useEffect(() => 
   {
-    // Subscribe to changes
+    // subscribe to changes
     unsubscribeRef.current = breakpointManager.subscribe(setState);
     
-    // Get actual state from manager (with real window dimensions)
+    // get actual state from manager w/ real window dimensions
     setState(breakpointManager.getState());
 
     return () => 

@@ -8,10 +8,12 @@ import { PaginationDots } from '~/components/display/PaginationDots';
 import { ProjectCard } from '~/components/display/ProjectCard';
 import { NavArrow } from '~/components/navigation/NavArrow';
 import { SectionNavButton } from '~/components/navigation/SectionNavButton';
+import { getImageSizes } from '~/constants/breakpoints';
 import { getFeaturedProjects } from '~/data/structured/projects';
 import { useBreakpoint } from '~/hooks/useBreakpoint';
 import { useSectionNavigation } from '~/hooks/useSectionNavigation';
 
+// featured projects section w/ navigation controls
 export function ProjectsSection() 
 {
   const projects = getFeaturedProjects();
@@ -70,7 +72,7 @@ export function ProjectsSection()
                     width={800}
                     height={600}
                     className="object-contain hover:scale-105 hover:z-50 transition-all duration-300 rounded-lg w-full h-full"
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes={getImageSizes('100vw', '50vw')}
                   />
                 </div>
               ) : undefined

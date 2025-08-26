@@ -2,9 +2,10 @@
 
 import { useMemo, useCallback } from 'react';
 
-import { useSharedBreakpoint, type BreakpointState, type Breakpoint, BREAKPOINTS } from '~/hooks/useSharedBreakpoint';
+import { BREAKPOINTS } from '~/constants/breakpoints';
+import { useSharedBreakpoint, type BreakpointState, type Breakpoint } from '~/hooks/useSharedBreakpoint';
 
-// Configuration for responsive utilities
+// responsive configuration interface
 export interface ResponsiveConfig 
 {
   // Section-specific breakpoints
@@ -17,7 +18,7 @@ export interface ResponsiveConfig
   enableSectionUtilities?: boolean;
 }
 
-// Enhanced interface with all utilities
+// enhanced breakpoint result w/ all utilities
 export interface UseBreakpointResult extends BreakpointState 
 {
   // Layout helpers
@@ -47,7 +48,7 @@ export interface UseBreakpointResult extends BreakpointState
   getNavIconSize: () => number;
 }
 
-// Enhanced useBreakpoint hook with optional utilities
+// * enhanced breakpoint hook w/ responsive utilities
 export function useBreakpoint(config: ResponsiveConfig = {}): UseBreakpointResult 
 {
   const {
@@ -58,19 +59,19 @@ export function useBreakpoint(config: ResponsiveConfig = {}): UseBreakpointResul
 
   const breakpointData = useSharedBreakpoint();
 
-  // Section-specific responsive states
+  // section-specific responsive states
   const shouldShowMobileLayout = breakpointData.isBelow(mobileBreakpoint);
   const shouldShowTabletLayout = breakpointData.isAbove(mobileBreakpoint) && breakpointData.isBelow(desktopBreakpoint);
   const shouldShowDesktopLayout = breakpointData.isAbove(tabletBreakpoint);
   const isCompactLayout = shouldShowMobileLayout || shouldShowTabletLayout;
 
-  // Navigation-specific responsive states
+  // navigation-specific responsive states
   const showMobileNav = breakpointData.isBelow(mobileBreakpoint);
   const showDesktopNav = breakpointData.isAbove(tabletBreakpoint);
   const showSidebar = showDesktopNav;
   const isCompactNav = !showDesktopNav;
 
-  // Layout utilities
+  // layout utilities
   const getLayoutType = useCallback((): 'mobile' | 'tablet' | 'desktop' => 
   {
     if (shouldShowMobileLayout) return 'mobile';
@@ -78,7 +79,7 @@ export function useBreakpoint(config: ResponsiveConfig = {}): UseBreakpointResul
     return 'desktop';
   }, [shouldShowMobileLayout, shouldShowTabletLayout]);
 
-  // Navigation layout
+  // navigation layout
   const navLayout: 'mobile' | 'tablet' | 'desktop' = useMemo(() => 
   {
     if (showMobileNav) return 'mobile';
@@ -86,7 +87,7 @@ export function useBreakpoint(config: ResponsiveConfig = {}): UseBreakpointResul
     return 'tablet';
   }, [showMobileNav, showDesktopNav]);
 
-  // Grid and spacing utilities
+  // grid & spacing utilities
   const getGridColumns = useCallback((): number => 
   {
     if (shouldShowMobileLayout) return 1;
@@ -102,7 +103,7 @@ export function useBreakpoint(config: ResponsiveConfig = {}): UseBreakpointResul
     return 'lg';
   }, [shouldShowMobileLayout, shouldShowTabletLayout, breakpointData.isLarge]);
 
-  // Component sizing helpers
+  // component sizing helpers
   const getImageSize = useCallback((): { width: number; height: number } => 
   {
     if (shouldShowMobileLayout) return { width: 300, height: 200 };
@@ -117,7 +118,7 @@ export function useBreakpoint(config: ResponsiveConfig = {}): UseBreakpointResul
     return 'w-full max-w-4xl';
   }, [shouldShowMobileLayout, shouldShowTabletLayout]);
 
-  // Navigation-specific utilities
+  // navigation-specific utilities
   const sidebarWidth = useMemo(() => 
   {
     if (!showSidebar) return '0px';
@@ -189,11 +190,11 @@ export function useBreakpoint(config: ResponsiveConfig = {}): UseBreakpointResul
   ]);
 }
 
-// Export original types and constants for backwards compatibility
+// export original types & constants for backwards compatibility
 export type { Breakpoint, BreakpointState };
 export { BREAKPOINTS };
 
-// Convenience functions for specific use cases
+// timeline responsive hook
 export function useTimelineResponsive() 
 {
   const responsive = useBreakpoint({
@@ -208,6 +209,7 @@ export function useTimelineResponsive()
   };
 }
 
+// table responsive hook
 export function useTableResponsive() 
 {
   const responsive = useBreakpoint({
@@ -222,6 +224,7 @@ export function useTableResponsive()
   };
 }
 
+// sidebar navigation hook
 export function useSidebarNav() 
 {
   const nav = useBreakpoint({ desktopBreakpoint: 'lg' });

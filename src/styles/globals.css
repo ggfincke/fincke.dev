@@ -34,7 +34,7 @@ section {
   padding-bottom: var(--section-padding-tablet);
 }
 
-@media (min-width: 768px) {
+@media (min-width: var(--breakpoint-md)) {
   section {
     padding-top: var(--section-padding-desktop);
     padding-bottom: var(--section-padding-desktop);
@@ -74,7 +74,7 @@ aside {
 }
 
 /* responsive adjustments */
-@media (max-width: 1023px) {
+@media (max-width: calc(var(--breakpoint-lg) - 1px)) {
   /* hide sidebar completely */
   .sidebar-container {
     display: none;
@@ -87,7 +87,7 @@ aside {
 }
 
 /* for smaller screens */
-@media (max-width: 767px) {
+@media (max-width: calc(var(--breakpoint-md) - 1px)) {
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -162,7 +162,7 @@ aside {
   flex-shrink: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: var(--breakpoint-md)) {
   .section-nav-button {
     font-size: 1rem;
   }
@@ -206,7 +206,7 @@ aside {
 }
 
 /* For mobile: Overlay sidebar instead of pushing content */
-@media (max-width: 1024px) {
+@media (max-width: var(--breakpoint-lg)) {
   .sidebar-container {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   }
@@ -246,7 +246,7 @@ aside {
 }
 
 /* Medium and larger screens */
-@media (min-width: 1025px) {
+@media (min-width: calc(var(--breakpoint-lg) + 1px)) {
   .main-content {
     padding-top: 0;
   }
