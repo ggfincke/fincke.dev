@@ -1,4 +1,5 @@
 // src/app/projects/page.tsx
+// dedicated projects archive page w/ navigation & table view
 
 'use client';
 
@@ -6,6 +7,7 @@ import Link from 'next/link';
 
 import { ProjectsTable } from '~/sections/projects/ProjectsTable';
 
+// * projects page component w/ table view & navigation
 export default function ProjectsPage() 
 {
   return (

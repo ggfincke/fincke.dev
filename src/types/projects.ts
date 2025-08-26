@@ -1,3 +1,6 @@
+// src/types/projects.ts
+// project data types w/ status, collaborators & display info
+
 import { ReactNode } from 'react';
 
 export type ProjectStatus = 'in-development' | 'complete' | 'paused' | 'experimental' | 'planned' | 'live';

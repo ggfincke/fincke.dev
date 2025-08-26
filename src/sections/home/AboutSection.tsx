@@ -1,9 +1,11 @@
 // src/sections/home/AboutSection.tsx
+// about section w/ personal info & categorized skills
 
 import { SkillPill } from '~/components/display/SkillPill';
 import { aboutContent } from '~/data/content/about';
 import { getSkillCategories } from '~/data/structured/skills';
 
+// about section component
 export function AboutSection() 
 {
   const skillCategories = getSkillCategories();

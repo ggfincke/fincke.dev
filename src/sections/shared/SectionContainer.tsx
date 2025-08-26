@@ -1,4 +1,5 @@
 // src/sections/shared/SectionContainer.tsx
+// reusable section container w/ responsive spacing & max-width
 
 import { ReactNode } from 'react';
 
@@ -30,6 +31,7 @@ const SPACING_CLASSES = {
   xl: 'px-8 sm:px-12 lg:px-16',
 } as const;
 
+// section container component
 export function SectionContainer({
   children,
   className = '',

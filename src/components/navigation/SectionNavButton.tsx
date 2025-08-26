@@ -1,9 +1,11 @@
 // src/components/navigation/SectionNavButton.tsx
+// section navigation button w/ arrow icon
 
 import Link from 'next/link';
 
 import type { SectionNavButtonProps } from '~/types/navigation';
 
+// section navigation button component
 export function SectionNavButton({ href, children, className = '' }: SectionNavButtonProps) 
 {
   return (

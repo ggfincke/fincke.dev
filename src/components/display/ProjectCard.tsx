@@ -1,6 +1,6 @@
-// src/components/ui/ProjectCard.tsx
+// src/components/display/ProjectCard.tsx
+// * project display card w/ collaborators, status, links & technologies
 
-// use client
 'use client';
 
 import { SkillPill } from '~/components/display/SkillPill';
@@ -64,8 +64,7 @@ const renderCollaborators = (collaborators: string | string[] | Collaborator | C
   return null;
 };
 
-// project card component
-
+// * main project card component
 export function ProjectCard({ 
   title, 
   dateRange,

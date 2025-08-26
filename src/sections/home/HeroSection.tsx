@@ -1,4 +1,5 @@
 // src/sections/home/HeroSection.tsx
+// * hero section w/ typing animation, floating particles & profile image
 
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
@@ -7,6 +8,7 @@ import FloatingParticle from '~/components/display/FloatingParticle';
 import { useTypingAnimation } from '~/hooks/useAnimation';
 import type { HeroSectionProps } from '~/types/layout';
 
+// * main hero section component
 export function HeroSection({ scrollToSection }: HeroSectionProps) 
 {
   const { displayText: nameText, isComplete: nameComplete } = useTypingAnimation('Garrett Fincke', 120);

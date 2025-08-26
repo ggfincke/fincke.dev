@@ -1,10 +1,12 @@
 // src/components/navigation/Navigation.tsx
+// * main navigation component w/ section buttons
 
 import { NavButton } from '~/components/navigation/NavButton';
 import { NAV_ITEMS } from '~/config/navSections';
 import type { NavProps } from '~/types/navigation';
   
-  export function Navigation({ activeSection, onSectionClick }: NavProps) 
+// * navigation menu component
+export function Navigation({ activeSection, onSectionClick }: NavProps) 
 {
   
     return (

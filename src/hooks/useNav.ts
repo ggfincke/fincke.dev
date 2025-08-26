@@ -1,4 +1,5 @@
 // src/hooks/useNav.ts
+// * navigation hook w/ scroll tracking & sidebar management
 
 import { useState, useEffect, useCallback } from 'react';
 
@@ -21,6 +22,7 @@ export interface UseNavResult {
   isScrolling: boolean;
 }
 
+// * main navigation hook
 export function useNav({
   sections = SECTION_IDS,
   offset = 100,
@@ -32,7 +34,7 @@ export function useNav({
   const [isScrolling, setIsScrolling] = useState(false);
   const { isDesktop } = useBreakpoint();
 
-  // Throttled scroll handler to improve performance
+  // throttled scroll handler for performance
   const handleScroll = useCallback(() => 
 {
     if (isScrolling) return;
@@ -75,7 +77,7 @@ else
     }, throttleDelay);
   }, [isScrolling, sections, offset, throttleDelay, isDesktop]);
 
-  // Set up scroll event listener
+  // setup scroll event listener
   useEffect(() => 
 {
     // Use passive listener for better performance
@@ -87,7 +89,7 @@ else
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
 
-  // Function to scroll to a section smoothly
+  // smooth scroll to section
   const scrollToSection = useCallback((sectionId: string) => 
 {
     const element = document.getElementById(sectionId);

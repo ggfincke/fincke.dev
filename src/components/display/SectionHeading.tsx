@@ -1,6 +1,5 @@
-// src/components/ui/SectionHeading.tsx
-
-// props for section heading
+// src/components/display/SectionHeading.tsx
+// section heading w/ title, subtitle & alignment options
 import type { SectionHeadingProps } from '~/types/ui';
 
 // section heading component

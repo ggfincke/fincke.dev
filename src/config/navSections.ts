@@ -1,4 +1,5 @@
 // src/config/navSections.ts
+// navigation section configuration & utility functions
 
 export interface NavSection {
   readonly id: string;
@@ -21,13 +22,13 @@ export const SECTION_IDS = Object.values(NAV_SECTIONS).map(section => section.id
 export const NAV_ITEMS = Object.values(NAV_SECTIONS).filter(section => section.showInNav);
 export const ALL_SECTIONS = Object.values(NAV_SECTIONS);
 
-// Helper function to get section by id
+// get section by ID helper
 export const getSectionById = (id: string): NavSection | undefined => 
 {
   return Object.values(NAV_SECTIONS).find(section => section.id === id);
 };
 
-// Helper function to check if section should show in navigation
+// check if section should show in navigation
 export const shouldShowInNav = (id: string): boolean => 
 {
   const section = getSectionById(id);

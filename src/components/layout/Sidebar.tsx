@@ -1,6 +1,6 @@
 // src/components/layout/Sidebar.tsx
+// * fixed sidebar w/ logo, navigation & social links
 
-// use client   
 'use client';
 
 import Image from 'next/image';
@@ -10,6 +10,7 @@ import { SidebarHeader } from '~/components/layout/SidebarHeader';
 import { Navigation } from '~/components/navigation/Navigation';
 import type { SidebarProps } from '~/types/navigation';
 
+// * main sidebar component
 export function Sidebar({ activeSection, onSectionClick }: SidebarProps) 
 {
   return (

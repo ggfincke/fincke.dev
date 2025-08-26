@@ -1,4 +1,5 @@
-// src/components/ui/cards/VersionBadge.tsx
+// src/components/display/VersionBadge.tsx
+// github release version badge w/ API integration
 
 'use client';
 
@@ -7,8 +8,7 @@ import { useState, useEffect } from 'react';
 import type { GitHubRelease } from '~/types/shared';
 import type { VersionBadgeProps } from '~/types/ui';
 
-// version badge component
-
+// * version badge component w/ API fetching
 export function VersionBadge({ repoUrl }: VersionBadgeProps) 
 {
   const [version, setVersion] = useState<string | null>(null);
@@ -16,6 +16,7 @@ export function VersionBadge({ repoUrl }: VersionBadgeProps)
 
   useEffect(() => 
 {
+    // fetch latest release version from GitHub API
     const fetchLatestVersion = async () => 
 {
       try 

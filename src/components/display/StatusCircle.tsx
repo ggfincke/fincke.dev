@@ -1,4 +1,5 @@
-// src/components/ui/cards/StatusCircle.tsx
+// src/components/display/StatusCircle.tsx
+// circular status indicator w/ icon & color-coded themes
 
 import type { ProjectStatus } from '~/types/projects';
 import type { StatusCircleProps } from '~/types/ui';
@@ -44,6 +45,7 @@ const statusConfig: Record<ProjectStatus, { icon: string; label: string; colorVa
 };
 
 
+// status circle component
 export function StatusCircle({ status, size = 32 }: StatusCircleProps) 
 {
   const statusDisplay = statusConfig[status];

@@ -1,14 +1,12 @@
 // src/app/page.tsx
+// * homepage w/ hero, about, experience & projects sections
 
-// use client
 'use client';
 
-// components
 import { useState, useEffect } from 'react';
 
 import { SectionHeading } from '~/components/display/SectionHeading';
 import { Sidebar } from '~/components/layout/Sidebar';
-// sections
 import { NAV_SECTIONS } from '~/config/navSections';
 import { useBreakpoint } from '~/hooks/useBreakpoint';
 import { useNav } from '~/hooks/useNav';
@@ -18,10 +16,7 @@ import { ExperienceSection } from '~/sections/home/ExperienceSection';
 import { HeroSection } from '~/sections/home/HeroSection';
 import { ProjectsSection } from '~/sections/home/ProjectsSection';
 
-// hooks
-
-// config
-
+// * main page component w/ responsive sidebar & section navigation
 export default function Home() 
 {
   const { showSidebar, activeSection, scrollToSection } = useNav({

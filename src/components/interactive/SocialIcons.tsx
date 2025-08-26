@@ -1,8 +1,8 @@
-// src/components/ui/SocialIcons.tsx
-
-// social icons (email, phone, github, linkedin)
+// src/components/interactive/SocialIcons.tsx
+// social contact links w/ icons for email, phone, GitHub & LinkedIn
 import type { SocialIconsProps } from '~/types/ui';
 
+// social icons component
 export function SocialIcons({ className = "" }: SocialIconsProps) 
 {
   return (

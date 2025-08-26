@@ -1,9 +1,8 @@
 // src/data/structured/skills.tsx
-
-// import types from centralized location
+// comprehensive skills database w/ categorization & display logic
 import type { Skill, SkillCategory } from '~/types/experience';
 
-// skills definition (comprehensive list matching resume)
+// comprehensive skills data (matching resume)
 export const skills: Skill[] = [
   // Languages
   { name: 'Python', category: 'languages' },
@@ -120,7 +119,7 @@ export const skills: Skill[] = [
   { name: 'MVC/MVVM', category: 'specialized' },
 ];
 
-// dynamically generate skill categories for AboutSection display
+// generate skill categories for about section
 export const getSkillCategories = () => 
 {
   const languageSkills = getSkillsByCategory('languages').slice(0, 6); // Top 6 languages
@@ -142,7 +141,7 @@ export const getSkillCategories = () =>
   };
 };
 
-// utility functions
+// get skills by category helper
 export const getSkillsByCategory = (category: SkillCategory): string[] => 
 {
   return skills

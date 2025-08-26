@@ -1,4 +1,5 @@
-// src/components/ui/cards/StatusBadge.tsx
+// src/components/display/StatusBadge.tsx
+// project status badge w/ icons & color-coded themes
 import type { StatusBadgeProps } from '~/types/ui';
 
 // status display configurations

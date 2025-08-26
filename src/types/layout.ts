@@ -1,3 +1,6 @@
+// src/types/layout.ts
+// layout component types for timeline, hero, footer & containers
+
 import { ReactNode } from 'react';
 
 export interface TimelineItemProps {

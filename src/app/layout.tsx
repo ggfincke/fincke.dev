@@ -1,4 +1,5 @@
 // src/app/layout.tsx
+// * root layout w/ fonts, analytics & global styling
 
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";

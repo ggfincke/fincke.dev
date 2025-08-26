@@ -1,11 +1,10 @@
 /* eslint-disable react/jsx-key, react/no-unescaped-entities */
 
 // src/data/structured/projects.tsx
-
-// import types from centralized location
+// comprehensive project portfolio data w/ detailed descriptions
 import type { Project } from '~/types/projects';
 
-// project data
+// project portfolio data
 export const projects: Project[] = [
   {
     title: "Loom",
@@ -310,12 +309,13 @@ export const projects: Project[] = [
   }
 ];
 
-// utility functions for filtering projects
+// get featured projects only
 export const getFeaturedProjects = (): Project[] => 
 {
   return projects.filter(project => project.featured);
 };
 
+// get all projects
 export const getAllProjects = (): Project[] => 
 {
   return projects;

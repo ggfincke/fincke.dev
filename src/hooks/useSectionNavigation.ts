@@ -1,4 +1,5 @@
 // src/hooks/useSectionNavigation.ts
+// * navigation hook w/ transition animations & expandable rows
 
 import { useState, useCallback } from 'react';
 
@@ -22,6 +23,7 @@ export interface UseSectionNavigationResult {
   getTransitionClasses: (baseClasses?: string) => string;
 }
 
+// * section navigation w/ animation support
 export function useSectionNavigation({
   totalItems,
   initialIndex = 0,
@@ -88,7 +90,7 @@ export function useSectionNavigation({
 }
 
 
-// Hook for expandable rows/sections
+// * expandable rows hook
 export function useExpandableRows<T = number>() 
 {
   const [expandedRows, setExpandedRows] = useState<T[]>([]);

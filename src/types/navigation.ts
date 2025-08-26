@@ -1,3 +1,6 @@
+// src/types/navigation.ts
+// navigation component types for buttons, sidebar, arrows & pagination
+
 import { ReactNode } from 'react';
 
 export interface NavButtonProps {

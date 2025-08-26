@@ -1,7 +1,9 @@
-// src/components/ui/cards/PaginationDots.tsx
+// src/components/display/PaginationDots.tsx
+// clickable pagination dots w/ active state & navigation
 
 import type { PaginationDotsProps } from '~/types/navigation';
 
+// pagination dots component
 export function PaginationDots({ totalItems, currentIndex, onDotClick, disabled }: PaginationDotsProps) 
 {
   return (

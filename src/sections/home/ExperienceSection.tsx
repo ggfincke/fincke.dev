@@ -1,4 +1,5 @@
 // src/sections/home/ExperienceSection.tsx
+// experience section w/ responsive timeline & mobile cards
 
 import { SkillPill } from '~/components/display/SkillPill';
 import { TimelineContainer } from '~/components/layout/TimelineContainer';
@@ -9,6 +10,7 @@ import { experiences, education } from '~/data/structured/experiences';
 import { useTimelineResponsive } from '~/hooks/useBreakpoint';
 import type { MobileExperienceItemProps } from '~/types/layout';
 
+// mobile experience card component
 function MobileExperienceItem({ 
   date, 
   title, 
@@ -66,6 +68,7 @@ function MobileExperienceItem({
   );
 }
 
+// * experience section component
 export function ExperienceSection() 
 {
   const { shouldShowTimeline, shouldShowStackedView } = useTimelineResponsive();

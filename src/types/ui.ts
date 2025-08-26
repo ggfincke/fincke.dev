@@ -1,3 +1,6 @@
+// src/types/ui.ts
+// UI component prop types for buttons, cards, badges & interactive elements
+
 import { ReactNode } from 'react';
 
 import { ProjectStatus, Collaborator } from '~/types/projects';

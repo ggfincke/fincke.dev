@@ -1,6 +1,5 @@
 // src/components/navigation/NavButton.tsx
-
-// navigation button component
+// * sidebar navigation button w/ active state styling
 import type { NavButtonProps } from '~/types/navigation';
   
   export function NavButton({ sectionId, label, activeSection, onClick }: NavButtonProps) 

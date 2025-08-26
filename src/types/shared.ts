@@ -1,8 +1,9 @@
 // src/types/shared.ts
+// common utility types, component patterns & API interfaces
 
 import { ReactNode } from 'react';
 
-// Common utility types used across components
+// common utility types used across components
 export type Size = 'sm' | 'md' | 'lg' | 'xl';
 
 export type Alignment = 'left' | 'center' | 'right';
@@ -11,7 +12,7 @@ export type Direction = 'left' | 'right' | 'up' | 'down';
 
 export type Theme = 'light' | 'dark';
 
-// Common component patterns
+// common component patterns
 export interface BaseComponent {
   className?: string;
   children?: ReactNode;
@@ -28,14 +29,14 @@ export interface LinkComponent {
   rel?: string;
 }
 
-// Animation and transition types
+// animation & transition types
 export interface AnimationProps {
   delay?: number;
   duration?: number;
   easing?: string;
 }
 
-// Responsive breakpoints (matching Tailwind defaults)
+// responsive breakpoints (matching Tailwind defaults)
 export type Breakpoint = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
 export interface ResponsiveValue<T> {
@@ -48,7 +49,7 @@ export interface ResponsiveValue<T> {
 }
 
 
-// External API types
+// external API types
 export interface GitHubRelease {
   tag_name: string;
   name?: string;

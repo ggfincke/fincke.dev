@@ -1,3 +1,6 @@
+// src/types/experience.ts
+// experience, education & skills type definitions
+
 import { ReactNode } from 'react';
 
 export interface Experience {

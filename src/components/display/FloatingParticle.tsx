@@ -1,6 +1,8 @@
-// src/components/ui/FloatingParticle.tsx
+// src/components/display/FloatingParticle.tsx
+// animated floating particle w/ customizable position & timing
 import type { FloatingParticleProps } from '~/types/ui';
 
+// floating particle component w/ animation
 const FloatingParticle = ({ delay = 0, left = 0, top = 0, duration = 24 }: FloatingParticleProps) => 
 {
   return (

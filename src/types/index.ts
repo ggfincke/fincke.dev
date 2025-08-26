@@ -1,5 +1,5 @@
-// Main barrel export for most commonly used types
-// For specific domain types, import directly from their respective files
+// src/types/index.ts
+// main barrel export for commonly used types across domains
 
 // Core data types (most commonly used)
 export type {
