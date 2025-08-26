@@ -122,21 +122,35 @@ export const skills: Skill[] = [
 // generate skill categories for about section
 export const getSkillCategories = () => 
 {
-  const languageSkills = getSkillsByCategory('languages').slice(0, 6); // Top 6 languages
+  const languageSkills = skills
+    .filter(skill => ['Python', 'Swift', 'C', 'JavaScript', 'TypeScript', 'Java', 'SQL', 'Solidity'].includes(skill.name))
+    .map(skill => skill.displayName || skill.name);
   const frontendSkills = skills
-    .filter(skill => ['React', 'Next.js', 'HTML', 'CSS', 'Tailwind CSS', 'SwiftUI'].includes(skill.name))
+    .filter(skill => ['React', 'Next.js', 'Tailwind CSS', 'HTML5', 'CSS3'].includes(skill.name))
     .map(skill => skill.displayName || skill.name);
   const backendSkills = skills
-    .filter(skill => ['Node.js', 'Django', 'PostgreSQL', 'Firebase', 'REST APIs'].includes(skill.name))
+    .filter(skill => ['Node.js', 'Django', 'FastAPI', 'Celery', 'REST APIs', 'Spring Boot'].includes(skill.name))
+    .map(skill => skill.displayName || skill.name);
+  const databaseSkills = skills
+    .filter(skill => ['PostgreSQL', 'SQLite', 'Supabase', 'Firebase', 'Redis'].includes(skill.name))
+    .map(skill => skill.displayName || skill.name);
+  const mobileSkills = skills
+    .filter(skill => ['SwiftUI', 'UIKit', 'iOS', 'watchOS', 'HealthKit', 'WatchKit', 'WatchConnectivity', 'MapKit', 'Core Data', 'Swift Charts'].includes(skill.name))
+    .map(skill => skill.displayName || skill.name);
+  const aiMlSkills = skills
+    .filter(skill => ['PyTorch', 'TensorFlow', 'Keras', 'scikit-learn', 'HuggingFace', 'OpenAI', 'Anthropic Claude', 'Ollama', 'pandas', 'NumPy', 'matplotlib', 'seaborn', 'Jupyter'].includes(skill.name))
     .map(skill => skill.displayName || skill.name);
   const toolSkills = skills
-    .filter(skill => ['Git', 'VS Code', 'Xcode', 'Jupyter', 'Docker', 'Figma'].includes(skill.name))
+    .filter(skill => ['GitHub Actions', 'Docker', 'VS Code', 'Xcode', 'Figma', 'LaTeX', 'Git'].includes(skill.name))
     .map(skill => skill.displayName || skill.name);
   
   return {
     languages: languageSkills,
     frontEnd: frontendSkills,
     backEnd: backendSkills,
+    databases: databaseSkills,
+    mobile: mobileSkills,
+    aiMl: aiMlSkills,
     tools: toolSkills
   };
 };
