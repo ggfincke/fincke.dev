@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.16.1-prerelease.20250827] - 2025-08-27
+
+### Added
+- **Automated release workflows**: Added GitHub Actions workflows for automated versioning and releases.
+  - Release workflow triggered on PR merge to main (increments minor version)
+  - Prerelease workflow triggered on dev push (uses CHANGELOG.md versioning)
+- **Gitignore updates**: Added exclusions for documentation files (comment-style.md, TODO.md).
+
+---
+
 ## [1.16.0] - 2025-08-26
 
 ### Changed

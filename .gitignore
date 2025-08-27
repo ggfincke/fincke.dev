@@ -42,3 +42,5 @@ next-env.d.ts
 
 /.claude
 CLAUDE.md
+comment-style.md
+TODO.md

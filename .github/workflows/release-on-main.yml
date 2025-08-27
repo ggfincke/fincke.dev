@@ -1,0 +1,54 @@
+name: Release on PR merge to main
+on:
+  pull_request:
+    types: [closed]
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Ensure tags are fetched
+        run: git fetch --tags --force
+
+      - name: Determine last tag
+        id: last
+        run: |
+          last_tag="$(git tag --list 'v*' | sort -V | tail -n1)"
+          if [ -z "$last_tag" ]; then last_tag="v1.0.0"; fi
+          echo "tag=$last_tag" >> $GITHUB_OUTPUT
+
+      - name: Compute next MINOR version (reset patch)
+        id: next
+        run: |
+          ver="${{ steps.last.outputs.tag }}"
+          ver="${ver#v}"
+          IFS='.' read -r MA MI PA <<< "$ver"
+          MI=$((MI+1))
+          PA=0
+          echo "version=v${MA}.${MI}.${PA}" >> $GITHUB_OUTPUT
+          echo "name=Release ${MA}.${MI}.${PA}" >> $GITHUB_OUTPUT
+
+      - name: Create and push tag
+        run: |
+          git tag "${{ steps.next.outputs.version }}"
+          git push origin "${{ steps.next.outputs.version }}"
+
+      - name: Create GitHub Release (official, latest)
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.next.outputs.version }}
+          name: ${{ steps.next.outputs.name }}
+          prerelease: false
+          make_latest: true
+          # creating changelog personally
+          generate_release_notes: false 

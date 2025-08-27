@@ -1,0 +1,68 @@
+name: Tag & prerelease on dev push
+on:
+  push:
+    branches: [ dev ]
+
+permissions:
+  contents: write
+
+jobs:
+  prerelease-dev:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Parse version from CHANGELOG.md
+        id: version
+        run: |
+          version=$(grep -E "^## \[[0-9]+\.[0-9]+\.[0-9]+(-prerelease\.[0-9]+)?\]" CHANGELOG.md | head -n 1 | sed -E 's/^## \[([0-9]+\.[0-9]+\.[0-9]+)(-prerelease\.[0-9]+)?\].*/\1/')
+          if [ -z "$version" ]; then
+            echo "No version found in CHANGELOG.md"
+            exit 1
+          fi
+          date=$(date +%Y%m%d)
+          prerelease_tag="v${version}-prerelease-${date}"
+          echo "version=$version" >> $GITHUB_OUTPUT
+          echo "tag=$prerelease_tag" >> $GITHUB_OUTPUT
+          echo "name=$prerelease_tag" >> $GITHUB_OUTPUT
+
+      - name: Extract release notes from CHANGELOG.md
+        id: notes
+        run: |
+          # Extract the first version section from CHANGELOG.md
+          awk '
+          /^## \[[0-9]+\.[0-9]+\.[0-9]+(-prerelease\.[0-9]+)?\]/ {
+            if (found) exit
+            found = 1
+            print $0
+            next
+          }
+          found && /^## \[/ { exit }
+          found && /^---$/ { exit }
+          found { print $0 }
+          ' CHANGELOG.md > release_notes.txt
+          
+          # Convert to proper format for GitHub
+          {
+            echo "notes<<EOF"
+            cat release_notes.txt
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
+
+      - name: Create and push prerelease tag
+        run: |
+          git tag "${{ steps.version.outputs.tag }}"
+          git push origin "${{ steps.version.outputs.tag }}"
+
+      - name: Create GitHub prerelease (not latest)
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          name: ${{ steps.version.outputs.name }}
+          body: ${{ steps.notes.outputs.notes }}
+          prerelease: true
+          make_latest: false
+          generate_release_notes: false

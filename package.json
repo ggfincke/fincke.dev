@@ -1,6 +1,6 @@
 {
   "name": "fincke.dev",
-  "version": "1.16.0",
+  "version": "1.16.1-prerelease.20250827",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
