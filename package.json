@@ -1,12 +1,13 @@
 {
   "name": "fincke.dev",
-  "version": "1.16.1-prerelease.20250827",
+  "version": "1.16.2-prerelease.20250827",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "install-hooks": ".githooks/install-hooks.sh"
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",

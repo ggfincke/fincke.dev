@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.16.2-prerelease.20250827] - 2025-08-27
+
+### Added
+- **Git hooks system**: Added comprehensive Git hooks system for development workflow enforcement.
+  - Pre-commit hook automatically versions package.json and CHANGELOG.md on dev branch commits
+  - Pre-push hook prevents pushing to dev branch without updating CHANGELOG.md
+  - Installation script for easy hook setup via `npm run install-hooks`
+  - Bypass option with `--no-verify` for edge cases
+- **GitHub Actions improvements**: Enhanced automated release workflows with better version handling and package.json syncing.
+  - Changed version parsing from CHANGELOG.md to package.json for better accuracy
+  - Improved tag format conversion for prerelease versions
+  - Automatic package.json version updates on prerelease creation
+  - Enhanced error handling and validation
+
+---
+
 ## [1.16.1-prerelease.20250827] - 2025-08-27
 
 ### Added

@@ -15,19 +15,24 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Parse version from CHANGELOG.md
+      - name: Get version from package.json
         id: version
         run: |
-          version=$(grep -E "^## \[[0-9]+\.[0-9]+\.[0-9]+(-prerelease\.[0-9]+)?\]" CHANGELOG.md | head -n 1 | sed -E 's/^## \[([0-9]+\.[0-9]+\.[0-9]+)(-prerelease\.[0-9]+)?\].*/\1/')
-          if [ -z "$version" ]; then
-            echo "No version found in CHANGELOG.md"
+          # Get version directly from package.json (already updated by pre-commit hook)
+          package_version=$(node -p "require('./package.json').version")
+          if [ -z "$package_version" ]; then
+            echo "No version found in package.json"
             exit 1
           fi
-          date=$(date +%Y%m%d)
-          prerelease_tag="v${version}-prerelease-${date}"
-          echo "version=$version" >> $GITHUB_OUTPUT
-          echo "tag=$prerelease_tag" >> $GITHUB_OUTPUT
-          echo "name=$prerelease_tag" >> $GITHUB_OUTPUT
+          
+          # Create tag format (replace dots with dashes for prerelease part)
+          tag="v${package_version}"
+          # Convert package.json format (1.16.2-prerelease.20250827) to tag format (v1.16.2-prerelease-20250827)
+          tag=$(echo "$tag" | sed 's/-prerelease\./-prerelease-/')
+          
+          echo "package_version=$package_version" >> $GITHUB_OUTPUT
+          echo "tag=$tag" >> $GITHUB_OUTPUT
+          echo "name=$tag" >> $GITHUB_OUTPUT
 
       - name: Extract release notes from CHANGELOG.md
         id: notes
@@ -56,6 +61,11 @@ jobs:
         run: |
           git tag "${{ steps.version.outputs.tag }}"
           git push origin "${{ steps.version.outputs.tag }}"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
       - name: Create GitHub prerelease (not latest)
         uses: softprops/action-gh-release@v2
