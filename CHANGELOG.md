@@ -1,3 +1,18 @@
+## [1.17.2-prerelease.20250828] - 2025-08-28
+
+### Changed
+- **Public directory refactor**: Reorganized public assets for improved maintainability
+  - Created structured hierarchy: assets/{icons, images, logos/{brand,companies}, projects/{images,documents}}
+  - Renamed cryptic filenames to meaningful names (e.g., profile.jpg)
+  - Moved all assets into categorized subdirectories
+  - Updated all import paths across components and data files
+
+### Fixed
+- Asset organization issues with files scattered at root level
+- Unclear file naming conventions
+
+---
+
 ## [1.17.1-prerelease.20250828] - 2025-08-28
 
 ### Added

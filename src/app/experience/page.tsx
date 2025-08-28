@@ -5,5 +5,5 @@ import { redirect } from 'next/navigation';
 // redirect component to resume PDF
 export default function ExperiencePage() 
 {
-  redirect('/resume.pdf');
+  redirect('/documents/resume.pdf');
 }
