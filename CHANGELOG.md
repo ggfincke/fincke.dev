@@ -1,3 +1,16 @@
+## [1.17.1-prerelease.20250828] - 2025-08-28
+
+### Added
+- **Version display**: Added version information to website metadata and footer
+  - Display version in Next.js metadata generator field
+  - Version number shown in footer copyright section
+  - Created centralized version utility module (src/utils/version.ts)
+
+### Changed
+- **Dependencies**: Updated browserslist and related packages
+
+---
+
 ## [1.17.0] - 2025-08-28
 
 ### Added

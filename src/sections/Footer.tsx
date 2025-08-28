@@ -2,6 +2,7 @@
 // site footer w/ social icons & copyright info
 import { SocialIcons } from "~/components/interactive/SocialIcons";
 import type { FooterProps } from '~/types/layout';
+import { VERSION } from '~/utils/version';
 
 
 // footer section component
@@ -27,7 +28,7 @@ export function Footer({ isSmallScreen = false }: FooterProps)
           {/* Copyright info */}
           <div className="flex justify-center items-center">
             <div className="text-[var(--color-text)] text-sm">
-              &copy; {currentYear} Garrett Fincke. All Rights Reserved. 
+              &copy; {currentYear} Garrett Fincke. All Rights Reserved. v{VERSION}
             </div>
           </div>
         </div>
