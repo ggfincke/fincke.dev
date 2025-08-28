@@ -1,9 +1,77 @@
+## [1.16.6-prerelease.20250828] - 2025-08-28
+
+### Added
+- **Dependabot integration**: Added comprehensive Dependabot configuration for automated dependency management.
+  - Multi-package ecosystem support (npm, Docker, GitHub Actions)
+  - Scheduled weekly updates with custom commit messages and PR labels
+  - Security vulnerability alerts and automated updates
+  - Proper reviewer assignment and dependency grouping
+
+### Changed
+- **GitHub Actions workflows**: Enhanced PR workflow and dependency management system.
+  - Improved dependencies.yml workflow with better error handling
+  - Updated tag-on-dev.yml workflow for better prerelease management
+  - Updated project dependencies in package.json and package-lock.json
+
+## [1.16.5-prerelease.20250828] - 2025-08-28
+### Fixed
+- Fix Lighthouse CI deprecation warnings by using npx instead of global install
+- Fix artifact upload warning present when .lighthouseci directory doesn't exist
+
+## [1.16.4-prerelease.20250828] - 2025-08-28
+
+### Added
+- **CI/CD Pipeline**: Added comprehensive GitHub Actions CI/CD pipeline with automated testing and quality checks.
+  - Lint & Type Check job with ESLint and TypeScript validation
+  - Build verification job with bundle size analysis
+  - Lighthouse CI integration for performance, accessibility, SEO audits
+  - Parallel job execution with dependency caching for faster CI runs
+  - Status check reporting with comprehensive pipeline results
+- **Lighthouse CI configuration**: Added lighthouserc.json with performance budgets and multi-page testing
+  - Performance threshold: 80%, Accessibility/SEO/Best Practices: 85%
+  - Tests all main pages (home, experience, projects) with 3 runs per page
+
+## [1.16.3-prerelease.20250827] - 2025-08-27
+
+### Changed
+- **Portfolio project details**: Updated portfolio project to highlight new CI/CD pipeline and Git hooks system features.
+  - Added descriptions of comprehensive GitHub Actions workflows for automated versioning and releases
+  - Included details about dev branch prerelease system with date-based versioning
+  - Added Git hooks system with pre-commit auto-versioning and pre-push CHANGELOG validation
+  - Expanded technology stack to include GitHub Actions, Git Hooks, and CI/CD
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [1.16.2-prerelease.20250827] - 2025-08-27
+
+### Added
+- **Git hooks system**: Added comprehensive Git hooks system for development workflow enforcement.
+  - Pre-commit hook automatically versions package.json and CHANGELOG.md on dev branch commits
+  - Pre-push hook prevents pushing to dev branch without updating CHANGELOG.md
+  - Installation script for easy hook setup via `npm run install-hooks`
+  - Bypass option with `--no-verify` for edge cases
+- **GitHub Actions improvements**: Enhanced automated release workflows with better version handling and package.json syncing.
+  - Changed version parsing from CHANGELOG.md to package.json for better accuracy
+  - Improved tag format conversion for prerelease versions
+  - Automatic package.json version updates on prerelease creation
+  - Enhanced error handling and validation
+
+---
+
+## [1.16.1-prerelease.20250827] - 2025-08-27
+
+### Added
+- **Automated release workflows**: Added GitHub Actions workflows for automated versioning and releases.
+  - Release workflow triggered on PR merge to main (increments minor version)
+  - Prerelease workflow triggered on dev push (uses CHANGELOG.md versioning)
+- **Gitignore updates**: Added exclusions for documentation files (comment-style.md, TODO.md).
+
+---
 
 ## [1.16.0] - 2025-08-26
 

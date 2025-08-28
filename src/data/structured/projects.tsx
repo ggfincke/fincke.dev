@@ -78,11 +78,15 @@ export const projects: Project[] = [
       "Created a custom component system for UI consistency",
       "Designed with accessibility and performance in mind",
       "Configured continuous deployment with Vercel",
-      "Learned Figma to design, prototype, and iterate on the website & logo (see top left of sidebar!)"
+      "Learned Figma to design, prototype, and iterate on the website & logo (see top left of sidebar!)",
+      "Engineered comprehensive CI/CD pipeline with GitHub Actions for automated version management and releases",
+      "Implemented dev branch prereleases with format v{version}-prerelease-{YYYYMMDD} on every commit",
+      "Built Git hooks system with pre-commit auto-versioning and pre-push CHANGELOG validation for dev workflow",
+      "Automated tagging, GitHub release creation, and CHANGELOG extraction for streamlined development process"
     ],
     imagePath: "/projects/portfolio.png",
     imageAlt: "Portfolio website screenshot",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "React", "Figma"],
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "React", "Figma", "GitHub Actions", "Git Hooks", "CI/CD"],
     repoUrl: "https://github.com/ggfincke/fincke.dev",
     liveUrl: "https://fincke.dev"
   },

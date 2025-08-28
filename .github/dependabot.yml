@@ -1,0 +1,64 @@
+version: 2
+updates:
+  # Enable version updates for npm
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/New_York"
+    # Limit the number of open pull requests for version updates
+    open-pull-requests-limit: 5
+    # Group updates by type
+    groups:
+      dev-dependencies:
+        dependency-type: "development"
+        patterns:
+          - "@types/*"
+          - "eslint*"
+          - "typescript"
+          - "tailwindcss"
+          - "autoprefixer"
+          - "postcss"
+      production-dependencies:
+        dependency-type: "production"
+        patterns:
+          - "react*"
+          - "next*"
+          - "@vercel/*"
+    # Add assignees
+    assignees:
+      - "ggfincke"
+    # Add custom labels
+    labels:
+      - "dependencies"
+      - "automated-pr"
+    # Allow Dependabot to update lockfiles
+    versioning-strategy: "increase"
+    # Set custom commit message
+    commit-message:
+      prefix: "deps"
+      prefix-development: "deps-dev"
+      include: "scope"
+    # Rebase strategy for PRs
+    rebase-strategy: "auto"
+
+  # Enable version updates for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/.github/workflows"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/New_York"
+    open-pull-requests-limit: 3
+    assignees:
+      - "ggfincke"
+    labels:
+      - "github-actions"
+      - "dependencies"
+      - "automated-pr"
+    commit-message:
+      prefix: "ci"
+      include: "scope"

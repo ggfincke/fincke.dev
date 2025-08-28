@@ -1,0 +1,46 @@
+#!/bin/sh
+#
+# Pre-push hook to ensure CHANGELOG.md is updated when pushing to dev branch
+#
+
+remote="$1"
+url="$2"
+
+# Read stdin to get list of refs being pushed
+while read local_ref local_sha remote_ref remote_sha; do
+    # Check if we're pushing to dev branch
+    if [ "$remote_ref" = "refs/heads/dev" ]; then
+        echo "🔍 Checking dev branch push requirements..."
+        
+        # If this is not a deletion (local_sha is not all zeros)
+        if [ "$local_sha" != "0000000000000000000000000000000000000000" ]; then
+            # Check if CHANGELOG.md was modified in any commits since last push
+            if [ "$remote_sha" = "0000000000000000000000000000000000000000" ]; then
+                # First push to this branch, check if CHANGELOG.md exists
+                if [ -f "CHANGELOG.md" ]; then
+                    echo "✅ CHANGELOG.md exists for initial push"
+                    continue
+                else
+                    echo "❌ CHANGELOG.md is required for dev branch"
+                    exit 1
+                fi
+            else
+                # Check if CHANGELOG.md was modified in the commit range
+                if git diff --name-only "$remote_sha..$local_sha" | grep -q "CHANGELOG.md"; then
+                    echo "✅ CHANGELOG.md was updated in this push"
+                else
+                    echo ""
+                    echo "❌ CHANGELOG.md must be updated when pushing to dev branch"
+                    echo ""
+                    echo "Please document your changes in CHANGELOG.md before pushing to dev."
+                    echo "Add a new entry with your version and changes, then try pushing again."
+                    echo ""
+                    exit 1
+                fi
+            fi
+        fi
+    fi
+done
+
+echo "✅ Pre-push checks passed"
+exit 0
