@@ -1,3 +1,13 @@
+## [1.17.5-prerelease.20250828] - 2025-08-28
+
+### Fixed
+- **Version synchronization**: Enhanced git hooks to ensure package.json and CHANGELOG.md versions stay in sync
+  - Pre-commit hook now verifies and auto-syncs versions when version files are manually staged
+  - Pre-push hook validates version consistency before allowing push to dev branch
+  - Fixed package.json version mismatch (1.17.0 → 1.17.5-prerelease.20250828)
+
+---
+
 ## [1.17.4-prerelease.20250828] - 2025-08-28
 
 ### Changed

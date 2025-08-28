@@ -13,7 +13,30 @@ echo "🔍 Dev branch detected - checking for auto-versioning..."
 
 # Check if package.json or CHANGELOG.md are already staged (user manually updated)
 if git diff --cached --name-only | grep -E "(package\.json|CHANGELOG\.md)" > /dev/null; then
-    echo "✅ Version files already staged - skipping auto-versioning"
+    echo "✅ Version files already staged - verifying version sync"
+    
+    # Check if versions are in sync between package.json and CHANGELOG.md
+    package_version=$(node -p "require('./package.json').version")
+    changelog_version=$(head -n 1 CHANGELOG.md | grep -o '\[[^]]*\]' | tr -d '[]')
+    
+    if [ "$package_version" != "$changelog_version" ]; then
+        echo "⚠️  Version mismatch detected:"
+        echo "   package.json: $package_version"
+        echo "   CHANGELOG.md: $changelog_version"
+        echo "📦 Updating package.json to match CHANGELOG.md version"
+        
+        if ! npm version "$changelog_version" --no-git-tag-version; then
+            echo "❌ Failed to update package.json version"
+            exit 1
+        fi
+        
+        # Stage the updated package.json
+        git add package.json
+        echo "✅ Version sync complete: $changelog_version"
+    else
+        echo "✅ Versions are in sync: $package_version"
+    fi
+    
     exit 0
 fi
 
