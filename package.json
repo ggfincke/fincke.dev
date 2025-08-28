@@ -1,6 +1,6 @@
 {
   "name": "fincke.dev",
-  "version": "1.17.3-prerelease.20250828",
+  "version": "1.17.4-prerelease.20250828",
   "private": true,
   "engines": {
     "node": ">=20.0.0",
@@ -10,7 +10,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit",
     "install-hooks": ".githooks/install-hooks.sh"
   },

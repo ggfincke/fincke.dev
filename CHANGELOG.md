@@ -1,3 +1,11 @@
+## [1.17.4-prerelease.20250828] - 2025-08-28
+
+### Changed
+- **ESLint configuration**: Reformatted eslint.config.mjs and added ignores for build directories
+- **Lint scripts**: Updated package.json to use direct eslint command and added lint:fix script
+
+---
+
 ## [1.17.3-prerelease.20250828] - 2025-08-28
 
 ### Changed
