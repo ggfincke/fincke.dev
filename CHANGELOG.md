@@ -1,3 +1,73 @@
+## [1.18.0] - 2025-08-28
+
+### Added
+- **Version display**: Added version information to website metadata and footer with centralized utility module
+
+### Changed
+- **Public directory refactor**: Reorganized assets into structured hierarchy (assets/{icons, images, logos, projects})
+- **Portfolio Website**: Added Lighthouse CI to project description and technologies
+- **ESLint**: Improved configuration and lint scripts
+- **Dependencies**: Updated browserslist and related packages
+
+### Fixed
+- **Git hooks**: Enhanced version synchronization between package.json and CHANGELOG.md
+- Asset organization and file naming conventions
+
+---
+
+## [1.17.5-prerelease.20250828] - 2025-08-28
+
+### Fixed
+- **Version synchronization**: Enhanced git hooks to ensure package.json and CHANGELOG.md versions stay in sync
+  - Pre-commit hook now verifies and auto-syncs versions when version files are manually staged
+  - Pre-push hook validates version consistency before allowing push to dev branch
+  - Fixed package.json version mismatch (1.17.0 → 1.17.5-prerelease.20250828)
+
+---
+
+## [1.17.4-prerelease.20250828] - 2025-08-28
+
+### Changed
+- **ESLint configuration**: Reformatted eslint.config.mjs and added ignores for build directories
+- **Lint scripts**: Updated package.json to use direct eslint command
+
+---
+
+## [1.17.3-prerelease.20250828] - 2025-08-28
+
+### Changed
+- **Portfolio Website**: Added Lighthouse CI mention to project bullets and included "Lighthouse CI" in the technologies list.
+
+---
+
+## [1.17.2-prerelease.20250828] - 2025-08-28
+
+### Changed
+- **Public directory refactor**: Reorganized public assets for improved maintainability
+  - Created structured hierarchy: assets/{icons, images, logos/{brand,companies}, projects/{images,documents}}
+  - Renamed cryptic filenames to meaningful names (e.g., profile.jpg)
+  - Moved all assets into categorized subdirectories
+  - Updated all import paths across components and data files
+
+### Fixed
+- Asset organization issues with files scattered at root level
+- Unclear file naming conventions
+
+---
+
+## [1.17.1-prerelease.20250828] - 2025-08-28
+
+### Added
+- **Version display**: Added version information to website metadata and footer
+  - Display version in Next.js metadata generator field
+  - Version number shown in footer copyright section
+  - Created centralized version utility module (src/utils/version.ts)
+
+### Changed
+- **Dependencies**: Updated browserslist and related packages
+
+---
+
 ## [1.17.0] - 2025-08-28
 
 ### Added

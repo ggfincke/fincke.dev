@@ -22,14 +22,37 @@ jobs:
           # For PR merges, checkout the merge commit; for pushes, use default
           ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.merge_commit_sha || github.sha }}
 
-      - name: Get version from package.json
-        id: version
+      - name: Check if major/minor version changed
+        id: version_check
         run: |
-          # Get version directly from package.json (already updated by pre-commit hook)
+          # Get current version from package.json
           package_version=$(node -p "require('./package.json').version")
           if [ -z "$package_version" ]; then
             echo "No version found in package.json"
             exit 1
+          fi
+          
+          # Get the base version (without prerelease suffix)
+          base_version=$(echo "$package_version" | sed -E 's/(-prerelease\.[0-9]+)?$//')
+          
+          # Get the last tag to compare versions
+          last_tag=$(git tag --list 'v*' | sort -V | tail -n1 | sed 's/^v//' | sed -E 's/(-prerelease-[0-9]+)?$//')
+          if [ -z "$last_tag" ]; then
+            last_tag="1.0.0"
+          fi
+          
+          # Extract major.minor from both versions
+          current_major_minor=$(echo "$base_version" | cut -d. -f1,2)
+          last_major_minor=$(echo "$last_tag" | cut -d. -f1,2)
+          
+          # Check if major or minor version changed
+          if [ "$current_major_minor" != "$last_major_minor" ]; then
+            echo "Major or minor version changed ($last_major_minor → $current_major_minor)"
+            echo "Skipping tag creation - this will be handled in PR to main"
+            echo "skip_tagging=true" >> $GITHUB_OUTPUT
+          else
+            echo "Only patch version changed - proceeding with prerelease tag"
+            echo "skip_tagging=false" >> $GITHUB_OUTPUT
           fi
           
           # Create tag format (replace dots with dashes for prerelease part)
@@ -43,6 +66,7 @@ jobs:
 
       - name: Extract release notes from CHANGELOG.md
         id: notes
+        if: steps.version_check.outputs.skip_tagging == 'false'
         run: |
           # Extract the first version section from CHANGELOG.md
           awk '
@@ -65,20 +89,23 @@ jobs:
           } >> $GITHUB_OUTPUT
 
       - name: Create and push prerelease tag
+        if: steps.version_check.outputs.skip_tagging == 'false'
         run: |
-          git tag "${{ steps.version.outputs.tag }}"
-          git push origin "${{ steps.version.outputs.tag }}"
+          git tag "${{ steps.version_check.outputs.tag }}"
+          git push origin "${{ steps.version_check.outputs.tag }}"
 
       - name: Setup Node.js
+        if: steps.version_check.outputs.skip_tagging == 'false'
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
       - name: Create GitHub prerelease (not latest)
+        if: steps.version_check.outputs.skip_tagging == 'false'
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ steps.version.outputs.tag }}
-          name: ${{ steps.version.outputs.name }}
+          tag_name: ${{ steps.version_check.outputs.tag }}
+          name: ${{ steps.version_check.outputs.name }}
           body: ${{ steps.notes.outputs.notes }}
           prerelease: true
           make_latest: false

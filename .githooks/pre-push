@@ -12,6 +12,24 @@ while read local_ref local_sha remote_ref remote_sha; do
     if [ "$remote_ref" = "refs/heads/dev" ]; then
         echo "🔍 Checking dev branch push requirements..."
         
+        # Verify that package.json and CHANGELOG.md versions are in sync
+        package_version=$(node -p "require('./package.json').version")
+        changelog_version=$(head -n 1 CHANGELOG.md | grep -o '\[[^]]*\]' | tr -d '[]')
+        
+        if [ "$package_version" != "$changelog_version" ]; then
+            echo ""
+            echo "❌ Version mismatch between package.json and CHANGELOG.md"
+            echo "   package.json: $package_version"
+            echo "   CHANGELOG.md: $changelog_version"
+            echo ""
+            echo "Please ensure both files have the same version before pushing to dev."
+            echo "Run 'git commit --amend' to fix the version sync, then try pushing again."
+            echo ""
+            exit 1
+        fi
+        
+        echo "✅ Package.json and CHANGELOG.md versions are in sync: $package_version"
+        
         # If this is not a deletion (local_sha is not all zeros)
         if [ "$local_sha" != "0000000000000000000000000000000000000000" ]; then
             # Check if CHANGELOG.md was modified in any commits since last push

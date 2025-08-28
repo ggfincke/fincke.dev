@@ -8,6 +8,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "~/styles/animations.css";
 import "~/styles/design-tokens.css";
 import "~/styles/globals.css";
+import { VERSION } from "~/utils/version";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,6 +23,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Garrett Fincke",
   description: "Full-stack software engineer portfolio for Garrett Fincke",
+  generator: `Next.js v${VERSION}`,
+  other: {
+    version: VERSION,
+  },
 };
 
 export default function RootLayout({

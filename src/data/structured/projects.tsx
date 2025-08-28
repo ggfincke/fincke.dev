@@ -19,7 +19,7 @@ export const projects: Project[] = [
       "Preserves DOCX/LaTeX structure; review edits or apply them automatically with robust error handling"
     ],
     technologies: ["Python", "Typer", "OpenAI", "Anthropic Claude", "Ollama", "DOCX", "LaTeX", "JSON", "CLI"],
-    imagePath: "/projects/loom.png",
+    imagePath: "/assets/projects/images/loom.png",
     imageAlt: "Loom app screenshot",
     repoUrl: "https://github.com/ggfincke/loom"
   },
@@ -38,7 +38,7 @@ export const projects: Project[] = [
       "Engineered sophisticated notification system with granular preferences for price drops, availability changes, and product updates",
       "Developed responsive basket management with collaborative sharing, real-time price history charts, and smart recommendations"
     ],
-    imagePath: "/projects/trackbasket.png",
+    imagePath: "/assets/projects/images/trackbasket.png",
     imageAlt: "TrackBasket app screenshot",
     technologies: ["Typescript", "Python", "Supabase", "Next.js", "React", "OpenAI", "PostgreSQL", "Docker", "Swift"],
     repoUrl: "https://github.com/ggfincke/BoltHackathon",
@@ -61,7 +61,7 @@ export const projects: Project[] = [
       "Visualizes performance trends using interactive Swift Charts",
       "Achieved a grade of 100% on this submission"
     ],
-    imagePath: "/projects/swimmate.png",
+    imagePath: "/assets/projects/images/swimmate.png",
     imageAlt: "SwimMate app screenshot",
     technologies: ["Swift", "SwiftUI", "HealthKit", "WatchKit", "Swift Charts", "WatchConnectivity"],
     repoUrl: "https://github.com/ggfincke/SwimMate"
@@ -82,11 +82,12 @@ export const projects: Project[] = [
       "Engineered comprehensive CI/CD pipeline with GitHub Actions for automated version management and releases",
       "Implemented dev branch prereleases with format v{version}-prerelease-{YYYYMMDD} on every commit",
       "Built Git hooks system with pre-commit auto-versioning and pre-push CHANGELOG validation for dev workflow",
-      "Automated tagging, GitHub release creation, and CHANGELOG extraction for streamlined development process"
+      "Automated tagging, GitHub release creation, and CHANGELOG extraction for streamlined development process",
+      "Integrated Lighthouse CI with performance budgets for automated page audits in CI"
     ],
-    imagePath: "/projects/portfolio.png",
+    imagePath: "/assets/projects/images/portfolio.png",
     imageAlt: "Portfolio website screenshot",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "React", "Figma", "GitHub Actions", "Git Hooks", "CI/CD"],
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "React", "Figma", "GitHub Actions", "Git Hooks", "CI/CD", "Lighthouse CI"],
     repoUrl: "https://github.com/ggfincke/fincke.dev",
     liveUrl: "https://fincke.dev"
   },
@@ -190,7 +191,7 @@ export const projects: Project[] = [
       "Styled with modern CSS to create a clean, responsive UI",
       "Achieved a grade over 100% on this project"
     ],
-    imagePath: "/projects/tcghub2.png",
+    imagePath: "/assets/projects/images/tcghub2.png",
     imageAlt: "TCGhub app screenshot",
     technologies: ["React", "SQL", "Python", "SQLite", "Node.js"],
     repoUrl: "https://github.com/ggfincke/TCGhub"
@@ -241,11 +242,11 @@ export const projects: Project[] = [
       "Discussed computational constraints (high-dimensional SVM training) and proposed convolutional neural networks (CNNs) as future work to approach state-of-the-art accuracy",
       "Achieved a grade of 100% on this report and code"
     ],
-    imagePath: "/projects/452midterm.png",
+    imagePath: "/assets/projects/images/452midterm.png",
     imageAlt: "MATH 452 Midterm Report screenshot",
     technologies: ["Python", "scikit-learn", "NumPy", "pandas", "matplotlib", "seaborn", "Machine Learning", "LaTeX"],
     repoUrl: "https://github.com/ggfincke/MATH452_projects",
-    liveUrl: "/projects/MATH_452_Midterm_Report.pdf"
+    liveUrl: "/assets/projects/documents/MATH_452_Midterm_Report.pdf"
   },
   {
     title: "Deep Learning Architecture Comparison & Analysis for CIFAR-10",
@@ -268,11 +269,11 @@ export const projects: Project[] = [
       "Generated confusion matrices, full metric suite (accuracy, precision, recall, F1, log-loss), and loss/accuracy curves; proposed future work (hybrid CNN-RFM ensemble, advanced ResNet scheduling, larger datasets)",
       "Achieved a grade of 100% on this report and code"
     ],
-    imagePath: "/projects/452final.png",
+    imagePath: "/assets/projects/images/452final.png",
     imageAlt: "MATH 452 Final Report screenshot",
     technologies: ["Python", "TensorFlow", "Keras", "NumPy", "pandas", "matplotlib", "seaborn", "scikit-learn", "Deep Learning", "CNN", "ResNet", "DenseNet", "LaTeX", "Random Fourier Features"],
     repoUrl: "https://github.com/ggfincke/MATH452_projects",
-    liveUrl: "/projects/MATH_452_-_Final_Report.pdf"
+    liveUrl: "/assets/projects/documents/MATH_452_-_Final_Report.pdf"
   },
   {
     title: "USBAP",
