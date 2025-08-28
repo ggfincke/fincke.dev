@@ -82,11 +82,12 @@ export const projects: Project[] = [
       "Engineered comprehensive CI/CD pipeline with GitHub Actions for automated version management and releases",
       "Implemented dev branch prereleases with format v{version}-prerelease-{YYYYMMDD} on every commit",
       "Built Git hooks system with pre-commit auto-versioning and pre-push CHANGELOG validation for dev workflow",
-      "Automated tagging, GitHub release creation, and CHANGELOG extraction for streamlined development process"
+      "Automated tagging, GitHub release creation, and CHANGELOG extraction for streamlined development process",
+      "Integrated Lighthouse CI with performance budgets for automated page audits in CI"
     ],
     imagePath: "/assets/projects/images/portfolio.png",
     imageAlt: "Portfolio website screenshot",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "React", "Figma", "GitHub Actions", "Git Hooks", "CI/CD"],
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "React", "Figma", "GitHub Actions", "Git Hooks", "CI/CD", "Lighthouse CI"],
     repoUrl: "https://github.com/ggfincke/fincke.dev",
     liveUrl: "https://fincke.dev"
   },
