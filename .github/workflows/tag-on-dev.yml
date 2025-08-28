@@ -1,7 +1,10 @@
-name: Tag & prerelease on dev push
+name: Tag & prerelease on dev push/merge
 on:
   push:
     branches: [ dev ]
+  pull_request:
+    branches: [ dev ]
+    types: [ closed ]
 
 permissions:
   contents: write
@@ -9,11 +12,15 @@ permissions:
 jobs:
   prerelease-dev:
     runs-on: ubuntu-latest
+    # Run on direct pushes to dev OR when PR to dev is merged (not just closed)
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
     steps:
       - name: Checkout full history
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # For PR merges, checkout the merge commit; for pushes, use default
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.merge_commit_sha || github.sha }}
 
       - name: Get version from package.json
         id: version
