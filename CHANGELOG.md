@@ -1,3 +1,8 @@
+## [1.16.5-prerelease.20250828]
+### Fixed
+- Fix Lighthouse CI deprecation warnings by using npx instead of global install
+- Fix artifact upload warning present when .lighthouseci directory doesn't exist
+
 ## [1.16.4-prerelease.20250828] - 2025-08-28
 
 ### Added

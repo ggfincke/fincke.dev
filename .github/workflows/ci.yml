@@ -81,17 +81,14 @@ jobs:
       - name: Build application
         run: npm run build
 
-      - name: Install Lighthouse CI
-        run: npm install -g @lhci/cli
-
       - name: Run Lighthouse CI
-        run: lhci autorun
+        run: npx @lhci/cli@latest autorun
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload Lighthouse results
         uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && hashFiles('.lighthouseci/**') != ''
         with:
           name: lighthouse-results
           path: .lighthouseci/
