@@ -1,3 +1,20 @@
+## [1.18.0] - 2025-08-28
+
+### Added
+- **Version display**: Added version information to website metadata and footer with centralized utility module
+
+### Changed
+- **Public directory refactor**: Reorganized assets into structured hierarchy (assets/{icons, images, logos, projects})
+- **Portfolio Website**: Added Lighthouse CI to project description and technologies
+- **ESLint**: Improved configuration and lint scripts
+- **Dependencies**: Updated browserslist and related packages
+
+### Fixed
+- **Git hooks**: Enhanced version synchronization between package.json and CHANGELOG.md
+- Asset organization and file naming conventions
+
+---
+
 ## [1.17.5-prerelease.20250828] - 2025-08-28
 
 ### Fixed
