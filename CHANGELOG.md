@@ -1,3 +1,10 @@
+## [1.17.3-prerelease.20250828] - 2025-08-28
+
+### Changed
+- **Portfolio Website**: Added Lighthouse CI mention to project bullets and included "Lighthouse CI" in the technologies list.
+
+---
+
 ## [1.17.2-prerelease.20250828] - 2025-08-28
 
 ### Changed
