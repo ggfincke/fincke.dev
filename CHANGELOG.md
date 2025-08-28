@@ -1,16 +1,19 @@
-## [1.16.6-prerelease.20250828]
-### Added
-- **Dependency Management System**: Added comprehensive automated dependency management with Dependabot and GitHub Actions workflows.
-  - Dependabot configuration for automatic npm and GitHub Actions dependency updates with weekly schedule
-  - Smart dependency grouping (development vs production) and custom commit messages
-  - Security vulnerability scanning with npm audit and severity reporting
-  - License compliance checking for permissive licenses (MIT, Apache, BSD, etc.)
-  - Outdated package detection with major version update tracking
-  - Bundle size analysis for dependency PRs to track build impact
-  - Automated GitHub issue creation for critical vulnerabilities and license compliance issues
-  - Weekly dependency health reports with scoring system and actionable recommendations
+## [1.16.6-prerelease.20250828] - 2025-08-28
 
-## [1.16.5-prerelease.20250828]
+### Added
+- **Dependabot integration**: Added comprehensive Dependabot configuration for automated dependency management.
+  - Multi-package ecosystem support (npm, Docker, GitHub Actions)
+  - Scheduled weekly updates with custom commit messages and PR labels
+  - Security vulnerability alerts and automated updates
+  - Proper reviewer assignment and dependency grouping
+
+### Changed
+- **GitHub Actions workflows**: Enhanced PR workflow and dependency management system.
+  - Improved dependencies.yml workflow with better error handling
+  - Updated tag-on-dev.yml workflow for better prerelease management
+  - Updated project dependencies in package.json and package-lock.json
+
+## [1.16.5-prerelease.20250828] - 2025-08-28
 ### Fixed
 - Fix Lighthouse CI deprecation warnings by using npx instead of global install
 - Fix artifact upload warning present when .lighthouseci directory doesn't exist
