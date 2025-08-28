@@ -1,3 +1,16 @@
+## [1.16.4-prerelease.20250828] - 2025-08-28
+
+### Added
+- **CI/CD Pipeline**: Added comprehensive GitHub Actions CI/CD pipeline with automated testing and quality checks.
+  - Lint & Type Check job with ESLint and TypeScript validation
+  - Build verification job with bundle size analysis
+  - Lighthouse CI integration for performance, accessibility, SEO audits
+  - Parallel job execution with dependency caching for faster CI runs
+  - Status check reporting with comprehensive pipeline results
+- **Lighthouse CI configuration**: Added lighthouserc.json with performance budgets and multi-page testing
+  - Performance threshold: 80%, Accessibility/SEO/Best Practices: 85%
+  - Tests all main pages (home, experience, projects) with 3 runs per page
+
 ## [1.16.3-prerelease.20250827] - 2025-08-27
 
 ### Changed
