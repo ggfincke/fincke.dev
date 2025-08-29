@@ -32,7 +32,7 @@ export function AboutSection()
             <h4 className="text-[var(--color-primary)] font-medium mb-3">Languages</h4>
             <div className="flex flex-wrap gap-2">
               {skillCategories.languages.map((skill, index) => (
-                <SkillPill key={index} name={skill} />
+                <SkillPill key={index} name={skill} showProjectsOnHover={true} />
               ))}
             </div>
           </div>
@@ -41,7 +41,7 @@ export function AboutSection()
             <h4 className="text-[var(--color-primary)] font-medium mb-3">Frontend</h4>
             <div className="flex flex-wrap gap-2">
               {skillCategories.frontEnd.map((skill, index) => (
-                <SkillPill key={index} name={skill} />
+                <SkillPill key={index} name={skill} showProjectsOnHover={true} />
               ))}
             </div>
           </div>
@@ -50,7 +50,7 @@ export function AboutSection()
             <h4 className="text-[var(--color-primary)] font-medium mb-3">Backend & APIs</h4>
             <div className="flex flex-wrap gap-2">
               {skillCategories.backEnd.map((skill, index) => (
-                <SkillPill key={index} name={skill} />
+                <SkillPill key={index} name={skill} showProjectsOnHover={true} />
               ))}
             </div>
           </div>
@@ -59,7 +59,7 @@ export function AboutSection()
             <h4 className="text-[var(--color-primary)] font-medium mb-3">Databases & Caches</h4>
             <div className="flex flex-wrap gap-2">
               {skillCategories.databases.map((skill, index) => (
-                <SkillPill key={index} name={skill} />
+                <SkillPill key={index} name={skill} showProjectsOnHover={true} />
               ))}
             </div>
           </div>
@@ -68,7 +68,7 @@ export function AboutSection()
             <h4 className="text-[var(--color-primary)] font-medium mb-3">Mobile (iOS & watchOS)</h4>
             <div className="flex flex-wrap gap-2">
               {skillCategories.mobile.map((skill, index) => (
-                <SkillPill key={index} name={skill} />
+                <SkillPill key={index} name={skill} showProjectsOnHover={true} />
               ))}
             </div>
           </div>
@@ -77,7 +77,7 @@ export function AboutSection()
             <h4 className="text-[var(--color-primary)] font-medium mb-3">AI/ML & Data</h4>
             <div className="flex flex-wrap gap-2">
               {skillCategories.aiMl.map((skill, index) => (
-                <SkillPill key={index} name={skill} />
+                <SkillPill key={index} name={skill} showProjectsOnHover={true} />
               ))}
             </div>
           </div>
@@ -86,7 +86,7 @@ export function AboutSection()
             <h4 className="text-[var(--color-primary)] font-medium mb-3">DevOps & Tools</h4>
             <div className="flex flex-wrap gap-2">
               {skillCategories.tools.map((skill, index) => (
-                <SkillPill key={index} name={skill} />
+                <SkillPill key={index} name={skill} showProjectsOnHover={true} />
               ))}
             </div>
           </div>

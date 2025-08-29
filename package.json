@@ -1,6 +1,6 @@
 {
   "name": "fincke.dev",
-  "version": "1.18.0",
+  "version": "1.18.5-prerelease.20250829",
   "private": true,
   "engines": {
     "node": ">=20.0.0",

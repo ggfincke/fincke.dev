@@ -1,8 +1,9 @@
-/* eslint-disable react/jsx-key, react/no-unescaped-entities */
 
 // src/data/structured/projects.tsx
 // comprehensive project portfolio data w/ detailed descriptions
 import type { Project } from '~/types/projects';
+
+import { skillMappings } from './skillMappings';
 
 // project portfolio data
 export const projects: Project[] = [
@@ -63,7 +64,7 @@ export const projects: Project[] = [
     ],
     imagePath: "/assets/projects/images/swimmate.png",
     imageAlt: "SwimMate app screenshot",
-    technologies: ["Swift", "SwiftUI", "HealthKit", "WatchKit", "Swift Charts", "WatchConnectivity"],
+    technologies: ["Swift", "SwiftUI", "HealthKit", "WatchKit", "watchOS", "Swift Charts", "WatchConnectivity"],
     repoUrl: "https://github.com/ggfincke/SwimMate"
   },
   {
@@ -79,15 +80,19 @@ export const projects: Project[] = [
       "Designed with accessibility and performance in mind",
       "Configured continuous deployment with Vercel",
       "Learned Figma to design, prototype, and iterate on the website & logo (see top left of sidebar!)",
-      "Engineered comprehensive CI/CD pipeline with GitHub Actions for automated version management and releases",
-      "Implemented dev branch prereleases with format v{version}-prerelease-{YYYYMMDD} on every commit",
-      "Built Git hooks system with pre-commit auto-versioning and pre-push CHANGELOG validation for dev workflow",
-      "Automated tagging, GitHub release creation, and CHANGELOG extraction for streamlined development process",
-      "Integrated Lighthouse CI with performance budgets for automated page audits in CI"
+      "Automated CI/CD and release workflow with automated prereleases/tags, Lighthouse CI checks, and consistent tooling"
     ],
     imagePath: "/assets/projects/images/portfolio.png",
     imageAlt: "Portfolio website screenshot",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "React", "Figma", "GitHub Actions", "Git Hooks", "CI/CD", "Lighthouse CI"],
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "GitHub Actions",
+      "CI/CD",
+      "Figma"
+    ],
     repoUrl: "https://github.com/ggfincke/fincke.dev",
     liveUrl: "https://fincke.dev"
   },
@@ -202,7 +207,7 @@ export const projects: Project[] = [
     status: "complete",
     madeFor: "Personal",
     bulletPoints: [
-      <p>Built a fine-tuned Discord chatbot using <a href="https://www.microsoft.com/en-us/research/project/godel/" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">Microsoft's GODEL-v1.1 model</a> for contextual conversation generation</p>,
+      <p key="godel-description">Built a fine-tuned Discord chatbot using <a href="https://www.microsoft.com/en-us/research/project/godel/" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">Microsoft&apos;s GODEL-v1.1 model</a> for contextual conversation generation</p>,
       "Integrated HuggingFace Transformers to run local inference with a custom-trained seq2seq model",
       "Created rich Discord interactions including emote reactions, user-specific triggers, and dynamic status updates",
       "Designed 'Free Rein' and 'Puppeteer Mode' to control bot behavior based on real-time message context"
@@ -324,4 +329,25 @@ export const getFeaturedProjects = (): Project[] =>
 export const getAllProjects = (): Project[] => 
 {
   return projects;
+};
+
+// get projects by skill/technology
+export const getProjectsBySkill = (skillName: string): Project[] =>
+{
+  // normalize skill name for comparison
+  const normalizedSkill = skillName.toLowerCase();
+  
+  // get exact matches for this skill using imported mappings
+  const skillSearchTerms = skillMappings[normalizedSkill] || [normalizedSkill];
+  
+  return projects.filter(project =>
+  {
+    // check if any of the project's technologies exactly match our search terms
+    return project.technologies.some(tech =>
+    {
+      const normalizedTech = tech.toLowerCase();
+      // Only exact matches, no substring matching
+      return skillSearchTerms.includes(normalizedTech);
+    });
+  });
 };

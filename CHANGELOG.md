@@ -1,3 +1,61 @@
+## [1.18.5-prerelease.20250829] - 2025-08-29
+
+### Updated
+- **Resume document**: Updated resume PDF with latest content and formatting
+
+---
+
+## [1.18.4-prerelease.20250828] - 2025-08-28
+
+### Changed
+- **SwimMate project**: Added watchOS to technology stack for more accurate platform representation
+- **Portfolio project**: Streamlined technology list by removing redundant development tools (Node.js, Git, Git Hooks, Lighthouse CI, VS Code, ESLint) to focus on core technologies
+- **Footer display**: Enhanced version display with dedicated badge styling for better visual hierarchy
+
+---
+
+## [1.18.3-prerelease.20250828] - 2025-08-28
+
+### Fixed
+- **JSX compliance**: Fixed missing key prop for React element in GODEL project description
+- **Character encoding**: Properly escaped apostrophe in project description link text
+- **Code quality**: Removed unnecessary ESLint disable comment from projects data
+
+### Enhanced
+- **Skill mappings**: Improved technology relationship mappings for more accurate project filtering
+- **Cross-references**: Added bidirectional relationships between related technologies (React/Next.js, JavaScript/TypeScript, etc.)
+- **AI/ML categories**: Enhanced deep learning and machine learning skill associations
+
+---
+
+## [1.18.2-prerelease.20250828] - 2025-08-28
+
+### Changed
+- **Code formatting**: Applied Allman brace style to skill display components
+- **Portfolio project**: Enhanced description and expanded technology stack
+- **Import organization**: Cleaned up import statements and ordering
+
+---
+
+## [1.18.1-prerelease.20250828] - 2025-08-28
+
+### Added
+- **Interactive skill tooltips**: Added hover tooltips to skill pills in About section showing related projects with status indicators
+- **SkillTooltip component**: New display component with smart positioning, fade animations, and project status integration
+- **Skill mappings data**: Extracted skill-to-technology mappings into dedicated file for maintainability
+
+### Changed
+- **SkillPill component**: Enhanced with hover state management, tooltip integration, and visual hover indicators
+- **Component organization**: Moved SkillTooltip from ui/ to display/ directory following project patterns
+- **Code structure**: Separated skill mapping logic from projects data for cleaner architecture
+
+### Technical
+- Added tooltip animation keyframes and CSS classes
+- Extended SkillPillProps interface with hover configuration options
+- Implemented precise project filtering with exact technology matching
+
+---
+
 ## [1.18.0] - 2025-08-28
 
 ### Added

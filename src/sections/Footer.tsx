@@ -25,10 +25,13 @@ export function Footer({ isSmallScreen = false }: FooterProps)
             </div>
           </div>
           
-          {/* Copyright info */}
-          <div className="flex justify-center items-center">
+          {/* Copyright info & version */}
+          <div className="flex flex-col items-center space-y-2">
             <div className="text-[var(--color-text)] text-sm">
-              &copy; {currentYear} Garrett Fincke. All Rights Reserved. v{VERSION}
+              &copy; {currentYear} Garrett Fincke. All Rights Reserved.
+            </div>
+            <div className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[var(--color-primary)] text-[var(--color-background)] border border-[var(--color-primary)]">
+              v{VERSION}
             </div>
           </div>
         </div>
