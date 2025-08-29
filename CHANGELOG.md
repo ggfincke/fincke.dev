@@ -1,3 +1,12 @@
+## [1.18.4-prerelease.20250828] - 2025-08-28
+
+### Changed
+- **SwimMate project**: Added watchOS to technology stack for more accurate platform representation
+- **Portfolio project**: Streamlined technology list by removing redundant development tools (Node.js, Git, Git Hooks, Lighthouse CI, VS Code, ESLint) to focus on core technologies
+- **Footer display**: Enhanced version display with dedicated badge styling for better visual hierarchy
+
+---
+
 ## [1.18.3-prerelease.20250828] - 2025-08-28
 
 ### Fixed

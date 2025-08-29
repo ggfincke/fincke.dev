@@ -64,7 +64,7 @@ export const projects: Project[] = [
     ],
     imagePath: "/assets/projects/images/swimmate.png",
     imageAlt: "SwimMate app screenshot",
-    technologies: ["Swift", "SwiftUI", "HealthKit", "WatchKit", "Swift Charts", "WatchConnectivity"],
+    technologies: ["Swift", "SwiftUI", "HealthKit", "WatchKit", "watchOS", "Swift Charts", "WatchConnectivity"],
     repoUrl: "https://github.com/ggfincke/SwimMate"
   },
   {
@@ -89,15 +89,9 @@ export const projects: Project[] = [
       "React",
       "TypeScript",
       "Tailwind CSS",
-      "Node.js",
-      "Git",
-      "Git Hooks",
       "GitHub Actions",
       "CI/CD",
-      "Lighthouse CI",
-      "VS Code",
-      "Figma",
-      "ESLint"
+      "Figma"
     ],
     repoUrl: "https://github.com/ggfincke/fincke.dev",
     liveUrl: "https://fincke.dev"
