@@ -20,6 +20,8 @@ export interface SkillPillProps {
   name: string;
   size?: SkillPillSize;
   className?: string;
+  showProjectsOnHover?: boolean;
+  hoverDelay?: number;
 }
 
 export interface FloatingParticleProps {

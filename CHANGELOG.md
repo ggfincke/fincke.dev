@@ -1,3 +1,22 @@
+## [1.18.1-prerelease.20250828] - 2025-08-29
+
+### Added
+- **Interactive skill tooltips**: Added hover tooltips to skill pills in About section showing related projects with status indicators
+- **SkillTooltip component**: New display component with smart positioning, fade animations, and project status integration
+- **Skill mappings data**: Extracted skill-to-technology mappings into dedicated file for maintainability
+
+### Changed
+- **SkillPill component**: Enhanced with hover state management, tooltip integration, and visual hover indicators
+- **Component organization**: Moved SkillTooltip from ui/ to display/ directory following project patterns
+- **Code structure**: Separated skill mapping logic from projects data for cleaner architecture
+
+### Technical
+- Added tooltip animation keyframes and CSS classes
+- Extended SkillPillProps interface with hover configuration options
+- Implemented precise project filtering with exact technology matching
+
+---
+
 ## [1.18.0] - 2025-08-28
 
 ### Added
