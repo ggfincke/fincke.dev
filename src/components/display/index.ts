@@ -8,4 +8,5 @@ export { VersionBadge } from './VersionBadge';
 export { PaginationDots } from './PaginationDots';
 export { SectionHeading } from './SectionHeading';
 export { SkillPill } from './SkillPill';
+export { SkillTooltip } from './SkillTooltip';
 export { default as FloatingParticle } from './FloatingParticle';

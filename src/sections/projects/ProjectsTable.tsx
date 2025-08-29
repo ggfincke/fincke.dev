@@ -415,6 +415,7 @@ export function ProjectsTable()
                         key={techIndex}
                         name={tech}
                         size="xs"
+                        showProjectsOnHover={true}
                       />
                     ))}
                     {project.technologies.length > 3 && (
@@ -541,7 +542,7 @@ export function ProjectsTable()
                                 key={techIndex}
                                 name={tech}
                                 size="md"
-                              />
+                                />
                             ))}
                           </div>
                         </div>
