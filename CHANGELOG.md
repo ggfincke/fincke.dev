@@ -1,3 +1,10 @@
+## [1.18.5-prerelease.20250829] - 2025-08-29
+
+### Updated
+- **Resume document**: Updated resume PDF with latest content and formatting
+
+---
+
 ## [1.18.4-prerelease.20250828] - 2025-08-28
 
 ### Changed
