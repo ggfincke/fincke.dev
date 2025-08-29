@@ -1,4 +1,13 @@
-## [1.18.1-prerelease.20250828] - 2025-08-29
+## [1.18.2-prerelease.20250828] - 2025-08-28
+
+### Changed
+- **Code formatting**: Applied Allman brace style to skill display components
+- **Portfolio project**: Enhanced description and expanded technology stack
+- **Import organization**: Cleaned up import statements and ordering
+
+---
+
+## [1.18.1-prerelease.20250828] - 2025-08-28
 
 ### Added
 - **Interactive skill tooltips**: Added hover tooltips to skill pills in About section showing related projects with status indicators

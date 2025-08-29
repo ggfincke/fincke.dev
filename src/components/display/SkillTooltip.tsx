@@ -1,6 +1,7 @@
 // src/components/display/SkillTooltip.tsx
 // interactive tooltip for skill pills showing related projects
 import { useEffect, useRef, useState } from 'react';
+
 import { StatusCircle } from '~/components/display/StatusCircle';
 import type { Project } from '~/types/projects';
 
@@ -10,11 +11,13 @@ interface SkillTooltipProps {
   targetRef: React.RefObject<HTMLElement | null>;
 }
 
-export function SkillTooltip({ projects, isVisible, targetRef }: SkillTooltipProps) {
+export function SkillTooltip({ projects, isVisible, targetRef }: SkillTooltipProps)
+{
   const tooltipRef = useRef<HTMLDivElement>(null);
   const [adjustedPosition, setAdjustedPosition] = useState({ top: 0, left: 0 });
 
-  useEffect(() => {
+  useEffect(() =>
+  {
     if (!isVisible || !targetRef.current || !tooltipRef.current) return;
 
     const targetRect = targetRef.current.getBoundingClientRect();
@@ -28,18 +31,21 @@ export function SkillTooltip({ projects, isVisible, targetRef }: SkillTooltipPro
     const padding = 8;
     
     // Check if tooltip goes off the top
-    if (top < padding) {
+    if (top < padding)
+    {
       // Position below instead
       top = targetRect.bottom + 3;
     }
     
     // Check if tooltip goes off the left
-    if (left < padding) {
+    if (left < padding)
+    {
       left = padding;
     }
     
     // Check if tooltip goes off the right
-    if (left + tooltipRect.width > window.innerWidth - padding) {
+    if (left + tooltipRect.width > window.innerWidth - padding)
+    {
       left = window.innerWidth - tooltipRect.width - padding;
     }
     

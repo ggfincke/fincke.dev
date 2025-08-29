@@ -3,10 +3,11 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+
 import { SkillTooltip } from '~/components/display/SkillTooltip';
 import { getProjectsBySkill } from '~/data/structured/projects';
-import type { SkillPillProps } from '~/types/ui';
 import type { Project } from '~/types/projects';
+import type { SkillPillProps } from '~/types/ui';
 
 // skill pill component
 export function SkillPill({ 
@@ -15,7 +16,7 @@ export function SkillPill({
   className = '',
   showProjectsOnHover = false,
   hoverDelay = 150
-}: SkillPillProps) 
+}: SkillPillProps)
 {
   const [isHovered, setIsHovered] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
@@ -29,39 +30,50 @@ export function SkillPill({
     md: 'px-3 py-1 text-sm'
   };
 
-  useEffect(() => {
-    if (showProjectsOnHover && isHovered) {
+  useEffect(() =>
+  {
+    if (showProjectsOnHover && isHovered)
+    {
       // fetch related projects when hovered
       const projects = getProjectsBySkill(name);
       setRelatedProjects(projects);
       
       // show tooltip after delay
-      hoverTimeoutRef.current = setTimeout(() => {
+      hoverTimeoutRef.current = setTimeout(() =>
+      {
         setShowTooltip(true);
       }, hoverDelay);
-    } else {
+    }
+    else
+    {
       // clear timeout and hide tooltip
-      if (hoverTimeoutRef.current) {
+      if (hoverTimeoutRef.current)
+      {
         clearTimeout(hoverTimeoutRef.current);
         hoverTimeoutRef.current = null;
       }
       setShowTooltip(false);
     }
 
-    return () => {
-      if (hoverTimeoutRef.current) {
+    return () =>
+    {
+      if (hoverTimeoutRef.current)
+      {
         clearTimeout(hoverTimeoutRef.current);
       }
     };
   }, [isHovered, name, showProjectsOnHover, hoverDelay]);
 
-  const handleMouseEnter = () => {
-    if (showProjectsOnHover) {
+  const handleMouseEnter = () =>
+  {
+    if (showProjectsOnHover)
+    {
       setIsHovered(true);
     }
   };
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = () =>
+  {
     setIsHovered(false);
   };
 

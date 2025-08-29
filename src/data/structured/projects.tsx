@@ -4,6 +4,8 @@
 // comprehensive project portfolio data w/ detailed descriptions
 import type { Project } from '~/types/projects';
 
+import { skillMappings } from './skillMappings';
+
 // project portfolio data
 export const projects: Project[] = [
   {
@@ -79,15 +81,25 @@ export const projects: Project[] = [
       "Designed with accessibility and performance in mind",
       "Configured continuous deployment with Vercel",
       "Learned Figma to design, prototype, and iterate on the website & logo (see top left of sidebar!)",
-      "Engineered comprehensive CI/CD pipeline with GitHub Actions for automated version management and releases",
-      "Implemented dev branch prereleases with format v{version}-prerelease-{YYYYMMDD} on every commit",
-      "Built Git hooks system with pre-commit auto-versioning and pre-push CHANGELOG validation for dev workflow",
-      "Automated tagging, GitHub release creation, and CHANGELOG extraction for streamlined development process",
-      "Integrated Lighthouse CI with performance budgets for automated page audits in CI"
+      "Automated CI/CD and release workflow with automated prereleases/tags, Lighthouse CI checks, and consistent tooling"
     ],
     imagePath: "/assets/projects/images/portfolio.png",
     imageAlt: "Portfolio website screenshot",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "React", "Figma", "GitHub Actions", "Git Hooks", "CI/CD", "Lighthouse CI"],
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Node.js",
+      "Git",
+      "Git Hooks",
+      "GitHub Actions",
+      "CI/CD",
+      "Lighthouse CI",
+      "VS Code",
+      "Figma",
+      "ESLint"
+    ],
     repoUrl: "https://github.com/ggfincke/fincke.dev",
     liveUrl: "https://fincke.dev"
   },
@@ -324,4 +336,25 @@ export const getFeaturedProjects = (): Project[] =>
 export const getAllProjects = (): Project[] => 
 {
   return projects;
+};
+
+// get projects by skill/technology
+export const getProjectsBySkill = (skillName: string): Project[] =>
+{
+  // normalize skill name for comparison
+  const normalizedSkill = skillName.toLowerCase();
+  
+  // get exact matches for this skill using imported mappings
+  const skillSearchTerms = skillMappings[normalizedSkill] || [normalizedSkill];
+  
+  return projects.filter(project =>
+  {
+    // check if any of the project's technologies exactly match our search terms
+    return project.technologies.some(tech =>
+    {
+      const normalizedTech = tech.toLowerCase();
+      // Only exact matches, no substring matching
+      return skillSearchTerms.includes(normalizedTech);
+    });
+  });
 };
