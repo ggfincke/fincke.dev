@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key, react/no-unescaped-entities */
 
 // src/data/structured/projects.tsx
 // comprehensive project portfolio data w/ detailed descriptions
@@ -214,7 +213,7 @@ export const projects: Project[] = [
     status: "complete",
     madeFor: "Personal",
     bulletPoints: [
-      <p>Built a fine-tuned Discord chatbot using <a href="https://www.microsoft.com/en-us/research/project/godel/" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">Microsoft's GODEL-v1.1 model</a> for contextual conversation generation</p>,
+      <p key="godel-description">Built a fine-tuned Discord chatbot using <a href="https://www.microsoft.com/en-us/research/project/godel/" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">Microsoft&apos;s GODEL-v1.1 model</a> for contextual conversation generation</p>,
       "Integrated HuggingFace Transformers to run local inference with a custom-trained seq2seq model",
       "Created rich Discord interactions including emote reactions, user-specific triggers, and dynamic status updates",
       "Designed 'Free Rein' and 'Puppeteer Mode' to control bot behavior based on real-time message context"

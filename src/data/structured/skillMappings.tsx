@@ -1,30 +1,30 @@
 // src/data/structured/skillMappings.tsx
 // skill-to-technology mappings for project filtering
 
-// skill mappings for project filtering - only exact matches or very specific relationships
+// skill mappings for project filtering
 export const skillMappings: Record<string, string[]> = {
-  // Languages - only match exact language usage
+  // Languages
   'python': ['python'],
   'swift': ['swift'],
   'c': ['c'],
-  'javascript': ['javascript'],
-  'javascript (es6+)': ['javascript'],
-  'typescript': ['typescript'],
+  'javascript': ['javascript', 'typescript'],
+  'javascript (es6+)': ['javascript', 'typescript'],
+  'typescript': ['typescript', 'javascript'],
   'java': ['java'],
   'sql': ['sql', 'sqlite', 'postgresql'],
   'solidity': ['solidity'],
   'verilog': ['verilog'],
   
-  // Frontend frameworks - match framework and base language
-  'react': ['react'],
-  'next.js': ['next.js'],
+  // Frontend frameworks
+  'react': ['react', 'next.js'],
+  'next.js': ['next.js', 'react'],
   'tailwind css': ['tailwind css'],
   'html5': ['html', 'html5'],
-  'css3': ['css', 'css3', 'tailwind css'],
+  'css3': ['css', 'css3'],
   'swiftui': ['swiftui'],
   'uikit': ['uikit'],
   
-  // Backend frameworks - only match the framework itself
+  // Backend frameworks
   'node.js': ['node.js'],
   'django': ['django'],
   'fastapi': ['fastapi'],
@@ -32,7 +32,7 @@ export const skillMappings: Record<string, string[]> = {
   'rest apis': ['rest apis'],
   'spring boot': ['spring boot'],
   
-  // Databases - exact matches
+  // Databases
   'postgresql': ['postgresql'],
   'sqlite': ['sqlite'],
   'supabase': ['supabase'],
@@ -40,7 +40,7 @@ export const skillMappings: Record<string, string[]> = {
   'redis': ['redis'],
   
   // Mobile platforms
-  'ios': ['ios'],
+  'ios': ['ios', 'swiftui', 'uikit'],
   'watchos': ['watchos'],
   'healthkit': ['healthkit'],
   'watchkit': ['watchkit'],
@@ -49,10 +49,10 @@ export const skillMappings: Record<string, string[]> = {
   'core data': ['core data'],
   'swift charts': ['swift charts'],
   
-  // AI/ML libraries - exact matches only
+  // AI/ML libraries
   'pytorch': ['pytorch'],
-  'tensorflow': ['tensorflow'],
-  'keras': ['keras'],
+  'tensorflow': ['tensorflow', 'keras'],
+  'keras': ['keras', 'tensorflow'],
   'scikit-learn': ['scikit-learn'],
   'huggingface': ['huggingface', 'transformers'],
   'hugging face transformers': ['huggingface', 'transformers'],
@@ -66,11 +66,12 @@ export const skillMappings: Record<string, string[]> = {
   'matplotlib': ['matplotlib'],
   'seaborn': ['seaborn'],
   'jupyter': ['jupyter'],
-  'deep learning': ['deep learning'],
-  'cnns': ['cnn'],
+  'deep learning': ['deep learning', 'tensorflow', 'keras', 'pytorch', 'cnn'],
+  'cnns': ['cnn', 'deep learning'],
   'resnet': ['resnet'],
   'densenet': ['densenet'],
   'random fourier features': ['random fourier features'],
+  'machine learning': ['machine learning', 'scikit-learn', 'deep learning'],
   
   // DevOps & Tools
   'github actions': ['github actions'],
@@ -89,7 +90,7 @@ export const skillMappings: Record<string, string[]> = {
   'web3.js': ['web3.js'],
   'metamask': ['metamask'],
   'blockchain development': ['solidity', 'ethereum', 'web3.js'],
-  'ethereum': ['ethereum'],
+  'ethereum': ['ethereum', 'solidity', 'web3.js'],
   
   // Systems & Architecture
   'operating systems': ['operating systems'],
@@ -108,14 +109,14 @@ export const skillMappings: Record<string, string[]> = {
   
   // Specialized
   'selenium': ['selenium'],
-  'web scraping (selenium, beautifulsoup)': ['selenium', 'beautifulsoup'],
+  'web scraping (selenium, beautifulsoup)': ['selenium', 'beautifulsoup', 'web scraping'],
   'beautifulsoup': ['beautifulsoup'],
   'typer': ['typer'],
   'cli development (typer)': ['typer', 'cli'],
   'discord.py': ['discord.py'],
   'bots (discord.py)': ['discord.py'],
   'captcha solving': ['captcha solving'],
-  'data analysis': ['data analysis'],
+  'data analysis': ['data analysis', 'pandas', 'numpy'],
   'cli': ['cli'],
   'json': ['json'],
   'docx': ['docx'],
@@ -123,7 +124,6 @@ export const skillMappings: Record<string, string[]> = {
   'custom shapes': ['custom shapes'],
   'gesture handling': ['gesture handling'],
   'mvc/mvvm': ['mvc/mvvm'],
-  'machine learning': ['machine learning'],
-  'transformers': ['transformers'],
-  'web scraping': ['selenium', 'beautifulsoup']
+  'transformers': ['transformers', 'huggingface'],
+  'web scraping': ['selenium', 'beautifulsoup', 'web scraping']
 };

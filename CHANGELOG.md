@@ -1,3 +1,17 @@
+## [1.18.3-prerelease.20250828] - 2025-08-28
+
+### Fixed
+- **JSX compliance**: Fixed missing key prop for React element in GODEL project description
+- **Character encoding**: Properly escaped apostrophe in project description link text
+- **Code quality**: Removed unnecessary ESLint disable comment from projects data
+
+### Enhanced
+- **Skill mappings**: Improved technology relationship mappings for more accurate project filtering
+- **Cross-references**: Added bidirectional relationships between related technologies (React/Next.js, JavaScript/TypeScript, etc.)
+- **AI/ML categories**: Enhanced deep learning and machine learning skill associations
+
+---
+
 ## [1.18.2-prerelease.20250828] - 2025-08-28
 
 ### Changed
