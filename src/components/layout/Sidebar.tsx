@@ -14,7 +14,7 @@ import type { SidebarProps } from '~/types/navigation';
 export function Sidebar({ activeSection, onSectionClick }: SidebarProps) 
 {
   return (
-    <aside className="h-screen w-72 flex flex-col bg-[var(--color-background-alt)] border-r border-[var(--color-border)]">
+    <aside className="h-screen w-72 flex flex-col bg-[var(--card)] border-r border-[var(--border)]">
       {/* Top Section (w/ logo) */}
       <div className="pt-12 px-6">
         <SidebarHeader 

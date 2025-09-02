@@ -46,12 +46,12 @@ export default function Home()
       {/* Main content */}
       <main className={`main-content ${(!isMounted || !isDesktop) ? '' : (showSidebar ? 'main-content-with-sidebar' : 'main-content-full')}`}>
         {/* Hero section */}
-        <section id={NAV_SECTIONS.hero.id} className="min-h-screen flex items-center bg-[var(--color-background)] py-16 md:py-24 relative">
+        <section id={NAV_SECTIONS.hero.id} className="min-h-screen flex items-center bg-[var(--bg)] py-16 md:py-24 relative">
           <HeroSection scrollToSection={scrollToSection} />
         </section>
 
         {/* About section */}
-        <section id={NAV_SECTIONS.about.id} className="py-16 md:py-24 bg-[var(--color-background)]">
+        <section id={NAV_SECTIONS.about.id} className="py-16 md:py-24 bg-[var(--bg)]">
           <div className="container mx-auto px-4 sm:px-8">
             <SectionHeading 
               title="About Me" 
@@ -64,7 +64,7 @@ export default function Home()
         </section>
 
         {/* Experience section */}
-        <section id={NAV_SECTIONS.experience.id} className="py-16 md:py-24 bg-[var(--color-background-alt)]">
+        <section id={NAV_SECTIONS.experience.id} className="py-16 md:py-24 bg-[var(--card)]">
           <div className="container mx-auto px-4 sm:px-8">
             <SectionHeading 
               title="Experience" 
@@ -77,7 +77,7 @@ export default function Home()
         </section>
 
         {/* Projects section */}
-        <section id={NAV_SECTIONS.projects.id} className="py-16 md:py-24 bg-[var(--color-background)]">
+        <section id={NAV_SECTIONS.projects.id} className="py-16 md:py-24 bg-[var(--bg)]">
           <div className="container mx-auto px-4 sm:px-8">
             <SectionHeading 
               title="Projects" 

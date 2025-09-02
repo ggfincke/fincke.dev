@@ -30,8 +30,8 @@ export function HeroSection({ scrollToSection }: HeroSectionProps)
   return (
     <>
       {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary)]/5 via-transparent to-[var(--color-background-alt)]/10 z-0" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-background)] via-transparent to-transparent z-0" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/5 via-transparent to-[var(--card)]/10 z-0" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-transparent to-transparent z-0" />
       
       {/* Floating particles */}
       <div className="absolute inset-0 overflow-hidden z-0">
@@ -51,13 +51,13 @@ export function HeroSection({ scrollToSection }: HeroSectionProps)
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-24">
           {/* Text content */}
           <div className="flex-1 max-w-2xl lg:mr-8">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[var(--color-text-light)] min-h-[1.2em]">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[var(--fg)] min-h-[1.2em]">
               {nameText}
               <span className="animate-pulse">|</span>
             </h1>
             
             <h2 
-              className={`text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--color-primary)] mt-2 transition-all duration-1000 ${
+              className={`text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--accent)] mt-2 transition-all duration-1000 ${
                 nameComplete 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-4'
@@ -67,7 +67,7 @@ export function HeroSection({ scrollToSection }: HeroSectionProps)
             </h2>
             
             <p 
-              className={`mt-6 text-lg sm:text-xl text-[var(--color-text)] transition-all duration-1000 delay-500 ${
+              className={`mt-6 text-lg sm:text-xl text-[var(--muted)] transition-all duration-1000 delay-500 ${
                 nameComplete 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-4'
@@ -85,7 +85,7 @@ export function HeroSection({ scrollToSection }: HeroSectionProps)
             >
               <button 
                 onClick={() => scrollToSection('about')}
-                className="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors animate-bounce flex flex-col items-center"
+                className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors animate-bounce flex flex-col items-center"
               >
                 <span className="block mb-2">Scroll Down</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -105,7 +105,7 @@ export function HeroSection({ scrollToSection }: HeroSectionProps)
           >
             <div className="relative">
               {/* Profile picture container */}
-              <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full bg-gradient-to-br from-[var(--color-primary)]/20 to-[var(--color-background-alt)]/30 border-4 border-[var(--color-primary)]/30 overflow-hidden shadow-2xl">
+              <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full bg-gradient-to-br from-[var(--accent)]/20 to-[var(--card)]/30 border-4 border-[var(--accent)]/30 overflow-hidden shadow-2xl">
                 <Image 
                   src="/assets/images/profile.jpg" 
                   alt="Garrett Fincke" 
@@ -117,7 +117,7 @@ export function HeroSection({ scrollToSection }: HeroSectionProps)
               </div>
               
               {/* Decorative ring */}
-              <div className="absolute inset-0 rounded-full border-2 border-[var(--color-primary)]/20 animate-pulse"></div>
+              <div className="absolute inset-0 rounded-full border-2 border-[var(--accent)]/20 animate-pulse"></div>
             </div>
           </div>
         </div>

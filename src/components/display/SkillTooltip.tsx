@@ -59,8 +59,8 @@ export function SkillTooltip({ projects, isVisible, targetRef }: SkillTooltipPro
       ref={tooltipRef}
       className={`
         fixed z-50 
-        bg-[var(--color-background)] 
-        border border-[var(--color-border)]
+        bg-[var(--bg)] 
+        border border-[var(--border)]
         rounded-lg shadow-xl
         p-3 max-w-xs
         opacity-0 animate-fadeIn
@@ -79,7 +79,7 @@ export function SkillTooltip({ projects, isVisible, targetRef }: SkillTooltipPro
         {projects.slice(0, 5).map((project) => (
           <div key={project.title} className="flex items-center gap-2">
             <StatusCircle status={project.status} size={16} />
-            <span className="text-xs text-[var(--color-text)] truncate">
+            <span className="text-xs text-[var(--muted)] truncate">
               {project.title}
             </span>
           </div>
@@ -91,7 +91,7 @@ export function SkillTooltip({ projects, isVisible, targetRef }: SkillTooltipPro
         )}
       </div>
       <div 
-        className="absolute w-2 h-2 bg-[var(--color-background)] border-l border-b border-[var(--color-border)] transform rotate-45"
+        className="absolute w-2 h-2 bg-[var(--bg)] border-l border-b border-[var(--border)] transform rotate-45"
         style={{
           bottom: '-5px',
           left: '50%',

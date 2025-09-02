@@ -52,7 +52,7 @@ export const projects: Project[] = [
     madeFor: "Penn State",
     featured: true,
     bulletPoints: [
-      <>Final Project for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20475%3A%20Applications%20Programming" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 475: Applications Programming</a> </>,
+      <>Final Project for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20475%3A%20Applications%20Programming" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">CMPSC 475: Applications Programming</a> </>,
       "Developed a native iOS/watchOS app for swimmers to track, find, and save workouts, view history, and follow progress over time",
       "Built custom components using HealthKit and SwiftUI for workout entry, lap timing, and charting performance trends",
       "Connected iOS app to Apple Watch to track workout data and other metrics, as well as sending premade workouts to the watch for user to follow",
@@ -118,7 +118,7 @@ export const projects: Project[] = [
     status: "complete",
     madeFor: "Penn State",
     bulletPoints: [
-      <>Final Project for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20263%3A%20Blockchain%20and%20Cryptocurrency" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 263: Blockchain and Modern Web Development</a></>,
+      <>Final Project for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20263%3A%20Blockchain%20and%20Cryptocurrency" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">CMPSC 263: Blockchain and Modern Web Development</a></>,
       "Built a decentralized sports betting platform using Ethereum smart contracts for transparent, trustless wagering",
       "Developed modern React/Next.js frontend with Web3 integration for seamless blockchain interaction",
       "Implemented comprehensive betting system with customizable odds, automated payouts, and user wallet integration via MetaMask",
@@ -136,7 +136,7 @@ export const projects: Project[] = [
     status: "complete",
     madeFor: "Penn State",
     bulletPoints: [
-      <>Three comprehensive projects for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20473%3A%20Operating%20Systems" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 473: Operating Systems</a></>,
+      <>Three comprehensive projects for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20473%3A%20Operating%20Systems" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">CMPSC 473: Operating Systems</a></>,
       "Developed a memory management simulator implementing FIFO, LRU, and optimal page replacement algorithms with demand paging",
       "Built a custom thread scheduler with cooperative and preemptive scheduling, round-robin and priority-based algorithms, and mutex synchronization",
       "Extended a minimalist OS kernel with new system calls, process management features, and kernel-level debugging tools",
@@ -151,7 +151,7 @@ export const projects: Project[] = [
     status: "complete",
     madeFor: "Penn State",
     bulletPoints: [
-      <>Five comprehensive labs for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20311%3A%20Introduction%20to%20Systems%20Programming" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 311: Introduction to Systems Programming</a></>,
+      <>Five comprehensive labs for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20311%3A%20Introduction%20to%20Systems%20Programming" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">CMPSC 311: Introduction to Systems Programming</a></>,
       "Implemented a complete JBOD (Just a Bunch of Disks) storage system with block-level operations across multiple disks",
       "Built high-performance caching layer using LFU (Least Frequently Used) replacement policy with dynamic cache management",
       "Developed distributed storage system with TCP/IP client-server architecture and network communication protocols",
@@ -170,7 +170,7 @@ export const projects: Project[] = [
     status: "complete",
     madeFor: "Penn State",
     bulletPoints: [
-      <>Comprehensive coursework for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/stat/#:~:text=STAT%20319%3A%20Applied%20Statistics" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">STAT 319: Applied Statistics</a></>,
+      <>Comprehensive coursework for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/stat/#:~:text=STAT%20319%3A%20Applied%20Statistics" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">STAT 319: Applied Statistics</a></>,
       "Completed end-to-end data science projects using Python ecosystem including pandas, NumPy, matplotlib, seaborn, and scikit-learn",
       "Implemented machine learning models including linear regression, logistic regression, SVM, KNN, and decision trees",
       "Collaborated on COVID-19 case surveillance analysis for final projectusing large-scale public health data with comprehensive preprocessing and visualization, achieving a grade of 100%",
@@ -189,8 +189,8 @@ export const projects: Project[] = [
     madeFor: "Penn State",
     featured: true,
     bulletPoints: [
-      <>Final Project for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20431W%3A%20Database%20Management%20Systems" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 431W: Database Management Systems</a></>,
-      <>Developed a React-based trading card marketplace clone with live data integration (essentially a replica of <a href="https://www.tcgplayer.com" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">tcgplayer.com</a>)</>,
+      <>Final Project for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20431W%3A%20Database%20Management%20Systems" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">CMPSC 431W: Database Management Systems</a></>,
+      <>Developed a React-based trading card marketplace clone with live data integration (essentially a replica of <a href="https://www.tcgplayer.com" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">tcgplayer.com</a>)</>,
       "Customized a complex database schema in BCNF and hand-wrote all SQL queries to the local SQLite database",
       "Implemented filtering and search functionality for card sets and rarities",
       "Styled with modern CSS to create a clean, responsive UI",
@@ -207,7 +207,7 @@ export const projects: Project[] = [
     status: "complete",
     madeFor: "Personal",
     bulletPoints: [
-      <p key="godel-description">Built a fine-tuned Discord chatbot using <a href="https://www.microsoft.com/en-us/research/project/godel/" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">Microsoft&apos;s GODEL-v1.1 model</a> for contextual conversation generation</p>,
+      <p key="godel-description">Built a fine-tuned Discord chatbot using <a href="https://www.microsoft.com/en-us/research/project/godel/" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">Microsoft&apos;s GODEL-v1.1 model</a> for contextual conversation generation</p>,
       "Integrated HuggingFace Transformers to run local inference with a custom-trained seq2seq model",
       "Created rich Discord interactions including emote reactions, user-specific triggers, and dynamic status updates",
       "Designed 'Free Rein' and 'Puppeteer Mode' to control bot behavior based on real-time message context"
@@ -224,7 +224,7 @@ export const projects: Project[] = [
     status: "complete",
     madeFor: "Penn State",
     bulletPoints: [
-      <>Final Project for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpen/#:~:text=CMPEN%20331%3A%20Computer%20Organization%20and%20Design" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPEN 331: Computer Organization and Design</a></>,
+      <>Final Project for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpen/#:~:text=CMPEN%20331%3A%20Computer%20Organization%20and%20Design" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">CMPEN 331: Computer Organization and Design</a></>,
       "Implemented a complete single-cycle MIPS processor in Verilog HDL with 32-bit architecture and Harvard memory organization",
       "Built comprehensive instruction set support including arithmetic, logical, memory, branch, and jump instructions",
       "Designed modular architecture with separate components for ALU, control unit, register file, and memory systems",
@@ -239,7 +239,7 @@ export const projects: Project[] = [
     status: "complete",
     madeFor: "Penn State",
     bulletPoints: [
-      <>Midterm report for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/math/#:~:text=MATH%20452%3A%20Mathematical%20Foundations%20of%20Machine%20Learning" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">MATH 452: Mathematical Foundations of Machine Learning</a></>,
+      <>Midterm report for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/math/#:~:text=MATH%20452%3A%20Mathematical%20Foundations%20of%20Machine%20Learning" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">MATH 452: Mathematical Foundations of Machine Learning</a></>,
       "Implemented and compared KNN (94.4% accuracy), Logistic Regression (91.1%), and SVM with RBF kernel (95.3%) for classifying handwritten digits on a 10k-image subset of the MNIST dataset",
       "Applied rigorous preprocessing pipeline: random sampling, normalization to [0,1], flattening to 784-D vectors, and stratified 80/20 train–test split, followed by confusion matrix analysis",
       "Performed hyperparameter tuning (k=3 for KNN; C=1, RBF kernel for SVM) using grid search cross-validation; evaluated models with precision, recall, and F1-score",
@@ -266,7 +266,7 @@ export const projects: Project[] = [
     status: "complete",
     madeFor: "Penn State",
     bulletPoints: [
-      <>Final report for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/math/#:~:text=MATH%20452%3A%20Mathematical%20Foundations%20of%20Machine%20Learning" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">MATH 452: Mathematical Foundations of Machine Learning</a></>,
+      <>Final report for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/math/#:~:text=MATH%20452%3A%20Mathematical%20Foundations%20of%20Machine%20Learning" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">MATH 452: Mathematical Foundations of Machine Learning</a></>,
       "Benchmarked four approaches on the CIFAR-10 dataset (60k images): baseline CNN, ResNet50, DenseNet121, and a Random Feature Model (RFM) with 5,000 Random Fourier Features",
       "DenseNet121 achieved the top test accuracy at 74%, outperforming the baseline CNN (69%), RFM (51.6%), and ResNet50 (47%)",
       "Engineered a ResNet-inspired CNN with residual blocks, data augmentation, dropout, and L2 regularization; documented optimization challenges and remedies",
@@ -307,7 +307,7 @@ export const projects: Project[] = [
     status: "complete",
     madeFor: "Penn State",
     bulletPoints: [
-      <>Five comprehensive projects for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20475%3A%20Applications%20Programming" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:underline">CMPSC 475: Applications Programming</a></>,
+      <>Five comprehensive projects for <a href="https://bulletins.psu.edu/university-course-descriptions/undergraduate/cmpsc/#:~:text=CMPSC%20475%3A%20Applications%20Programming" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">CMPSC 475: Applications Programming</a></>,
       "Built LionSpell word puzzle game with custom polygon shapes, multi-language preferences, hints system, and New York Times-style UI design",
       "Developed Pentominoes puzzle game implementing drag gestures, 3D rotation animations, JSON data parsing, and automated solve/reset functionality",
       "Created Campus mapping applications using both SwiftUI Map and UIKit MKMapView with user location tracking, route planning, turn-by-turn directions, and annotation clustering",

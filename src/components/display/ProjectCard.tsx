@@ -34,7 +34,7 @@ const renderCollaborators = (collaborators: string | string[] | Collaborator | C
         href={collab.url} 
         target="_blank" 
         rel="noopener noreferrer"
-        className="text-[var(--color-primary)] hover:underline"
+        className="text-[var(--accent)] hover:underline"
       >
         {collab.name}
       </a>
@@ -51,7 +51,7 @@ const renderCollaborators = (collaborators: string | string[] | Collaborator | C
             href={collab.url} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-[var(--color-primary)] hover:underline"
+            className="text-[var(--accent)] hover:underline"
           >
             {collab.name}
           </a>
@@ -78,20 +78,20 @@ export function ProjectCard({
 }: ProjectCardProps) 
 {
   return (
-    <div className="border border-[var(--color-border)] rounded-lg overflow-hidden bg-[var(--color-background-alt)] hover:shadow-lg transition-all w-full h-[550px] flex flex-col">
+    <div className="border border-[var(--border)] rounded-lg overflow-hidden bg-[var(--card)] hover:shadow-lg transition-all w-full h-[550px] flex flex-col">
       {/* top bar (title, date, status, links) */}
       <div className="p-6 pb-2 flex justify-between items-start">
         <div>
-          <h3 className="text-3xl font-bold text-[var(--color-text-light)]">{title}</h3>
+          <h3 className="text-3xl font-bold text-[var(--fg)]">{title}</h3>
           <div className="flex flex-col md:flex-row md:items-center mt-1">
-            <p className="text-[var(--color-text)] text-sm flex flex-wrap items-center">
+            <p className="text-[var(--muted)] text-sm flex flex-wrap items-center">
               {/* Collaborators section */}
               {collaborators && (
                 <>
-                  <span className="text-[var(--color-primary)]">Collaborators:&nbsp;</span>
+                  <span className="text-[var(--accent)]">Collaborators:&nbsp;</span>
                   <span>{renderCollaborators(collaborators)}</span>
                   {/* Divider only visible on larger screens, o/w stack on top*/}
-                  <span className="hidden md:inline mx-2 text-[var(--color-text)]">|</span>
+                  <span className="hidden md:inline mx-2 text-[var(--muted)]">|</span>
                 </>
               )}
               
@@ -113,7 +113,7 @@ export function ProjectCard({
               href={repoUrl} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors"
+              className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
               aria-label="GitHub Repository"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -127,7 +127,7 @@ export function ProjectCard({
               href={liveUrl} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors"
+              className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
               aria-label="Live Site"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -146,7 +146,7 @@ export function ProjectCard({
         <div className="w-full md:w-1/2 pr-4 overflow-y-auto">
           <ul className="list-disc pl-5 space-y-2">
             {bulletPoints.map((point, index) => (
-              <li key={index} className="text-[var(--color-text)]">{point}</li>
+              <li key={index} className="text-[var(--muted)]">{point}</li>
             ))}
           </ul>
         </div>

@@ -82,9 +82,9 @@ export function SkillPill({
       <span 
         ref={pillRef}
         className={`
-          bg-[var(--color-sidebar)] text-[var(--color-text)] 
+          bg-[var(--card)] text-[var(--muted)] 
           rounded-full inline-flex items-center justify-center 
-          whitespace-nowrap hover:bg-[var(--color-border)] 
+          whitespace-nowrap hover:bg-[var(--border)] 
           transition-colors duration-200 
           ${showProjectsOnHover ? 'cursor-help hover:underline decoration-dotted underline-offset-2' : ''}
           ${sizeClasses[size]} ${className}

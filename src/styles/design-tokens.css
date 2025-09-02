@@ -14,8 +14,8 @@
   --color-muted: #464B5D;
 
   /* Theme mappings for Next.js */
-  --background: var(--color-background);
-  --foreground: var(--color-text-light);
+  --background: var(--bg);
+  --foreground: var(--fg);
 
   /* Animation timing functions */
   --ease-bounce: cubic-bezier(0.19, 1, 0.22, 1);
@@ -97,7 +97,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: var(--color-background);
-    --foreground: var(--color-text-light);
+    --background: var(--bg);
+    --foreground: var(--fg);
   }
 }

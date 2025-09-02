@@ -1,3 +1,16 @@
+## [1.19.1-prerelease.20250901] - 2025-09-01
+
+### Added
+- **Dynamic theme system**: Theme switching with next-themes, ThemeSelector component, and 5 theme variants (Ocean, Forest, Sunset, Midnight, Monochrome)
+- **CSS generation script**: Automated theme CSS generation from TypeScript config
+- **Theme infrastructure**: ThemeProvider, CSS variables system, and TypeScript interfaces
+
+### Changed
+- **Color system**: Migrated from hardcoded tokens to dynamic CSS variables across all components
+- **Build process**: Added theme generation to dev/build scripts
+
+---
+
 ## [1.19.0] - 2025-08-29
 
 ### Added

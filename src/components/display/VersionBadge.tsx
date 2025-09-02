@@ -59,6 +59,6 @@ export function VersionBadge({ repoUrl }: VersionBadgeProps)
   }
 
   return (
-    <span className="font-semibold text-base text-[var(--color-primary)] not-italic">{version} • </span>
+    <span className="font-semibold text-base text-[var(--accent)] not-italic">{version} • </span>
   );
 }
