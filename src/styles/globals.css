@@ -67,6 +67,24 @@ button, a {
   transition: var(--transition-hover);
 }
 
+/* Global theming defaults */
+a {
+  color: var(--link, var(--accent));
+}
+
+a:hover {
+  color: var(--link-hover, var(--accent));
+}
+
+::selection {
+  background: var(--selection);
+  color: var(--fg);
+}
+
+code, pre {
+  background-color: var(--code-bg, transparent);
+}
+
 /* sidebar styles */
 aside {
   transition: var(--transition-colors);
@@ -147,12 +165,12 @@ aside {
 }
 
 .section-nav-button:hover {
-  color: var(--accent);
+  color: var(--secondary);
 }
 
 .section-nav-button:hover .section-nav-icon {
   transform: translateX(4px);
-  color: var(--accent);
+  color: var(--secondary);
 }
 
 .section-nav-icon {

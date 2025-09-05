@@ -9,7 +9,7 @@ export function SocialIcons({ className = "" }: SocialIconsProps)
     <div className={`flex justify-center gap-6 ${className}`}>
       <a 
         href="mailto:garrettfincke@gmail.com"
-        className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
+        className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] rounded-sm"
         aria-label="Email"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -20,7 +20,7 @@ export function SocialIcons({ className = "" }: SocialIconsProps)
       
       <a 
         href="tel:7247777186"
-        className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
+        className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] rounded-sm"
         aria-label="Phone"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -32,7 +32,7 @@ export function SocialIcons({ className = "" }: SocialIconsProps)
         href="https://github.com/ggfincke" 
         target="_blank" 
         rel="noopener noreferrer"
-        className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
+        className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] rounded-sm"
         aria-label="GitHub"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -44,7 +44,7 @@ export function SocialIcons({ className = "" }: SocialIconsProps)
         href="https://www.linkedin.com/in/garrett-fincke/" 
         target="_blank" 
         rel="noopener noreferrer"
-        className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
+        className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] rounded-sm"
         aria-label="LinkedIn"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

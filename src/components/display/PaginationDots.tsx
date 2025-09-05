@@ -12,7 +12,7 @@ export function PaginationDots({ totalItems, currentIndex, onDotClick, disabled 
         <button 
           key={index}
           onClick={() => onDotClick(index)}
-          className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors ${
+          className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] ${
             index === currentIndex 
               ? 'bg-[var(--accent)]' 
               : 'bg-[var(--border)] hover:bg-[var(--muted)]'

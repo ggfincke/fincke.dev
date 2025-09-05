@@ -2,7 +2,7 @@
 // common CSS class combinations for consistent styling
 
 // base button layout
-export const baseButtonClasses = "inline-flex items-center gap-2 rounded-lg transition-all duration-200";
+export const baseButtonClasses = "inline-flex items-center gap-2 rounded-lg transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]";
 
 // button size variants
 export const buttonSizes = {

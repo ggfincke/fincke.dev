@@ -31,7 +31,7 @@ export const experiences: Experience[] = [
         </p>
 
         <p className="mb-4">
-          Contributed to{' '}<a href="https://www.theverge.com/news/670773/google-labs-stitch-ui-coding-design-tool" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">Google&apos;s Stitch UI code-generation workflow</a>{' '}
+          Contributed to{' '}<a href="https://www.theverge.com/news/670773/google-labs-stitch-ui-coding-design-tool" target="_blank" rel="noopener noreferrer" className="hover:underline">Google&apos;s Stitch UI code-generation workflow</a>{' '}
           by building prompt templates and evaluation harnesses that improved component fidelity and layout accuracy
         </p>
 

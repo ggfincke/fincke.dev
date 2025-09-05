@@ -34,7 +34,7 @@ const renderCollaborators = (collaborators: string | string[] | Collaborator | C
         href={collab.url} 
         target="_blank" 
         rel="noopener noreferrer"
-        className="text-[var(--accent)] hover:underline"
+        className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] rounded-sm"
       >
         {collab.name}
       </a>
@@ -51,7 +51,7 @@ const renderCollaborators = (collaborators: string | string[] | Collaborator | C
             href={collab.url} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-[var(--accent)] hover:underline"
+            className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] rounded-sm"
           >
             {collab.name}
           </a>
@@ -88,7 +88,7 @@ export function ProjectCard({
               {/* Collaborators section */}
               {collaborators && (
                 <>
-                  <span className="text-[var(--accent)]">Collaborators:&nbsp;</span>
+                  <span className="text-[var(--secondary)]">Collaborators:&nbsp;</span>
                   <span>{renderCollaborators(collaborators)}</span>
                   {/* Divider only visible on larger screens, o/w stack on top*/}
                   <span className="hidden md:inline mx-2 text-[var(--muted)]">|</span>
@@ -113,7 +113,7 @@ export function ProjectCard({
               href={repoUrl} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
+              className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] rounded-sm"
               aria-label="GitHub Repository"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -127,7 +127,7 @@ export function ProjectCard({
               href={liveUrl} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
+              className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] rounded-sm"
               aria-label="Live Site"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -146,7 +146,7 @@ export function ProjectCard({
         <div className="w-full md:w-1/2 pr-4 overflow-y-auto">
           <ul className="list-disc pl-5 space-y-2">
             {bulletPoints.map((point, index) => (
-              <li key={index} className="text-[var(--muted)]">{point}</li>
+              <li key={index} className="text-[var(--muted)] marker:text-[var(--secondary)]">{point}</li>
             ))}
           </ul>
         </div>

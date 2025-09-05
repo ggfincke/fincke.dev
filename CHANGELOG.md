@@ -1,3 +1,24 @@
+## [1.19.6-prerelease.20250905] - 2025-09-05
+
+### Enhanced
+- **Accessibility improvements**: Added focus-visible ring indicators to all interactive elements
+  - Enhanced focus states for buttons, links, and form controls with visible ring outlines
+  - Improved keyboard navigation experience across the application
+  - Added proper focus management for screen readers and assistive technologies
+- **Color consistency**: Standardized hover colors using secondary color variable
+  - Unified button and link hover states across components
+  - Improved visual hierarchy with consistent secondary color usage
+  - Enhanced section navigation button hover states
+- **Global theming**: Implemented global theming defaults for better consistency
+  - Added CSS variables for link colors, selection highlighting, and code backgrounds
+  - Standardized text selection appearance across themes
+  - Improved code block styling with theme-aware backgrounds
+- **Visual refinements**: Enhanced list marker colors and bullet point styling
+  - Improved list visual hierarchy with secondary color markers
+  - Better contrast and readability for bullet points and collaborator information
+
+---
+
 ## [1.19.5-prerelease.20250905] - 2025-09-05
 
 ### Added

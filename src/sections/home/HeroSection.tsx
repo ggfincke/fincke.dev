@@ -56,7 +56,7 @@ export function HeroSection({ scrollToSection }: HeroSectionProps)
   return (
     <>
       {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/5 via-transparent to-[var(--card)]/10 z-0" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/10 via-30% via-[var(--secondary)]/5 via-70% to-[var(--card)]/10 z-0" />
       <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-transparent to-transparent z-0" />
       
       {/* Floating particles */}
@@ -111,7 +111,7 @@ export function HeroSection({ scrollToSection }: HeroSectionProps)
             >
               <button 
                 onClick={() => scrollToSection('about')}
-                className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors animate-bounce flex flex-col items-center"
+                className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors animate-bounce flex flex-col items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] rounded"
               >
                 <span className="block mb-2">Scroll Down</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

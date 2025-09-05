@@ -112,7 +112,7 @@ export function ProjectsTable()
           href={collab.url} 
           target="_blank" 
           rel="noopener noreferrer"
-          className="text-[var(--accent)] hover:underline"
+          className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] rounded-sm"
         >
           {collab.name}
         </a>
@@ -128,7 +128,7 @@ export function ProjectsTable()
               href={collab.url} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-[var(--accent)] hover:underline"
+              className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] rounded-sm"
             >
               {collab.name}
             </a>
@@ -183,7 +183,7 @@ export function ProjectsTable()
                     {/* expand/collapse button */}
                     <button
                       onClick={() => toggleRow(index)}
-                      className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors p-1 rounded hover:bg-[var(--card)] flex-shrink-0"
+                      className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors p-1 rounded hover:bg-[var(--card)] flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
                       aria-label={isRowExpanded ? 'Collapse project details' : 'Expand project details'}
                     >
                       <svg 

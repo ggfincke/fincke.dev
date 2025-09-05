@@ -18,7 +18,7 @@ export default function ProjectsPage()
         <div className="mb-4">
           <Link 
             href="/" 
-            className="text-[var(--accent)] hover:text-[var(--fg)] transition-colors inline-flex items-center text-lg"
+            className="transition-colors inline-flex items-center text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] rounded-sm"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
               <path d="m15 18-6-6 6-6"/>

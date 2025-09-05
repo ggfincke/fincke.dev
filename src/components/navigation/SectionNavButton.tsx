@@ -9,7 +9,7 @@ import type { SectionNavButtonProps } from '~/types/navigation';
 export function SectionNavButton({ href, children, className = '' }: SectionNavButtonProps) 
 {
   return (
-    <Link href={href} className={`section-nav-button ${className}`}>
+    <Link href={href} className={`section-nav-button focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] ${className}`}>
       {children}
       <svg 
         className="section-nav-icon" 

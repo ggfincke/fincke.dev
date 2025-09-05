@@ -19,7 +19,7 @@ export function NavArrow({ direction, onClick, disabled }: NavArrowProps)
 
   return (
     <button 
-      className={`absolute top-1/2 transform -translate-y-1/2 ${positionClasses} bg-[var(--card)] border border-[var(--border)] rounded-full p-2 text-[var(--muted)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-colors z-10`}
+      className={`absolute top-1/2 transform -translate-y-1/2 ${positionClasses} bg-[var(--card)] border border-[var(--border)] rounded-full p-2 text-[var(--muted)] hover:text-[var(--accent)] hover:border-[var(--secondary)] transition-colors z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]`}
       onClick={onClick}
       disabled={disabled}
       aria-label={`${direction === 'left' ? 'Previous' : 'Next'} project`}
