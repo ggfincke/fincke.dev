@@ -9,7 +9,6 @@ import "~/styles/animations.css";
 import "~/styles/design-tokens.css";
 import "~/styles/globals.css";
 import "~/styles/themes.css";
-import { ThemeSelector } from "~/components/display/ThemeSelector";
 import { ThemeProvider } from "~/components/theme-provider";
 import { VERSION } from "~/utils/version";
 
@@ -45,7 +44,6 @@ export default function RootLayout({
       >
         <ThemeProvider>
           {children}
-          <ThemeSelector />
         </ThemeProvider>
         <Analytics />
       </body>

@@ -5,6 +5,7 @@
 
 import Link from 'next/link';
 
+import { ThemeSelector } from '~/components/display/ThemeSelector';
 import { ProjectsTable } from '~/sections/projects/ProjectsTable';
 
 // * projects page component w/ table view & navigation
@@ -45,6 +46,9 @@ export default function ProjectsPage()
           </p>
         </div>
       </div>
+
+      {/* Theme Selector - always show on projects page */}
+      <ThemeSelector />
     </div>
   );
 }

@@ -6,6 +6,7 @@
 import { useState, useEffect } from 'react';
 
 import { SectionHeading } from '~/components/display/SectionHeading';
+import { ThemeSelector } from '~/components/display/ThemeSelector';
 import { Sidebar } from '~/components/layout/Sidebar';
 import { NAV_SECTIONS } from '~/config/navSections';
 import { useBreakpoint } from '~/hooks/useBreakpoint';
@@ -93,6 +94,9 @@ export default function Home()
         {/* Footer */}
         <Footer isSmallScreen={!isDesktop} />
       </main>
+
+      {/* Theme Selector - show with same logic as sidebar */}
+      <ThemeSelector show={showSidebar} />
     </div>
   );
 }

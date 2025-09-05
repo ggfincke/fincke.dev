@@ -1,3 +1,14 @@
+## [1.19.3-prerelease.20250905] - 2025-09-05
+
+### Enhanced
+- **ThemeSelector positioning**: Improved ThemeSelector component positioning and visibility logic
+  - Moved ThemeSelector from global layout to individual pages with conditional display
+  - Added `show` prop to ThemeSelector component for better control
+  - Enhanced responsive behavior matching sidebar visibility patterns
+  - Added ThemeSelectorProps interface to type system
+
+---
+
 ## [1.19.2-prerelease.20250905] - 2025-09-05
 
 ### Enhanced

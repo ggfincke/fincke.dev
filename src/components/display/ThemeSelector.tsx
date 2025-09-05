@@ -5,15 +5,16 @@ import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 
 import { themeIds, formatThemeName, defaultTheme } from '~/themes/config';
+import { ThemeSelectorProps } from '~/types/ui';
 
-export function ThemeSelector() 
+export function ThemeSelector({ show = true }: ThemeSelectorProps) 
 {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
 
-  if (!mounted) 
+  if (!mounted || !show) 
 {
     return null;
   }
