@@ -3,7 +3,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 
-import { SECTION_IDS } from '~/config/navSections';
+import { SECTION_IDS } from '~/constants/navigation';
 import { useBreakpoint } from '~/hooks/useBreakpoint';
 
 export interface UseNavOptions {

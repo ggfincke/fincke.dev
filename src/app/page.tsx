@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 import { SectionHeading } from '~/components/display/SectionHeading';
 import { ThemeSelector } from '~/components/display/ThemeSelector';
 import { Sidebar } from '~/components/layout/Sidebar';
-import { NAV_SECTIONS } from '~/config/navSections';
+import { NAV_SECTIONS } from '~/constants/navigation';
 import { useBreakpoint } from '~/hooks/useBreakpoint';
 import { useNav } from '~/hooks/useNav';
 import { Footer } from '~/sections/Footer';

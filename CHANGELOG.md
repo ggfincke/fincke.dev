@@ -1,3 +1,15 @@
+## [1.19.4-prerelease.20250905] - 2025-09-05
+
+### Enhanced
+- **Code organization**: Refactored component architecture for better maintainability
+  - Moved navigation configuration from `config/navSections.ts` to `constants/navigation.ts`
+  - Extracted shared status configuration to `utils/statusConfig.ts` for StatusBadge and StatusCircle components
+  - Added reusable button styling utilities in `utils/classNames.ts` with size and color variants
+  - Updated ProjectsTable to use consistent button styling classes instead of hardcoded styles
+  - Improved import paths across components for better organization
+
+---
+
 ## [1.19.3-prerelease.20250905] - 2025-09-05
 
 ### Enhanced
