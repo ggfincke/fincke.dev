@@ -1,3 +1,10 @@
+## [1.19.2-prerelease.20250905] - 2025-09-05
+
+### Enhanced
+- **Dynamic wave gradients**: HeroSection SVG waves now adapt to theme colors in real-time using CSS variables and MutationObserver
+
+---
+
 ## [1.19.1-prerelease.20250901] - 2025-09-01
 
 ### Added
