@@ -7,7 +7,7 @@ const FloatingParticle = ({ delay = 0, left = 0, top = 0, duration = 24 }: Float
 {
   return (
     <div 
-      className="absolute w-2 h-2 bg-[var(--color-primary)] rounded-full opacity-10 animate-float"
+      className="absolute w-2 h-2 bg-[var(--accent)] rounded-full opacity-10 animate-float"
       style={{
         '--particle-left': `${left}%`,
         '--particle-top': `${top}%`,

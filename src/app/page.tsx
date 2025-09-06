@@ -6,8 +6,9 @@
 import { useState, useEffect } from 'react';
 
 import { SectionHeading } from '~/components/display/SectionHeading';
+import { ThemeSelector } from '~/components/display/ThemeSelector';
 import { Sidebar } from '~/components/layout/Sidebar';
-import { NAV_SECTIONS } from '~/config/navSections';
+import { NAV_SECTIONS } from '~/constants/navigation';
 import { useBreakpoint } from '~/hooks/useBreakpoint';
 import { useNav } from '~/hooks/useNav';
 import { Footer } from '~/sections/Footer';
@@ -43,15 +44,17 @@ export default function Home()
         />
       </div>
       
-      {/* Main content */}
-      <main className={`main-content ${(!isMounted || !isDesktop) ? '' : (showSidebar ? 'main-content-with-sidebar' : 'main-content-full')}`}>
+      {/* Main content with site-wide gradient background (excludes sidebar) */}
+      <main className={`main-content relative overflow-hidden ${(!isMounted || !isDesktop) ? '' : (showSidebar ? 'main-content-with-sidebar' : 'main-content-full')}`}>
+        {/* Global gradient overlay for content area (no particles) */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[var(--accent)]/8 via-transparent to-transparent z-0" />
         {/* Hero section */}
-        <section id={NAV_SECTIONS.hero.id} className="min-h-screen flex items-center bg-[var(--color-background)] py-16 md:py-24 relative">
+        <section id={NAV_SECTIONS.hero.id} className="relative z-10 min-h-screen flex items-center py-16 md:py-24">
           <HeroSection scrollToSection={scrollToSection} />
         </section>
 
         {/* About section */}
-        <section id={NAV_SECTIONS.about.id} className="py-16 md:py-24 bg-[var(--color-background)]">
+        <section id={NAV_SECTIONS.about.id} className="relative z-10 py-16 md:py-24">
           <div className="container mx-auto px-4 sm:px-8">
             <SectionHeading 
               title="About Me" 
@@ -64,7 +67,7 @@ export default function Home()
         </section>
 
         {/* Experience section */}
-        <section id={NAV_SECTIONS.experience.id} className="py-16 md:py-24 bg-[var(--color-background-alt)]">
+        <section id={NAV_SECTIONS.experience.id} className="relative z-10 py-16 md:py-24">
           <div className="container mx-auto px-4 sm:px-8">
             <SectionHeading 
               title="Experience" 
@@ -77,7 +80,7 @@ export default function Home()
         </section>
 
         {/* Projects section */}
-        <section id={NAV_SECTIONS.projects.id} className="py-16 md:py-24 bg-[var(--color-background)]">
+        <section id={NAV_SECTIONS.projects.id} className="relative z-10 py-16 md:py-24">
           <div className="container mx-auto px-4 sm:px-8">
             <SectionHeading 
               title="Projects" 
@@ -93,6 +96,9 @@ export default function Home()
         {/* Footer */}
         <Footer isSmallScreen={!isDesktop} />
       </main>
+
+      {/* Theme Selector - show with same logic as sidebar */}
+      <ThemeSelector show={showSidebar} />
     </div>
   );
 }

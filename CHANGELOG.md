@@ -1,3 +1,103 @@
+## [1.19.10-prerelease.20250906] - 2025-09-06
+
+### Enhanced
+- **ProjectCard mobile responsiveness**: Improved layout with adjusted heights and conditional content rendering for better mobile experience
+
+---
+
+## [1.19.9-prerelease.20250906] - 2025-09-06
+
+### Enhanced
+- **Theme selector responsiveness**: Added inline variant for mobile with conditional floating selector for desktop
+
+---
+
+## [1.19.8-prerelease.20250906] - 2025-09-06
+
+### Enhanced
+- **Interactive skill tooltips**: Enabled project display on hover for all SkillPill components with improved styling and expanded project limits
+
+---
+
+## [1.19.7-prerelease.20250906] - 2025-09-06
+
+### Enhanced
+- **Global gradient background system**: Implemented unified gradient background across all pages with theme-aware accent colors
+
+---
+
+## [1.19.6-prerelease.20250905] - 2025-09-05
+
+### Enhanced
+- **Accessibility improvements**: Added focus-visible ring indicators to all interactive elements
+- **Color consistency**: Standardized hover colors using secondary color variable
+- **Global theming**: Implemented global theming defaults for better consistency
+- **Visual refinements**: Enhanced list marker colors and bullet point styling
+
+---
+
+## [1.19.5-prerelease.20250905] - 2025-09-05
+
+### Added
+- **Hopper project**: Added new cross-platform inventory management project to portfolio
+
+### Updated
+- **Resume**: Updated resume PDF with latest information
+
+---
+
+## [1.19.4-prerelease.20250905] - 2025-09-05
+
+### Enhanced
+- **Code organization**: Refactored component architecture for better maintainability
+
+---
+
+## [1.19.3-prerelease.20250905] - 2025-09-05
+
+### Enhanced
+- **ThemeSelector positioning**: Improved ThemeSelector component positioning and visibility logic
+
+---
+
+## [1.19.2-prerelease.20250905] - 2025-09-05
+
+### Enhanced
+- **Dynamic wave gradients**: HeroSection SVG waves now adapt to theme colors in real-time using CSS variables and MutationObserver
+
+---
+
+## [1.19.1-prerelease.20250901] - 2025-09-01
+
+### Added
+- **Dynamic theme system**: Theme switching with next-themes, ThemeSelector component, and 5 theme variants (Ocean, Forest, Sunset, Midnight, Monochrome)
+- **CSS generation script**: Automated theme CSS generation from TypeScript config
+- **Theme infrastructure**: ThemeProvider, CSS variables system, and TypeScript interfaces
+
+### Changed
+- **Color system**: Migrated from hardcoded tokens to dynamic CSS variables across all components
+- **Build process**: Added theme generation to dev/build scripts
+
+---
+
+## [1.19.0] - 2025-08-29
+
+### Added
+- **Interactive skill tooltips**: Added hover tooltips to skill pills showing related projects with status indicators
+- **SkillTooltip component**: New display component with smart positioning and fade animations
+- **Skill mappings**: Enhanced technology relationship mappings for project filtering
+
+### Changed
+- **Project refinements**: Streamlined portfolio technologies, added watchOS to SwimMate, improved footer version display
+- **Code quality**: Applied Allman brace style, fixed JSX compliance, removed unnecessary ESLint comments
+
+### Updated
+- **Resume document**: Updated resume PDF with latest content and formatting
+
+> Merged as PR #30
+
+---
+
 ## [1.18.5-prerelease.20250829] - 2025-08-29
 
 ### Updated

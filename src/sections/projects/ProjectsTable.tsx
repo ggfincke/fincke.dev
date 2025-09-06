@@ -13,6 +13,7 @@ import { getAllProjects } from '~/data/structured/projects';
 import { useTableResponsive } from '~/hooks/useBreakpoint';
 import { useExpandableRows } from '~/hooks/useSectionNavigation';
 import type { Collaborator } from '~/types/projects';
+import { getButtonClasses } from '~/utils/classNames';
 
 // all projects table w/ expandable rows & responsive design
 export function ProjectsTable() 
@@ -111,7 +112,7 @@ export function ProjectsTable()
           href={collab.url} 
           target="_blank" 
           rel="noopener noreferrer"
-          className="text-[var(--color-primary)] hover:underline"
+          className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] rounded-sm"
         >
           {collab.name}
         </a>
@@ -127,7 +128,7 @@ export function ProjectsTable()
               href={collab.url} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-[var(--color-primary)] hover:underline"
+              className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] rounded-sm"
             >
               {collab.name}
             </a>
@@ -154,21 +155,21 @@ export function ProjectsTable()
             return (
               <div key={`mobile-project-${index}`}>
                 <div 
-                  className="border border-[var(--color-border)] rounded-lg p-4 bg-[var(--color-background-alt)]/30 hover:bg-[var(--color-background-alt)]/50 transition-colors"
+                  className="border border-[var(--border)] rounded-lg p-4 bg-[var(--card)]/30 hover:bg-[var(--card)]/50 transition-colors"
                 >
                   <div className="flex items-start justify-between gap-4">
                     {/* year */}
-                    <div className="text-[var(--color-muted)] font-mono text-sm font-medium min-w-[3rem]">
+                    <div className="text-[var(--muted)] font-mono text-sm font-medium min-w-[3rem]">
                       {year}
                     </div>
                     
                     {/* Project info */}
                     <div className="flex-1">
-                      <div className="font-semibold text-[var(--color-text-light)] text-lg mb-1">
+                      <div className="font-semibold text-[var(--fg)] text-lg mb-1">
                         {project.title}
                       </div>
                       {project.collaborators && (
-                        <div className="text-sm text-[var(--color-text)]">
+                        <div className="text-sm text-[var(--muted)]">
                           {typeof project.collaborators === 'string' 
                             ? `with ${project.collaborators}`
                             : Array.isArray(project.collaborators)
@@ -182,7 +183,7 @@ export function ProjectsTable()
                     {/* expand/collapse button */}
                     <button
                       onClick={() => toggleRow(index)}
-                      className="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors p-1 rounded hover:bg-[var(--color-sidebar)] flex-shrink-0"
+                      className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors p-1 rounded hover:bg-[var(--card)] flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
                       aria-label={isRowExpanded ? 'Collapse project details' : 'Expand project details'}
                     >
                       <svg 
@@ -205,12 +206,12 @@ export function ProjectsTable()
 
                 {/* expanded content for mobile */}
                 {isRowExpanded && (
-                  <div className="mt-2 border border-[var(--color-border)] rounded-lg p-4 bg-[var(--color-background-alt)]/50">
+                  <div className="mt-2 border border-[var(--border)] rounded-lg p-4 bg-[var(--card)]/50">
                     <div className="space-y-4">
                       {/* Status Badge and Date */}
                       <div className="flex items-center gap-4">
                         <StatusBadge status={project.status} />
-                        <span className="text-[var(--color-muted)] text-sm italic">
+                        <span className="text-[var(--muted)] text-sm italic">
                           {project.repoUrl && (
                             <>
                               <VersionBadge repoUrl={project.repoUrl} />
@@ -224,10 +225,10 @@ export function ProjectsTable()
                       {/* Collaborators (if any) */}
                       {project.collaborators && (
                         <div>
-                          <h4 className="text-sm font-semibold text-[var(--color-primary)] mb-2">
+                          <h4 className="text-sm font-semibold text-[var(--accent)] mb-2">
                             Collaborators
                           </h4>
-                          <p className="text-[var(--color-text)]">
+                          <p className="text-[var(--muted)]">
                             {renderCollaborators(project.collaborators)}
                           </p>
                         </div>
@@ -235,12 +236,12 @@ export function ProjectsTable()
 
                       {/* Description */}
                       <div>
-                        <h4 className="text-sm font-semibold text-[var(--color-primary)] mb-2">
+                        <h4 className="text-sm font-semibold text-[var(--accent)] mb-2">
                           Description
                         </h4>
                         <ul className="list-disc pl-5 space-y-1">
                           {project.bulletPoints.map((point, pointIndex) => (
-                            <li key={pointIndex} className="text-[var(--color-text)] text-sm">
+                            <li key={pointIndex} className="text-[var(--muted)] text-sm">
                               {point}
                             </li>
                           ))}
@@ -249,7 +250,7 @@ export function ProjectsTable()
 
                       {/* Technologies */}
                       <div>
-                        <h4 className="text-sm font-semibold text-[var(--color-primary)] mb-2">
+                        <h4 className="text-sm font-semibold text-[var(--accent)] mb-2">
                           Technologies
                         </h4>
                         <div className="flex flex-wrap gap-2">
@@ -258,6 +259,7 @@ export function ProjectsTable()
                               key={techIndex}
                               name={tech}
                               size="xs"
+                              showProjectsOnHover={true}
                             />
                           ))}
                         </div>
@@ -266,7 +268,7 @@ export function ProjectsTable()
                       {/* links */}
                       {(project.repoUrl || project.liveUrl) && (
                         <div>
-                          <h4 className="text-sm font-semibold text-[var(--color-primary)] mb-2">
+                          <h4 className="text-sm font-semibold text-[var(--accent)] mb-2">
                             Links
                           </h4>
                           <div className="flex flex-wrap gap-2">
@@ -275,7 +277,7 @@ export function ProjectsTable()
                                 href={project.repoUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-3 py-1 bg-[var(--color-sidebar)] text-[var(--color-text)] rounded-lg hover:bg-[var(--color-border)] hover:shadow-md transition-all duration-200 text-sm"
+                                className={getButtonClasses('sm', 'secondary')}
                               >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                   <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
@@ -289,7 +291,7 @@ export function ProjectsTable()
                                 href={project.liveUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-3 py-1 bg-[var(--color-primary)] text-[var(--color-background)] rounded-lg hover:bg-opacity-90 hover:shadow-md transition-all duration-200 text-sm"
+                                className={getButtonClasses('sm', 'primary')}
                               >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                   <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -316,26 +318,26 @@ export function ProjectsTable()
       {shouldShowTable && (
         <table className="w-full table-fixed hidden md:table">
           <thead>
-            <tr className="border-b border-[var(--color-border)]">
-              <th className="text-left py-4 pl-6 pr-6 text-sm font-medium text-[var(--color-text)] uppercase tracking-wider w-8">
+            <tr className="border-b border-[var(--border)]">
+              <th className="text-left py-4 pl-6 pr-6 text-sm font-medium text-[var(--muted)] uppercase tracking-wider w-8">
                 {/* Empty header for expand button */}
               </th>
-              <th className="text-left py-4 pl-4 pr-4 w-[8%] text-sm font-medium text-[var(--color-text)] uppercase tracking-wider">
+              <th className="text-left py-4 pl-4 pr-4 w-[8%] text-sm font-medium text-[var(--muted)] uppercase tracking-wider">
                 Year
               </th>
-              <th className="text-left py-4 pl-4 pr-2 w-[20%] text-sm font-medium text-[var(--color-text)] uppercase tracking-wider">
+              <th className="text-left py-4 pl-4 pr-2 w-[20%] text-sm font-medium text-[var(--muted)] uppercase tracking-wider">
                 Project
               </th>
-              <th className="text-center py-4 px-4 w-[10%] text-sm font-medium text-[var(--color-text)] uppercase tracking-wider">
+              <th className="text-center py-4 px-4 w-[10%] text-sm font-medium text-[var(--muted)] uppercase tracking-wider">
                 Status
               </th>
-              <th className="text-left py-4 pl-4 pr-4 w-[15%] text-sm font-medium text-[var(--color-text)] uppercase tracking-wider">
+              <th className="text-left py-4 pl-4 pr-4 w-[15%] text-sm font-medium text-[var(--muted)] uppercase tracking-wider">
                 Made for
               </th>
-              <th className="text-left py-4 pl-4 pr-4 text-sm font-medium text-[var(--color-text)] uppercase tracking-wider">
+              <th className="text-left py-4 pl-4 pr-4 text-sm font-medium text-[var(--muted)] uppercase tracking-wider">
                 Built with
               </th>
-              <th className="text-left py-4 pl-4 pr-4 w-[10%] text-sm font-medium text-[var(--color-text)] uppercase tracking-wider">
+              <th className="text-left py-4 pl-4 pr-4 w-[10%] text-sm font-medium text-[var(--muted)] uppercase tracking-wider">
                 Link
               </th>
             </tr>
@@ -349,13 +351,13 @@ export function ProjectsTable()
             return [
               <tr 
                 key={`project-${index}`}
-                className="border-b border-[var(--color-border)] hover:bg-[var(--color-background-alt)] transition-colors"
+                className="border-b border-[var(--border)] hover:bg-[var(--card)] transition-colors"
               >
                 {/* expand/collapse button */}
                 <td className="py-6 pl-6 pr-2">
                   <button
                     onClick={() => toggleRow(index)}
-                    className="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors p-1 rounded hover:bg-[var(--color-sidebar)]"
+                    className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors p-1 rounded hover:bg-[var(--card)]"
                     aria-label={isRowExpanded ? 'Collapse project details' : 'Expand project details'}
                   >
                     <svg 
@@ -376,17 +378,17 @@ export function ProjectsTable()
                 </td>
 
                 {/* year */}
-                <td className="py-6 pl-4 pr-4 text-[var(--color-muted)] font-mono text-sm">
+                <td className="py-6 pl-4 pr-4 text-[var(--muted)] font-mono text-sm">
                   {year}
                 </td>
 
                 {/* project name */}
                 <td className="py-6 pl-4 pr-2">
-                  <div className="font-semibold text-[var(--color-text-light)] text-lg mb-1">
+                  <div className="font-semibold text-[var(--fg)] text-lg mb-1">
                     {project.title}
                   </div>
                   {project.collaborators && (
-                    <div className="text-sm text-[var(--color-text)]">
+                    <div className="text-sm text-[var(--muted)]">
                       {typeof project.collaborators === 'string' 
                         ? `with ${project.collaborators}`
                         : Array.isArray(project.collaborators)
@@ -403,7 +405,7 @@ export function ProjectsTable()
                 </td>
 
                 {/* made for */}
-                <td className="py-6 pl-4 pr-4 text-[var(--color-text)]">
+                <td className="py-6 pl-4 pr-4 text-[var(--muted)]">
                   {project.madeFor}
                 </td>
 
@@ -419,7 +421,7 @@ export function ProjectsTable()
                       />
                     ))}
                     {project.technologies.length > 3 && (
-                      <span className="text-[var(--color-muted)] text-xs">
+                      <span className="text-[var(--muted)] text-xs">
                         +{project.technologies.length - 3} more
                       </span>
                     )}
@@ -434,7 +436,7 @@ export function ProjectsTable()
                         href={project.repoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors"
+                        className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
                         aria-label="GitHub Repository"
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -448,7 +450,7 @@ export function ProjectsTable()
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors"
+                        className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
                         aria-label={getLiveLabel(project.liveUrl)}
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -467,7 +469,7 @@ export function ProjectsTable()
                 <tr key={`expanded-${index}`}>
                   <td colSpan={7} className="p-0">
                     <div 
-                      className={`px-6 pb-8 bg-[var(--color-background-alt)]/50 border-b border-[var(--color-border)] transition-all duration-300 ${
+                      className={`px-6 pb-8 bg-[var(--card)]/50 border-b border-[var(--border)] transition-all duration-300 ${
                         isRowExpanded ? 'opacity-100' : 'opacity-0'
                       }`}
                     >
@@ -475,7 +477,7 @@ export function ProjectsTable()
                         {/* Status Badge and Date */}
                         <div className="flex items-center gap-4">
                           <StatusBadge status={project.status} />
-                          <span className="text-[var(--color-muted)] text-sm italic">
+                          <span className="text-[var(--muted)] text-sm italic">
                             {project.repoUrl && (
                               <>
                                 <VersionBadge repoUrl={project.repoUrl} />
@@ -489,10 +491,10 @@ export function ProjectsTable()
                         {/* Collaborators (if any) */}
                         {project.collaborators && (
                           <div>
-                            <h4 className="text-sm font-semibold text-[var(--color-primary)] mb-2">
+                            <h4 className="text-sm font-semibold text-[var(--accent)] mb-2">
                               Collaborators
                             </h4>
-                            <p className="text-[var(--color-text)]">
+                            <p className="text-[var(--muted)]">
                               {renderCollaborators(project.collaborators)}
                             </p>
                           </div>
@@ -502,12 +504,12 @@ export function ProjectsTable()
                         <div className="flex flex-col lg:flex-row lg:items-center gap-8">
                           {/* Left side - Project Description */}
                           <div className="flex-1">
-                            <h4 className="text-sm font-semibold text-[var(--color-primary)] mb-3">
+                            <h4 className="text-sm font-semibold text-[var(--accent)] mb-3">
                               Description
                             </h4>
                             <ul className="list-disc pl-5 space-y-2">
                               {project.bulletPoints.map((point, pointIndex) => (
-                                <li key={pointIndex} className="text-[var(--color-text)]">
+                                <li key={pointIndex} className="text-[var(--muted)]">
                                   {point}
                                 </li>
                               ))}
@@ -533,7 +535,7 @@ export function ProjectsTable()
 
                         {/* Technologies - Full Width */}
                         <div>
-                          <h4 className="text-sm font-semibold text-[var(--color-primary)] mb-3">
+                          <h4 className="text-sm font-semibold text-[var(--accent)] mb-3">
                             Technologies
                           </h4>
                           <div className="flex flex-wrap gap-x-3 gap-y-2">
@@ -542,6 +544,7 @@ export function ProjectsTable()
                                 key={techIndex}
                                 name={tech}
                                 size="md"
+                                showProjectsOnHover={true}
                                 />
                             ))}
                           </div>
@@ -550,7 +553,7 @@ export function ProjectsTable()
                         {/* links */}
                         {(project.repoUrl || project.liveUrl) && (
                           <div>
-                            <h4 className="text-sm font-semibold text-[var(--color-primary)] mb-3">
+                            <h4 className="text-sm font-semibold text-[var(--accent)] mb-3">
                               Links
                             </h4>
                             <div className="flex flex-wrap gap-4">
@@ -559,7 +562,7 @@ export function ProjectsTable()
                                   href={project.repoUrl}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--color-sidebar)] text-[var(--color-text)] rounded-lg hover:bg-[var(--color-border)] hover:shadow-md transition-all duration-200"
+                                  className={getButtonClasses('md', 'secondary')}
                                 >
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
@@ -573,7 +576,7 @@ export function ProjectsTable()
                                   href={project.liveUrl}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--color-primary)] text-[var(--color-background)] rounded-lg hover:bg-opacity-90 hover:shadow-md transition-all duration-200"
+                                  className={getButtonClasses('md', 'primary')}
                                 >
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>

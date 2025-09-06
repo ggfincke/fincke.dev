@@ -34,7 +34,7 @@ const renderCollaborators = (collaborators: string | string[] | Collaborator | C
         href={collab.url} 
         target="_blank" 
         rel="noopener noreferrer"
-        className="text-[var(--color-primary)] hover:underline"
+        className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] rounded-sm"
       >
         {collab.name}
       </a>
@@ -51,7 +51,7 @@ const renderCollaborators = (collaborators: string | string[] | Collaborator | C
             href={collab.url} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-[var(--color-primary)] hover:underline"
+            className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] rounded-sm"
           >
             {collab.name}
           </a>
@@ -78,20 +78,20 @@ export function ProjectCard({
 }: ProjectCardProps) 
 {
   return (
-    <div className="border border-[var(--color-border)] rounded-lg overflow-hidden bg-[var(--color-background-alt)] hover:shadow-lg transition-all w-full h-[550px] flex flex-col">
+    <div className="border border-[var(--border)] rounded-lg overflow-hidden bg-[var(--card)] hover:shadow-lg transition-all w-full h-[700px] md:h-[550px] flex flex-col">
       {/* top bar (title, date, status, links) */}
       <div className="p-6 pb-2 flex justify-between items-start">
         <div>
-          <h3 className="text-3xl font-bold text-[var(--color-text-light)]">{title}</h3>
+          <h3 className="text-3xl font-bold text-[var(--fg)]">{title}</h3>
           <div className="flex flex-col md:flex-row md:items-center mt-1">
-            <p className="text-[var(--color-text)] text-sm flex flex-wrap items-center">
+            <p className="text-[var(--muted)] text-sm flex flex-wrap items-center">
               {/* Collaborators section */}
               {collaborators && (
                 <>
-                  <span className="text-[var(--color-primary)]">Collaborators:&nbsp;</span>
+                  <span className="text-[var(--secondary)]">Collaborators:&nbsp;</span>
                   <span>{renderCollaborators(collaborators)}</span>
                   {/* Divider only visible on larger screens, o/w stack on top*/}
-                  <span className="hidden md:inline mx-2 text-[var(--color-text)]">|</span>
+                  <span className="hidden md:inline mx-2 text-[var(--muted)]">|</span>
                 </>
               )}
               
@@ -113,7 +113,7 @@ export function ProjectCard({
               href={repoUrl} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors"
+              className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] rounded-sm"
               aria-label="GitHub Repository"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -127,7 +127,7 @@ export function ProjectCard({
               href={liveUrl} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors"
+              className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] rounded-sm"
               aria-label="Live Site"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -142,25 +142,19 @@ export function ProjectCard({
       
       {/* content area (bullets, image/content) */}
       <div className="p-6 pt-2 flex flex-col md:flex-row flex-grow overflow-y-auto">
-        {/* bullet points - full width on small screens, half width on medium+ */}
-        <div className="w-full md:w-1/2 pr-4 overflow-y-auto">
+        {/* bullet points - full width on mobile, half width on desktop */}
+        <div className="w-full md:w-1/2 md:pr-4 overflow-y-auto">
           <ul className="list-disc pl-5 space-y-2">
             {bulletPoints.map((point, index) => (
-              <li key={index} className="text-[var(--color-text)]">{point}</li>
+              <li key={index} className="text-[var(--muted)] marker:text-[var(--secondary)]">{point}</li>
             ))}
           </ul>
         </div>
         
-        {/* image / content */}
-        {contentComponent ? (
-          <div className="w-full md:w-1/2 h-80 mt-4 md:mt-0 rounded">
+        {/* image / content - only render if contentComponent exists */}
+        {contentComponent && (
+          <div className="w-full md:w-1/2 h-48 md:h-80 mt-4 md:mt-0 rounded">
             {contentComponent}
-          </div>
-        ) : (
-          <div className="hidden md:block md:w-1/2 h-80 bg-gray-200 mt-4 md:mt-0 rounded">
-            <div className="w-full h-full flex items-center justify-center text-gray-500">
-              (image)
-            </div>
           </div>
         )}
       </div>
@@ -168,7 +162,7 @@ export function ProjectCard({
       {/* bottom - technologies (via skill pills) */}
       <div className="px-6 pb-6 flex flex-wrap gap-2">
         {technologies.map((tech) => (
-          <SkillPill key={tech} name={tech} />
+          <SkillPill key={tech} name={tech} showProjectsOnHover={true} />
         ))}
       </div>
     </div>

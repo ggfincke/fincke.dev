@@ -67,3 +67,9 @@ export interface VersionBadgeProps {
 export interface SocialIconsProps {
   className?: string;
 }
+
+export interface ThemeSelectorProps {
+  show?: boolean;
+  variant?: 'floating' | 'inline';
+  className?: string;
+}

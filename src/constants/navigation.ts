@@ -1,4 +1,4 @@
-// src/config/navSections.ts
+// src/constants/navigation.ts
 // navigation section configuration & utility functions
 
 export interface NavSection {

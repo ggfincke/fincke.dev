@@ -23,10 +23,10 @@ function MobileExperienceItem({
 }: MobileExperienceItemProps) 
 {
   return (
-    <div className={`mb-12 ${isLast ? '' : 'border-b border-[var(--color-border)] pb-12'}`}>
+    <div className={`mb-12 ${isLast ? '' : 'border-b border-[var(--border)] pb-12'}`}>
       {/* Header with company and logos */}
       <div className="flex items-center justify-between mb-3">
-        <h4 className="text-xl font-semibold text-[var(--color-primary)]">
+        <h4 className="text-xl font-semibold text-[var(--accent)]">
           {companyUrl ? (
             <a href={companyUrl} target="_blank" rel="noreferrer">
               {company}
@@ -43,16 +43,16 @@ function MobileExperienceItem({
       
       {/* Title and date */}
       <div className="flex flex-col mb-4">
-        <div className="text-xl font-semibold text-[var(--color-text-light)]">
+        <div className="text-xl font-semibold text-[var(--fg)]">
           {title}
         </div>
-        <div className="text-sm text-[var(--color-muted)] mt-1">
+        <div className="text-sm text-[var(--muted)] mt-1">
           {date}
         </div>
       </div>
       
       {/* Description */}
-      <div className="text-[var(--color-text)] mb-4">
+      <div className="text-[var(--muted)] mb-4">
         {children}
       </div>
       
@@ -60,7 +60,7 @@ function MobileExperienceItem({
       {technologies.length > 0 && (
         <div className="flex flex-wrap gap-2 mt-4">
           {technologies.map((tech, index) => (
-            <SkillPill key={index} name={tech} size="sm" />
+            <SkillPill key={index} name={tech} size="sm" showProjectsOnHover={true} />
           ))}
         </div>
       )}
@@ -76,7 +76,7 @@ export function ExperienceSection()
   return (
     <div className="max-w-4xl">
       <div className="mb-8">
-        <p className="text-[var(--color-text)] text-lg">
+        <p className="text-[var(--muted)] text-lg">
           {experienceContent.intro}
         </p>
       </div>
@@ -102,15 +102,15 @@ export function ExperienceSection()
           </TimelineContainer>
           
           <div className="mt-16 pl">
-            <h3 className="text-2xl font-bold text-[var(--color-text-light)] mb-4">Education</h3>
+            <h3 className="text-2xl font-bold text-[var(--fg)] mb-4">Education</h3>
             <div className="flex-grow">
-              <h4 className="text-xl font-semibold text-[var(--color-primary)]">
+              <h4 className="text-xl font-semibold text-[var(--accent)]">
                 {education.institution}
               </h4>
-              <p className="text-[var(--color-text-light)] mb-1">
+              <p className="text-[var(--fg)] mb-1">
                 {education.degree}
               </p>
-              <p className="text-[var(--color-text)]">
+              <p className="text-[var(--muted)]">
                 {education.period}
               </p>
             </div>
@@ -143,16 +143,16 @@ export function ExperienceSection()
             ))}
           </div>
           
-          <div className="mt-12 pt-8 border-t border-[var(--color-border)]">
-            <h3 className="text-2xl font-bold text-[var(--color-text-light)] mb-4">Education</h3>
+          <div className="mt-12 pt-8 border-t border-[var(--border)]">
+            <h3 className="text-2xl font-bold text-[var(--fg)] mb-4">Education</h3>
             <div>
-              <h4 className="text-xl font-semibold text-[var(--color-primary)]">
+              <h4 className="text-xl font-semibold text-[var(--accent)]">
                 {education.institution}
               </h4>
-              <p className="text-[var(--color-text-light)] mb-1">
+              <p className="text-[var(--fg)] mb-1">
                 {education.degree}
               </p>
-              <p className="text-[var(--color-text)]">
+              <p className="text-[var(--muted)]">
                 {education.period}
               </p>
             </div>

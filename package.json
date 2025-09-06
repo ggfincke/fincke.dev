@@ -1,23 +1,25 @@
 {
   "name": "fincke.dev",
-  "version": "1.18.5-prerelease.20250829",
+  "version": "1.19.10-prerelease.20250906",
   "private": true,
   "engines": {
     "node": ">=20.0.0",
     "npm": ">=10.0.0"
   },
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
+    "dev": "npm run generate:themes && next dev --turbopack",
+    "build": "npm run generate:themes && next build",
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit",
-    "install-hooks": ".githooks/install-hooks.sh"
+    "install-hooks": ".githooks/install-hooks.sh",
+    "generate:themes": "node scripts/generate-theme-css.js"
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
     "next": "15.5.2",
+    "next-themes": "^0.4.6",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
