@@ -22,7 +22,8 @@ export function ThemeSelector({ show = true, variant = 'floating', className = '
   const currentTheme = theme ?? resolvedTheme ?? defaultTheme;
 
   // Floating (default) selector used on desktop
-  if (variant === 'floating') {
+  if (variant === 'floating') 
+{
     return (
       <div className={`fixed bottom-4 right-4 z-50 ${className}`}>
         <div className="bg-[var(--card)] border border-[var(--border)] rounded-lg px-3 py-2 shadow-lg">

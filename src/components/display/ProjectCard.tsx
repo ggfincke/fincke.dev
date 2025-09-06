@@ -78,7 +78,7 @@ export function ProjectCard({
 }: ProjectCardProps) 
 {
   return (
-    <div className="border border-[var(--border)] rounded-lg overflow-hidden bg-[var(--card)] hover:shadow-lg transition-all w-full h-[550px] flex flex-col">
+    <div className="border border-[var(--border)] rounded-lg overflow-hidden bg-[var(--card)] hover:shadow-lg transition-all w-full h-[700px] md:h-[550px] flex flex-col">
       {/* top bar (title, date, status, links) */}
       <div className="p-6 pb-2 flex justify-between items-start">
         <div>
@@ -142,8 +142,8 @@ export function ProjectCard({
       
       {/* content area (bullets, image/content) */}
       <div className="p-6 pt-2 flex flex-col md:flex-row flex-grow overflow-y-auto">
-        {/* bullet points - full width on small screens, half width on medium+ */}
-        <div className="w-full md:w-1/2 pr-4 overflow-y-auto">
+        {/* bullet points - full width on mobile, half width on desktop */}
+        <div className="w-full md:w-1/2 md:pr-4 overflow-y-auto">
           <ul className="list-disc pl-5 space-y-2">
             {bulletPoints.map((point, index) => (
               <li key={index} className="text-[var(--muted)] marker:text-[var(--secondary)]">{point}</li>
@@ -151,16 +151,10 @@ export function ProjectCard({
           </ul>
         </div>
         
-        {/* image / content */}
-        {contentComponent ? (
-          <div className="w-full md:w-1/2 h-80 mt-4 md:mt-0 rounded">
+        {/* image / content - only render if contentComponent exists */}
+        {contentComponent && (
+          <div className="w-full md:w-1/2 h-48 md:h-80 mt-4 md:mt-0 rounded">
             {contentComponent}
-          </div>
-        ) : (
-          <div className="hidden md:block md:w-1/2 h-80 bg-gray-200 mt-4 md:mt-0 rounded">
-            <div className="w-full h-full flex items-center justify-center text-gray-500">
-              (image)
-            </div>
           </div>
         )}
       </div>

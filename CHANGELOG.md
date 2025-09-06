@@ -1,3 +1,10 @@
+## [1.19.10-prerelease.20250906] - 2025-09-06
+
+### Enhanced
+- **ProjectCard mobile responsiveness**: Improved layout with adjusted heights and conditional content rendering for better mobile experience
+
+---
+
 ## [1.19.9-prerelease.20250906] - 2025-09-06
 
 ### Enhanced

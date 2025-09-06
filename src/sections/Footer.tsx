@@ -1,7 +1,7 @@
 // src/sections/Footer.tsx
 // site footer w/ social icons & copyright info
-import { SocialIcons } from "~/components/interactive/SocialIcons";
 import { ThemeSelector } from "~/components/display/ThemeSelector";
+import { SocialIcons } from "~/components/interactive/SocialIcons";
 import type { FooterProps } from '~/types/layout';
 import { VERSION } from '~/utils/version';
 

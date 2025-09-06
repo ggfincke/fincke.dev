@@ -6,8 +6,8 @@
 import Link from 'next/link';
 
 import { ThemeSelector } from '~/components/display/ThemeSelector';
-import { ProjectsTable } from '~/sections/projects/ProjectsTable';
 import { useBreakpoint } from '~/hooks/useBreakpoint';
+import { ProjectsTable } from '~/sections/projects/ProjectsTable';
 
 // * projects page component w/ table view & navigation
 export default function ProjectsPage() 
@@ -15,7 +15,7 @@ export default function ProjectsPage()
   const { isDesktop } = useBreakpoint();
   return (
     <div className="relative min-h-screen text-[var(--muted)] overflow-hidden">
-      {/* Global gradient overlay for projects page (no particles) */}
+      {/* Global gradient overlay for projects page */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[var(--accent)]/8 via-transparent to-transparent z-0" />
       <div className="max-w-7xl mx-auto px-8 py-16">
         {/* Back navigation */}
@@ -48,7 +48,7 @@ export default function ProjectsPage()
           <p className="text-[var(--muted)] text-sm">
             Private repositories available upon request
           </p>
-          {/* Theme selection inline on small screens */}
+          {/* Theme selection (inline on small screens) */}
           {!isDesktop && (
             <div className="mt-6 flex justify-center">
               <ThemeSelector variant="inline" />
@@ -57,7 +57,7 @@ export default function ProjectsPage()
         </div>
       </div>
 
-      {/* Theme Selector - floating only on desktop */}
+      {/* Theme Selector (floating, only on desktop) */}
       <ThemeSelector show={isDesktop} />
     </div>
   );
