@@ -3,8 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 
 import { BREAKPOINTS } from '../constants/breakpoints';
-
-export type Breakpoint = keyof typeof BREAKPOINTS;
+import type { Breakpoint } from '../constants/breakpoints';
 
 export interface BreakpointState {
   windowWidth: number;

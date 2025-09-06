@@ -97,7 +97,7 @@ export function ProjectsSection()
             <button
               onClick={goToPrevious}
               disabled={isAnimating}
-              className="bg-[var(--color-background-alt)] border border-[var(--color-border)] rounded-full p-2 text-[var(--color-text)] hover:text-[var(--color-primary)] hover:border-[var(--color-primary)] transition-colors"
+              className="bg-[var(--card)] border border-[var(--border)] rounded-full p-2 text-[var(--muted)] hover:text-[var(--accent)] hover:border-[var(--secondary)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
               aria-label="Previous project"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -107,7 +107,7 @@ export function ProjectsSection()
             <button
               onClick={goToNext}
               disabled={isAnimating}
-              className="bg-[var(--color-background-alt)] border border-[var(--color-border)] rounded-full p-2 text-[var(--color-text)] hover:text-[var(--color-primary)] hover:border-[var(--color-primary)] transition-colors"
+              className="bg-[var(--card)] border border-[var(--border)] rounded-full p-2 text-[var(--muted)] hover:text-[var(--accent)] hover:border-[var(--secondary)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
               aria-label="Next project"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

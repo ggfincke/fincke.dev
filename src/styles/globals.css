@@ -9,8 +9,8 @@ html, body {
   /* Always show vertical scrollbar to avoid layout shift when it appears/disappears */
   overflow-y: scroll;
   overflow-x: hidden;
-  background: var(--color-background);
-  color: var(--foreground);
+  background: var(--bg);
+  color: var(--fg);
   font-family: var(--font-geist-sans), Arial, sans-serif;
 }
 
@@ -65,6 +65,24 @@ section {
 /* smooth hover effects for buttons */
 button, a {
   transition: var(--transition-hover);
+}
+
+/* Global theming defaults */
+a {
+  color: var(--link, var(--accent));
+}
+
+a:hover {
+  color: var(--link-hover, var(--accent));
+}
+
+::selection {
+  background: var(--selection);
+  color: var(--fg);
+}
+
+code, pre {
+  background-color: var(--code-bg, transparent);
 }
 
 /* sidebar styles */
@@ -137,7 +155,7 @@ aside {
   padding: 0.5rem 0;
   background: transparent;
   border: none;
-  color: var(--color-text);
+  color: var(--muted);
   text-decoration: none;
   font-weight: 500;
   font-size: 1.1rem;
@@ -147,12 +165,12 @@ aside {
 }
 
 .section-nav-button:hover {
-  color: var(--color-primary);
+  color: var(--secondary);
 }
 
 .section-nav-button:hover .section-nav-icon {
   transform: translateX(4px);
-  color: var(--color-primary);
+  color: var(--secondary);
 }
 
 .section-nav-icon {

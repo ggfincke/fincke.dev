@@ -1,5 +1,7 @@
 // src/constants/breakpoints.ts
 // Responsive breakpoint constants & utilities for consistent viewport handling
+// Note: Related CSS tokens are defined in src/styles/design-tokens.css
+// under --breakpoint-*. Keep values synchronized.
 
 export const BREAKPOINTS = {
   sm: 640,

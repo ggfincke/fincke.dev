@@ -8,6 +8,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "~/styles/animations.css";
 import "~/styles/design-tokens.css";
 import "~/styles/globals.css";
+import "~/styles/themes.css";
+import { ThemeProvider } from "~/components/theme-provider";
 import { VERSION } from "~/utils/version";
 
 const geistSans = Geist({
@@ -36,11 +38,13 @@ export default function RootLayout({
 }>) 
 {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[var(--bg)] text-[var(--fg)]`}
       >
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>

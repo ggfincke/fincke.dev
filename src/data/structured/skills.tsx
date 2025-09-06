@@ -21,8 +21,6 @@ export const skills: Skill[] = [
   { name: 'Tailwind CSS', category: 'frontend' },
   { name: 'HTML5', category: 'frontend' },
   { name: 'CSS3', category: 'frontend' },
-  { name: 'HTML', category: 'frontend' },
-  { name: 'CSS', category: 'frontend' },
   { name: 'SwiftUI', category: 'frontend' },
   { name: 'UIKit', category: 'frontend' },
 
@@ -162,4 +160,3 @@ export const getSkillsByCategory = (category: SkillCategory): string[] =>
     .filter(skill => skill.category === category)
     .map(skill => skill.displayName || skill.name);
 };
-

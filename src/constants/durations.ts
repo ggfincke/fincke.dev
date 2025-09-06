@@ -1,5 +1,7 @@
 // src/constants/durations.ts
 // Animation duration constants w/ CSS variable mapping
+// Note: Related CSS variables are defined in src/styles/design-tokens.css.
+// Keep values synchronized with --duration-*-ms tokens.
 
 export const DURATIONS = {
   FAST: 200,        // --duration-fast-ms

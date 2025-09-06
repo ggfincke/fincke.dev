@@ -10,8 +10,6 @@ export type Alignment = 'left' | 'center' | 'right';
 
 export type Direction = 'left' | 'right' | 'up' | 'down';
 
-export type Theme = 'light' | 'dark';
-
 // common component patterns
 export interface BaseComponent {
   className?: string;
@@ -35,9 +33,6 @@ export interface AnimationProps {
   duration?: number;
   easing?: string;
 }
-
-// responsive breakpoints (matching Tailwind defaults)
-export type Breakpoint = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
 export interface ResponsiveValue<T> {
   default: T;

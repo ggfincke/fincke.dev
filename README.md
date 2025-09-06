@@ -8,7 +8,7 @@
 [![CI](https://github.com/ggfincke/fincke.dev/actions/workflows/ci.yml/badge.svg)](https://github.com/ggfincke/fincke.dev/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
-A modern, responsive personal portfolio built with Next.js 15, React 19, and Tailwind CSS 4, featuring a clean, minimalist UI, responsive layout with a fixed sidebar on desktop, smooth animations, and a full CI/CD pipeline including Lighthouse checks and automated dependency management
+A modern, responsive personal portfolio built with Next.js 15, React 19, and Tailwind CSS 4. Includes a clean, minimalist UI, responsive layout with a fixed sidebar on desktop, smooth animations, multi-theme support with a theme selector, and a full CI/CD pipeline including Lighthouse checks and automated dependency management.
 
 ## Live Site
 
@@ -18,6 +18,7 @@ Visit https://fincke.dev
 
 - Responsive layout: custom breakpoint utilities and desktop sidebar
 - Modern UI: smooth transitions, animated hero typing effect, pagination dots
+- Theming: multiple color themes via CSS variables + selector
 - Sections: Hero, About, Experience (redirects to resume), Projects + archive
 - Interactive elements: skill pills with hover tooltips showing related projects
 - Performance: Next.js 15 App Router, React 19, Turbopack dev server
@@ -30,6 +31,7 @@ Visit https://fincke.dev
 - Framework: Next.js 15.5.2 (App Router)
 - Frontend: React 19.1.1, TypeScript 5
 - Styling: Tailwind CSS 4.1.12 + custom CSS
+- Theming: next-themes + generated CSS variables
 - Analytics: @vercel/analytics
 - Tooling: ESLint 9, Turbopack, PostCSS
 - CI/CD: GitHub Actions (CI, releases, dependency health)
@@ -60,6 +62,8 @@ fincke.dev/
 │   │   ├── page.tsx              # Home (hero, about, experience, projects)
 │   │   ├── experience/           # Redirect to resume PDF
 │   │   └── projects/             # Projects archive page
+│   ├── themes/                   # Theme config and helpers
+│   │   └── config.ts             # Theme definitions (source of truth)
 │   ├── components/
 │   │   ├── display/              # Cards, badges, pills, tooltips
 │   │   ├── interactive/          # Social icons, etc.
@@ -72,9 +76,11 @@ fincke.dev/
 │   ├── hooks/                    # Breakpoints, nav, animations
 │   ├── sections/                 # Home sections + project table
 │   ├── styles/                   # Global styles + tokens + animations
-│   ├── config/                   # Section/ID config
 │   ├── constants/                # Breakpoints/durations helpers
+│   ├── types/                    # Shared TypeScript types
 │   └── utils/                    # Version util
+├── scripts/
+│   └── generate-theme-css.js     # Builds styles/themes.css from themes/config.ts
 ├── CHANGELOG.md
 ├── eslint.config.mjs
 ├── lighthouserc.json
@@ -116,6 +122,7 @@ fincke.dev/
 - `lint:fix`: ESLint with `--fix`
 - `typecheck`: TypeScript checks
 - `install-hooks`: Configure repo git hooks
+- `generate:themes`: Rebuilds `src/styles/themes.css` from `src/themes/config.ts`
 
 ### Git Hooks
 
@@ -130,6 +137,13 @@ fincke.dev/
 - Releases: prerelease tags on `dev`, releases/tags on `main`
 - Lighthouse budgets (see `lighthouserc.json`):
   - Performance ≥ 0.80, Accessibility/Best-Practices/SEO ≥ 0.85
+
+## Theming
+
+- Source of truth: `src/themes/config.ts` defines all themes (default: `ocean`).
+- Theme CSS: `npm run dev` and `npm run build` auto-generate `src/styles/themes.css` via `scripts/generate-theme-css.js`.
+- Theme selector: floating on desktop, inline in the footer on small screens.
+- Customize: add/edit a theme in `src/themes/config.ts` and run `npm run generate:themes` if you want to rebuild the CSS explicitly.
 
 ## Content Management
 
@@ -158,6 +172,12 @@ If you fork this for your own portfolio:
 2) Replace assets in `public/assets/` and `public/documents/resume.pdf`
 3) Adjust metadata in `src/app/layout.tsx`
 4) Keep CI and hooks, or simplify as you prefer
+
+## Contributing
+
+- Personal portfolio: I’m not accepting direct contributions or feature requests.
+- Fork-friendly: please feel free to fork and adapt it for your own site.
+- Attribution: if you reuse significant design/code, include a link back to https://fincke.dev.
 
 ## Credit & License
 
