@@ -17,7 +17,7 @@ if git diff --cached --name-only | grep -E "(package\.json|CHANGELOG\.md)" > /de
     
     # Check if versions are in sync between package.json and CHANGELOG.md
     package_version=$(node -p "require('./package.json').version")
-    changelog_version=$(head -n 1 CHANGELOG.md | grep -o '\[[^]]*\]' | tr -d '[]')
+    changelog_version=$(grep -m 1 '^## \[' CHANGELOG.md | grep -o '\[[^]]*\]' | tr -d '[]')
     
     if [ "$package_version" != "$changelog_version" ]; then
         echo "⚠️  Version mismatch detected:"

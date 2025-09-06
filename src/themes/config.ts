@@ -1,0 +1,175 @@
+// Theme configuration - single source of truth for all themes
+import { ThemeDefinition } from '~/types/theme';
+
+export const themes: ThemeDefinition[] = [
+  {
+    id: 'ocean',
+    name: 'Ocean',
+    description: 'Default ocean theme inspired by Material Theme',
+    colors: {
+      bg: '#0F111A',
+      fg: '#EEFFFF',
+      muted: '#babed8',
+      border: '#3E445D',
+      card: '#090B10',
+      accent: '#80CBC4',
+      ring: '#80CBC4',
+      shadow: '0 10px 30px rgba(0,0,0,0.35)',
+      scrollbarThumbColor: 'rgba(128, 203, 196, 0.3)',
+      scrollbarThumbHover: 'rgba(128, 203, 196, 0.5)',
+    },
+    colorScheme: 'dark',
+  },
+  {
+    id: 'sunset',
+    name: 'Sunset',
+    description: 'Twilight plum base, coral & peach accents',
+    colors: {
+      bg: '#160a14',
+      fg: '#fff3f5',
+      muted: '#ffc9d4',
+      border: '#2a1023',
+      card: '#1b0f19',
+      card2: '#221225',
+      accent: '#fb7185',
+      accentContrast: '#2f0a12',
+      secondary: '#fbbf24',
+      secondaryContrast: '#2b1a00',
+      ring: '#fda4af',
+      link: '#93c5fd',
+      linkHover: '#bfdbfe',
+      selection: 'rgba(251,113,133,0.22)',
+      badgeBg: 'rgba(251,113,133,0.12)',
+      codeBg: '#1a0f18',
+      shadow: '0 16px 40px rgba(0,0,0,0.55)',
+      scrollbarThumbColor: 'rgba(251, 113, 133, 0.28)',
+      scrollbarThumbHover: 'rgba(251, 113, 133, 0.48)',
+    },
+    colorScheme: 'dark',
+  },
+  {
+    id: 'cyberpunk',
+    name: 'Cyberpunk',
+    description: 'Carbon-black base, neon cyan/magenta accents',
+    colors: {
+      bg: '#07080a',
+      fg: '#ecfeff',
+      muted: '#b2f5ea',
+      border: '#13141a',
+      card: '#0b0d11',
+      card2: '#10131a',
+      accent: '#22d3ee',
+      accentContrast: '#001b21',
+      secondary: '#e879f9',
+      secondaryContrast: '#2d0533',
+      ring: '#67e8f9',
+      link: '#38bdf8',
+      linkHover: '#7dd3fc',
+      selection: 'rgba(56,189,248,0.22)',
+      badgeBg: 'rgba(34,211,238,0.12)',
+      codeBg: '#0a0d12',
+      shadow: '0 18px 48px rgba(0,0,0,0.6)',
+      scrollbarThumbColor: 'rgba(34, 211, 238, 0.28)',
+      scrollbarThumbHover: 'rgba(232, 121, 249, 0.38)',
+    },
+    colorScheme: 'dark',
+  },
+  {
+    id: 'forest',
+    name: 'Forest',
+    description: 'Moss & pine base, mint & amber accents',
+    colors: {
+      bg: '#0c120e',
+      fg: '#eafff6',
+      muted: '#bcead9',
+      border: '#14231d',
+      card: '#0f1914',
+      card2: '#14241d',
+      accent: '#10b981',
+      accentContrast: '#032118',
+      secondary: '#f59e0b',
+      secondaryContrast: '#231700',
+      ring: '#34d399',
+      link: '#5eead4',
+      linkHover: '#a7f3d0',
+      selection: 'rgba(16,185,129,0.22)',
+      badgeBg: 'rgba(16,185,129,0.12)',
+      codeBg: '#0d1713',
+      shadow: '0 14px 40px rgba(0,0,0,0.5)',
+      scrollbarThumbColor: 'rgba(16, 185, 129, 0.28)',
+      scrollbarThumbHover: 'rgba(16, 185, 129, 0.48)',
+    },
+    colorScheme: 'dark',
+  },
+  {
+    id: 'gildednoir',
+    name: 'Gilded Noir',
+    description: 'Near-monochrome charcoal with tasteful gold accents',
+    colors: {
+      bg: '#0b0b0b',
+      fg: '#f2f2f2',
+      muted: '#cfcfcf',
+      border: '#1a1a1a',
+      card: '#101010',
+      card2: '#161616',
+      accent: '#d4af37',
+      accentContrast: '#2a2000',
+      secondary: '#7dd3fc',
+      secondaryContrast: '#061a22',
+      ring: '#f5d26a',
+      link: '#e2b714',
+      linkHover: '#f3d27a',
+      selection: 'rgba(212,175,55,0.22)',
+      badgeBg: 'rgba(212,175,55,0.12)',
+      codeBg: '#0d0d0d',
+      shadow: '0 20px 48px rgba(0,0,0,0.65)',
+      scrollbarThumbColor: 'rgba(212, 175, 55, 0.28)',
+      scrollbarThumbHover: 'rgba(212, 175, 55, 0.48)',
+    },
+    colorScheme: 'dark',
+  },
+  {
+    id: 'pink_purple',
+    name: 'Pink Purple',
+    description: 'Eggplant base, hot-pink primary, blue-violet secondary',
+    colors: {
+      bg: '#140a16',
+      fg: '#FFEFFE',
+      muted: '#F1B3FF',
+      border: '#281234',
+      card: '#1a0e22',
+      card2: '#21132c',
+      accent: '#ff69b4',
+      accentContrast: '#32001c',
+      secondary: '#8a2be2',
+      secondaryContrast: '#10062a',
+      ring: '#ba55d3',
+      link: '#da70d6',
+      linkHover: '#ff1493',
+      selection: 'rgba(186,85,211,0.22)',
+      badgeBg: 'rgba(255,105,180,0.12)',
+      codeBg: '#160b1f',
+      shadow: '0 16px 40px rgba(0,0,0,0.55)',
+      scrollbarThumbColor: 'rgba(255, 105, 180, 0.28)',
+      scrollbarThumbHover: 'rgba(138, 43, 226, 0.38)',
+    },
+    colorScheme: 'dark',
+  },
+];
+
+// Export theme IDs for use in components
+export const themeIds = themes.map(t => t.id);
+
+// Export default theme
+export const defaultTheme = 'ocean';
+
+// Helper to get theme by ID
+export const getTheme = (id: string): ThemeDefinition | undefined => 
+  themes.find(t => t.id === id);
+
+// Helper to format theme name for display
+export const formatThemeName = (id: string): string =>
+{
+  const theme = getTheme(id);
+  return theme?.name || id.charAt(0).toUpperCase() + id.slice(1);
+};

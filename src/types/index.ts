@@ -15,7 +15,6 @@ export type {
   Size,
   Alignment,
   Direction,
-  Theme,
   BaseComponent,
   ClickableComponent,
   LinkComponent,

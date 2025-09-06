@@ -10,8 +10,6 @@ export type Alignment = 'left' | 'center' | 'right';
 
 export type Direction = 'left' | 'right' | 'up' | 'down';
 
-export type Theme = 'light' | 'dark';
-
 // common component patterns
 export interface BaseComponent {
   className?: string;

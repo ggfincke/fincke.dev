@@ -2,7 +2,7 @@
 // * main navigation component w/ section buttons
 
 import { NavButton } from '~/components/navigation/NavButton';
-import { NAV_ITEMS } from '~/config/navSections';
+import { NAV_ITEMS } from '~/constants/navigation';
 import type { NavProps } from '~/types/navigation';
   
 // * navigation menu component
