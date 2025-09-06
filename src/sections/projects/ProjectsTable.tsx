@@ -4,6 +4,8 @@
 
 import Image from 'next/image';
 
+import { renderCollaborators } from '~/components/display/Collaborators';
+import { ProjectLinks } from '~/components/display/ProjectLinks';
 import { SkillPill } from '~/components/display/SkillPill';
 import { StatusBadge } from '~/components/display/StatusBadge';
 import { StatusCircle } from '~/components/display/StatusCircle';
@@ -13,8 +15,6 @@ import { getAllProjects } from '~/data/structured/projects';
 import { useTableResponsive } from '~/hooks/useBreakpoint';
 import { useExpandableRows } from '~/hooks/useSectionNavigation';
 import type { Collaborator } from '~/types/projects';
-import { ProjectLinks } from '~/components/display/ProjectLinks';
-import { renderCollaborators } from '~/components/display/Collaborators';
 
 // all projects table w/ expandable rows & responsive design
 export function ProjectsTable() 

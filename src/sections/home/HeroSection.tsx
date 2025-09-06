@@ -6,10 +6,9 @@ import React, { useState, useEffect } from 'react';
 
 import FloatingParticle from '~/components/display/FloatingParticle';
 import { useTypingAnimation } from '~/hooks/useAnimation';
-import type { HeroSectionProps } from '~/types/layout';
 
 // * main hero section component
-export function HeroSection({ scrollToSection }: HeroSectionProps) 
+export function HeroSection() 
 {
   const { displayText: nameText, isComplete: nameComplete } = useTypingAnimation('Garrett Fincke', 120);
   const [particles, setParticles] = useState<Array<{left: number, top: number, delay: number, duration: number}>>([]);

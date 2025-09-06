@@ -11,12 +11,13 @@ export interface ProjectLinksProps {
   repoUrl?: string;
   liveUrl?: string;
   variant?: ProjectLinksVariant; // 'icon' renders icon-only anchors; 'button' renders labeled buttons
-  size?: 'sm' | 'md' | 'lg';     // only used for 'button' variant
+  size?: 'sm' | 'md';            // only used for 'button' variant
   liveLabel?: string;            // optional label for live link
   className?: string;            // container class override
 }
 
-function GitHubIcon(props: { size: number; className?: string }) {
+function GitHubIcon(props: { size: number; className?: string }) 
+{
   const { size, className } = props;
   return (
     <svg
@@ -36,7 +37,8 @@ function GitHubIcon(props: { size: number; className?: string }) {
   );
 }
 
-function ExternalLinkIcon(props: { size: number; className?: string }) {
+function ExternalLinkIcon(props: { size: number; className?: string }) 
+{
   const { size, className } = props;
   return (
     <svg
@@ -65,10 +67,12 @@ export function ProjectLinks({
   size = 'sm',
   liveLabel,
   className,
-}: ProjectLinksProps) {
+}: ProjectLinksProps) 
+{
   if (!repoUrl && !liveUrl) return null;
 
-  if (variant === 'button') {
+  if (variant === 'button') 
+  {
     return (
       <div className={className ? className : 'flex flex-wrap gap-2'}>
         {repoUrl && (
@@ -78,7 +82,7 @@ export function ProjectLinks({
             rel="noopener noreferrer"
             className={getButtonClasses(size, 'secondary')}
           >
-            <GitHubIcon size={size === 'sm' ? 14 : size === 'md' ? 16 : 18} />
+            <GitHubIcon size={size === 'sm' ? 14 : 16} />
             {size !== 'sm' ? ' View Repository' : ' Repository'}
           </a>
         )}
@@ -89,7 +93,7 @@ export function ProjectLinks({
             rel="noopener noreferrer"
             className={getButtonClasses(size, 'primary')}
           >
-            <ExternalLinkIcon size={size === 'sm' ? 14 : size === 'md' ? 16 : 18} />
+            <ExternalLinkIcon size={size === 'sm' ? 14 : 16} />
             {liveLabel ? ` ${liveLabel}` : ' View Live Site'}
           </a>
         )}
@@ -125,4 +129,3 @@ export function ProjectLinks({
     </div>
   );
 }
-

@@ -3,11 +3,11 @@
 
 'use client';
 
+import { renderCollaborators } from '~/components/display/Collaborators';
+import { ProjectLinks } from '~/components/display/ProjectLinks';
 import { SkillPill } from '~/components/display/SkillPill';
 import { StatusBadge } from '~/components/display/StatusBadge';
 import { VersionBadge } from '~/components/display/VersionBadge';
-import { ProjectLinks } from '~/components/display/ProjectLinks';
-import { renderCollaborators } from '~/components/display/Collaborators';
 import type { ProjectCardProps } from '~/types/ui';
 
 

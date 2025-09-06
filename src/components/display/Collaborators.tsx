@@ -4,20 +4,25 @@
 'use client';
 
 import type { ReactNode } from 'react';
+
 import type { Collaborator } from '~/types/projects';
 
 export type CollaboratorsValue = string | string[] | Collaborator | Collaborator[];
 
-export function renderCollaborators(value: CollaboratorsValue): ReactNode {
-  if (typeof value === 'string') {
+export function renderCollaborators(value: CollaboratorsValue): ReactNode 
+{
+  if (typeof value === 'string') 
+  {
     return value;
   }
 
-  if (Array.isArray(value) && typeof value[0] === 'string') {
+  if (Array.isArray(value) && typeof value[0] === 'string') 
+  {
     return (value as string[]).join(', ');
   }
 
-  if (!Array.isArray(value) && typeof value === 'object') {
+  if (!Array.isArray(value) && typeof value === 'object') 
+  {
     const collab = value as Collaborator;
     return collab.url ? (
       <a
@@ -33,7 +38,8 @@ export function renderCollaborators(value: CollaboratorsValue): ReactNode {
     );
   }
 
-  if (Array.isArray(value) && typeof value[0] === 'object') {
+  if (Array.isArray(value) && typeof value[0] === 'object') 
+  {
     return (value as Collaborator[]).map((collab, index, arr) => (
       <span key={collab.name}>
         {collab.url ? (
@@ -56,7 +62,7 @@ export function renderCollaborators(value: CollaboratorsValue): ReactNode {
   return null;
 }
 
-export function Collaborators({ value }: { value: CollaboratorsValue }) {
+export function Collaborators({ value }: { value: CollaboratorsValue }) 
+{
   return <>{renderCollaborators(value)}</>;
 }
-
