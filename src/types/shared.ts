@@ -34,9 +34,6 @@ export interface AnimationProps {
   easing?: string;
 }
 
-// responsive breakpoints (matching Tailwind defaults)
-export type Breakpoint = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
-
 export interface ResponsiveValue<T> {
   default: T;
   sm?: T;

@@ -50,7 +50,7 @@ export default function Home()
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[var(--accent)]/8 via-transparent to-transparent z-0" />
         {/* Hero section */}
         <section id={NAV_SECTIONS.hero.id} className="relative z-10 min-h-screen flex items-center py-16 md:py-24">
-          <HeroSection scrollToSection={scrollToSection} />
+          <HeroSection />
         </section>
 
         {/* About section */}

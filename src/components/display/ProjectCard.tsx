@@ -3,66 +3,15 @@
 
 'use client';
 
+import { renderCollaborators } from '~/components/display/Collaborators';
+import { ProjectLinks } from '~/components/display/ProjectLinks';
 import { SkillPill } from '~/components/display/SkillPill';
 import { StatusBadge } from '~/components/display/StatusBadge';
 import { VersionBadge } from '~/components/display/VersionBadge';
-import type { Collaborator } from '~/types/projects';
 import type { ProjectCardProps } from '~/types/ui';
 
 
-// helper function to render collaborators w/ optional links
-const renderCollaborators = (collaborators: string | string[] | Collaborator | Collaborator[]) => 
-{
-  // simple string
-  if (typeof collaborators === 'string') 
-{
-    return collaborators;
-  }
-  
-  // array of strings
-  if (Array.isArray(collaborators) && typeof collaborators[0] === 'string') 
-{
-    return (collaborators as string[]).join(', ');
-  }
-  
-  // Collaborator object
-  if (!Array.isArray(collaborators) && typeof collaborators === 'object') 
-{
-    const collab = collaborators as Collaborator;
-    return collab.url ? (
-      <a 
-        href={collab.url} 
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] rounded-sm"
-      >
-        {collab.name}
-      </a>
-    ) : collab.name;
-  }
-  
-  // array of Collaborator objects
-  if (Array.isArray(collaborators) && typeof collaborators[0] === 'object') 
-{
-    return (collaborators as Collaborator[]).map((collab, index, arr) => (
-      <span key={collab.name}>
-        {collab.url ? (
-          <a 
-            href={collab.url} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] rounded-sm"
-          >
-            {collab.name}
-          </a>
-        ) : collab.name}
-        {index < arr.length - 1 ? ', ' : ''}
-      </span>
-    ));
-  }
-  
-  return null;
-};
+// collaborators renderer now imported from shared util
 
 // * main project card component
 export function ProjectCard({ 
@@ -107,37 +56,7 @@ export function ProjectCard({
           </div>
         </div>
         
-        <div className="flex space-x-3">
-          {repoUrl && (
-            <a 
-              href={repoUrl} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] rounded-sm"
-              aria-label="GitHub Repository"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-              </svg>
-            </a>
-          )}
-          
-          {liveUrl && (
-            <a 
-              href={liveUrl} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] rounded-sm"
-              aria-label="Live Site"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                <polyline points="15 3 21 3 21 9"></polyline>
-                <line x1="10" y1="14" x2="21" y2="3"></line>
-              </svg>
-            </a>
-          )}
-        </div>
+        <ProjectLinks repoUrl={repoUrl} liveUrl={liveUrl} variant="icon" />
       </div>
       
       {/* content area (bullets, image/content) */}
@@ -162,7 +81,7 @@ export function ProjectCard({
       {/* bottom - technologies (via skill pills) */}
       <div className="px-6 pb-6 flex flex-wrap gap-2">
         {technologies.map((tech) => (
-          <SkillPill key={tech} name={tech} showProjectsOnHover={true} />
+          <SkillPill key={tech} name={tech} showProjectsOnHover={false} />
         ))}
       </div>
     </div>

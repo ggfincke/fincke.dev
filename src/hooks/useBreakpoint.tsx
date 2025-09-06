@@ -3,7 +3,8 @@
 import { useMemo, useCallback } from 'react';
 
 import { BREAKPOINTS } from '~/constants/breakpoints';
-import { useSharedBreakpoint, type BreakpointState, type Breakpoint } from '~/hooks/useSharedBreakpoint';
+import type { Breakpoint } from '~/constants/breakpoints';
+import { useSharedBreakpoint, type BreakpointState } from '~/hooks/useSharedBreakpoint';
 
 // responsive configuration interface
 export interface ResponsiveConfig 
@@ -191,7 +192,8 @@ export function useBreakpoint(config: ResponsiveConfig = {}): UseBreakpointResul
 }
 
 // export original types & constants for backwards compatibility
-export type { Breakpoint, BreakpointState };
+export type { BreakpointState };
+export type { Breakpoint } from '~/constants/breakpoints';
 export { BREAKPOINTS };
 
 // timeline responsive hook
@@ -225,15 +227,4 @@ export function useTableResponsive()
 }
 
 // sidebar navigation hook
-export function useSidebarNav() 
-{
-  const nav = useBreakpoint({ desktopBreakpoint: 'lg' });
-  
-  return {
-    ...nav,
-    shouldRender: nav.showSidebar,
-    containerClasses: nav.showSidebar ? 'sidebar-visible' : 'sidebar-hidden',
-    width: nav.sidebarWidth,
-    spacing: nav.navSpacing,
-  };
-}
+// (Removed) useSidebarNav: previously exported but unused
