@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.20.0] - 2025-09-06
+
+### Added
+- **Dynamic theme system**: Theme switching with next-themes, ThemeSelector component, and 5 theme variants (Ocean, Forest, Sunset, Midnight, Monochrome)
+- **Theme infrastructure**: ThemeProvider, CSS variables system, and automated CSS generation script
+- **Hopper project**: Added new cross-platform inventory management project to portfolio
+
+### Changed
+- **Color system**: Migrated from hardcoded tokens to dynamic CSS variables across all components
+- **Interactive skill tooltips**: Enabled project display on hover for all SkillPill components with improved styling
+
+### Enhanced
+- **Global gradient background system**: Implemented unified gradient background across all pages with theme-aware colors
+- **Mobile responsiveness**: Improved ThemeSelector and ProjectCard layouts for better mobile experience
+- **Accessibility**: Added focus-visible indicators and standardized hover colors for consistency
+
+### Refactored
+- **Code organization**: Applied Allman brace style formatting and consolidated shared utilities
+
+### Updated
+- **Resume**: Updated resume PDF with latest information
+
+> Merged as PR #34
+
+---
+
 ## [1.19.12-prerelease.20250906] - 2025-09-06
 
 ### Refactored

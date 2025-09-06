@@ -95,7 +95,6 @@ else
     const element = document.getElementById(sectionId);
     if (!element) 
 {
-      console.warn(`Section with id "${sectionId}" not found`);
       return;
     }
     
