@@ -3,7 +3,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 
-import { SECTION_IDS } from '~/config/navSections';
+import { SECTION_IDS } from '~/constants/navigation';
 import { useBreakpoint } from '~/hooks/useBreakpoint';
 
 export interface UseNavOptions {
@@ -95,7 +95,6 @@ else
     const element = document.getElementById(sectionId);
     if (!element) 
 {
-      console.warn(`Section with id "${sectionId}" not found`);
       return;
     }
     

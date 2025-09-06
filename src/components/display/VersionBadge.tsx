@@ -36,13 +36,13 @@ export function VersionBadge({ repoUrl }: VersionBadgeProps)
         }
  else if (response.status === 404) 
 {
-          // No releases found - this is expected for many projects
+          // No releases found (expected for most)
           setVersion(null);
         }
       }
- catch (error) 
+ catch 
 {
-        console.log('Could not fetch version:', error);
+        // Version fetch failed, fall back to local version
       }
  finally 
 {
@@ -59,6 +59,6 @@ export function VersionBadge({ repoUrl }: VersionBadgeProps)
   }
 
   return (
-    <span className="font-semibold text-base text-[var(--color-primary)] not-italic">{version} • </span>
+    <span className="font-semibold text-base text-[var(--accent)] not-italic">{version} • </span>
   );
 }

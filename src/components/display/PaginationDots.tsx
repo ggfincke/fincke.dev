@@ -12,10 +12,10 @@ export function PaginationDots({ totalItems, currentIndex, onDotClick, disabled 
         <button 
           key={index}
           onClick={() => onDotClick(index)}
-          className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors ${
+          className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] ${
             index === currentIndex 
-              ? 'bg-[var(--color-primary)]' 
-              : 'bg-[var(--color-border)] hover:bg-[var(--color-text)]'
+              ? 'bg-[var(--accent)]' 
+              : 'bg-[var(--border)] hover:bg-[var(--muted)]'
           }`}
           disabled={disabled || index === currentIndex}
           aria-label={`Go to project ${index + 1}`}

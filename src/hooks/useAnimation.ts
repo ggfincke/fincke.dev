@@ -189,13 +189,4 @@ export function useTypingAnimation(text: string, speed: number = 100)
 }
 
 // fade animation hook
-export function useFadeAnimation(duration: number = DEFAULT_DURATION) 
-{
-  return useAnimation({ type: 'fade', duration });
-}
-
-// scale animation hook
-export function useScaleAnimation(duration: number = DEFAULT_DURATION) 
-{
-  return useAnimation({ type: 'scale', duration });
-}
+// (Removed) Dedicated fade/scale wrappers were unused; use useAnimation({ type: 'fade' | 'scale' }) instead

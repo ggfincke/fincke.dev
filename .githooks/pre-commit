@@ -17,7 +17,7 @@ if git diff --cached --name-only | grep -E "(package\.json|CHANGELOG\.md)" > /de
     
     # Check if versions are in sync between package.json and CHANGELOG.md
     package_version=$(node -p "require('./package.json').version")
-    changelog_version=$(head -n 1 CHANGELOG.md | grep -o '\[[^]]*\]' | tr -d '[]')
+    changelog_version=$(grep -m 1 '^## \[' CHANGELOG.md | grep -o '\[[^]]*\]' | tr -d '[]')
     
     if [ "$package_version" != "$changelog_version" ]; then
         echo "⚠️  Version mismatch detected:"
@@ -72,16 +72,43 @@ fi
 
 # Update CHANGELOG.md
 if [ -f "CHANGELOG.md" ]; then
-    # Create new changelog entry
+    # Create new changelog entry preserving header
     temp_file=$(mktemp)
-    {
-        echo "## [${new_version}] - $(date +%Y-%m-%d)"
-        echo ""
-        echo "### Added"
-        echo "- Auto-versioned prerelease"
-        echo ""
-        cat CHANGELOG.md
-    } > "$temp_file"
+    
+    # Check if file has a header (starts with # Changelog)
+    if head -n 1 CHANGELOG.md | grep -q "^# Changelog"; then
+        # Extract header section (everything before first version entry)
+        awk '/^## \[/ { exit } { print }' CHANGELOG.md > "${temp_file}.header"
+        
+        # Extract existing entries (from first version entry onward)
+        awk '/^## \[/ { found=1 } found { print }' CHANGELOG.md > "${temp_file}.entries"
+        
+        # Combine: header + new entry + existing entries
+        {
+            cat "${temp_file}.header"
+            echo ""
+            echo "## [${new_version}] - $(date +%Y-%m-%d)"
+            echo ""
+            echo "### Added"
+            echo "- Auto-versioned prerelease"
+            echo ""
+            cat "${temp_file}.entries"
+        } > "$temp_file"
+        
+        # Cleanup temp files
+        rm -f "${temp_file}.header" "${temp_file}.entries"
+    else
+        # No header, prepend as before
+        {
+            echo "## [${new_version}] - $(date +%Y-%m-%d)"
+            echo ""
+            echo "### Added"
+            echo "- Auto-versioned prerelease"
+            echo ""
+            cat CHANGELOG.md
+        } > "$temp_file"
+    fi
+    
     mv "$temp_file" CHANGELOG.md
     echo "📝 Updated CHANGELOG.md with version $new_version"
 else

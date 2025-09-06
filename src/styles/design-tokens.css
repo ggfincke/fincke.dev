@@ -14,14 +14,15 @@
   --color-muted: #464B5D;
 
   /* Theme mappings for Next.js */
-  --background: var(--color-background);
-  --foreground: var(--color-text-light);
+  --background: var(--bg);
+  --foreground: var(--fg);
 
   /* Animation timing functions */
   --ease-bounce: cubic-bezier(0.19, 1, 0.22, 1);
   --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
   
-  /* Animation durations - mapped to Tailwind duration classes */
+  /* Animation durations - mapped to Tailwind duration classes
+     Note: JS constants live in src/constants/durations.ts. Keep in sync. */
   --duration-fast: 0.2s;        /* duration-200 */
   --duration-normal: 0.3s;      /* duration-300 */ 
   --duration-slow: 0.5s;        /* duration-500 */
@@ -40,7 +41,8 @@
   --transition-sidebar: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
   --transition-content: padding-left 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 
-  /* Breakpoints - Tailwind CSS standard values */
+  /* Breakpoints - Tailwind CSS standard values
+     Note: TS breakpoints live in src/constants/breakpoints.ts. Keep in sync. */
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
@@ -97,7 +99,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: var(--color-background);
-    --foreground: var(--color-text-light);
+    --background: var(--bg);
+    --foreground: var(--fg);
   }
 }

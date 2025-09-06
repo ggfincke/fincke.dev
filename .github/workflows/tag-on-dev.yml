@@ -15,6 +15,11 @@ jobs:
     # Run on direct pushes to dev OR when PR to dev is merged (not just closed)
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
     steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
       - name: Checkout full history
         uses: actions/checkout@v4
         with:

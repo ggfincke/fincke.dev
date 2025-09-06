@@ -19,16 +19,16 @@ export function SectionHeading({
   
   return (
     <div className={`${alignmentClasses[align]} ${className}`}>
-      <h2 className="text-3xl font-bold text-[var(--color-text-light)]">
+      <h2 className="text-3xl font-bold text-[var(--fg)]">
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-4 text-xl text-[var(--color-text)]">
+        <p className="mt-4 text-xl text-[var(--muted)]">
           {subtitle}
         </p>
       )}
       {subsubtitle && (
-        <p className="mt-2 text-md text-[var(--color-text)]">
+        <p className="mt-2 text-md text-[var(--muted)]">
           {subsubtitle}
         </p>
       )}
