@@ -1,3 +1,15 @@
+## [1.19.7-prerelease.20250906] - 2025-09-06
+
+### Enhanced
+- **Global gradient background system**: Implemented unified gradient background across all pages
+  - Added global gradient overlay to main content areas that excludes sidebar
+  - Replaced individual section backgrounds with consistent gradient system
+  - Improved visual cohesion by using theme-aware accent color gradients
+  - Removed background overlays from HeroSection to eliminate visual seams between sections
+  - Enhanced z-index layering for proper content stacking over gradient backgrounds
+
+---
+
 ## [1.19.6-prerelease.20250905] - 2025-09-05
 
 ### Enhanced

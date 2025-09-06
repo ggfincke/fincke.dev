@@ -12,7 +12,9 @@ import { ProjectsTable } from '~/sections/projects/ProjectsTable';
 export default function ProjectsPage() 
 {
   return (
-    <div className="min-h-screen bg-[var(--bg)] text-[var(--muted)]">
+    <div className="relative min-h-screen text-[var(--muted)] overflow-hidden">
+      {/* Global gradient overlay for projects page (no particles) */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[var(--accent)]/8 via-transparent to-transparent z-0" />
       <div className="max-w-7xl mx-auto px-8 py-16">
         {/* Back navigation */}
         <div className="mb-4">

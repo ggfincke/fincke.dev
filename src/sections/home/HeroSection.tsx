@@ -55,9 +55,7 @@ export function HeroSection({ scrollToSection }: HeroSectionProps)
 
   return (
     <>
-      {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/10 via-30% via-[var(--secondary)]/5 via-70% to-[var(--card)]/10 z-0" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-transparent to-transparent z-0" />
+      {/* Background overlays removed to avoid visible seam between sections */}
       
       {/* Floating particles */}
       <div className="absolute inset-0 overflow-hidden z-0">
