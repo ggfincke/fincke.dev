@@ -259,6 +259,7 @@ export function ProjectsTable()
                               key={techIndex}
                               name={tech}
                               size="xs"
+                              showProjectsOnHover={true}
                             />
                           ))}
                         </div>
@@ -543,6 +544,7 @@ export function ProjectsTable()
                                 key={techIndex}
                                 name={tech}
                                 size="md"
+                                showProjectsOnHover={true}
                                 />
                             ))}
                           </div>

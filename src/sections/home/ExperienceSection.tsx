@@ -60,7 +60,7 @@ function MobileExperienceItem({
       {technologies.length > 0 && (
         <div className="flex flex-wrap gap-2 mt-4">
           {technologies.map((tech, index) => (
-            <SkillPill key={index} name={tech} size="sm" />
+            <SkillPill key={index} name={tech} size="sm" showProjectsOnHover={true} />
           ))}
         </div>
       )}

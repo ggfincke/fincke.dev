@@ -59,7 +59,7 @@ export function TimelineItem({
         {technologies.length > 0 && (
           <div className="flex flex-wrap gap-2">
             {technologies.map((tech, index) => (
-              <SkillPill key={index} name={tech} />
+              <SkillPill key={index} name={tech} showProjectsOnHover={true} />
             ))}
           </div>
         )}

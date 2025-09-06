@@ -62,7 +62,7 @@ export function SkillTooltip({ projects, isVisible, targetRef }: SkillTooltipPro
         bg-[var(--bg)] 
         border border-[var(--border)]
         rounded-lg shadow-xl
-        p-3 max-w-xs
+        p-4 max-w-sm
         opacity-0 animate-fadeIn
         pointer-events-none
       `}
@@ -72,21 +72,21 @@ export function SkillTooltip({ projects, isVisible, targetRef }: SkillTooltipPro
         animation: 'fadeIn 0.2s ease-in-out forwards'
       }}
     >
-      <div className="text-xs font-medium text-[var(--color-text-secondary)] mb-2">
+      <div className="text-sm font-medium text-[var(--color-text-secondary)] mb-3">
         Related Projects ({projects.length})
       </div>
-      <div className="space-y-1.5">
-        {projects.slice(0, 5).map((project) => (
+      <div className="space-y-2">
+        {projects.slice(0, 6).map((project) => (
           <div key={project.title} className="flex items-center gap-2">
-            <StatusCircle status={project.status} size={16} />
-            <span className="text-xs text-[var(--muted)] truncate">
+            <StatusCircle status={project.status} size={18} />
+            <span className="text-sm text-[var(--muted)] truncate">
               {project.title}
             </span>
           </div>
         ))}
-        {projects.length > 5 && (
-          <div className="text-xs text-[var(--color-text-secondary)] italic">
-            +{projects.length - 5} more
+        {projects.length > 6 && (
+          <div className="text-sm text-[var(--color-text-secondary)] italic">
+            +{projects.length - 6} more
           </div>
         )}
       </div>

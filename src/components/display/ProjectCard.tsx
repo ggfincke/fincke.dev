@@ -168,7 +168,7 @@ export function ProjectCard({
       {/* bottom - technologies (via skill pills) */}
       <div className="px-6 pb-6 flex flex-wrap gap-2">
         {technologies.map((tech) => (
-          <SkillPill key={tech} name={tech} />
+          <SkillPill key={tech} name={tech} showProjectsOnHover={true} />
         ))}
       </div>
     </div>
