@@ -107,15 +107,15 @@ export function HeroSection({ scrollToSection }: HeroSectionProps)
                   : 'opacity-0 translate-y-4'
               }`}
             >
-              <button 
-                onClick={() => scrollToSection('about')}
-                className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors animate-bounce flex flex-col items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] rounded"
+              <div 
+                className="text-[var(--muted)] flex flex-col items-center select-none"
+                aria-hidden="true"
               >
                 <span className="block mb-2">Scroll Down</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
-              </button>
+              </div>
             </div>
           </div>
 

@@ -70,4 +70,6 @@ export interface SocialIconsProps {
 
 export interface ThemeSelectorProps {
   show?: boolean;
+  variant?: 'floating' | 'inline';
+  className?: string;
 }

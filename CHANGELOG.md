@@ -1,3 +1,10 @@
+## [1.19.9-prerelease.20250906] - 2025-09-06
+
+### Enhanced
+- **Theme selector responsiveness**: Added inline variant for mobile with conditional floating selector for desktop
+
+---
+
 ## [1.19.8-prerelease.20250906] - 2025-09-06
 
 ### Enhanced

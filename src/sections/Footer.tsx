@@ -1,6 +1,7 @@
 // src/sections/Footer.tsx
 // site footer w/ social icons & copyright info
 import { SocialIcons } from "~/components/interactive/SocialIcons";
+import { ThemeSelector } from "~/components/display/ThemeSelector";
 import type { FooterProps } from '~/types/layout';
 import { VERSION } from '~/utils/version';
 
@@ -16,6 +17,13 @@ export function Footer({ isSmallScreen = false }: FooterProps)
           {/* Social icons */}
           {isSmallScreen && (
             <SocialIcons className="mb-6" />
+          )}
+
+          {/* Theme selection for small screens */}
+          {isSmallScreen && (
+            <div className="mb-6 flex justify-center">
+              <ThemeSelector variant="inline" />
+            </div>
           )}
           
           {/* Site info */}
