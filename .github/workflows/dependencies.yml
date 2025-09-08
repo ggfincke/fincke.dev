@@ -309,7 +309,7 @@ jobs:
     steps:
       - name: Create critical vulnerability issue
         if: needs.security-audit.outputs.critical-count > 0
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const { data: issues } = await github.rest.issues.listForRepo({
@@ -337,7 +337,7 @@ jobs:
 
       - name: Create license compliance issue
         if: needs.license-compliance.outputs.license-issues == 'true'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const { data: issues } = await github.rest.issues.listForRepo({
@@ -374,7 +374,7 @@ jobs:
     
     steps:
       - name: Generate weekly report
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const vulnerabilities = '${{ needs.security-audit.outputs.vulnerabilities-found }}' || '0';
