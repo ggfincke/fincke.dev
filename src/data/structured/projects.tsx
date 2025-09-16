@@ -8,6 +8,23 @@ import { skillMappings } from './skillMappings';
 // project portfolio data
 export const projects: Project[] = [
   {
+    title: "Minecart",
+    dateRange: "Present",
+    status: "live",
+    madeFor: "Personal",
+    featured: true,
+    bulletPoints: [
+      "Discord bot that manages Minecraft servers across local Docker and AWS EC2 with performance monitoring and admin tooling",
+      "Provider abstraction with comprehensive slash commands for server, player, and admin management",
+      "Performance monitoring with CPU/RAM/TPS metrics, health checks, and automated backups",
+      "ESM TypeScript with modular architecture and robust error handling"
+    ],
+    technologies: ["TypeScript", "Node.js", "Docker", "Docker Compose", "RCON", "AWS", "EC2", "SSM", "CloudWatch", "Discord.js"],
+    // imagePath: "/assets/projects/images/minecart.png",
+    imageAlt: "Minecart Discord bot screenshot"
+    // repoUrl: "https://github.com/ggfincke/minecart"
+  },
+  {
     title: "Hopper",
     dateRange: "Sep 2025 – Present",
     status: "in-development",
@@ -15,11 +32,9 @@ export const projects: Project[] = [
     featured: true,
     bulletPoints: [
       "Cross-platform inventory management for ecommerce sellers; centralizes products, listings, orders, and fees across marketplaces",
-      "Design normalized relational schema with Flyway migrations for core entities: products, listings, orders, order items, buyers, order addresses, and platform fees with indexes and constraints",
-      "Implement REST endpoints for platform management and health/version reporting (e.g., '/api/platforms', '/healthz') using JPA repositories and DTOs",
-      "Configure multi-environment database setup: PostgreSQL for production and H2 for testing with reproducible migrations and seed scaffolding",
-      "Build JPA entities with unique constraints and repository query methods; add repository tests validating uniqueness and query behavior",
-      "Establish foundations for secure credential storage and future sync jobs via Spring Security and Spring Batch"
+      "Normalized PostgreSQL schema with Flyway migrations and JPA entities with repository pattern",
+      "REST API with full CRUD operations, JWT authentication, and multi-environment database setup",
+      "Production-ready features including order state machine, stock management, and platform credential storage"
     ],
     technologies: ["Java", "Spring Boot", "Spring Data JPA", "PostgreSQL", "Flyway", "H2", "Spring Security", "Spring Batch", "Actuator", "Gradle"],
     // imagePath: "/assets/projects/images/hopper.png",
