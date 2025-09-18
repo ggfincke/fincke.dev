@@ -20,7 +20,7 @@ export const projects: Project[] = [
       "ESM TypeScript with modular architecture and robust error handling"
     ],
     technologies: ["TypeScript", "Node.js", "Docker", "Docker Compose", "RCON", "AWS", "EC2", "SSM", "CloudWatch", "Discord.js"],
-    // imagePath: "/assets/projects/images/minecart.png",
+    imagePath: "/assets/projects/images/minecart.png",
     imageAlt: "Minecart Discord bot screenshot"
     // repoUrl: "https://github.com/ggfincke/minecart"
   },
