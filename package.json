@@ -1,6 +1,6 @@
 {
   "name": "fincke.dev",
-  "version": "1.20.0",
+  "version": "1.21.0-retired",
   "private": true,
   "engines": {
     "node": ">=20.0.0",

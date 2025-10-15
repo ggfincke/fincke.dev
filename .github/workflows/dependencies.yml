@@ -5,7 +5,6 @@ on:
   pull_request:
     paths:
       - 'package*.json'
-      - '.github/dependabot.yml'
       - '.github/workflows/dependencies.yml'
   
   # Scheduled security scans
@@ -34,7 +33,7 @@ jobs:
   security-audit:
     runs-on: ubuntu-latest
     name: Security Vulnerability Scan
-    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || contains(github.event.pull_request.head.ref, 'dependabot')
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     
     permissions:
       contents: read
@@ -115,7 +114,7 @@ jobs:
   license-compliance:
     runs-on: ubuntu-latest
     name: License Compliance Check
-    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || contains(github.event.pull_request.head.ref, 'dependabot')
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     
     outputs:
       license-issues: ${{ steps.license-check.outputs.license-issues }}
@@ -247,55 +246,6 @@ jobs:
           name: outdated-report
           path: outdated-report.json
           retention-days: 30
-
-  bundle-analysis:
-    runs-on: ubuntu-latest
-    name: Bundle Size Analysis
-    if: contains(github.event.pull_request.head.ref, 'dependabot')
-    
-    steps:
-      - name: Checkout base branch
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.base.ref }}
-          path: base
-
-      - name: Checkout PR branch
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          path: pr
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-
-      - name: Build base version
-        run: |
-          cd base
-          npm ci
-          npm run build
-          du -sh .next > ../base-size.txt
-
-      - name: Build PR version
-        run: |
-          cd pr
-          npm ci
-          npm run build
-          du -sh .next > ../pr-size.txt
-
-      - name: Compare bundle sizes
-        run: |
-          BASE_SIZE=$(cat base-size.txt | cut -f1)
-          PR_SIZE=$(cat pr-size.txt | cut -f1)
-          
-          echo "## 📊 Bundle Size Impact" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Version | Bundle Size |" >> $GITHUB_STEP_SUMMARY
-          echo "|---------|-------------|" >> $GITHUB_STEP_SUMMARY
-          echo "| Base (${{ github.event.pull_request.base.ref }}) | $BASE_SIZE |" >> $GITHUB_STEP_SUMMARY
-          echo "| PR (${{ github.event.pull_request.head.ref }}) | $PR_SIZE |" >> $GITHUB_STEP_SUMMARY
 
   create-issues:
     runs-on: ubuntu-latest
