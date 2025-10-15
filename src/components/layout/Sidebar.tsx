@@ -20,7 +20,7 @@ export function Sidebar({ activeSection, onSectionClick }: SidebarProps)
         <SidebarHeader 
           logo={
             <Image 
-              src="/assets/logos/brand/fincke-logo-alt.svg"
+              src="/assets/logos/brand/fincke-logo.svg"
               alt="Fincke Logo"
               width={600}
               height={200}

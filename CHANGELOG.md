@@ -5,6 +5,47 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.21.0-retired] - 2025-10-14
+
+### Changed
+- Marked the v1 codebase as retired and archived the repository.
+
+### Redirected
+- Live domain now serves the rebuilt site from [fincke.dev-v2](https://github.com/ggfincke/fincke.dev-v2).
+
+---
+
+## [1.20.3-prerelease.20250918] - 2025-09-18
+
+### Added
+- **Brand logo**: Added new Fincke brand logo SVG with wave design
+- **Minecart project image**: Added project screenshot for Minecart Discord bot
+
+### Changed
+- **Sidebar component**: Updated to use new brand logo instead of alternate version
+
+---
+
+## [1.20.2-prerelease.20250916] - 2025-09-16
+
+### Added
+- **Minecart project**: Added new Discord bot project for Minecraft server management with Docker and AWS EC2 integration
+
+### Updated
+- **Hopper project**: Streamlined project description to focus on core functionality and technical implementation
+
+---
+
+## [1.20.1-prerelease.20250916] - 2025-09-16
+
+### Updated
+- **Resume**: Updated resume PDF with latest information
+
+### Removed
+- **Brand assets**: Removed alternate brand logo (fincke-logo-alt.svg)
+
+---
+
 ## [1.20.0] - 2025-09-06
 
 ### Added
