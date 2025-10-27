@@ -105,7 +105,7 @@ jobs:
           fi
 
       - name: Upload audit report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         if: always()
         with:
           name: security-audit-report
@@ -178,7 +178,7 @@ jobs:
           license-checker --summary >> $GITHUB_STEP_SUMMARY || true
 
       - name: Upload license report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         if: always()
         with:
           name: license-report
@@ -241,7 +241,7 @@ jobs:
           fi
 
       - name: Upload outdated report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         if: always()
         with:
           name: outdated-report
