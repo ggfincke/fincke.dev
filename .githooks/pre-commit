@@ -1,133 +1,133 @@
-#!/bin/sh
-#
-# Pre-commit hook to automatically version package.json and CHANGELOG.md on dev branch
-#
-
-# Only run on dev branch
-current_branch=$(git rev-parse --abbrev-ref HEAD)
-if [ "$current_branch" != "dev" ]; then
-    exit 0
-fi
-
-echo "🔍 Dev branch detected - checking for auto-versioning..."
-
-# Check if package.json or CHANGELOG.md are already staged (user manually updated)
-if git diff --cached --name-only | grep -E "(package\.json|CHANGELOG\.md)" > /dev/null; then
-    echo "✅ Version files already staged - verifying version sync"
-    
-    # Check if versions are in sync between package.json and CHANGELOG.md
-    package_version=$(node -p "require('./package.json').version")
-    changelog_version=$(grep -m 1 '^## \[' CHANGELOG.md | grep -o '\[[^]]*\]' | tr -d '[]')
-    
-    if [ "$package_version" != "$changelog_version" ]; then
-        echo "⚠️  Version mismatch detected:"
-        echo "   package.json: $package_version"
-        echo "   CHANGELOG.md: $changelog_version"
-        echo "📦 Updating package.json to match CHANGELOG.md version"
-        
-        if ! npm version "$changelog_version" --no-git-tag-version; then
-            echo "❌ Failed to update package.json version"
-            exit 1
-        fi
-        
-        # Stage the updated package.json
-        git add package.json
-        echo "✅ Version sync complete: $changelog_version"
-    else
-        echo "✅ Versions are in sync: $package_version"
-    fi
-    
-    exit 0
-fi
-
-# Get current version from package.json
-current_version=$(node -p "require('./package.json').version")
-if [ -z "$current_version" ]; then
-    echo "❌ Could not read version from package.json"
-    exit 1
-fi
-
-# Extract version components
-# Handle both regular versions (1.16.2) and prerelease versions (1.16.2-prerelease.20250827)
-base_version=$(echo "$current_version" | sed -E 's/(-prerelease\.[0-9]+)?$//')
-major=$(echo "$base_version" | cut -d. -f1)
-minor=$(echo "$base_version" | cut -d. -f2)
-patch=$(echo "$base_version" | cut -d. -f3)
-
-# Increment patch version
-new_patch=$((patch + 1))
-new_base_version="${major}.${minor}.${new_patch}"
-
-# Create prerelease version with current date
-date=$(date +%Y%m%d)
-new_version="${new_base_version}-prerelease.${date}"
-
-echo "📦 Auto-incrementing version: $current_version → $new_version"
-
-# Update package.json
-if ! npm version "$new_version" --no-git-tag-version; then
-    echo "❌ Failed to update package.json version"
-    exit 1
-fi
-
-# Update CHANGELOG.md
-if [ -f "CHANGELOG.md" ]; then
-    # Create new changelog entry preserving header
-    temp_file=$(mktemp)
-    
-    # Check if file has a header (starts with # Changelog)
-    if head -n 1 CHANGELOG.md | grep -q "^# Changelog"; then
-        # Extract header section (everything before first version entry)
-        awk '/^## \[/ { exit } { print }' CHANGELOG.md > "${temp_file}.header"
-        
-        # Extract existing entries (from first version entry onward)
-        awk '/^## \[/ { found=1 } found { print }' CHANGELOG.md > "${temp_file}.entries"
-        
-        # Combine: header + new entry + existing entries
-        {
-            cat "${temp_file}.header"
-            echo ""
-            echo "## [${new_version}] - $(date +%Y-%m-%d)"
-            echo ""
-            echo "### Added"
-            echo "- Auto-versioned prerelease"
-            echo ""
-            cat "${temp_file}.entries"
-        } > "$temp_file"
-        
-        # Cleanup temp files
-        rm -f "${temp_file}.header" "${temp_file}.entries"
-    else
-        # No header, prepend as before
-        {
-            echo "## [${new_version}] - $(date +%Y-%m-%d)"
-            echo ""
-            echo "### Added"
-            echo "- Auto-versioned prerelease"
-            echo ""
-            cat CHANGELOG.md
-        } > "$temp_file"
-    fi
-    
-    mv "$temp_file" CHANGELOG.md
-    echo "📝 Updated CHANGELOG.md with version $new_version"
-else
-    echo "⚠️  CHANGELOG.md not found - creating new one"
-    cat > CHANGELOG.md << EOF
-# Changelog
-
-All notable changes to this project will be documented in this file.
-
-## [${new_version}] - $(date +%Y-%m-%d)
-
-### Added
-- Auto-versioned prerelease
-
-EOF
-fi
-
-# Stage the updated files
-git add package.json CHANGELOG.md
-
-echo "✅ Auto-versioning complete: $new_version"
-exit 0
+# #!/bin/sh
+# #
+# # Pre-commit hook to automatically version package.json and CHANGELOG.md on dev branch
+# #
+# 
+# # Only run on dev branch
+# current_branch=$(git rev-parse --abbrev-ref HEAD)
+# if [ "$current_branch" != "dev" ]; then
+#     exit 0
+# fi
+# 
+# echo "🔍 Dev branch detected - checking for auto-versioning..."
+# 
+# # Check if package.json or CHANGELOG.md are already staged (user manually updated)
+# if git diff --cached --name-only | grep -E "(package\.json|CHANGELOG\.md)" > /dev/null; then
+#     echo "✅ Version files already staged - verifying version sync"
+#     
+#     # Check if versions are in sync between package.json and CHANGELOG.md
+#     package_version=$(node -p "require('./package.json').version")
+#     changelog_version=$(grep -m 1 '^## \[' CHANGELOG.md | grep -o '\[[^]]*\]' | tr -d '[]')
+#     
+#     if [ "$package_version" != "$changelog_version" ]; then
+#         echo "⚠️  Version mismatch detected:"
+#         echo "   package.json: $package_version"
+#         echo "   CHANGELOG.md: $changelog_version"
+#         echo "📦 Updating package.json to match CHANGELOG.md version"
+#         
+#         if ! npm version "$changelog_version" --no-git-tag-version; then
+#             echo "❌ Failed to update package.json version"
+#             exit 1
+#         fi
+#         
+#         # Stage the updated package.json
+#         git add package.json
+#         echo "✅ Version sync complete: $changelog_version"
+#     else
+#         echo "✅ Versions are in sync: $package_version"
+#     fi
+#     
+#     exit 0
+# fi
+# 
+# # Get current version from package.json
+# current_version=$(node -p "require('./package.json').version")
+# if [ -z "$current_version" ]; then
+#     echo "❌ Could not read version from package.json"
+#     exit 1
+# fi
+# 
+# # Extract version components
+# # Handle both regular versions (1.16.2) and prerelease versions (1.16.2-prerelease.20250827)
+# base_version=$(echo "$current_version" | sed -E 's/(-prerelease\.[0-9]+)?$//')
+# major=$(echo "$base_version" | cut -d. -f1)
+# minor=$(echo "$base_version" | cut -d. -f2)
+# patch=$(echo "$base_version" | cut -d. -f3)
+# 
+# # Increment patch version
+# new_patch=$((patch + 1))
+# new_base_version="${major}.${minor}.${new_patch}"
+# 
+# # Create prerelease version with current date
+# date=$(date +%Y%m%d)
+# new_version="${new_base_version}-prerelease.${date}"
+# 
+# echo "📦 Auto-incrementing version: $current_version → $new_version"
+# 
+# # Update package.json
+# if ! npm version "$new_version" --no-git-tag-version; then
+#     echo "❌ Failed to update package.json version"
+#     exit 1
+# fi
+# 
+# # Update CHANGELOG.md
+# if [ -f "CHANGELOG.md" ]; then
+#     # Create new changelog entry preserving header
+#     temp_file=$(mktemp)
+#     
+#     # Check if file has a header (starts with # Changelog)
+#     if head -n 1 CHANGELOG.md | grep -q "^# Changelog"; then
+#         # Extract header section (everything before first version entry)
+#         awk '/^## \[/ { exit } { print }' CHANGELOG.md > "${temp_file}.header"
+#         
+#         # Extract existing entries (from first version entry onward)
+#         awk '/^## \[/ { found=1 } found { print }' CHANGELOG.md > "${temp_file}.entries"
+#         
+#         # Combine: header + new entry + existing entries
+#         {
+#             cat "${temp_file}.header"
+#             echo ""
+#             echo "## [${new_version}] - $(date +%Y-%m-%d)"
+#             echo ""
+#             echo "### Added"
+#             echo "- Auto-versioned prerelease"
+#             echo ""
+#             cat "${temp_file}.entries"
+#         } > "$temp_file"
+#         
+#         # Cleanup temp files
+#         rm -f "${temp_file}.header" "${temp_file}.entries"
+#     else
+#         # No header, prepend as before
+#         {
+#             echo "## [${new_version}] - $(date +%Y-%m-%d)"
+#             echo ""
+#             echo "### Added"
+#             echo "- Auto-versioned prerelease"
+#             echo ""
+#             cat CHANGELOG.md
+#         } > "$temp_file"
+#     fi
+#     
+#     mv "$temp_file" CHANGELOG.md
+#     echo "📝 Updated CHANGELOG.md with version $new_version"
+# else
+#     echo "⚠️  CHANGELOG.md not found - creating new one"
+#     cat > CHANGELOG.md << EOF
+# # Changelog
+# 
+# All notable changes to this project will be documented in this file.
+# 
+# ## [${new_version}] - $(date +%Y-%m-%d)
+# 
+# ### Added
+# - Auto-versioned prerelease
+# 
+# EOF
+# fi
+# 
+# # Stage the updated files
+# git add package.json CHANGELOG.md
+# 
+# echo "✅ Auto-versioning complete: $new_version"
+# exit 0

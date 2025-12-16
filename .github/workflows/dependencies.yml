@@ -1,394 +1,394 @@
-name: Dependency Management
-
-on:
-  # Run on all dependency-related PRs
-  pull_request:
-    paths:
-      - 'package*.json'
-      - '.github/workflows/dependencies.yml'
-  
-  # Scheduled security scans
-  schedule:
-    # Run every Monday at 9 AM UTC
-    - cron: '0 9 * * 1'
-  
-  # Manual trigger
-  workflow_dispatch:
-    inputs:
-      scan_type:
-        description: 'Type of scan to run'
-        required: true
-        default: 'full'
-        type: choice
-        options:
-          - full
-          - security-only
-          - outdated-only
-          - license-check
-
-env:
-  NODE_VERSION: '20'
-
-jobs:
-  security-audit:
-    runs-on: ubuntu-latest
-    name: Security Vulnerability Scan
-    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-    
-    permissions:
-      contents: read
-      security-events: write
-      issues: write
-      pull-requests: write
-    
-    outputs:
-      vulnerabilities-found: ${{ steps.audit.outputs.vulnerabilities-found }}
-      critical-count: ${{ steps.audit.outputs.critical-count }}
-      high-count: ${{ steps.audit.outputs.high-count }}
-    
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run security audit
-        id: audit
-        run: |
-          echo "## 🔒 Security Audit Results" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          
-          # Create audit report
-          npm audit --json > audit-report.json || true
-          
-          # Parse audit results
-          if [ -s audit-report.json ]; then
-            VULNERABILITIES=$(jq -r '.metadata.vulnerabilities.total // 0' audit-report.json)
-            CRITICAL=$(jq -r '.metadata.vulnerabilities.critical // 0' audit-report.json)
-            HIGH=$(jq -r '.metadata.vulnerabilities.high // 0' audit-report.json)
-            MODERATE=$(jq -r '.metadata.vulnerabilities.moderate // 0' audit-report.json)
-            LOW=$(jq -r '.metadata.vulnerabilities.low // 0' audit-report.json)
-            
-            echo "vulnerabilities-found=$VULNERABILITIES" >> $GITHUB_OUTPUT
-            echo "critical-count=$CRITICAL" >> $GITHUB_OUTPUT
-            echo "high-count=$HIGH" >> $GITHUB_OUTPUT
-            
-            if [ "$VULNERABILITIES" -gt 0 ]; then
-              echo "🚨 **Found $VULNERABILITIES vulnerabilities:**" >> $GITHUB_STEP_SUMMARY
-              echo "- Critical: $CRITICAL" >> $GITHUB_STEP_SUMMARY
-              echo "- High: $HIGH" >> $GITHUB_STEP_SUMMARY
-              echo "- Moderate: $MODERATE" >> $GITHUB_STEP_SUMMARY
-              echo "- Low: $LOW" >> $GITHUB_STEP_SUMMARY
-              echo "" >> $GITHUB_STEP_SUMMARY
-              
-              # Show detailed vulnerabilities
-              echo "### Vulnerability Details:" >> $GITHUB_STEP_SUMMARY
-              echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-              npm audit --audit-level=moderate >> $GITHUB_STEP_SUMMARY || true
-              echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-            else
-              echo "✅ **No vulnerabilities found!**" >> $GITHUB_STEP_SUMMARY
-            fi
-          else
-            echo "vulnerabilities-found=0" >> $GITHUB_OUTPUT
-            echo "critical-count=0" >> $GITHUB_OUTPUT
-            echo "high-count=0" >> $GITHUB_OUTPUT
-            echo "✅ **No vulnerabilities found!**" >> $GITHUB_STEP_SUMMARY
-          fi
-
-      - name: Upload audit report
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: security-audit-report
-          path: audit-report.json
-          retention-days: 30
-
-  license-compliance:
-    runs-on: ubuntu-latest
-    name: License Compliance Check
-    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-    
-    outputs:
-      license-issues: ${{ steps.license-check.outputs.license-issues }}
-    
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Install license checker
-        run: npm install -g license-checker
-
-      - name: Check licenses
-        id: license-check
-        run: |
-          echo "## 📜 License Compliance Report" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          
-          # Define allowed licenses (permissive licenses compatible with commercial use)
-          ALLOWED_LICENSES="MIT;Apache-2.0;BSD-2-Clause;BSD-3-Clause;ISC;CC0-1.0;Unlicense;WTFPL;0BSD"
-          
-          # Generate license report
-          license-checker --json --onlyAllow "$ALLOWED_LICENSES" > license-report.json || true
-          
-          # Check for license issues
-          if [ $? -eq 0 ]; then
-            echo "license-issues=false" >> $GITHUB_OUTPUT
-            echo "✅ **All licenses are compliant!**" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            
-            # Count licenses
-            LICENSE_COUNT=$(jq 'keys | length' license-report.json)
-            echo "📊 **License Summary:** $LICENSE_COUNT packages scanned" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "license-issues=true" >> $GITHUB_OUTPUT
-            echo "⚠️ **License compliance issues found!**" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            
-            # Show problematic licenses
-            license-checker --failOn "GPL;LGPL;AGPL;EUPL;CPAL;OSL;EPL;SSPL;BUSL;Copyleft" --summary >> license_summary.txt || true
-            if [ -s license_summary.txt ]; then
-              echo "### Problematic Licenses:" >> $GITHUB_STEP_SUMMARY
-              echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-              cat license_summary.txt >> $GITHUB_STEP_SUMMARY
-              echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-            fi
-          fi
-          
-          # Generate detailed license breakdown
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "### License Breakdown:" >> $GITHUB_STEP_SUMMARY
-          license-checker --summary >> $GITHUB_STEP_SUMMARY || true
-
-      - name: Upload license report
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: license-report
-          path: |
-            license-report.json
-            license_summary.txt
-          retention-days: 30
-
-  outdated-check:
-    runs-on: ubuntu-latest
-    name: Outdated Dependencies Check
-    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-    
-    outputs:
-      outdated-count: ${{ steps.outdated.outputs.outdated-count }}
-      major-updates: ${{ steps.outdated.outputs.major-updates }}
-    
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Check for outdated packages
-        id: outdated
-        run: |
-          echo "## 📦 Outdated Dependencies Report" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          
-          # Get outdated packages
-          npm outdated --json > outdated-report.json || true
-          
-          if [ -s outdated-report.json ] && [ "$(cat outdated-report.json)" != "{}" ]; then
-            OUTDATED_COUNT=$(jq 'keys | length' outdated-report.json)
-            echo "outdated-count=$OUTDATED_COUNT" >> $GITHUB_OUTPUT
-            
-            # Check for major version updates
-            MAJOR_UPDATES=$(jq -r 'to_entries[] | select(.value.wanted != .value.latest) | .key' outdated-report.json | wc -l)
-            echo "major-updates=$MAJOR_UPDATES" >> $GITHUB_OUTPUT
-            
-            echo "📊 **Found $OUTDATED_COUNT outdated packages** ($MAJOR_UPDATES major updates available)" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "### Outdated Packages:" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "| Package | Current | Wanted | Latest |" >> $GITHUB_STEP_SUMMARY
-            echo "|---------|---------|---------|--------|" >> $GITHUB_STEP_SUMMARY
-            
-            jq -r 'to_entries[] | "| \(.key) | \(.value.current) | \(.value.wanted) | \(.value.latest) |"' outdated-report.json >> $GITHUB_STEP_SUMMARY
-          else
-            echo "outdated-count=0" >> $GITHUB_OUTPUT
-            echo "major-updates=0" >> $GITHUB_OUTPUT
-            echo "✅ **All dependencies are up to date!**" >> $GITHUB_STEP_SUMMARY
-          fi
-
-      - name: Upload outdated report
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: outdated-report
-          path: outdated-report.json
-          retention-days: 30
-
-  create-issues:
-    runs-on: ubuntu-latest
-    name: Create Security Issues
-    needs: [security-audit, license-compliance]
-    if: always() && (needs.security-audit.outputs.critical-count > 0 || needs.license-compliance.outputs.license-issues == 'true')
-    
-    permissions:
-      issues: write
-    
-    steps:
-      - name: Create critical vulnerability issue
-        if: needs.security-audit.outputs.critical-count > 0
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const { data: issues } = await github.rest.issues.listForRepo({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              labels: 'security,critical-vulnerability',
-              state: 'open'
-            });
-            
-            if (issues.length === 0) {
-              await github.rest.issues.create({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                title: '🚨 Critical Security Vulnerabilities Detected',
-                body: `Critical security vulnerabilities have been detected in dependencies.
-                
-                **Vulnerability Count:** ${{ needs.security-audit.outputs.critical-count }} critical, ${{ needs.security-audit.outputs.high-count }} high
-                
-                Please review the [security audit results](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) and update affected dependencies immediately.
-                
-                This issue was automatically created by the dependency management workflow.`,
-                labels: ['security', 'critical-vulnerability', 'dependencies']
-              });
-            }
-
-      - name: Create license compliance issue
-        if: needs.license-compliance.outputs.license-issues == 'true'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const { data: issues } = await github.rest.issues.listForRepo({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              labels: 'license-compliance',
-              state: 'open'
-            });
-            
-            if (issues.length === 0) {
-              await github.rest.issues.create({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                title: '⚖️ License Compliance Issues Detected',
-                body: `License compliance issues have been detected in dependencies.
-                
-                Some dependencies may have licenses that are incompatible with this project's licensing requirements.
-                
-                Please review the [license compliance report](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) and address any problematic licenses.
-                
-                This issue was automatically created by the dependency management workflow.`,
-                labels: ['license-compliance', 'dependencies', 'legal']
-              });
-            }
-
-  dependency-report:
-    runs-on: ubuntu-latest
-    name: Dependency Health Report
-    needs: [security-audit, license-compliance, outdated-check]
-    if: always() && github.event_name == 'schedule'
-    
-    permissions:
-      issues: write
-    
-    steps:
-      - name: Generate weekly report
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const vulnerabilities = '${{ needs.security-audit.outputs.vulnerabilities-found }}' || '0';
-            const licenseIssues = '${{ needs.license-compliance.outputs.license-issues }}' === 'true';
-            const outdatedCount = '${{ needs.outdated-check.outputs.outdated-count }}' || '0';
-            const majorUpdates = '${{ needs.outdated-check.outputs.major-updates }}' || '0';
-            
-            const reportDate = new Date().toISOString().split('T')[0];
-            const title = `📊 Weekly Dependency Health Report - ${reportDate}`;
-            
-            let healthScore = 100;
-            if (vulnerabilities > 0) healthScore -= Math.min(vulnerabilities * 10, 50);
-            if (licenseIssues) healthScore -= 20;
-            if (outdatedCount > 10) healthScore -= 10;
-            if (majorUpdates > 5) healthScore -= 10;
-            
-            const healthEmoji = healthScore >= 90 ? '🟢' : healthScore >= 70 ? '🟡' : '🔴';
-            
-            const body = `## Dependency Health Report
-            
-            **Health Score:** ${healthEmoji} ${healthScore}/100
-            
-            ### 🔒 Security Status
-            - **Vulnerabilities Found:** ${vulnerabilities}
-            - **Critical/High:** ${{ needs.security-audit.outputs.critical-count }}/${{ needs.security-audit.outputs.high-count }}
-            
-            ### 📜 License Compliance
-            - **Status:** ${licenseIssues ? '❌ Issues Found' : '✅ Compliant'}
-            
-            ### 📦 Dependency Freshness
-            - **Outdated Packages:** ${outdatedCount}
-            - **Major Updates Available:** ${majorUpdates}
-            
-            ### 📈 Recommendations
-            ${vulnerabilities > 0 ? '- 🚨 **Immediate Action Required:** Update packages with security vulnerabilities\n' : ''}
-            ${licenseIssues ? '- ⚖️ **Review Required:** Address license compliance issues\n' : ''}
-            ${majorUpdates > 0 ? `- 📦 **Consider Updates:** ${majorUpdates} major version updates available\n` : ''}
-            ${healthScore >= 90 ? '- ✅ **Good Health:** Dependencies are in good shape!\n' : ''}
-            
-            ---
-            *Generated automatically by [Dependency Management Workflow](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})*`;
-            
-            // Close previous weekly reports
-            const { data: existingIssues } = await github.rest.issues.listForRepo({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              labels: 'weekly-dependency-report',
-              state: 'open'
-            });
-            
-            for (const issue of existingIssues) {
-              await github.rest.issues.update({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issue.number,
-                state: 'closed'
-              });
-            }
-            
-            // Create new report
-            await github.rest.issues.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: title,
-              body: body,
-              labels: ['weekly-dependency-report', 'dependencies', 'automated']
-            });
+# name: Dependency Management
+# 
+# on:
+#   # Run on all dependency-related PRs
+#   pull_request:
+#     paths:
+#       - 'package*.json'
+#       - '.github/workflows/dependencies.yml'
+#   
+#   # Scheduled security scans
+#   schedule:
+#     # Run every Monday at 9 AM UTC
+#     - cron: '0 9 * * 1'
+#   
+#   # Manual trigger
+#   workflow_dispatch:
+#     inputs:
+#       scan_type:
+#         description: 'Type of scan to run'
+#         required: true
+#         default: 'full'
+#         type: choice
+#         options:
+#           - full
+#           - security-only
+#           - outdated-only
+#           - license-check
+# 
+# env:
+#   NODE_VERSION: '20'
+# 
+# jobs:
+#   security-audit:
+#     runs-on: ubuntu-latest
+#     name: Security Vulnerability Scan
+#     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+#     
+#     permissions:
+#       contents: read
+#       security-events: write
+#       issues: write
+#       pull-requests: write
+#     
+#     outputs:
+#       vulnerabilities-found: ${{ steps.audit.outputs.vulnerabilities-found }}
+#       critical-count: ${{ steps.audit.outputs.critical-count }}
+#       high-count: ${{ steps.audit.outputs.high-count }}
+#     
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
+# 
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: ${{ env.NODE_VERSION }}
+#           cache: 'npm'
+# 
+#       - name: Install dependencies
+#         run: npm ci
+# 
+#       - name: Run security audit
+#         id: audit
+#         run: |
+#           echo "## 🔒 Security Audit Results" >> $GITHUB_STEP_SUMMARY
+#           echo "" >> $GITHUB_STEP_SUMMARY
+#           
+#           # Create audit report
+#           npm audit --json > audit-report.json || true
+#           
+#           # Parse audit results
+#           if [ -s audit-report.json ]; then
+#             VULNERABILITIES=$(jq -r '.metadata.vulnerabilities.total // 0' audit-report.json)
+#             CRITICAL=$(jq -r '.metadata.vulnerabilities.critical // 0' audit-report.json)
+#             HIGH=$(jq -r '.metadata.vulnerabilities.high // 0' audit-report.json)
+#             MODERATE=$(jq -r '.metadata.vulnerabilities.moderate // 0' audit-report.json)
+#             LOW=$(jq -r '.metadata.vulnerabilities.low // 0' audit-report.json)
+#             
+#             echo "vulnerabilities-found=$VULNERABILITIES" >> $GITHUB_OUTPUT
+#             echo "critical-count=$CRITICAL" >> $GITHUB_OUTPUT
+#             echo "high-count=$HIGH" >> $GITHUB_OUTPUT
+#             
+#             if [ "$VULNERABILITIES" -gt 0 ]; then
+#               echo "🚨 **Found $VULNERABILITIES vulnerabilities:**" >> $GITHUB_STEP_SUMMARY
+#               echo "- Critical: $CRITICAL" >> $GITHUB_STEP_SUMMARY
+#               echo "- High: $HIGH" >> $GITHUB_STEP_SUMMARY
+#               echo "- Moderate: $MODERATE" >> $GITHUB_STEP_SUMMARY
+#               echo "- Low: $LOW" >> $GITHUB_STEP_SUMMARY
+#               echo "" >> $GITHUB_STEP_SUMMARY
+#               
+#               # Show detailed vulnerabilities
+#               echo "### Vulnerability Details:" >> $GITHUB_STEP_SUMMARY
+#               echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+#               npm audit --audit-level=moderate >> $GITHUB_STEP_SUMMARY || true
+#               echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+#             else
+#               echo "✅ **No vulnerabilities found!**" >> $GITHUB_STEP_SUMMARY
+#             fi
+#           else
+#             echo "vulnerabilities-found=0" >> $GITHUB_OUTPUT
+#             echo "critical-count=0" >> $GITHUB_OUTPUT
+#             echo "high-count=0" >> $GITHUB_OUTPUT
+#             echo "✅ **No vulnerabilities found!**" >> $GITHUB_STEP_SUMMARY
+#           fi
+# 
+#       - name: Upload audit report
+#         uses: actions/upload-artifact@v4
+#         if: always()
+#         with:
+#           name: security-audit-report
+#           path: audit-report.json
+#           retention-days: 30
+# 
+#   license-compliance:
+#     runs-on: ubuntu-latest
+#     name: License Compliance Check
+#     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+#     
+#     outputs:
+#       license-issues: ${{ steps.license-check.outputs.license-issues }}
+#     
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
+# 
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: ${{ env.NODE_VERSION }}
+#           cache: 'npm'
+# 
+#       - name: Install dependencies
+#         run: npm ci
+# 
+#       - name: Install license checker
+#         run: npm install -g license-checker
+# 
+#       - name: Check licenses
+#         id: license-check
+#         run: |
+#           echo "## 📜 License Compliance Report" >> $GITHUB_STEP_SUMMARY
+#           echo "" >> $GITHUB_STEP_SUMMARY
+#           
+#           # Define allowed licenses (permissive licenses compatible with commercial use)
+#           ALLOWED_LICENSES="MIT;Apache-2.0;BSD-2-Clause;BSD-3-Clause;ISC;CC0-1.0;Unlicense;WTFPL;0BSD"
+#           
+#           # Generate license report
+#           license-checker --json --onlyAllow "$ALLOWED_LICENSES" > license-report.json || true
+#           
+#           # Check for license issues
+#           if [ $? -eq 0 ]; then
+#             echo "license-issues=false" >> $GITHUB_OUTPUT
+#             echo "✅ **All licenses are compliant!**" >> $GITHUB_STEP_SUMMARY
+#             echo "" >> $GITHUB_STEP_SUMMARY
+#             
+#             # Count licenses
+#             LICENSE_COUNT=$(jq 'keys | length' license-report.json)
+#             echo "📊 **License Summary:** $LICENSE_COUNT packages scanned" >> $GITHUB_STEP_SUMMARY
+#           else
+#             echo "license-issues=true" >> $GITHUB_OUTPUT
+#             echo "⚠️ **License compliance issues found!**" >> $GITHUB_STEP_SUMMARY
+#             echo "" >> $GITHUB_STEP_SUMMARY
+#             
+#             # Show problematic licenses
+#             license-checker --failOn "GPL;LGPL;AGPL;EUPL;CPAL;OSL;EPL;SSPL;BUSL;Copyleft" --summary >> license_summary.txt || true
+#             if [ -s license_summary.txt ]; then
+#               echo "### Problematic Licenses:" >> $GITHUB_STEP_SUMMARY
+#               echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+#               cat license_summary.txt >> $GITHUB_STEP_SUMMARY
+#               echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+#             fi
+#           fi
+#           
+#           # Generate detailed license breakdown
+#           echo "" >> $GITHUB_STEP_SUMMARY
+#           echo "### License Breakdown:" >> $GITHUB_STEP_SUMMARY
+#           license-checker --summary >> $GITHUB_STEP_SUMMARY || true
+# 
+#       - name: Upload license report
+#         uses: actions/upload-artifact@v4
+#         if: always()
+#         with:
+#           name: license-report
+#           path: |
+#             license-report.json
+#             license_summary.txt
+#           retention-days: 30
+# 
+#   outdated-check:
+#     runs-on: ubuntu-latest
+#     name: Outdated Dependencies Check
+#     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+#     
+#     outputs:
+#       outdated-count: ${{ steps.outdated.outputs.outdated-count }}
+#       major-updates: ${{ steps.outdated.outputs.major-updates }}
+#     
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
+# 
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: ${{ env.NODE_VERSION }}
+#           cache: 'npm'
+# 
+#       - name: Install dependencies
+#         run: npm ci
+# 
+#       - name: Check for outdated packages
+#         id: outdated
+#         run: |
+#           echo "## 📦 Outdated Dependencies Report" >> $GITHUB_STEP_SUMMARY
+#           echo "" >> $GITHUB_STEP_SUMMARY
+#           
+#           # Get outdated packages
+#           npm outdated --json > outdated-report.json || true
+#           
+#           if [ -s outdated-report.json ] && [ "$(cat outdated-report.json)" != "{}" ]; then
+#             OUTDATED_COUNT=$(jq 'keys | length' outdated-report.json)
+#             echo "outdated-count=$OUTDATED_COUNT" >> $GITHUB_OUTPUT
+#             
+#             # Check for major version updates
+#             MAJOR_UPDATES=$(jq -r 'to_entries[] | select(.value.wanted != .value.latest) | .key' outdated-report.json | wc -l)
+#             echo "major-updates=$MAJOR_UPDATES" >> $GITHUB_OUTPUT
+#             
+#             echo "📊 **Found $OUTDATED_COUNT outdated packages** ($MAJOR_UPDATES major updates available)" >> $GITHUB_STEP_SUMMARY
+#             echo "" >> $GITHUB_STEP_SUMMARY
+#             echo "### Outdated Packages:" >> $GITHUB_STEP_SUMMARY
+#             echo "" >> $GITHUB_STEP_SUMMARY
+#             echo "| Package | Current | Wanted | Latest |" >> $GITHUB_STEP_SUMMARY
+#             echo "|---------|---------|---------|--------|" >> $GITHUB_STEP_SUMMARY
+#             
+#             jq -r 'to_entries[] | "| \(.key) | \(.value.current) | \(.value.wanted) | \(.value.latest) |"' outdated-report.json >> $GITHUB_STEP_SUMMARY
+#           else
+#             echo "outdated-count=0" >> $GITHUB_OUTPUT
+#             echo "major-updates=0" >> $GITHUB_OUTPUT
+#             echo "✅ **All dependencies are up to date!**" >> $GITHUB_STEP_SUMMARY
+#           fi
+# 
+#       - name: Upload outdated report
+#         uses: actions/upload-artifact@v4
+#         if: always()
+#         with:
+#           name: outdated-report
+#           path: outdated-report.json
+#           retention-days: 30
+# 
+#   create-issues:
+#     runs-on: ubuntu-latest
+#     name: Create Security Issues
+#     needs: [security-audit, license-compliance]
+#     if: always() && (needs.security-audit.outputs.critical-count > 0 || needs.license-compliance.outputs.license-issues == 'true')
+#     
+#     permissions:
+#       issues: write
+#     
+#     steps:
+#       - name: Create critical vulnerability issue
+#         if: needs.security-audit.outputs.critical-count > 0
+#         uses: actions/github-script@v7
+#         with:
+#           script: |
+#             const { data: issues } = await github.rest.issues.listForRepo({
+#               owner: context.repo.owner,
+#               repo: context.repo.repo,
+#               labels: 'security,critical-vulnerability',
+#               state: 'open'
+#             });
+#             
+#             if (issues.length === 0) {
+#               await github.rest.issues.create({
+#                 owner: context.repo.owner,
+#                 repo: context.repo.repo,
+#                 title: '🚨 Critical Security Vulnerabilities Detected',
+#                 body: `Critical security vulnerabilities have been detected in dependencies.
+#                 
+#                 **Vulnerability Count:** ${{ needs.security-audit.outputs.critical-count }} critical, ${{ needs.security-audit.outputs.high-count }} high
+#                 
+#                 Please review the [security audit results](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) and update affected dependencies immediately.
+#                 
+#                 This issue was automatically created by the dependency management workflow.`,
+#                 labels: ['security', 'critical-vulnerability', 'dependencies']
+#               });
+#             }
+# 
+#       - name: Create license compliance issue
+#         if: needs.license-compliance.outputs.license-issues == 'true'
+#         uses: actions/github-script@v7
+#         with:
+#           script: |
+#             const { data: issues } = await github.rest.issues.listForRepo({
+#               owner: context.repo.owner,
+#               repo: context.repo.repo,
+#               labels: 'license-compliance',
+#               state: 'open'
+#             });
+#             
+#             if (issues.length === 0) {
+#               await github.rest.issues.create({
+#                 owner: context.repo.owner,
+#                 repo: context.repo.repo,
+#                 title: '⚖️ License Compliance Issues Detected',
+#                 body: `License compliance issues have been detected in dependencies.
+#                 
+#                 Some dependencies may have licenses that are incompatible with this project's licensing requirements.
+#                 
+#                 Please review the [license compliance report](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) and address any problematic licenses.
+#                 
+#                 This issue was automatically created by the dependency management workflow.`,
+#                 labels: ['license-compliance', 'dependencies', 'legal']
+#               });
+#             }
+# 
+#   dependency-report:
+#     runs-on: ubuntu-latest
+#     name: Dependency Health Report
+#     needs: [security-audit, license-compliance, outdated-check]
+#     if: always() && github.event_name == 'schedule'
+#     
+#     permissions:
+#       issues: write
+#     
+#     steps:
+#       - name: Generate weekly report
+#         uses: actions/github-script@v7
+#         with:
+#           script: |
+#             const vulnerabilities = '${{ needs.security-audit.outputs.vulnerabilities-found }}' || '0';
+#             const licenseIssues = '${{ needs.license-compliance.outputs.license-issues }}' === 'true';
+#             const outdatedCount = '${{ needs.outdated-check.outputs.outdated-count }}' || '0';
+#             const majorUpdates = '${{ needs.outdated-check.outputs.major-updates }}' || '0';
+#             
+#             const reportDate = new Date().toISOString().split('T')[0];
+#             const title = `📊 Weekly Dependency Health Report - ${reportDate}`;
+#             
+#             let healthScore = 100;
+#             if (vulnerabilities > 0) healthScore -= Math.min(vulnerabilities * 10, 50);
+#             if (licenseIssues) healthScore -= 20;
+#             if (outdatedCount > 10) healthScore -= 10;
+#             if (majorUpdates > 5) healthScore -= 10;
+#             
+#             const healthEmoji = healthScore >= 90 ? '🟢' : healthScore >= 70 ? '🟡' : '🔴';
+#             
+#             const body = `## Dependency Health Report
+#             
+#             **Health Score:** ${healthEmoji} ${healthScore}/100
+#             
+#             ### 🔒 Security Status
+#             - **Vulnerabilities Found:** ${vulnerabilities}
+#             - **Critical/High:** ${{ needs.security-audit.outputs.critical-count }}/${{ needs.security-audit.outputs.high-count }}
+#             
+#             ### 📜 License Compliance
+#             - **Status:** ${licenseIssues ? '❌ Issues Found' : '✅ Compliant'}
+#             
+#             ### 📦 Dependency Freshness
+#             - **Outdated Packages:** ${outdatedCount}
+#             - **Major Updates Available:** ${majorUpdates}
+#             
+#             ### 📈 Recommendations
+#             ${vulnerabilities > 0 ? '- 🚨 **Immediate Action Required:** Update packages with security vulnerabilities\n' : ''}
+#             ${licenseIssues ? '- ⚖️ **Review Required:** Address license compliance issues\n' : ''}
+#             ${majorUpdates > 0 ? `- 📦 **Consider Updates:** ${majorUpdates} major version updates available\n` : ''}
+#             ${healthScore >= 90 ? '- ✅ **Good Health:** Dependencies are in good shape!\n' : ''}
+#             
+#             ---
+#             *Generated automatically by [Dependency Management Workflow](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})*`;
+#             
+#             // Close previous weekly reports
+#             const { data: existingIssues } = await github.rest.issues.listForRepo({
+#               owner: context.repo.owner,
+#               repo: context.repo.repo,
+#               labels: 'weekly-dependency-report',
+#               state: 'open'
+#             });
+#             
+#             for (const issue of existingIssues) {
+#               await github.rest.issues.update({
+#                 owner: context.repo.owner,
+#                 repo: context.repo.repo,
+#                 issue_number: issue.number,
+#                 state: 'closed'
+#               });
+#             }
+#             
+#             // Create new report
+#             await github.rest.issues.create({
+#               owner: context.repo.owner,
+#               repo: context.repo.repo,
+#               title: title,
+#               body: body,
+#               labels: ['weekly-dependency-report', 'dependencies', 'automated']
+#             });

@@ -1,128 +1,128 @@
-name: Release on PR merge to main
-on:
-  pull_request:
-    types: [closed]
-    branches: [ main ]
-
-permissions:
-  contents: write
-
-jobs:
-  release:
-    if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Checkout full history
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Ensure tags are fetched
-        run: git fetch --tags --force
-
-      - name: Determine version strategy
-        id: version
-        run: |
-          # Get version from package.json (may have been manually set)
-          package_version=$(node -p "require('./package.json').version")
-          if [ -z "$package_version" ]; then
-            echo "No version found in package.json"
-            exit 1
-          fi
-          
-          # Remove prerelease suffix to get base version
-          base_version=$(echo "$package_version" | sed -E 's/(-prerelease\.[0-9]+)?$//')
-          
-          # Get the last release tag (not prerelease)
-          last_tag=$(git tag --list 'v*' | grep -v 'prerelease' | sort -V | tail -n1)
-          if [ -z "$last_tag" ]; then
-            last_tag="v1.0.0"
-          fi
-          last_version="${last_tag#v}"
-          
-          # Check if version was manually set (major/minor changed)
-          last_major_minor=$(echo "$last_version" | cut -d. -f1,2)
-          current_major_minor=$(echo "$base_version" | cut -d. -f1,2)
-          
-          if [ "$current_major_minor" != "$last_major_minor" ]; then
-            # Version was manually bumped, use the existing version
-            echo "Using manually set version: v${base_version}"
-            echo "version=v${base_version}" >> $GITHUB_OUTPUT
-            echo "name=Release ${base_version}" >> $GITHUB_OUTPUT
-            echo "manual_version=true" >> $GITHUB_OUTPUT
-          else
-            # Auto-increment minor version as before
-            IFS='.' read -r MA MI PA <<< "$last_version"
-            MI=$((MI+1))
-            PA=0
-            new_version="${MA}.${MI}.${PA}"
-            echo "Auto-incrementing to: v${new_version}"
-            echo "version=v${new_version}" >> $GITHUB_OUTPUT
-            echo "name=Release ${new_version}" >> $GITHUB_OUTPUT
-            echo "manual_version=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Extract release notes from CHANGELOG.md
-        id: notes
-        run: |
-          # Extract the latest version section from CHANGELOG.md
-          version_to_find="${{ steps.version.outputs.version }}"
-          version_to_find="${version_to_find#v}"  # Remove 'v' prefix
-          
-          awk -v version="$version_to_find" '
-          BEGIN { found = 0 }
-          /^## \[/ {
-            if (found) exit
-            if ($0 ~ "\\[" version "\\]") {
-              found = 1
-              print $0
-              next
-            }
-          }
-          found && /^## \[/ { exit }
-          found && /^---$/ { exit }
-          found { print $0 }
-          ' CHANGELOG.md > release_notes.txt
-          
-          # If no specific version found, extract the first version section
-          if [ ! -s release_notes.txt ]; then
-            echo "No specific version found in CHANGELOG, using latest entry"
-            awk '
-            /^## \[[0-9]+\.[0-9]+\.[0-9]+/ {
-              if (found) exit
-              found = 1
-              print $0
-              next
-            }
-            found && /^## \[/ { exit }
-            found && /^---$/ { exit }
-            found { print $0 }
-            ' CHANGELOG.md > release_notes.txt
-          fi
-          
-          # Convert to proper format for GitHub
-          {
-            echo "notes<<EOF"
-            cat release_notes.txt
-            echo "EOF"
-          } >> $GITHUB_OUTPUT
-
-      - name: Create and push tag
-        run: |
-          git tag "${{ steps.version.outputs.version }}"
-          git push origin "${{ steps.version.outputs.version }}"
-
-      - name: Create GitHub Release (official, latest)
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ steps.version.outputs.version }}
-          name: ${{ steps.version.outputs.name }}
-          body: ${{ steps.notes.outputs.notes }}
-          prerelease: false
-          make_latest: true
-          generate_release_notes: false 
+# name: Release on PR merge to main
+# on:
+#   pull_request:
+#     types: [closed]
+#     branches: [ main ]
+# 
+# permissions:
+#   contents: write
+# 
+# jobs:
+#   release:
+#     if: github.event.pull_request.merged == true
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: '20'
+# 
+#       - name: Checkout full history
+#         uses: actions/checkout@v4
+#         with:
+#           fetch-depth: 0
+# 
+#       - name: Ensure tags are fetched
+#         run: git fetch --tags --force
+# 
+#       - name: Determine version strategy
+#         id: version
+#         run: |
+#           # Get version from package.json (may have been manually set)
+#           package_version=$(node -p "require('./package.json').version")
+#           if [ -z "$package_version" ]; then
+#             echo "No version found in package.json"
+#             exit 1
+#           fi
+#           
+#           # Remove prerelease suffix to get base version
+#           base_version=$(echo "$package_version" | sed -E 's/(-prerelease\.[0-9]+)?$//')
+#           
+#           # Get the last release tag (not prerelease)
+#           last_tag=$(git tag --list 'v*' | grep -v 'prerelease' | sort -V | tail -n1)
+#           if [ -z "$last_tag" ]; then
+#             last_tag="v1.0.0"
+#           fi
+#           last_version="${last_tag#v}"
+#           
+#           # Check if version was manually set (major/minor changed)
+#           last_major_minor=$(echo "$last_version" | cut -d. -f1,2)
+#           current_major_minor=$(echo "$base_version" | cut -d. -f1,2)
+#           
+#           if [ "$current_major_minor" != "$last_major_minor" ]; then
+#             # Version was manually bumped, use the existing version
+#             echo "Using manually set version: v${base_version}"
+#             echo "version=v${base_version}" >> $GITHUB_OUTPUT
+#             echo "name=Release ${base_version}" >> $GITHUB_OUTPUT
+#             echo "manual_version=true" >> $GITHUB_OUTPUT
+#           else
+#             # Auto-increment minor version as before
+#             IFS='.' read -r MA MI PA <<< "$last_version"
+#             MI=$((MI+1))
+#             PA=0
+#             new_version="${MA}.${MI}.${PA}"
+#             echo "Auto-incrementing to: v${new_version}"
+#             echo "version=v${new_version}" >> $GITHUB_OUTPUT
+#             echo "name=Release ${new_version}" >> $GITHUB_OUTPUT
+#             echo "manual_version=false" >> $GITHUB_OUTPUT
+#           fi
+# 
+#       - name: Extract release notes from CHANGELOG.md
+#         id: notes
+#         run: |
+#           # Extract the latest version section from CHANGELOG.md
+#           version_to_find="${{ steps.version.outputs.version }}"
+#           version_to_find="${version_to_find#v}"  # Remove 'v' prefix
+#           
+#           awk -v version="$version_to_find" '
+#           BEGIN { found = 0 }
+#           /^## \[/ {
+#             if (found) exit
+#             if ($0 ~ "\\[" version "\\]") {
+#               found = 1
+#               print $0
+#               next
+#             }
+#           }
+#           found && /^## \[/ { exit }
+#           found && /^---$/ { exit }
+#           found { print $0 }
+#           ' CHANGELOG.md > release_notes.txt
+#           
+#           # If no specific version found, extract the first version section
+#           if [ ! -s release_notes.txt ]; then
+#             echo "No specific version found in CHANGELOG, using latest entry"
+#             awk '
+#             /^## \[[0-9]+\.[0-9]+\.[0-9]+/ {
+#               if (found) exit
+#               found = 1
+#               print $0
+#               next
+#             }
+#             found && /^## \[/ { exit }
+#             found && /^---$/ { exit }
+#             found { print $0 }
+#             ' CHANGELOG.md > release_notes.txt
+#           fi
+#           
+#           # Convert to proper format for GitHub
+#           {
+#             echo "notes<<EOF"
+#             cat release_notes.txt
+#             echo "EOF"
+#           } >> $GITHUB_OUTPUT
+# 
+#       - name: Create and push tag
+#         run: |
+#           git tag "${{ steps.version.outputs.version }}"
+#           git push origin "${{ steps.version.outputs.version }}"
+# 
+#       - name: Create GitHub Release (official, latest)
+#         uses: softprops/action-gh-release@v2
+#         with:
+#           tag_name: ${{ steps.version.outputs.version }}
+#           name: ${{ steps.version.outputs.name }}
+#           body: ${{ steps.notes.outputs.notes }}
+#           prerelease: false
+#           make_latest: true
+#           generate_release_notes: false 
